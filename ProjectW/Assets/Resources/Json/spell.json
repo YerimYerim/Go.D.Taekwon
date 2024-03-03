@@ -1,0 +1,30 @@
+[
+  {
+    "spell_id": 1,
+    "spell_img": "img_spell_1",
+    "spell_name": "spell_name_1",
+    "spell_desc": "spell_desc_1",
+    "spell_effect": null
+  },
+  {
+    "spell_id": 2,
+    "spell_img": "img_spell_2",
+    "spell_name": "spell_name_2",
+    "spell_desc": "spell_desc_2",
+    "spell_effect": null
+  },
+  {
+    "spell_id": 3,
+    "spell_img": "img_spell_3",
+    "spell_name": "spell_name_3",
+    "spell_desc": "spell_desc_3",
+    "spell_effect": null
+  },
+  {
+    "spell_id": 4,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_4",
+    "spell_desc": "spell_desc_4",
+    "spell_effect": null
+  }
+]

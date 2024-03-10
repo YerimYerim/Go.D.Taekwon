@@ -10,6 +10,9 @@ namespace Script.UI
     {
         private event Action LongClickEvent;
         private event Action LongPressEvent;
+        private event Action HoverStartEvent;
+        private event Action HoverEndEvent;
+        
         private double _onclickStartTime;
         
         public float minLongClickTime = 0.1f;
@@ -31,6 +34,7 @@ namespace Script.UI
         }
         
         private bool _isLongClick;
+        private bool _isHovering = false;
 
         public override void OnPointerDown(PointerEventData eventData)
         {
@@ -59,6 +63,28 @@ namespace Script.UI
             base.OnPointerUp(eventData);
             CoCheckLongClick = null;
         }
+        
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            if (_isHovering == false)
+            {
+                base.OnPointerEnter(eventData);
+                OnHoverEventStart();
+                _isHovering = true;
+            }
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            if (_isHovering)
+            {
+                base.OnPointerExit(eventData);
+                OnHoverEventEnd();
+            }
+
+            _isHovering = false;
+        }
+        
         public void SetLongClickEvent(Action longClickEvent)
         {
             LongClickEvent = longClickEvent;
@@ -68,6 +94,11 @@ namespace Script.UI
             LongPressEvent = longPressEvent;
         }
 
+        public void SetHoverEvent(Action startAction, Action endAction )
+        {
+            HoverStartEvent = startAction;
+            HoverEndEvent = endAction;
+        }
         IEnumerator CheckLongPress()
         {
             yield return new WaitForSeconds(minLongClickTime);
@@ -86,6 +117,15 @@ namespace Script.UI
             LongClickEvent?.Invoke();
             _isLongClick = false;
             Debug.Log("long Click");
+        }
+
+        private void OnHoverEventStart()
+        {
+            HoverStartEvent?.Invoke();
+        }
+        private void OnHoverEventEnd()
+        {
+            HoverEndEvent?.Invoke();
         }
     }
 }

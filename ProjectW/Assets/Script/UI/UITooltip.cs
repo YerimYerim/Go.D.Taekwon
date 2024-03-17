@@ -37,7 +37,8 @@ public class UITooltip : UIBase
         //Vector2 parentsScreenPoint = RectTransformUtility.WorldToScreenPoint(Camera.current, parentsRect.position);
 
         // 아이콘이 화면 중앙보다 오른쪽에 있는지 확인
-        bool isParentsOnRight = parentsRect.position.x > screenCenter.x;
+        var parentsRectPosition = parentsRect.position;
+        bool isParentsOnRight = parentsRectPosition.x > screenCenter.x;
         Vector3[] parentsCorners = new Vector3[4];
         parentsRect.GetWorldCorners(parentsCorners);
         var parentsRectWidth = (parentsCorners[2].x - parentsCorners[1].x) * 0.5f;
@@ -47,16 +48,16 @@ public class UITooltip : UIBase
         toolTipRectTransform.GetWorldCorners(tooltipCorners);
         var tooltipRectWidth = (tooltipCorners[2].x - tooltipCorners[1].x) * 0.5f;
         var tooltipRectHeight =(tooltipCorners[1].y - tooltipCorners[0].y) * 0.5f;
-        
+
         // 툴팁의 위치 설정
         if (isParentsOnRight)
         {
-            Vector2 resultPosition = new Vector2(parentsRect.position.x - parentsRectWidth - tooltipRectWidth, parentsRect.position.y - (tooltipRectHeight - parentsRectHeight));
+            Vector2 resultPosition = new Vector2(parentsRectPosition.x - parentsRectWidth - tooltipRectWidth, parentsRectPosition.y - (tooltipRectHeight - parentsRectHeight));
             toolTipRectTransform.position =resultPosition;
         }
         else
         {
-            Vector2 resultPosition = new Vector2(parentsRect.position.x + parentsRectWidth + tooltipRectWidth,parentsRect.position.y - (tooltipRectHeight - parentsRectHeight));
+            Vector2 resultPosition = new Vector2(parentsRectPosition.x + parentsRectWidth + tooltipRectWidth,parentsRectPosition.y - (tooltipRectHeight - parentsRectHeight));
             toolTipRectTransform.position = resultPosition;
         }
 

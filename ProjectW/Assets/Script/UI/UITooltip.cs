@@ -34,30 +34,30 @@ public class UITooltip : UIBase
         Vector2 screenCenter = new(Screen.width * 0.5f , Screen.height * 0.5f);
 
         // 아이콘의 스크린 좌표
-        Vector2 iconScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.current, parentsRect.position);
+        //Vector2 parentsScreenPoint = RectTransformUtility.WorldToScreenPoint(Camera.current, parentsRect.position);
 
         // 아이콘이 화면 중앙보다 오른쪽에 있는지 확인
-        bool isIconOnRight = iconScreenPosition.x > screenCenter.x;
-        Vector3[] parentscorners = new Vector3[4];
-        parentsRect.GetWorldCorners(parentscorners);
-        var parentsRectWidth = (parentscorners[2].x - parentscorners[1].x) * 0.5f;
-        var parentsRectHeight = (parentscorners[1].y - parentscorners[0].y) * 0.5f;
+        bool isParentsOnRight = parentsRect.position.x > screenCenter.x;
+        Vector3[] parentsCorners = new Vector3[4];
+        parentsRect.GetWorldCorners(parentsCorners);
+        var parentsRectWidth = (parentsCorners[2].x - parentsCorners[1].x) * 0.5f;
+        var parentsRectHeight = (parentsCorners[1].y - parentsCorners[0].y) * 0.5f;
         
-        Vector3[] tooltipcorners = new Vector3[4];
-        toolTipRectTransform.GetWorldCorners(tooltipcorners);
-        var tooltipRectWidth = (tooltipcorners[2].x - tooltipcorners[1].x) * 0.5f;
-        var tooltipRectHeight =(tooltipcorners[1].y - tooltipcorners[0].y) * 0.5f;
+        Vector3[] tooltipCorners = new Vector3[4];
+        toolTipRectTransform.GetWorldCorners(tooltipCorners);
+        var tooltipRectWidth = (tooltipCorners[2].x - tooltipCorners[1].x) * 0.5f;
+        var tooltipRectHeight =(tooltipCorners[1].y - tooltipCorners[0].y) * 0.5f;
         
         // 툴팁의 위치 설정
-        if (isIconOnRight)
+        if (isParentsOnRight)
         {
-            Vector2 curScreenPosition = new Vector2(iconScreenPosition.x - parentsRectWidth - tooltipRectWidth, iconScreenPosition.y - (tooltipRectHeight - parentsRectHeight));
-            toolTipRectTransform.position =curScreenPosition;
+            Vector2 resultPosition = new Vector2(parentsRect.position.x - parentsRectWidth - tooltipRectWidth, parentsRect.position.y - (tooltipRectHeight - parentsRectHeight));
+            toolTipRectTransform.position =resultPosition;
         }
         else
         {
-            Vector2 curScreenPosition = new Vector2(iconScreenPosition.x + parentsRectWidth + tooltipRectWidth,iconScreenPosition.y - (tooltipRectHeight - parentsRectHeight));
-            toolTipRectTransform.position = curScreenPosition;
+            Vector2 resultPosition = new Vector2(parentsRect.position.x + parentsRectWidth + tooltipRectWidth,parentsRect.position.y - (tooltipRectHeight - parentsRectHeight));
+            toolTipRectTransform.position = resultPosition;
         }
 
     }

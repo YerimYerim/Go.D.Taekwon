@@ -21,7 +21,6 @@ public class UISpell : MonoBehaviour
     {
         if(GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_2, out var ui))
         {
-
             ui.CreateInfo(_spellTableData.tableData.spell_name, _spellTableData.tableData.spell_desc, this.transform.GetComponent<RectTransform>());
             ui.Show();
             Debug.Log("OPEN" + GameUtil.GetString(_spellTableData.tableData.spell_name));

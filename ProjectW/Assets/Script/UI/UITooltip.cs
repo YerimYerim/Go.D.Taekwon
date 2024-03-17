@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Script.UI;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UITooltip : UIBase
@@ -29,29 +30,36 @@ public class UITooltip : UIBase
         txtTitle.text = GameUtil.GetString(titleStringKey);
         txtDesc.text = GameUtil.GetString(descStringKey);
 
-        //var tooltipPosition = toolTipRectTransform.anchoredPosition3D;
-        var parentsRectPosition = parentsRect.position;
+        // 화면 중앙 좌표
+        Vector2 screenCenter = new(Screen.width * 0.5f , Screen.height * 0.5f);
 
-        float x = 0f;
-        float y = 0f;
-        
-        
-        // 해당 아이템이 화면의 왼쪽에 있을경우 오른쪽에
+        // 아이콘의 스크린 좌표
+        Vector2 iconScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.current, parentsRect.position);
 
-        x = parentsRectPosition.x + Math.Abs(parentsRect.rect.x * 0.5f) + Math.Abs(toolTipRectTransform.rect.x * 0.5f);
+        // 아이콘이 화면 중앙보다 오른쪽에 있는지 확인
+        bool isIconOnRight = iconScreenPosition.x > screenCenter.x;
+        Vector3[] parentscorners = new Vector3[4];
+        parentsRect.GetWorldCorners(parentscorners);
+        var parentsRectWidth = (parentscorners[2].x - parentscorners[1].x) * 0.5f;
+        var parentsRectHeight = (parentscorners[1].y - parentscorners[0].y) * 0.5f;
         
-
-        // 해당 아이템이 화면하단에 있을경우 위쪽에 
-        if (parentsRect.position.y < 0)
+        Vector3[] tooltipcorners = new Vector3[4];
+        toolTipRectTransform.GetWorldCorners(tooltipcorners);
+        var tooltipRectWidth = (tooltipcorners[2].x - tooltipcorners[1].x) * 0.5f;
+        var tooltipRectHeight =(tooltipcorners[1].y - tooltipcorners[0].y) * 0.5f;
+        
+        // 툴팁의 위치 설정
+        if (isIconOnRight)
         {
-            y = parentsRectPosition.y;// + Math.Abs(parentsRect.rect.y * 0.5f) + Math.Abs(toolTipRectTransform.rect.y * 0.5f);
+            Vector2 curScreenPosition = new Vector2(iconScreenPosition.x - parentsRectWidth - tooltipRectWidth, iconScreenPosition.y - (tooltipRectHeight - parentsRectHeight));
+            toolTipRectTransform.position =curScreenPosition;
         }
         else
         {
-            y = parentsRectPosition.y; //  - Screen.height * 0.5f;
+            Vector2 curScreenPosition = new Vector2(iconScreenPosition.x + parentsRectWidth + tooltipRectWidth,iconScreenPosition.y - (tooltipRectHeight - parentsRectHeight));
+            toolTipRectTransform.position = curScreenPosition;
         }
 
-        toolTipRectTransform.position = new Vector3(parentsRectPosition.x +  Math.Abs(toolTipRectTransform.rect.x * 0.5f), y - Math.Abs(toolTipRectTransform.rect.y * 0.5f) +  Math.Abs(parentsRect.rect.y * 0.5f) + 10 );
     }
     
     public override void Show()

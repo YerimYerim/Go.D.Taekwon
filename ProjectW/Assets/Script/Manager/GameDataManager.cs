@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class GameDataManager : Script.Manager.Singleton<GameDataManager>
 {
-    private readonly string[] _pageJsonFileNames = {"config", "spell", "string" };
+    private readonly string[] _pageJsonFileNames = {"config", "spell", "string", "spell_combine"};
     internal List<ConfigTableData> _configTableData = new();
     internal List<SpellTableData> _spellData = new();
     internal List<StringTableData> _stringDatas = new();
+    internal List<SpellCombineTableData> _spellCombineDatas = new();
 
 
     protected override void Awake()
@@ -22,6 +23,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
         _configTableData = ReadJsonFiles<ConfigTableData>(_pageJsonFileNames[0]);
         _spellData = ReadJsonFiles<SpellTableData>(_pageJsonFileNames[1]);
         _stringDatas = ReadJsonFiles<StringTableData>(_pageJsonFileNames[2]);
+        _spellCombineDatas = ReadJsonFiles<SpellCombineTableData>(_pageJsonFileNames[3]);
     }
 
     private static List<T> ReadJsonFiles<T>(string fileName)

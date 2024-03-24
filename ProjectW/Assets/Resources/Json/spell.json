@@ -4,7 +4,7 @@
     "spell_img": "img_spell_1",
     "spell_name": "spell_name_1",
     "spell_desc": "spell_desc_1",
-    "spell_effect": null
+    "spell_effect": 10001
   },
   {
     "spell_id": 2,

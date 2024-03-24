@@ -4,5 +4,23 @@
     "enum_name": "kor",
     "source_enum_name": "LANGUAGE_TYPE_KOR",
     "enum_value": 0
+  },
+  {
+    "group_name": "actor_type",
+    "enum_name": "player",
+    "source_enum_name": "ACTOR_TYPE_PLAYER",
+    "enum_value": 0
+  },
+  {
+    "group_name": "actor_type",
+    "enum_name": "monster",
+    "source_enum_name": "ACTOR_TYPE_MONSTER",
+    "enum_value": 1
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "damage",
+    "source_enum_name": "EFFECT_TYPE_DAMAGE",
+    "enum_value": 0
   }
 ]

@@ -1,0 +1,14 @@
+[
+  {
+    "actor_id": 1000001,
+    "actor_type": null,
+    "actor_resource": "temp_character_01",
+    "actor_stat_hp": 100
+  },
+  {
+    "actor_id": 2000001,
+    "actor_type": null,
+    "actor_resource": "temp_monster_01",
+    "actor_stat_hp": 200
+  }
+]

@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 8560321892722119512}
   button: {fileID: 5744503439883923345}
+  _parents: {fileID: 0}
 --- !u!114 &5744503439883923345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 190458148506327771}
   button: {fileID: 7462115865109616526}
+  _parents: {fileID: 0}
 --- !u!114 &7462115865109616526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,6 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 913881355793685989}
   button: {fileID: 8942688762188636288}
+  _parents: {fileID: 0}
 --- !u!114 &8942688762188636288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 878238751809720556}
   button: {fileID: 3360809363322831962}
+  _parents: {fileID: 0}
 --- !u!114 &3360809363322831962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,6 +1193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 7058344683799925972}
   button: {fileID: 2822227569539952534}
+  _parents: {fileID: 0}
 --- !u!114 &2822227569539952534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,6 +1466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 6834921181975154060}
   button: {fileID: 6329824852618387384}
+  _parents: {fileID: 0}
 --- !u!114 &6329824852618387384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,6 +1680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 7820575547833113929}
   button: {fileID: 3744999971050595090}
+  _parents: {fileID: 0}
 --- !u!114 &3744999971050595090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,6 +2077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiCards: []
   gridLayout: {fileID: 8937585374041387048}
+  spellIDs: 
 --- !u!1 &7224938424713440734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,6 +2170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 5944121422605870680}
   button: {fileID: 1536393002961726329}
+  _parents: {fileID: 0}
 --- !u!114 &1536393002961726329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2300,6 +2309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 5026199075394506312}
   button: {fileID: 5584731944897572909}
+  _parents: {fileID: 0}
 --- !u!114 &5584731944897572909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2552,6 +2562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 9126032991116253647}
   button: {fileID: 4224612148337718589}
+  _parents: {fileID: 0}
 --- !u!114 &4224612148337718589
 MonoBehaviour:
   m_ObjectHideFlags: 0

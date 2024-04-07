@@ -6,6 +6,7 @@ public class BTNodeGameOver : BTNodeAction
 {
     public override State Evaluate()
     {
+        Debug.Log("IS Game Over");
         return State.Failure;
     }
 }

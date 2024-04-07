@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class BTNodeDraw : BTNodeAction
 {
-    // Start is called before the first frame update
-    void Start()
+    public override State Evaluate()
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return State.Success;
     }
 }

@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class BTNodeIsRunaway : BTNodeAction
 {
-
+    public override State Evaluate()
+    {
+        Debug.Log("BTNodeIsRunaway");
+        return State.Failure;
+    }
 }

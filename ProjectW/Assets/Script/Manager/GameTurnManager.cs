@@ -1,14 +1,21 @@
 using Script.Manager;
+using UnityEngine;
 
 public class GameTurnManager : Singleton<GameTurnManager>
-{
+{   
     private int _actionPoint;
-    private BTNodeSelector _root;
+    private BTNodeSelector _root = new BTNodeSelector();
+    public bool isMyTurn = false;
+
+    private void Clear()
+    {
+        _root.Clear();   
+    }
     
-    private void TurnNodeInit()
+    public void TurnNodeInit()  
     {
         _root.Clear();
-        
+        BattleManager.Instance.Init();
         // player Hp <= 0 인가
         var actIsDead = new BTNodeIsDead();
         // 게임 종료 action
@@ -25,8 +32,6 @@ public class GameTurnManager : Singleton<GameTurnManager>
         var actSelectedRunaway = new BTNodeSelectedRunaway();
         // 드로우 할건가
         var actIsDraw = new BTNodeIsDraw();
-        // 드로우
-        var actDraw = new BTNodeDraw();
         // 유저 선택
         var actPlayerTurn = new BTNodePlayerTurn();
 
@@ -40,10 +45,9 @@ public class GameTurnManager : Singleton<GameTurnManager>
         actEnemyTurnSequence.AddChild(actEnemyTurnAttack);
         actEnemyTurnSequence.AddChild(actIsRunaway);
         actIsRunaway.AddChild(actSelectedRunaway);
-        actIsDraw.AddChild(actDraw);
     }
-    private void TurnStart()
+    public void TurnStart()
     {
-        
+        _root.Evaluate();
     }
 }

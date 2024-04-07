@@ -5,5 +5,5 @@ public class SpellTableData
     public string spell_img { get; set; }			//주문 이미지
     public string spell_name { get; set; }			//주문 이름
     public string spell_desc { get; set; }			//주문 설명
-    public int? spell_effect { get; set; }			//효과 ID 연결
+    public int[] spell_effect { get; set; }			//효과 ID 연결
 }

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class BTNodePlayerTurn : BTNodeAction
 {
-    // Start is called before the first frame update
-    void Start()
+    public override State Evaluate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("공격 가능!");
+        GameTurnManager.Instance.isMyTurn = true;
+        return State.Running;
     }
 }

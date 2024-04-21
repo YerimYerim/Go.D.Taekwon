@@ -16,33 +16,30 @@ public class UI_Cheat : MonoBehaviour
         _buttons[2].onClick.AddListener(OnClick3);
         _buttons[3].onClick.AddListener(OnClick4);
         _buttons[4].onClick.AddListener(OnClick5);
-        _buttons[5].onClick.AddListener(OnClick6); 
+        //_buttons[5].onClick.AddListener(OnClick6); 
     }
 
     private void SetText()
     {
-        _text[0].text = "적 hp" + BattleManager.Instance.GetEnemyHp();
-        _text[1].text = "내 hp" + BattleManager.Instance.GetMyHp();
-        _text[2].text = BattleManager.Instance.IsEnemyTurn() == true ? "적턴 ": "내턴";
     }
     void OnClick1()
     {
-        BattleManager.Instance.Attack(5);   
+        GameBattleManager.Instance.Attack(5);   
         SetText();
     }
     void OnClick2()
     {
-        BattleManager.Instance.Damaged(5);
+        GameBattleManager.Instance.Damaged(5);
         SetText();
     }
     void OnClick3()
     {
-        BattleManager.Instance.HealEnemyActor(5);
+        GameBattleManager.Instance.HealEnemyActor(5);
         SetText();
     }
     void OnClick4()
     {
-        BattleManager.Instance.HealMyActor(5);
+        GameBattleManager.Instance.HealMyActor(5);
         SetText();
     }
     void OnClick5()

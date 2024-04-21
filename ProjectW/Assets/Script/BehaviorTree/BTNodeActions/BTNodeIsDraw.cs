@@ -6,10 +6,10 @@ public class BTNodeIsDraw : BTNodeAction
 {
     public override State Evaluate()
     {
-        if (BattleManager.Instance.IsDraw())
+        if (GameBattleManager.Instance.IsDraw())
         {
             Debug.Log("원소 카드를 뽑았습니다.");
-            BattleManager.Instance.PassivePoint += 1;
+            GameBattleManager.Instance.PassivePoint += 1;
             return State.Success;
         };
         return State.Failure;

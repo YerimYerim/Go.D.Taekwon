@@ -74,7 +74,33 @@ namespace Script.Manager
             ui = uiobjectInList as T;
             return true;
         }
+        public bool TryCreate<T>(bool isBack, UILayer layer, out T ui) where T : UIBase
+        {
+            UIBase uiobjectInList = new();
+            
+            if(uiobjectInList == null)
+            {
+                var prefab = GameResourceManager.Instance.GetLoadUIPrefab(typeof(T).Name);
+                var rectTransform = prefab.transform as RectTransform;
+                if (rectTransform != null)  
+                {
+                    rectTransform.SetParent(_uiLayerParents[(int) layer]);
+                    rectTransform.anchoredPosition = Vector3.zero;
+                    rectTransform.localScale = Vector3.one;
+                    rectTransform.sizeDelta = Vector2.zero;
+                    rectTransform.anchoredPosition = Vector2.zero;
+                }
 
+                var script = prefab.GetComponent<T>();
+                ui = script == null ? prefab.AddComponent<T>() : script;
+                
+                _ui.Add(ui);
+                return prefab != null;
+            }
+            
+            ui = uiobjectInList as T;
+            return true;
+        }
         public bool TryGet<T>(out T ui) where T : UIBase
         {
             var uiobjectInList = _ui.Find(_ => _.name == string.Concat(typeof(T).Name, "(Clone)"));

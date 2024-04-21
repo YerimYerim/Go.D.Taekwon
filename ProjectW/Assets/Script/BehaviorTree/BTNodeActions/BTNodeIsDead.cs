@@ -7,7 +7,7 @@ public class BTNodeIsDead : BTNodeAction
     
     public override State Evaluate()
     {
-        if (BattleManager.Instance.GetMyHp() <= 0)
+        if (GameBattleManager.Instance.GetMyHp() <= 0)
         {
             Debug.Log("PlayerDead");
             return State.Success;

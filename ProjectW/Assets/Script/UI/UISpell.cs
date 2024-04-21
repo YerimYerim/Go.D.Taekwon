@@ -11,8 +11,9 @@ public class UISpell : UIDragable
     [SerializeField] private Image img;
     [SerializeField] private DTButton button;
     public UICardDeckOnHand _parents;
-    public UICardDeckOnHand.SpellData _spellTableData { get; private set; }
-    public void SetUI(UICardDeckOnHand.SpellData spellTableData)
+    public GameActor selectedActor;
+    public GameDeckManager.SpellData _spellTableData { get; private set; }
+    public void SetUI(GameDeckManager.SpellData spellTableData)
     {
         _spellTableData = spellTableData;
         img.sprite = GameResourceManager.Instance.GetImage(spellTableData.tableData.spell_img);
@@ -69,6 +70,11 @@ public class UISpell : UIDragable
     private void ActionFail(PointerEventData eventData)
     {
         MoveReset();
+        if(selectedActor!= null)
+        {
+            selectedActor.OnDeselected();
+            selectedActor = null;
+        }
     }
 
     private void OnEventDrag(PointerEventData eventData)
@@ -90,6 +96,7 @@ public class UISpell : UIDragable
                 
                 if (resultSpell == null)
                     return;
+                
                 if(GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_2, out var ui))
                 {
                     ui.CreateInfo(resultSpell.spell_name, resultSpell.spell_desc, this.transform.GetComponent<RectTransform>());
@@ -97,6 +104,28 @@ public class UISpell : UIDragable
                 }
             }
         }
+        
+        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 2f);
+        var colideObject = Physics2D.RaycastAll(ray.origin, ray.direction);
+        if (selectedActor != null)
+        {
+            selectedActor.OnDeselected();
+            selectedActor = null;
+        }
+            
+        for (int i = 0; i < colideObject.Length; ++i)
+        {
+            var hit = colideObject[i];
+            var actor = hit.transform.GetComponent<GameActor>();
+            Debug.Log(hit.collider.name);
+            if (actor != null)
+            {
+                selectedActor = actor;
+                actor.OnSelected();
+            }
+        }
+
     }
     private void ShowToolTip()
     {

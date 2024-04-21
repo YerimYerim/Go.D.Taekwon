@@ -7,16 +7,12 @@ using UnityEngine.UI;
 
 public class UICardDeckOnHand : MonoBehaviour
 {
-    public class SpellData
-    {
-        public SpellTableData tableData;
-    }
     [SerializeField] private List<UISpell> uiCards = new List<UISpell>();
     [SerializeField] private GridLayoutGroup gridLayout;
 
-    private List<SpellData> spellDatas = new();
+    private List<GameDeckManager.SpellData> spellDatas = new();
     public List<int> spellIDs = new();
-
+    private int _yearOfBirth;
     private void Awake()
     {
         uiCards.AddRange(gridLayout.transform.GetComponentsInChildren<UISpell>());
@@ -39,10 +35,8 @@ public class UICardDeckOnHand : MonoBehaviour
         foreach (var cardKey in spellCardKey)
         {
             SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
-            spellDatas.Add(new SpellData()
-            {
-                tableData = spellTableData
-            });
+            var spellData = new GameDeckManager.SpellData(spellTableData);
+            spellDatas.Add(spellData);
         }
 
         for (int i = 0; i < uiCards.Count; ++i)

@@ -4,32 +4,40 @@ using UnityEngine;
 /// <summary>
 /// battlemanager
 /// </summary>
-public class BattleManager : Singleton<BattleManager>
+public class GameBattleManager : Singleton<GameBattleManager>
 {
-    private ActorDataBase _enemy = new ActorDataBase();
-    private ActorDataBase _my = new ActorDataBase();
+    public (ActorDataBase data, GameActor actor) enemy = new();
+    public (ActorDataBase data, GameActor actor)player = new();
+    
     public int PassivePoint = 1;
     public void Init()
     {
-        _enemy.Init(10, 5);
-        _my.Init(10);
+        enemy.data = new ActorDataBase();
+        enemy.data.Init(10, 5);
+        enemy.actor = GameActormanager.Instance.GetActor("ActorEnemy");
+        enemy.actor.OnUpdateHp(10,10);
+        player.data = new ActorDataBase();
+        player.data.Init(10);
+        player.actor = GameActormanager.Instance.GetActor("ActorPlayer");
+        player.actor.OnUpdateHp(10,10);
     }
 
     public int GetEnemyHp()
     {
-        return _enemy.GetHp();
+        return enemy.data.GetHp();
     }
 
     public int GetMyHp()
     {
-        return _my.GetHp();
+        return player.data.GetHp();
     }
     public void Attack(int damage)
     {
         if (GameTurnManager.Instance.isMyTurn == true)
         {
-            _enemy.DoDamaged(damage);
-            _enemy.MinusAP(1);
+            enemy.data.DoDamaged(damage);
+            enemy.data.MinusAP(1);
+            enemy.actor.OnUpdateHp(enemy.data.MaxHp, enemy.data.Hp);
             ++PassivePoint;
             GameTurnManager.Instance.TurnStart();
         }
@@ -42,8 +50,9 @@ public class BattleManager : Singleton<BattleManager>
     {
         if (GameTurnManager.Instance.isMyTurn == false)
         {
-            _my.DoDamaged(damage);
-            _enemy.ResetAP(5);
+            player.data.DoDamaged(damage);
+            player.actor.OnUpdateHp(player.data.MaxHp, player.data.Hp);
+            enemy.data.ResetAP(5);
             ++PassivePoint;
             GameTurnManager.Instance.TurnStart();
         }
@@ -56,9 +65,10 @@ public class BattleManager : Singleton<BattleManager>
     {
         if (GameTurnManager.Instance.isMyTurn == true)
         {
-            _my.DoHeal(addHp);
+            player.data.DoHeal(addHp);
+            player.actor.OnUpdateHp(player.data.MaxHp, player.data.Hp);
             ++PassivePoint;
-            _enemy.MinusAP(1);
+            enemy.data.MinusAP(1);
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -70,9 +80,10 @@ public class BattleManager : Singleton<BattleManager>
     {
         if (GameTurnManager.Instance.isMyTurn == false)
         {
-            _enemy.DoHeal(addHp);
+            enemy.data.DoHeal(addHp);
+            enemy.actor.OnUpdateHp(enemy.data.MaxHp, enemy.data.Hp);
             ++PassivePoint;
-            _enemy.ResetAP(5);
+            enemy.data.ResetAP(5);
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -84,7 +95,7 @@ public class BattleManager : Singleton<BattleManager>
     public bool IsEnemyTurn()
     {
         // ?? 예림 : config  로 바꿀예정
-        return _enemy.GetAP() <= 0;
+        return enemy.data.GetAP() <= 0;
     }
 
     public bool IsDraw()

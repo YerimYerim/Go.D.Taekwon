@@ -7,6 +7,12 @@ public class GameTurnManager : Singleton<GameTurnManager>
     private BTNodeSelector _root = new BTNodeSelector();
     public bool isMyTurn = false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        TurnNodeInit();
+    }
+
     private void Clear()
     {
         _root.Clear();   
@@ -15,7 +21,7 @@ public class GameTurnManager : Singleton<GameTurnManager>
     public void TurnNodeInit()  
     {
         _root.Clear();
-        BattleManager.Instance.Init();
+        GameBattleManager.Instance.Init();
         // player Hp <= 0 인가
         var actIsDead = new BTNodeIsDead();
         // 게임 종료 action

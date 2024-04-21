@@ -6,7 +6,7 @@ public class BTNodeIsEnemyTurn : BTNodeAction
 {
     public override State Evaluate()
     {
-        if (BattleManager.Instance.IsEnemyTurn())
+        if (GameBattleManager.Instance.IsEnemyTurn())
         {
             Debug.Log("적의 턴");
             GameTurnManager.Instance.isMyTurn = false;

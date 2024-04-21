@@ -7,7 +7,7 @@ public class BTNodeEnemyAttack : BTNodeAction
     public override State Evaluate()
     {
         Debug.Log("BTNodeEnemyAttack");
-        if (BattleManager.Instance.IsEnemyTurn())
+        if (GameBattleManager.Instance.IsEnemyTurn())
         {
             return State.Running;
         };

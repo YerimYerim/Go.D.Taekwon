@@ -3,5 +3,135 @@
     "effect_id": 10001,
     "effect_type": 0,
     "value_1": 5
+  },
+  {
+    "effect_id": 10002,
+    "effect_type": null,
+    "value_1": 3
+  },
+  {
+    "effect_id": 20001,
+    "effect_type": null,
+    "value_1": 2
+  },
+  {
+    "effect_id": 20002,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 30001,
+    "effect_type": null,
+    "value_1": 3
+  },
+  {
+    "effect_id": 30002,
+    "effect_type": null,
+    "value_1": 4
+  },
+  {
+    "effect_id": 30003,
+    "effect_type": null,
+    "value_1": 4
+  },
+  {
+    "effect_id": 30004,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 30005,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 30006,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 30007,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 30008,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 30009,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 30010,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40001,
+    "effect_type": null,
+    "value_1": 2
+  },
+  {
+    "effect_id": 40002,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40003,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40004,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40005,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40006,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40007,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40008,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 40009,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40010,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 40010,
+    "effect_type": null,
+    "value_1": 1
+  },
+  {
+    "effect_id": 50001,
+    "effect_type": null,
+    "value_1": 0
+  },
+  {
+    "effect_id": 50002,
+    "effect_type": null,
+    "value_1": 0
   }
 ]

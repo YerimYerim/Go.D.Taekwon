@@ -1,34 +1,114 @@
 [
   {
-    "string_key": "spell_name_1",
+    "string_key": "spell_name_10101",
     "value_kor": "불"
   },
   {
-    "string_key": "spell_name_2",
+    "string_key": "spell_name_10102",
     "value_kor": "물"
   },
   {
-    "string_key": "spell_name_3",
+    "string_key": "spell_name_10103",
     "value_kor": "공기"
   },
   {
-    "string_key": "spell_name_4",
+    "string_key": "spell_name_10104",
     "value_kor": "흙"
   },
   {
-    "string_key": "spell_desc_1",
+    "string_key": "spell_name_20101",
+    "value_kor": "none"
+  },
+  {
+    "string_key": "spell_name_20102",
+    "value_kor": "증기"
+  },
+  {
+    "string_key": "spell_name_20103",
+    "value_kor": "열"
+  },
+  {
+    "string_key": "spell_name_20104",
+    "value_kor": "용암"
+  },
+  {
+    "string_key": "spell_name_20105",
+    "value_kor": "none"
+  },
+  {
+    "string_key": "spell_name_20106",
+    "value_kor": "구름"
+  },
+  {
+    "string_key": "spell_name_20107",
+    "value_kor": "풀"
+  },
+  {
+    "string_key": "spell_name_20108",
+    "value_kor": "바람"
+  },
+  {
+    "string_key": "spell_name_20109",
+    "value_kor": "모래"
+  },
+  {
+    "string_key": "spell_name_20110",
+    "value_kor": "바위"
+  },
+  {
+    "string_key": "spell_desc_10101",
     "value_kor": "불의 기운입니다."
   },
   {
-    "string_key": "spell_desc_2",
+    "string_key": "spell_desc_10102",
     "value_kor": "물의 기운입니다."
   },
   {
-    "string_key": "spell_desc_3",
+    "string_key": "spell_desc_10103",
     "value_kor": "공기의 기운입니다."
   },
   {
-    "string_key": "spell_desc_4",
+    "string_key": "spell_desc_10104",
     "value_kor": "흙의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20101",
+    "value_kor": "none"
+  },
+  {
+    "string_key": "spell_desc_20102",
+    "value_kor": "증기의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20103",
+    "value_kor": "열의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20104",
+    "value_kor": "용암의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20105",
+    "value_kor": "none"
+  },
+  {
+    "string_key": "spell_desc_20106",
+    "value_kor": "구름의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20107",
+    "value_kor": "풀의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20108",
+    "value_kor": "바람의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20109",
+    "value_kor": "모래의 기운입니다."
+  },
+  {
+    "string_key": "spell_desc_20110",
+    "value_kor": "바위의 기운입니다."
   }
 ]

@@ -1,30 +1,107 @@
 [
   {
-    "spell_id": 1,
+    "spell_id": 10101,
     "spell_img": "img_spell_1",
-    "spell_name": "spell_name_1",
-    "spell_desc": "spell_desc_1",
+    "spell_name": "spell_name_10101",
+    "spell_desc": "spell_desc_10101",
     "spell_effect": [10001]
   },
   {
-    "spell_id": 2,
+    "spell_id": 10102,
     "spell_img": "img_spell_2",
-    "spell_name": "spell_name_2",
-    "spell_desc": "spell_desc_2",
-    "spell_effect": []
+    "spell_name": "spell_name_10102",
+    "spell_desc": "spell_desc_10102",
+    "spell_effect": [40007]
   },
   {
-    "spell_id": 3,
+    "spell_id": 10103,
     "spell_img": "img_spell_3",
-    "spell_name": "spell_name_3",
-    "spell_desc": "spell_desc_3",
-    "spell_effect": []
+    "spell_name": "spell_name_10103",
+    "spell_desc": "spell_desc_10103",
+    "spell_effect": [30006]
   },
   {
-    "spell_id": 4,
+    "spell_id": 10104,
     "spell_img": "img_spell_4",
-    "spell_name": "spell_name_4",
-    "spell_desc": "spell_desc_4",
-    "spell_effect": []
+    "spell_name": "spell_name_10104",
+    "spell_desc": "spell_desc_10104",
+    "spell_effect": [30002]
+  },
+  {
+    "spell_id": 20101,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20101",
+    "spell_desc": "spell_desc_20101",
+    "spell_effect": [0]
+  },
+  {
+    "spell_id": 20102,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20102",
+    "spell_desc": "spell_desc_20102",
+    "spell_effect": [10002]
+  },
+  {
+    "spell_id": 20103,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20103",
+    "spell_desc": "spell_desc_20103",
+    "spell_effect": [30004]
+  },
+  {
+    "spell_id": 20104,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20104",
+    "spell_desc": "spell_desc_20104",
+    "spell_effect": [20001]
+  },
+  {
+    "spell_id": 20105,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20105",
+    "spell_desc": "spell_desc_20105",
+    "spell_effect": [0]
+  },
+  {
+    "spell_id": 20106,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20106",
+    "spell_desc": "spell_desc_20106",
+    "spell_effect": [40004]
+  },
+  {
+    "spell_id": 20107,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20107",
+    "spell_desc": "spell_desc_20107",
+    "spell_effect": [20002]
+  },
+  {
+    "spell_id": 20108,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20108",
+    "spell_desc": "spell_desc_20108",
+    "spell_effect": [30001]
+  },
+  {
+    "spell_id": 20109,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20109",
+    "spell_desc": "spell_desc_20109",
+    "spell_effect": [30008]
+  },
+  {
+    "spell_id": 20110,
+    "spell_img": "img_spell_4",
+    "spell_name": "spell_name_20110",
+    "spell_desc": "spell_desc_20110",
+    "spell_effect": [30010]
+  },
+  {
+    "spell_id": null,
+    "spell_img": null,
+    "spell_name": null,
+    "spell_desc": null,
+    "spell_effect": [.]
   }
 ]

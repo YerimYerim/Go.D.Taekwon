@@ -24,7 +24,7 @@ public class UI_Cheat : MonoBehaviour
     }
     void OnClick1()
     {
-        GameBattleManager.Instance.Attack(5);   
+        //GameBattleManager.Instance.Attack(5);   
         SetText();
     }
     void OnClick2()

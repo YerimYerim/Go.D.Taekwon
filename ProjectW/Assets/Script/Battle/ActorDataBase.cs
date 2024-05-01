@@ -6,11 +6,11 @@ public class ActorDataBase
 {
     public int Hp { get; private set; }
     public int MaxHp { get; private set; }
-    
-    protected DeffenseStat _deffense;
-    protected AttackStat _attackStat;
-    protected HealStat _healStat;
-    protected AvoidStat _avoidStat;
+
+    protected DeffenseStat _deffense = new();
+    protected AttackStat _attackStat = new();
+    protected HealStat _healStat = new();
+    protected AvoidStat _avoidStat = new();
     
 
     //Enemy 의 경우에만 사용

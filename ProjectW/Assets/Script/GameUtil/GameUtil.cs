@@ -19,4 +19,19 @@ public static class GameUtil
         
         return string.Empty;
     }
+
+    public static SkillEffectBase GetSkillEffectBase(SpellEffectTableData data)
+    {
+        switch (data.effect_type)
+        {
+            case EFFECT_TYPE.EFFECT_TYPE_DAMAGE:
+            {
+                SkillDamageType skillDamageType = new SkillDamageType();
+                skillDamageType.InitSkillType(data);
+                return skillDamageType;
+            } break;
+        }
+
+        return null;
+    }
 }

@@ -40,7 +40,30 @@ public class UISpell : UIDragable
                     return false;
                 return true;
             }
+
         }
+        
+        
+        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 2f);
+        var colideObject = Physics2D.RaycastAll(ray.origin, ray.direction);
+        if (selectedActor != null)
+        {
+            selectedActor.OnDeselected();
+            selectedActor = null;
+        }
+            
+        foreach (var hit in colideObject)
+        {
+            var actor = hit.transform.GetComponent<GameActor>();
+            Debug.Log(hit.collider.name);
+            if (actor != null)
+            {
+                selectedActor = actor;
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -65,6 +88,27 @@ public class UISpell : UIDragable
                 _parents.MergeSpell(isSpellUI._spellTableData?.tableData?.spell_id ?? 0, _spellTableData?.tableData?.spell_id ?? 0, resultSpell.spell_id ?? 0 );
             }
         }
+        
+        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 2f);
+        var colideObject = Physics2D.RaycastAll(ray.origin, ray.direction);
+
+        foreach (var hit in colideObject)
+        {
+            var actor = hit.transform.GetComponent<GameActor>();
+            if (actor != null && actor.isActiveAndEnabled)
+            {
+                // 아군 적군 구분 효과 필요하긴함 
+                var spellEffect = _spellTableData.tableData.spell_effect;
+                for (int i = 0; i < spellEffect.Length; ++i)
+                {
+                    var effect = GameDataManager.Instance._spelleffectDatas.Find(_ => spellEffect[i] == _.effect_id);
+                    GameBattleManager.Instance.Attack(this._spellTableData.tableData.spell_id ??0, effect, GameBattleManager.Instance.enemy);
+
+                }
+            }
+        }
+        MoveReset();
     }
 
     private void ActionFail(PointerEventData eventData)

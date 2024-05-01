@@ -8,6 +8,7 @@ public class GameActor : MonoBehaviour
     [SerializeField] private Material outlineMaterial;
     [SerializeField] private Material normalMaterrial;
     [SerializeField] private SpriteRenderer renderer;
+    public ActorDataBase data = new();
     private void Awake()
     {
         GameActormanager.Instance.AddActors(transform.gameObject.name, this);
@@ -28,9 +29,9 @@ public class GameActor : MonoBehaviour
         uiActorBottom.SetPosition(this.uiHpBarSocket);
     }
 
-    public void OnUpdateHp(int maxHp, int curHp)
+    public void OnUpdateHp()
     {
-        uiActorBottom.SetHPUI(maxHp, curHp);
+        uiActorBottom.SetHPUI(data.MaxHp, data.Hp);
     }
 
     public void OnSelected()

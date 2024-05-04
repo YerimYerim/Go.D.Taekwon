@@ -96,12 +96,5 @@
     "spell_name": "spell_name_20110",
     "spell_desc": "spell_desc_20110",
     "spell_effect": [30010]
-  },
-  {
-    "spell_id": null,
-    "spell_img": null,
-    "spell_name": null,
-    "spell_desc": null,
-    "spell_effect": [.]
   }
 ]

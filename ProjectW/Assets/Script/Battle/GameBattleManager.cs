@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class GameBattleManager : Singleton<GameBattleManager>
 {
-    public GameActor enemy = new();
+    public List<GameActor> enemy = new();
     public GameActor player = new();
     
     public int PassivePoint = 1;
@@ -19,35 +19,28 @@ public class GameBattleManager : Singleton<GameBattleManager>
     public event Action<int> onEventAction;
     public void Init()
     {
-        enemy = GameActormanager.Instance.GetActor("ActorEnemy");
-        enemy.data.Init(10, 5);
-        enemy.OnUpdateHp();
+        enemy.Add(GameActormanager.Instance.GetActor("ActorEnemy"));
+        for(int i = 0; i< enemy.Count; ++i)
+        {
+            enemy[i].data.Init(10, 5);
+            enemy[i].OnUpdateHp();
+        }
         player = GameActormanager.Instance.GetActor("ActorPlayer");
         player.data.Init(10);
         player.OnUpdateHp();
-    }
-
-    public int GetEnemyHp()
-    {
-        return enemy.data.GetHp();
     }
 
     public int GetMyHp()
     {
         return player.data.GetHp();
     }
-    public void Attack(int spellid, SpellEffectTableData effect, GameActor targetActor)
+    public void DoSkill(int spellid, SpellEffectTableData effect, List<GameActor> targetActor)
     {
         if (GameBattleManager.Instance.IsEnemyTurn() == false)
         {
             GameBattleManager.Instance.RemoveCard(spellid);
             var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
-            skillEffectBase.DoSkill();
-            
-            targetActor.data.DoDamaged(skillEffectBase.GetDamage());
-            targetActor.data.MinusAP(1);
-            targetActor.OnUpdateHp();
-
+            skillEffectBase.DoSkill(targetActor, player);
             ++PassivePoint;
             GameTurnManager.Instance.TurnStart();
         }
@@ -62,7 +55,10 @@ public class GameBattleManager : Singleton<GameBattleManager>
         {
             player.data.DoDamaged(damage);
             player.OnUpdateHp();
-            enemy.data.ResetAP(5);
+            for (int i = 0; i < enemy.Count; ++i)
+            {
+                enemy[i].data.ResetAP(5);
+            }
             ++PassivePoint;
             GameTurnManager.Instance.TurnStart();
         }
@@ -78,7 +74,10 @@ public class GameBattleManager : Singleton<GameBattleManager>
             player.data.DoHeal(addHp);
             player.OnUpdateHp();
             ++PassivePoint;
-            enemy.data.MinusAP(1);
+            for (int i = 0; i < enemy.Count; ++i)
+            {
+                enemy[i].data.MinusAP(1);
+            }
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -90,10 +89,13 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         if (GameTurnManager.Instance.isMyTurn == false)
         {
-            enemy.data.DoHeal(addHp);
-            enemy.OnUpdateHp();
+            for (int i = 0; i < enemy.Count; ++i)
+            {
+                enemy[i].data.DoHeal(addHp);
+                enemy[i].OnUpdateHp();
+                enemy[i].data.ResetAP(5);
+            }
             ++PassivePoint;
-            enemy.data.ResetAP(5);
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -105,7 +107,15 @@ public class GameBattleManager : Singleton<GameBattleManager>
     public bool IsEnemyTurn()
     {
         // ?? 예림 : config  로 바꿀예정
-        return enemy.data.GetAP() <= 0;
+        for (int i = 0; i < enemy.Count; ++i)
+        {
+            if (enemy[i].data.GetAP() <= 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public bool IsDraw()

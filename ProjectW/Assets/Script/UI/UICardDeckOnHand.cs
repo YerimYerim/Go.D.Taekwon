@@ -31,7 +31,9 @@ public class UICardDeckOnHand : UIBase
         }
         // ?? 예림  : 단순 기능 확인을 위한 테스트 나중에 삭제할 부분
         GameDataManager.Instance.LoadData();
-        GameBattleManager.Instance.spellIDs.AddRange(new []{1,2,3,4});
+        
+
+        GameBattleManager.Instance.spellIDs.AddRange(new []{        10101,10102,10103,10104,20101,20102,20103,20104,20105,20106,20107,20108,20109,20110,});
         SetUI();
     }
 

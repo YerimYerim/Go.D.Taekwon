@@ -103,7 +103,7 @@ public class UISpell : UIDragable
                 for (int i = 0; i < spellEffect.Length; ++i)
                 {
                     var effect = GameDataManager.Instance._spelleffectDatas.Find(_ => spellEffect[i] == _.effect_id);
-                    GameBattleManager.Instance.Attack(this._spellTableData.tableData.spell_id ??0, effect, GameBattleManager.Instance.enemy);
+                    GameBattleManager.Instance.DoSkill(this._spellTableData.tableData.spell_id ??0, effect, GameBattleManager.Instance.enemy);
 
                 }
             }

@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ActorDataBase
 {
     public int Hp { get; private set; }
     public int MaxHp { get; private set; }
 
-    protected DeffenseStat _deffense = new();
+    protected AmorStat amor = new();
     protected AttackStat _attackStat = new();
     protected HealStat _healStat = new();
     protected AvoidStat _avoidStat = new();
-    
+
+    private bool IsStun = false;
 
     //Enemy 의 경우에만 사용
     public int ActionPoint { get; private set; }
@@ -29,7 +26,7 @@ public class ActorDataBase
     }
     public void DoDamaged(int damage)
     {
-        Hp -= _deffense.GetFinalDamage(damage);
+        Hp -= amor.GetFinalDamage(damage);
     }
     
     public void DoHeal(int addHp)
@@ -55,10 +52,13 @@ public class ActorDataBase
     {
         ActionPoint = ap;
     }
-
+    public void AddAP(int addAp)
+    {
+        ActionPoint += addAp;
+    }
     public void InitAmorStat(int amor, int amorBreakInt, float amorBreakper, float takedDamage)
     {
-        _deffense = new()
+        this.amor = new()
         {
             amor = amor, // 방어도
             amorBreakInt = amorBreakInt,
@@ -75,5 +75,10 @@ public class ActorDataBase
             damageUpInt = damageUpInt,
             damageUpPercent = damageUpPer,
         };
+    }
+
+    public void AddAmorStat(int amorStatValue)
+    {
+        amor.AddAmor(amorStatValue);
     }
 }

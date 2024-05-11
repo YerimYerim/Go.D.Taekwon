@@ -9,6 +9,7 @@ public class GameActor : MonoBehaviour
     [SerializeField] private Material normalMaterrial;
     [SerializeField] private SpriteRenderer renderer;
     public ActorDataBase data = new();
+
     private void Awake()
     {
         GameActormanager.Instance.AddActors(transform.gameObject.name, this);

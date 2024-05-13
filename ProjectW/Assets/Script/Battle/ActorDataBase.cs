@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class ActorDataBase
 {
     public int Hp { get; private set; }
@@ -8,6 +10,9 @@ public class ActorDataBase
     protected HealStat _healStat = new();
     protected AvoidStat _avoidStat = new();
 
+    public LinkedList<ISkillTargetDebuff> debuffs = new();
+    public LinkedList<ISkillTargetBuff> buffs = new();
+    
     private bool IsStun = false;
 
     //Enemy 의 경우에만 사용
@@ -81,4 +86,15 @@ public class ActorDataBase
     {
         amor.AddAmor(amorStatValue);
     }
+
+    public void AddBuff(ISkillTargetBuff buff)
+    {
+        buffs.AddLast(buff);
+    }
+
+    public void AddDebuff(ISkillTargetDebuff debuff)
+    {
+        debuffs.AddLast(debuff);
+    }
+
 }

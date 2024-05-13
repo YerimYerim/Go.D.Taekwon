@@ -118,6 +118,19 @@ public class GameBattleManager : Singleton<GameBattleManager>
         return false;
     }
 
+    public void DoTurn()
+    {
+        for (int i = 0; i < enemy.Count; ++i)
+        {
+            enemy[i].UpdateDebuff();
+            enemy[i].UpdateBuff();
+            enemy[i].OnUpdateHp();
+        }
+        player.UpdateDebuff();
+        player.UpdateBuff();
+        
+        player.OnUpdateHp();
+    }
     public bool IsDraw()
     {
         // ?? 예림 : config  로 바꿀예정

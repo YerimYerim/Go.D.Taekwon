@@ -55,5 +55,6 @@ public class GameTurnManager : Singleton<GameTurnManager>
     public void TurnStart()
     {
         _root.Evaluate();
+        GameBattleManager.Instance.DoTurn();
     }
 }

@@ -2,146 +2,233 @@
   {
     "effect_id": 10001,
     "effect_type": 0,
-    "value_1": 5
+    "value_1": 5,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 10002,
     "effect_type": 1,
-    "value_1": 3
+    "value_1": 3,
+    "remain_turn_count": 0,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 20001,
     "effect_type": 2,
-    "value_1": 2
+    "value_1": 2,
+    "remain_turn_count": 3,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 20002,
     "effect_type": 3,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 3,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 30001,
     "effect_type": 4,
-    "value_1": 3
+    "value_1": 3,
+    "remain_turn_count": 0,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 30002,
     "effect_type": 5,
-    "value_1": 4
+    "value_1": 4,
+    "remain_turn_count": 0,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 30003,
     "effect_type": 6,
-    "value_1": 4
+    "value_1": 4,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 30004,
     "effect_type": 7,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 0,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 30005,
     "effect_type": 8,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 30006,
     "effect_type": 9,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 30007,
     "effect_type": 10,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 30008,
     "effect_type": 11,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 2,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 30009,
     "effect_type": 12,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 0,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 30010,
     "effect_type": 13,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 40001,
     "effect_type": 14,
-    "value_1": 2
+    "value_1": 2,
+    "remain_turn_count": 2,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40002,
     "effect_type": 15,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 2,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40003,
     "effect_type": 16,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 1,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40004,
     "effect_type": 17,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 2,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40005,
     "effect_type": 18,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 2,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 40006,
     "effect_type": 19,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 3,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40007,
     "effect_type": 20,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 3,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 40008,
     "effect_type": 21,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 3,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40009,
     "effect_type": 22,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 4,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40010,
     "effect_type": 23,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 1,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 40011,
     "effect_type": 24,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 4,
+    "target": 0,
+    "target_count": 1
   },
   {
     "effect_id": 40012,
     "effect_type": 25,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 1,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 40013,
     "effect_type": 26,
-    "value_1": 1
+    "value_1": 1,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 50001,
     "effect_type": 27,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 3,
+    "target": 1,
+    "target_count": 1
   },
   {
     "effect_id": 50002,
     "effect_type": 28,
-    "value_1": 0
+    "value_1": 0,
+    "remain_turn_count": 0,
+    "target": 0,
+    "target_count": 1
   }
 ]

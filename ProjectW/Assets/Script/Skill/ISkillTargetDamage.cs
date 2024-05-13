@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISkillTargetDamage
 {
-    protected abstract void DoDamage(GameActor enemy);
+    public abstract void DoDamage(GameActor enemy);
 }

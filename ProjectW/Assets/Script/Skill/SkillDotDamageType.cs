@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillAmorDownType : SkillEffectBase, ISkillAmorDown, ISkillTargetDebuff
+public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTargetDebuff
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
-        ReduceAmor(myActor);
+        for (int i = 0; i < targetActor.Count; ++i)
+        {
+            targetActor[i].data.AddDebuff(this);
+        }
     }
 
     public override void InitSkillType(SpellEffectTableData data)
     {
         table = data;
-        effectId = data.effect_id ?? 0;
+        effectId = data?.effect_id ?? 0;
+        remainTurn = data?.remain_turn_count ??0;
     }
 
     public override int GetValue()
@@ -20,20 +24,14 @@ public class SkillAmorDownType : SkillEffectBase, ISkillAmorDown, ISkillTargetDe
         return table.value_1 ?? 0;
     }
     
-    public void ReduceAmor(GameActor targetActor)
-    {
-       targetActor.data.AddAmorStat(-GetValue());
-    }
-
-    public void AddDebuff()
-    {
-    }
-
     public void DoDebuff(GameActor enemy)
     {
+        DoDamage(enemy);
+        --remainTurn;
     }
 
-    public void RemoveDebuff()
+    public void DoDamage(GameActor enemy)
     {
+        enemy.data.DoDamaged(GetValue());
     }
 }

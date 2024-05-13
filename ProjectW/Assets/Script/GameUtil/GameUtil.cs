@@ -37,8 +37,15 @@ public static class GameUtil
                 return skillHealType;
             } break;
             case EFFECT_TYPE.EFFECT_TYPE_DOT_SKILL_DAMAGE:
-                break;
+            {
+                SkillDotDamageType skillDotDamageType = new SkillDotDamageType();
+                skillDotDamageType.InitSkillType(data);
+                return skillDotDamageType;
+            } break;
             case EFFECT_TYPE.EFFECT_TYPE_DOT_HEAL:
+            {
+                
+            }
                 break;
             case EFFECT_TYPE.EFFECT_TYPE_DRAW:
                 break;

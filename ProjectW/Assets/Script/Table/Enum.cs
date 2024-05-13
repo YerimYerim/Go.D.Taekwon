@@ -39,3 +39,8 @@ public enum EFFECT_TYPE
      EFFECT_TYPE_PROVOKE = 27,
      EFFECT_TYPE_COUNTER = 28,
 }
+public enum TARGET_TYPE
+{
+     TARGET_TYPE_ALLY = 0,
+     TARGET_TYPE_ENEMY = 1,
+}

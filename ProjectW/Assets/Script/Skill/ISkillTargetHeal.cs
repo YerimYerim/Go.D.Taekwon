@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISkillTargetHeal
 {
-    public abstract void DoHeal(List<GameActor> targetActor, GameActor myActor);
+    public abstract void DoHeal(List<GameActor> targetActor);
 }

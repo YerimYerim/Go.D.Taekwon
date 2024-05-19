@@ -30,6 +30,7 @@ namespace Script.Manager
             {
                 instance = this as T;
                 DontDestroyOnLoad(gameObject);
+                Init();
             }
             else
             {

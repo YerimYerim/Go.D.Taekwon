@@ -18,5 +18,19 @@ namespace Script.Manager
                 return null;
             return Instantiate(prefab, prefab.transform.position, prefab.transform.rotation);
         }
+        
+        public GameObject GetLoadActorPrefab(string prefabName)
+        {
+            GameObject prefab = Resources.Load($"Prefabs/Actor/{prefabName}") as GameObject;
+            if (prefab == null)
+                return null;
+            return Instantiate(prefab, prefab.transform.position, prefab.transform.rotation);
+        }
+        
+        public T GetLoadScriptableObject<T>(string fileName) where T : ScriptableObject
+        {
+            var loadScriptableObject = Resources.Load<T>($"ScriptableOjbects/{fileName}");
+            return loadScriptableObject;
+        }
     }
 }

@@ -1,0 +1,12 @@
+[
+  {
+    "actor_id": 1000001,
+    "spell_id": 10001,
+    "amount": 5
+  },
+  {
+    "actor_id": 1000001,
+    "spell_id": 10002,
+    "amount": 3
+  }
+]

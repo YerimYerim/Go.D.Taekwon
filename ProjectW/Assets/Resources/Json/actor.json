@@ -2,13 +2,15 @@
   {
     "actor_id": 1000001,
     "actor_type": 0,
-    "actor_resource": "temp_character_01",
-    "actor_stat_hp": 100
+    "actor_function_value": null,
+    "actor_name": "n_pc_temp",
+    "rsc_id": 1000001
   },
   {
     "actor_id": 2000001,
     "actor_type": 1,
-    "actor_resource": "temp_monster_01",
-    "actor_stat_hp": 200
+    "actor_function_value": null,
+    "actor_name": "n_mon_temp",
+    "rsc_id": 2000001
   }
 ]

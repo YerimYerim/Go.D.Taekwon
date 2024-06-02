@@ -18,6 +18,96 @@
     "enum_value": 1
   },
   {
+    "group_name": "monster_type",
+    "enum_name": "warrior",
+    "source_enum_name": "MONSTER_TYPE_WARRIOR",
+    "enum_value": 0
+  },
+  {
+    "group_name": "monster_type",
+    "enum_name": "shaman",
+    "source_enum_name": "MONSTER_TYPE_SHAMAN",
+    "enum_value": 1
+  },
+  {
+    "group_name": "monster_type",
+    "enum_name": "tanker",
+    "source_enum_name": "MONSTER_TYPE_TANKER",
+    "enum_value": 2
+  },
+  {
+    "group_name": "phase_condition",
+    "enum_name": "none",
+    "source_enum_name": "PHASE_CONDITION_NONE",
+    "enum_value": 0
+  },
+  {
+    "group_name": "phase_condition",
+    "enum_name": "hp_condition",
+    "source_enum_name": "PHASE_CONDITION_HP_CONDITION",
+    "enum_value": 1
+  },
+  {
+    "group_name": "pattern_type",
+    "enum_name": "random",
+    "source_enum_name": "PATTERN_TYPE_RANDOM",
+    "enum_value": 0
+  },
+  {
+    "group_name": "pattern_type",
+    "enum_name": "sequential",
+    "source_enum_name": "PATTERN_TYPE_SEQUENTIAL",
+    "enum_value": 1
+  },
+  {
+    "group_name": "skip_condition",
+    "enum_name": "none",
+    "source_enum_name": "SKIP_CONDITION_NONE",
+    "enum_value": 0
+  },
+  {
+    "group_name": "skip_condition",
+    "enum_name": "hp_condition",
+    "source_enum_name": "SKIP_CONDITION_HP_CONDITION",
+    "enum_value": 1
+  },
+  {
+    "group_name": "effect_tag",
+    "enum_name": "damage",
+    "source_enum_name": "EFFECT_TAG_DAMAGE",
+    "enum_value": 0
+  },
+  {
+    "group_name": "effect_tag",
+    "enum_name": "heal",
+    "source_enum_name": "EFFECT_TAG_HEAL",
+    "enum_value": 1
+  },
+  {
+    "group_name": "effect_tag",
+    "enum_name": "draw",
+    "source_enum_name": "EFFECT_TAG_DRAW",
+    "enum_value": 2
+  },
+  {
+    "group_name": "effect_tag",
+    "enum_name": "armor",
+    "source_enum_name": "EFFECT_TAG_ARMOR",
+    "enum_value": 3
+  },
+  {
+    "group_name": "effect_tag",
+    "enum_name": "buff",
+    "source_enum_name": "EFFECT_TAG_BUFF",
+    "enum_value": 4
+  },
+  {
+    "group_name": "effect_tag",
+    "enum_name": "debuff",
+    "source_enum_name": "EFFECT_TAG_DEBUFF",
+    "enum_value": 5
+  },
+  {
     "group_name": "effect_type",
     "enum_name": "damage",
     "source_enum_name": "EFFECT_TYPE_DAMAGE",

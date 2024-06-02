@@ -110,5 +110,13 @@
   {
     "string_key": "spell_desc_20110",
     "value_kor": "바위의 기운입니다."
+  },
+  {
+    "string_key": "n_pc_temp",
+    "value_kor": "임시 PC"
+  },
+  {
+    "string_key": "n_mon_temp",
+    "value_kor": "임시 몬스터"
   }
 ]

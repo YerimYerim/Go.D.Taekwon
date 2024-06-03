@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using Script.Manager;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// battlemanager
@@ -12,22 +12,40 @@ public class GameBattleManager : Singleton<GameBattleManager>
     public List<GameActor> enemy = new();
     public GameActor player = new();
     
-    public int PassivePoint = 1;
-    public List<GameDeckManager.SpellData> spellDatas = new();
+    public int passivePoint = 1;
+    public readonly List<GameDeckManager.SpellData> spellDatas = new();
     public List<int> spellIDs = new();
 
-    public event Action<int> onEventAction;
+    public string actorParent = "Actors";
+    public event Action<int> OnEventRemoveCard;
     public void Init()
     {
-        enemy.Add(GameActormanager.Instance.GetActor("ActorEnemy"));
-        for(int i = 0; i< enemy.Count; ++i)
-        {
-            enemy[i].data.Init(10, 5);
-            enemy[i].OnUpdateHp();
-        }
-        player = GameActormanager.Instance.GetActor("ActorPlayer");
+        // 스테이지에서 몬스터 정보 로드 후 프리팹 생성
+        // 아직 스테이지 관련된게 없어서 걍 액터 id 에 있는거 주워옴
+        var actorTableData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_PLAYER);
+        var actorMonsterDatas = GameDataManager.Instance._actorDatas.FindAll(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
+
+        var pcPrefab = GameUtil.GetActorPrefab(actorTableData?.rsc_id ?? 0);
+        pcPrefab.transform.SetParent(GameObject.Find(actorParent).transform);
+        player = GameActormanager.Instance.GetActor(pcPrefab.name);
+
         player.data.Init(10);
         player.OnUpdateHp();
+        
+        for (int i = 0; i < actorMonsterDatas.Count; ++i)
+        {
+            var actorPrefab = GameUtil.GetActorPrefab(actorMonsterDatas[i]?.rsc_id ?? 0);
+            actorPrefab.transform.SetParent(GameObject.Find(actorParent).transform);
+            
+            enemy.Add(GameActormanager.Instance.GetActor(actorPrefab.name));
+            
+            var enemyData = new ActorEnemyData();
+            enemyData.Init(10);
+            enemyData.InitAP(10);
+            
+            enemy[i].data = enemyData;
+            enemy[i].OnUpdateHp();
+        }
     }
 
     public int GetMyHp()
@@ -41,7 +59,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
             GameBattleManager.Instance.RemoveCard(spellid);
             var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
             skillEffectBase.DoSkill(targetActor, player);
-            ++PassivePoint;
+            ++passivePoint;
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -57,9 +75,9 @@ public class GameBattleManager : Singleton<GameBattleManager>
             player.OnUpdateHp();
             for (int i = 0; i < enemy.Count; ++i)
             {
-                enemy[i].data.ResetAP(5);
+                ((ActorEnemyData)enemy[i].data).ResetAP(5);
             }
-            ++PassivePoint;
+            ++passivePoint;
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -73,10 +91,10 @@ public class GameBattleManager : Singleton<GameBattleManager>
         {
             player.data.DoHeal(addHp);
             player.OnUpdateHp();
-            ++PassivePoint;
+            ++passivePoint;
             for (int i = 0; i < enemy.Count; ++i)
             {
-                enemy[i].data.MinusAP(1);
+                ((ActorEnemyData)enemy[i].data).MinusAP(1);
             }
             GameTurnManager.Instance.TurnStart();
         }
@@ -93,9 +111,9 @@ public class GameBattleManager : Singleton<GameBattleManager>
             {
                 enemy[i].data.DoHeal(addHp);
                 enemy[i].OnUpdateHp();
-                enemy[i].data.ResetAP(5);
+                ((ActorEnemyData)enemy[i].data).ResetAP(5);
             }
-            ++PassivePoint;
+            ++passivePoint;
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -109,7 +127,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
         // ?? 예림 : config  로 바꿀예정
         for (int i = 0; i < enemy.Count; ++i)
         {
-            if (enemy[i].data.GetAP() <= 0)
+            if (((ActorEnemyData)enemy[i].data).GetAP() <= 0)
             {
                 return true;
             }
@@ -134,12 +152,12 @@ public class GameBattleManager : Singleton<GameBattleManager>
     public bool IsDraw()
     {
         // ?? 예림 : config  로 바꿀예정
-        return PassivePoint % 5 == 0;
+        return passivePoint % 5 == 0;
     }
 
     public void RemoveCard(int id)
     {
         GameBattleManager.Instance.spellIDs.Remove(id);
-        onEventAction?.Invoke(id);
+        OnEventRemoveCard?.Invoke(id);
     }
 }

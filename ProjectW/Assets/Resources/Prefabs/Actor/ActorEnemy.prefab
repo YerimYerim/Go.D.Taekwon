@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8109125335393302342}
   - component: {fileID: 9108983350854010122}
   - component: {fileID: 2819030441006293026}
+  - component: {fileID: 991012120639254296}
   m_Layer: 0
   m_Name: ActorEnemy
   m_TagString: Untagged
@@ -146,7 +147,7 @@ MonoBehaviour:
   - {x: -0.2067318, y: -4.9568763, z: 0}
   m_ShapePathHash: -1517230669
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30596
+  m_InstanceId: -1282
   m_LocalBounds:
     m_Center: {x: 0.57784224, y: -2.8382113, z: 0}
     m_Extent: {x: 3.0775104, y: 2.2600434, z: 0}
@@ -211,3 +212,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.98, y: 10.8}
   m_EdgeRadius: 0
+--- !u!114 &991012120639254296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862490015649995404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7894117bd263d8542aa0fd360025658f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1879547232688180235}
+  _actorTag: 1
+  isLoop: 1

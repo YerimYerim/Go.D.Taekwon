@@ -13,12 +13,12 @@ public class UICardDeckOnHand : UIBase
     private void OnEnable()
     {
         
-        GameBattleManager.Instance.onEventAction += RemoveCard;
+        GameBattleManager.Instance.OnEventRemoveCard += RemoveCard;
     }
 
     private void OnDisable()
     {
-        GameBattleManager.Instance.onEventAction -= RemoveCard;
+        GameBattleManager.Instance.OnEventRemoveCard -= RemoveCard;
     }
 
     private void Awake()

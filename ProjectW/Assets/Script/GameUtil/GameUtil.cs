@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script.Manager;
 using UnityEngine;
 
 public static class GameUtil
@@ -120,5 +121,12 @@ public static class GameUtil
         }
 
         return null;
+    }
+    
+    public static GameActor GetActorPrefab(int rscId)
+    {
+        var rscTableData = GameDataManager.Instance._actorRscDatas.Find(_ => _.rsc_id == rscId);
+        var prefab = GameResourceManager.Instance.GetLoadActorPrefab(rscTableData.actor_rsc_prefab);
+        return prefab.GetComponent<GameActor>();
     }
 }

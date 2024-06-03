@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4606740178561360875}
   - component: {fileID: 680340331359683634}
   - component: {fileID: 962752126274568078}
+  - component: {fileID: 2080878011423391654}
   m_Layer: 0
   m_Name: ActorPlayer
   m_TagString: Untagged
@@ -59,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8118414989665692286}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 0.3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -108,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 136c221262039ec49872df3e5f3bcfe5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06eace631096f1b4193fa6fe5687ab17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   - {x: -0.90538883, y: -5.5575852, z: 0}
   m_ShapePathHash: 1110563647
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30562
+  m_InstanceId: -1374
   m_LocalBounds:
     m_Center: {x: -0.009510994, y: -2.975129, z: 0}
     m_Extent: {x: 3.424199, y: 2.5824564, z: 0}
@@ -202,7 +203,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.45, y: 10.8}
+    oldSize: {x: 4.096, y: 4.096}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -211,3 +212,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.45, y: 10.8}
   m_EdgeRadius: 0
+--- !u!114 &2080878011423391654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8118414989665692286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7894117bd263d8542aa0fd360025658f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5396732617186177408}
+  _actorTag: 0
+  isLoop: 1

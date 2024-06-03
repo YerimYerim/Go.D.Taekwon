@@ -6,7 +6,10 @@ public class SkillAmorUpType : SkillEffectBase, ISkillAmorUp
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
-        myActor.data.AddAP( GetValue());   
+        for (int i = 0; i < targetActor.Count; ++i)
+        {
+            ((ActorEnemyData)targetActor[i].data).AddAP(table?.value_1 ?? 0);
+        }
     }
 
     public override void InitSkillType(SpellEffectTableData data)

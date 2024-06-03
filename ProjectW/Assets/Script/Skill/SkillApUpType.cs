@@ -24,7 +24,7 @@ public class SkillApUp : SkillEffectBase, ISkillTargetAPUp
     {
         for (int i = 0; i < enemyTarget.Count; ++i)
         {
-            enemyTarget[i].data.AddAP(table?.value_1 ?? 0);
+            ((ActorEnemyData)enemyTarget[i].data).AddAP(table?.value_1 ?? 0);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Script.Manager
         public GameObject GetLoadActorPrefab(string prefabName)
         {
             GameObject prefab = Resources.Load($"Prefabs/Actor/{prefabName}") as GameObject;
+
             if (prefab == null)
                 return null;
             return Instantiate(prefab, prefab.transform.position, prefab.transform.rotation);

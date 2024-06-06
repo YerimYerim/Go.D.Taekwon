@@ -18,7 +18,8 @@ public class GameBattleManager : Singleton<GameBattleManager>
 
     public string actorParent = "Actors";
     public event Action<int> OnEventRemoveCard;
-    public void Init()
+
+    protected override void Init()
     {
         // 스테이지에서 몬스터 정보 로드 후 프리팹 생성
         // 아직 스테이지 관련된게 없어서 걍 액터 id 에 있는거 주워옴

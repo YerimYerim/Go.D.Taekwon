@@ -21,7 +21,6 @@ public class GameTurnManager : Singleton<GameTurnManager>
     public void TurnNodeInit()  
     {
         _root.Clear();
-        GameBattleManager.Instance.Init();
         // player Hp <= 0 인가
         var actIsDead = new BTNodeIsDead();
         // 게임 종료 action

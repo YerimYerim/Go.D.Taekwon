@@ -1,6 +1,7 @@
 [
   {
     "actor_id": 1000001,
-    "stat_hp": 100
+    "stat_hp": 100,
+    "first_reward_id": 1000001
   }
 ]

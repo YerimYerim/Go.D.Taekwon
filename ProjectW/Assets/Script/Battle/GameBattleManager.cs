@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Script.Manager;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -24,24 +25,25 @@ public class GameBattleManager : Singleton<GameBattleManager>
         // 스테이지에서 몬스터 정보 로드 후 프리팹 생성
         // 아직 스테이지 관련된게 없어서 걍 액터 id 에 있는거 주워옴
         var actorTableData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_PLAYER);
+        var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == (actorTableData?.actor_id ?? 0));
+        
         var actorMonsterDatas = GameDataManager.Instance._actorDatas.FindAll(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
 
         var pcPrefab = GameUtil.GetActorPrefab(actorTableData?.rsc_id ?? 0);
         pcPrefab.transform.SetParent(GameObject.Find(actorParent).transform);
         player = GameActormanager.Instance.GetActor(pcPrefab.name);
-
-        player.data.Init(10);
+        player.data.Init(playableTableData?.stat_hp ?? 0);
         player.OnUpdateHp();
         
         for (int i = 0; i < actorMonsterDatas.Count; ++i)
         {
             var actorPrefab = GameUtil.GetActorPrefab(actorMonsterDatas[i]?.rsc_id ?? 0);
             actorPrefab.transform.SetParent(GameObject.Find(actorParent).transform);
-            
+            var monsterData = GameDataManager.Instance._monsterTableDatas.Find(_ => _.actor_id == actorMonsterDatas[i].actor_id);
             enemy.Add(GameActormanager.Instance.GetActor(actorPrefab.name));
-            
+
             var enemyData = new ActorEnemyData();
-            enemyData.Init(10);
+            enemyData.Init(monsterData?.stat_hp?? 0);
             enemyData.InitAP(10);
             
             enemy[i].data = enemyData;

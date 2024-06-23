@@ -1,65 +1,170 @@
 [
   {
-    "skill_group_id": 200000101,
+    "skill_group_id": -2147483648,
     "effect_id": 10001,
     "action_point": 2,
     "skip_condition": 0,
     "skip_condition_value": null
   },
   {
-    "skill_group_id": 200000101,
-    "effect_id": 10002,
-    "action_point": 2,
-    "skip_condition": 0,
-    "skip_condition_value": null
-  },
-  {
-    "skill_group_id": 200000101,
+    "skill_group_id": -2147483648,
     "effect_id": 30002,
     "action_point": 3,
     "skip_condition": 1,
     "skip_condition_value": 0
   },
   {
-    "skill_group_id": 200000102,
+    "skill_group_id": -2147483648,
     "effect_id": 10001,
     "action_point": 2,
     "skip_condition": 0,
     "skip_condition_value": null
   },
   {
-    "skill_group_id": 200000102,
-    "effect_id": 10002,
+    "skill_group_id": -2147483648,
+    "effect_id": 20001,
     "action_point": 2,
     "skip_condition": 0,
     "skip_condition_value": null
   },
   {
-    "skill_group_id": 200000102,
+    "skill_group_id": -2147483648,
     "effect_id": 30002,
-    "action_point": 3,
-    "skip_condition": 1,
-    "skip_condition_value": 0
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
   },
   {
-    "skill_group_id": 200000103,
+    "skill_group_id": -2147483648,
+    "effect_id": 10001,
+    "action_point": 1,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 20001,
+    "action_point": 1,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 30002,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
     "effect_id": 10001,
     "action_point": 2,
     "skip_condition": 0,
     "skip_condition_value": null
   },
   {
-    "skill_group_id": 200000103,
-    "effect_id": 10002,
+    "skill_group_id": -2147483648,
+    "effect_id": 30002,
+    "action_point": 3,
+    "skip_condition": 1,
+    "skip_condition_value": 0
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 10001,
     "action_point": 2,
     "skip_condition": 0,
     "skip_condition_value": null
   },
   {
-    "skill_group_id": 200000103,
+    "skill_group_id": -2147483648,
+    "effect_id": 20001,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 30002,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 10001,
+    "action_point": 1,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 20001,
+    "action_point": 1,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 30002,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 10001,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
     "effect_id": 30002,
     "action_point": 3,
     "skip_condition": 1,
     "skip_condition_value": 0
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 10001,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 20001,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 30002,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 10001,
+    "action_point": 1,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 20001,
+    "action_point": 1,
+    "skip_condition": 0,
+    "skip_condition_value": null
+  },
+  {
+    "skill_group_id": -2147483648,
+    "effect_id": 30002,
+    "action_point": 2,
+    "skip_condition": 0,
+    "skip_condition_value": null
   }
 ]

@@ -1,17 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UI_Actor_Bottom : UIBase
 {
     [SerializeField] private Image _progressBar;
     [SerializeField] private TextMeshProUGUI _text;
-    [FormerlySerializedAs("transform")] [SerializeField] private RectTransform moveRectTransform;
+    [SerializeField] private RectTransform moveRectTransform;
+    
+    [SerializeField] private Transform apParent;
+    
+    private const string AbnormalPrefabName = "UIAbnormal";
+    private List<UIAbnormal> _coolTimeAbnormal = new();
     public void SetHPUI(int maxHP, int curHp)
     {
         StringBuilder stringBuilder = new();
@@ -26,5 +28,10 @@ public class UI_Actor_Bottom : UIBase
             Vector3 screenPos = Camera.main.WorldToScreenPoint(gameTransform.position);
             moveRectTransform.transform.position = screenPos;
         }
+    }
+
+    public void UpdateAbnormal()
+    {
+        //_coolTimeAbnormal
     }
 }

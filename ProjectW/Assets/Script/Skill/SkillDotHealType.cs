@@ -7,7 +7,7 @@ public class SkillDotHealType : SkillEffectBase, ISkillTargetBuff, ISkillTargetH
         for (int i = 0; i < targetActor.Count; i++)
         {
             targetActor[i].data.AddBuff(this);
-        }
+        }  
     }
 
     public override void InitSkillType(SpellEffectTableData data)
@@ -24,7 +24,8 @@ public class SkillDotHealType : SkillEffectBase, ISkillTargetBuff, ISkillTargetH
 
     public void DoBuff(GameActor enemy)
     {
-        DoHeal(new List<GameActor> {enemy});
+        var list = new List<GameActor> {enemy};
+        DoHeal(list);
         --remainTurn;
     }
     public void DoHeal(List<GameActor> targetActor)

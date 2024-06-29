@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class GameDataManager : Script.Manager.Singleton<GameDataManager>
 {
-    private readonly string[] _pageJsonFileNames = {"config", "spell", "string", "spell_combine", "spell_effect", "actor_rsc", "actor", "playable_character", "monster"};
+    private readonly string[] _pageJsonFileNames = {"config", "spell", "string", "spell_combine", 
+        "spell_effect", "actor_rsc", "actor", "playable_character", "monster","skill_pattern_group"};
     
     internal List<ConfigTableData> _configTableData = new();
     internal List<SpellTableData> _spellData = new();
@@ -17,6 +18,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
     internal List<ActorTableData> _actorDatas = new();
     internal List<PlayableCharacterTableData> _playableCharacterDatas = new();
     internal List<MonsterTableData> _monsterTableDatas = new();
+    internal List<SkillPatternGroupTableData> _patternGroupTableDatas= new();
 
     protected override void Awake()
     {
@@ -34,6 +36,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
         _actorDatas = ReadJsonFiles<ActorTableData>(_pageJsonFileNames[6]);
         _playableCharacterDatas = ReadJsonFiles<PlayableCharacterTableData>(_pageJsonFileNames[7]);
         _monsterTableDatas = ReadJsonFiles<MonsterTableData>(_pageJsonFileNames[8]);
+        _patternGroupTableDatas = ReadJsonFiles<SkillPatternGroupTableData>(_pageJsonFileNames[9]);
     }
 
     private static List<T> ReadJsonFiles<T>(string fileName)

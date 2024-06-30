@@ -44,8 +44,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
 
             var enemyData = new ActorEnemyData();
             enemyData.Init(monsterData?.stat_hp?? 0);
-            enemyData.InitAP(10);
-            
+            enemyData.InitAP(monsterData?.skill_pattern_group ?? 0);
             enemy[i].data = enemyData;
             enemy[i].OnUpdateHp();
         }
@@ -130,7 +129,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
         // ?? 예림 : config  로 바꿀예정
         for (int i = 0; i < enemy.Count; ++i)
         {
-            if (((ActorEnemyData)enemy[i].data).GetAP() <= 0)
+            if (((ActorEnemyData)enemy[i].data).IsCanUseSkill())
             {
                 return true;
             }
@@ -149,7 +148,6 @@ public class GameBattleManager : Singleton<GameBattleManager>
         }
         player.UpdateDebuff();
         player.UpdateBuff();
-        
         player.OnUpdateHp();
     }
     public bool IsDraw()

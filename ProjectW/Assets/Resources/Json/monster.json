@@ -1,23 +1,23 @@
 [
   {
-    "actor_id": 2000001,
+    "actor_id": 20001,
     "level": 1,
     "stat_hp": 50,
     "monster_type": 0,
-    "skill_pattern_group": 200000101
+    "skill_pattern_group": 2000101
   },
   {
-    "actor_id": 2000001,
+    "actor_id": 20001,
     "level": 2,
     "stat_hp": 100,
     "monster_type": 0,
-    "skill_pattern_group": 200000102
+    "skill_pattern_group": 2000102
   },
   {
-    "actor_id": 2000001,
+    "actor_id": 20001,
     "level": 3,
     "stat_hp": 120,
     "monster_type": 0,
-    "skill_pattern_group": 200000103
+    "skill_pattern_group": 2000103
   }
 ]

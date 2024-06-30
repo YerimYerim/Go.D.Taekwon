@@ -1,74 +1,74 @@
 [
   {
-    "skill_pattern_group_id": 200000101,
+    "skill_pattern_group_id": 2000101,
     "phase": 1,
     "phase_condition": 1,
     "phase_condition_value": 0,
     "pattern_type": 1,
-    "skill_group": -2147483648
+    "skill_group": 200010101
   },
   {
-    "skill_pattern_group_id": 200000101,
+    "skill_pattern_group_id": 2000101,
     "phase": 2,
     "phase_condition": 1,
     "phase_condition_value": 0,
     "pattern_type": 0,
-    "skill_group": -2147483648
+    "skill_group": 200010102
   },
   {
-    "skill_pattern_group_id": 200000101,
+    "skill_pattern_group_id": 2000101,
     "phase": 3,
     "phase_condition": 0,
     "phase_condition_value": null,
     "pattern_type": 0,
-    "skill_group": -2147483648
+    "skill_group": 200010103
   },
   {
-    "skill_pattern_group_id": 200000102,
+    "skill_pattern_group_id": 2000102,
     "phase": 1,
     "phase_condition": 1,
     "phase_condition_value": 0,
     "pattern_type": 1,
-    "skill_group": -2147483648
+    "skill_group": 200010201
   },
   {
-    "skill_pattern_group_id": 200000102,
+    "skill_pattern_group_id": 2000102,
     "phase": 2,
     "phase_condition": 1,
     "phase_condition_value": 0,
     "pattern_type": 0,
-    "skill_group": -2147483648
+    "skill_group": 200010202
   },
   {
-    "skill_pattern_group_id": 200000102,
+    "skill_pattern_group_id": 2000102,
     "phase": 3,
     "phase_condition": 0,
     "phase_condition_value": null,
     "pattern_type": 0,
-    "skill_group": -2147483648
+    "skill_group": 200010203
   },
   {
-    "skill_pattern_group_id": 200000103,
+    "skill_pattern_group_id": 2000103,
     "phase": 1,
     "phase_condition": 1,
     "phase_condition_value": 0,
     "pattern_type": 1,
-    "skill_group": -2147483648
+    "skill_group": 200010301
   },
   {
-    "skill_pattern_group_id": 200000103,
+    "skill_pattern_group_id": 2000103,
     "phase": 2,
     "phase_condition": 1,
     "phase_condition_value": 0,
     "pattern_type": 0,
-    "skill_group": -2147483648
+    "skill_group": 200010302
   },
   {
-    "skill_pattern_group_id": 200000103,
+    "skill_pattern_group_id": 2000103,
     "phase": 3,
     "phase_condition": 0,
     "phase_condition_value": null,
     "pattern_type": 0,
-    "skill_group": -2147483648
+    "skill_group": 200010303
   }
 ]

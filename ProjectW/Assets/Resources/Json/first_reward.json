@@ -1,12 +1,12 @@
 [
   {
     "first_reward_id": 1000001,
-    "spell_id": 10001,
-    "amount": 5
+    "source_id": 1001,
+    "amount": 1
   },
   {
     "first_reward_id": 1000001,
-    "spell_id": 10002,
-    "amount": 3
+    "source_id": 1003,
+    "amount": 2
   }
 ]

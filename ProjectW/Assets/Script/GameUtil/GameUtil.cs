@@ -129,4 +129,11 @@ public static class GameUtil
         var prefab = GameResourceManager.Instance.GetLoadActorPrefab(rscTableData.actor_rsc_prefab);
         return prefab.GetComponent<GameActor>();
     }
+
+    public static int NextRingIndex(int cur,  int max, int min= 0)
+    {
+        var nextIndex = cur + 1;
+
+        return nextIndex >= max ? min : nextIndex;
+    }
 }

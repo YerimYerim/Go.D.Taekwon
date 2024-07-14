@@ -22,11 +22,10 @@ public class GameBattleManager : Singleton<GameBattleManager>
 
     protected override void Init()
     {
-        // 스테이지에서 몬스터 정보 로드 후 프리팹 생성
-        // 아직 스테이지 관련된게 없어서 걍 액터 id 에 있는거 주워옴
+        // ?? : 스테이지에서 몬스터 정보 로드 후 프리팹 생성
+        // ?? : 아직 스테이지 관련된게 없어서 걍 액터 id 에 있는거 주워옴
         var actorTableData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_PLAYER);
         var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == (actorTableData?.actor_id ?? 0));
-        
         var actorMonsterDatas = GameDataManager.Instance._actorDatas.FindAll(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
 
         var pcPrefab = GameUtil.GetActorPrefab(actorTableData?.rsc_id ?? 0);
@@ -54,13 +53,25 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         return player.data.GetHp();
     }
-    public void DoSkill(int spellid, SpellEffectTableData effect, List<GameActor> targetActor)
+    public void DoSkill(int spellid, SpellEffectTableData effect)
     {
-        if (GameBattleManager.Instance.IsEnemyTurn() == false)
+        if (Instance.IsEnemyTurn() == false)
         {
-            GameBattleManager.Instance.RemoveCard(spellid);
+            Instance.RemoveCard(spellid);
             var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
-            skillEffectBase.DoSkill(targetActor, player);
+            switch (effect.target)
+            {
+                case TARGET_TYPE.TARGET_TYPE_ALLY:
+                {
+                    skillEffectBase.DoSkill(new List<GameActor> {player}, player);
+                } break;
+                case TARGET_TYPE.TARGET_TYPE_ENEMY:
+                {
+                    skillEffectBase.DoSkill(enemy, player);
+                } break;
+            }
+
+            MinusAP(1);
             ++passivePoint;
             GameTurnManager.Instance.TurnStart();
         }
@@ -69,16 +80,37 @@ public class GameBattleManager : Singleton<GameBattleManager>
             Debug.Log("적의 턴입니다. 공격할 수 없습니다.");
         }
     }
-    public void Damaged(int damage)
+    /// <summary>
+    ///  player 가 적에 주는 Damage
+    /// </summary>
+    /// <param name="damage"></param>
+    public void DoSKillEnemyTurn()
     {
-        if (GameTurnManager.Instance.isMyTurn == false)
+        if (GameTurnManager.Instance.IsMyTurn == false)
         {
-            player.data.DoDamaged(damage);
-            player.OnUpdateHp();
+            
             for (int i = 0; i < enemy.Count; ++i)
             {
-                ((ActorEnemyData)enemy[i].data).ResetAP(5);
+                var skill = ((ActorEnemyData)enemy[i].data).GetSkill();
+                if (skill != null && ((ActorEnemyData)enemy[i].data).IsCanUseSkill())
+                {
+                    var skilleffect = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill?.effect_id);
+                    var skillEffectBase = GameUtil.GetSkillEffectBase(skilleffect);
+                    switch (skilleffect.target)
+                    {
+                        case TARGET_TYPE.TARGET_TYPE_ALLY:
+                        {
+                            skillEffectBase.DoSkill(new List<GameActor> {enemy[i]}, enemy[i]);
+                        } break;
+                        case TARGET_TYPE.TARGET_TYPE_ENEMY:
+                        {
+                            skillEffectBase.DoSkill(new List<GameActor>{player}, enemy[i]);
+                        } break;
+                    }
+                    ((ActorEnemyData) enemy[i].data).ResetAP();
+                }
             }
+            player.OnUpdateHp();
             ++passivePoint;
             GameTurnManager.Instance.TurnStart();
         }
@@ -87,33 +119,15 @@ public class GameBattleManager : Singleton<GameBattleManager>
             Debug.Log("내 턴입니다. 적이 공격할 수 없습니다.");
         }
     }
-    public void HealMyActor(int addHp)
-    {
-        if (GameTurnManager.Instance.isMyTurn == true)
-        {
-            player.data.DoHeal(addHp);
-            player.OnUpdateHp();
-            ++passivePoint;
-            for (int i = 0; i < enemy.Count; ++i)
-            {
-                ((ActorEnemyData)enemy[i].data).MinusAP(1);
-            }
-            GameTurnManager.Instance.TurnStart();
-        }
-        else
-        {
-            Debug.Log("내 턴입니다. 내가 회복 할 수 없습니다.");
-        }
-    }
     public void HealEnemyActor(int addHp)
     {
-        if (GameTurnManager.Instance.isMyTurn == false)
+        if (GameTurnManager.Instance.IsMyTurn == false)
         {
             for (int i = 0; i < enemy.Count; ++i)
             {
                 enemy[i].data.DoHeal(addHp);
                 enemy[i].OnUpdateHp();
-                ((ActorEnemyData)enemy[i].data).ResetAP(5);
+                ((ActorEnemyData)enemy[i].data).ResetAP();
             }
             ++passivePoint;
             GameTurnManager.Instance.TurnStart();
@@ -126,7 +140,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
 
     public bool IsEnemyTurn()
     {
-        // ?? 예림 : config  로 바꿀예정
+        // ?? : config  로 바꿀예정
         for (int i = 0; i < enemy.Count; ++i)
         {
             if (((ActorEnemyData)enemy[i].data).IsCanUseSkill())
@@ -152,13 +166,22 @@ public class GameBattleManager : Singleton<GameBattleManager>
     }
     public bool IsDraw()
     {
-        // ?? 예림 : config  로 바꿀예정
+        // ?? : config  로 바꿀예정
         return passivePoint % 5 == 0;
     }
 
-    public void RemoveCard(int id)
+    private void RemoveCard(int id)
     {
-        GameBattleManager.Instance.spellIDs.Remove(id);
+        Instance.spellIDs.Remove(id);
         OnEventRemoveCard?.Invoke(id);
+    }
+
+    private void MinusAP(int minusAP)
+    {
+        for (int i = 0; i < enemy.Count; ++i)
+        {
+            var enemyData = (ActorEnemyData)enemy[i].data;
+            enemyData.MinusAP(minusAP);
+        }
     }
 }

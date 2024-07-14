@@ -1,11 +1,12 @@
 using Script.Manager;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameTurnManager : Singleton<GameTurnManager>
 {   
     private int _actionPoint;
     private BTNodeSelector _root = new BTNodeSelector();
-    public bool isMyTurn = false;
+    public bool IsMyTurn = false;
 
     protected override void Awake()
     {
@@ -55,5 +56,10 @@ public class GameTurnManager : Singleton<GameTurnManager>
     {
         _root.Evaluate();
         GameBattleManager.Instance.DoTurn();
+    }
+
+    public void DoActionEnemy()
+    {
+        
     }
 }

@@ -9,7 +9,8 @@ public class BTNodeIsEnemyTurn : BTNodeAction
         if (GameBattleManager.Instance.IsEnemyTurn())
         {
             Debug.Log("적의 턴");
-            GameTurnManager.Instance.isMyTurn = false;
+            GameTurnManager.Instance.IsMyTurn = false;
+            GameBattleManager.Instance.DoSKillEnemyTurn();
             return State.Success;
         };
         return State.Failure;

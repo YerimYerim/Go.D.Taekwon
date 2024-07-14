@@ -18,7 +18,7 @@ public class UISpell : UIDragable
         _spellTableData = spellTableData;
         img.sprite = GameResourceManager.Instance.GetImage(spellTableData.tableData.spell_img);
         button.SetHoverEvent(ShowToolTip, HideToolTip);
-        InitDragSuccessCondition(ActionFail, ActionSuccess, AdjustIsMerge, OnEventDrag);
+        InitDragSuccessCondition(IsActionFail, IsActionSuccess, AdjustIsMerge, OnEventDrag);
     }
 
     private bool AdjustIsMerge(PointerEventData eventData)
@@ -67,25 +67,28 @@ public class UISpell : UIDragable
         return false;
     }
 
-    private void ActionSuccess(PointerEventData eventData)
+    private void IsActionSuccess(PointerEventData eventData)
     {
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
 
         foreach (var result in results)
         {
-            var isSpellUI = result.gameObject.GetComponent<UISpell>();
-            if (isSpellUI!= this && isSpellUI != null && isSpellUI.isActiveAndEnabled == true)
+            var otherSpellUI = result.gameObject.GetComponent<UISpell>();
+            if (otherSpellUI != this && otherSpellUI != null && otherSpellUI.isActiveAndEnabled == true)
             {
-                var spellCombineData = GameDataManager.Instance._spellCombineDatas.FindAll(_ => _.material_1 == _spellTableData.tableData.spell_id || _.material_2 == _spellTableData.tableData.spell_id);
-                var resultCombineSpell = spellCombineData.Find(_ => _.material_1 == isSpellUI._spellTableData.tableData.spell_id || _.material_2 == isSpellUI._spellTableData.tableData.spell_id);
-                if (resultCombineSpell == null)
-                    return ;
-                SpellTableData resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == resultCombineSpell.result_spell);
+                // 스펠 순서는 상관 없기로 함
+                var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ =>
+                    (_.material_1 == _spellTableData.tableData.spell_id || _.material_2 == _spellTableData.tableData.spell_id) 
+                    && (_.material_1 == otherSpellUI._spellTableData.tableData.spell_id || _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));
+                
+                if (spellCombineData == null)
+                    return;
+                var resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
                 if (resultSpell == null)
                     return;
                 MoveReset();
-                _parents.MergeSpell(isSpellUI._spellTableData?.tableData?.spell_id ?? 0, _spellTableData?.tableData?.spell_id ?? 0, resultSpell.spell_id ?? 0 );
+                _parents.MergeSpell(otherSpellUI._spellTableData?.tableData?.spell_id ?? 0, _spellTableData?.tableData?.spell_id ?? 0, resultSpell.spell_id ?? 0 );
             }
         }
         
@@ -103,7 +106,7 @@ public class UISpell : UIDragable
                 for (int i = 0; i < spellEffect.Length; ++i)
                 {
                     var effect = GameDataManager.Instance._spelleffectDatas.Find(_ => spellEffect[i] == _.effect_id);
-                    GameBattleManager.Instance.DoSkill(this._spellTableData.tableData.spell_id ??0, effect, GameBattleManager.Instance.enemy);
+                    GameBattleManager.Instance.DoSkill(this._spellTableData.tableData.spell_id ?? 0, effect);
 
                 }
             }
@@ -111,7 +114,7 @@ public class UISpell : UIDragable
         MoveReset();
     }
 
-    private void ActionFail(PointerEventData eventData)
+    private void IsActionFail(PointerEventData eventData)
     {
         MoveReset();
         if(selectedActor!= null)

@@ -40,5 +40,89 @@
     "effect_tag": 0,
     "scale_factor_1": 1,
     "scale_factor_2": 4
+  },
+  {
+    "monster_type": null,
+    "level": 1,
+    "effect_tag": 3,
+    "scale_factor_1": 0,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 1,
+    "effect_tag": 0,
+    "scale_factor_1": 0,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 2,
+    "effect_tag": 3,
+    "scale_factor_1": 0,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 2,
+    "effect_tag": 0,
+    "scale_factor_1": 1,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 3,
+    "effect_tag": 3,
+    "scale_factor_1": 1,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 3,
+    "effect_tag": 0,
+    "scale_factor_1": 1,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 1,
+    "effect_tag": 3,
+    "scale_factor_1": 1,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 1,
+    "effect_tag": 0,
+    "scale_factor_1": 0,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 2,
+    "effect_tag": 3,
+    "scale_factor_1": 2,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 2,
+    "effect_tag": 0,
+    "scale_factor_1": 0,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 3,
+    "effect_tag": 3,
+    "scale_factor_1": 2,
+    "scale_factor_2": 0
+  },
+  {
+    "monster_type": null,
+    "level": 3,
+    "effect_tag": 0,
+    "scale_factor_1": 0,
+    "scale_factor_2": 0
   }
 ]

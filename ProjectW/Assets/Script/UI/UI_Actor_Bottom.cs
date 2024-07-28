@@ -18,7 +18,7 @@ public class UI_Actor_Bottom : UIBase
     {
         StringBuilder stringBuilder = new();
         _progressBar.fillAmount = (float) curHp / maxHP;
-        _text.text = stringBuilder.AppendFormat("{0}/{1}", curHp.ToString(), maxHP.ToString()).ToString();
+        _text.text = $"{curHp.ToString()}/{ maxHP.ToString()}"; //, ,).ToString();
     }
 
     public void SetPosition(Transform gameTransform)

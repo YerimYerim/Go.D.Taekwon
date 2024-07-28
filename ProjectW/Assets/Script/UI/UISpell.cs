@@ -111,6 +111,8 @@ public class UISpell : UIDragable
                 }
             }
         }
+
+        GameBattleManager.Instance.MinusAP(1);
         MoveReset();
     }
 

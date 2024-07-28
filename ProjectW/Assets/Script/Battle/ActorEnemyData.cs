@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using Random = System.Random;
 
 public class ActorEnemyData : ActorDataBase
 {
@@ -52,7 +50,14 @@ public class ActorEnemyData : ActorDataBase
 
         for (int i = 0; i < patternGroupTable.Count; ++i)
         {
-            patternGroup.Add(patternGroupTable[i]?.phase ?? 0, patternGroupTable[i]);
+            if (patternGroup.ContainsKey(patternGroupTable[i]?.phase ?? 0))
+            {
+                patternGroup[patternGroupTable[i]?.phase ?? 0] = patternGroupTable[i];
+            }
+            else
+            {
+                patternGroup.Add(patternGroupTable[i]?.phase ?? 0, patternGroupTable[i]);
+            }
         }
     }
     

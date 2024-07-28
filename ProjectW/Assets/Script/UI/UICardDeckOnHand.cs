@@ -12,13 +12,14 @@ public class UICardDeckOnHand : UIBase
 
     private void OnEnable()
     {
-        
         GameBattleManager.Instance.OnEventRemoveCard += RemoveCard;
+        GameBattleManager.Instance.OnUpdateCard += SetUI;
     }
 
     private void OnDisable()
     {
         GameBattleManager.Instance.OnEventRemoveCard -= RemoveCard;
+        GameBattleManager.Instance.OnUpdateCard -= SetUI;
     }
 
     private void Awake()
@@ -30,23 +31,12 @@ public class UICardDeckOnHand : UIBase
             card._parents = this;
         }
         // ?? : 단순 기능 확인을 위한 테스트 나중에 삭제할 부분
-        GameDataManager.Instance.LoadData();
-        
-
-        GameBattleManager.Instance.spellIDs.AddRange(new []{10101,10103, 20104,20107,});
+ 
         SetUI();
     }
 
     public void SetUI()
     {
-        GameBattleManager.Instance.spellDatas.Clear();
-        foreach (var cardKey in  GameBattleManager.Instance.spellIDs)
-        {
-            SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
-            var spellData = new GameDeckManager.SpellData(spellTableData);
-            GameBattleManager.Instance.spellDatas.Add(spellData);
-        }
-
         for (int i = 0; i < uiCards.Count; ++i)
         {
             if (i < GameBattleManager.Instance.spellDatas.Count)

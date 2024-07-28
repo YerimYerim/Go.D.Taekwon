@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Script.Manager;
-using UnityEditor.Build.Content;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// battlemanager
@@ -19,9 +17,29 @@ public class GameBattleManager : Singleton<GameBattleManager>
 
     public string actorParent = "Actors";
     public event Action<int> OnEventRemoveCard;
+    public event Action OnUpdateCard;
+
+    // sourceId, spellSource
+    public List<GameSpellSource> _sources = new();
+
+    protected override void Awake()
+    {
+        base.Awake();
+        GameDataManager.Instance.LoadData();
+    }
 
     protected override void Init()
     {
+        GameDataManager.Instance.LoadData();
+        // spell
+        spellIDs.AddRange(new []{10101,10103, 20104,20107,});
+        spellDatas.Clear();
+        foreach (var cardKey in spellIDs)
+        {
+            AddSpell(cardKey);
+        }
+        OnUpdateCard?.Invoke();
+        
         // ?? : 스테이지에서 몬스터 정보 로드 후 프리팹 생성
         // ?? : 아직 스테이지 관련된게 없어서 걍 액터 id 에 있는거 주워옴
         var actorTableData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_PLAYER);
@@ -47,6 +65,39 @@ public class GameBattleManager : Singleton<GameBattleManager>
             enemy[i].data = enemyData;
             enemy[i].OnUpdateHp();
         }
+
+        
+        var sourceTableData = GameDataManager.Instance._spellSourceTableDatas;
+
+        for (int i = 0; i < sourceTableData.Count; ++i)
+        {
+            GameSpellSource source = new GameSpellSource();
+            source.Init(sourceTableData[i]?.source_id ?? 0, MakeSpell);
+            _sources.Add(source);
+        }
+    }
+
+    public GameSpellSource GetSource(int index)
+    {
+        if (index >= _sources.Count)
+        {
+            GameDataManager.Instance.LoadData();
+            var sourceTableData = GameDataManager.Instance._spellSourceTableDatas;
+
+            for (int i = 0; i < sourceTableData.Count; ++i)
+            {
+                GameSpellSource source = new GameSpellSource();
+                source.Init(sourceTableData[i]?.source_id ?? 0, MakeSpell);
+                _sources.Add(source);
+            }
+        }
+        return _sources[index];
+    }
+    private void AddSpell(int cardKey)
+    {
+        SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
+        var spellData = new GameDeckManager.SpellData(spellTableData);
+        spellDatas.Add(spellData);
     }
 
     public int GetMyHp()
@@ -71,7 +122,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
                 } break;
             }
 
-            MinusAP(1);
+            
             ++passivePoint;
             GameTurnManager.Instance.TurnStart();
         }
@@ -163,6 +214,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
         player.UpdateDebuff();
         player.UpdateBuff();
         player.OnUpdateHp();
+
     }
     public bool IsDraw()
     {
@@ -176,12 +228,22 @@ public class GameBattleManager : Singleton<GameBattleManager>
         OnEventRemoveCard?.Invoke(id);
     }
 
-    private void MinusAP(int minusAP)
+    public void MinusAP(int minusAP)
     {
         for (int i = 0; i < enemy.Count; ++i)
         {
             var enemyData = (ActorEnemyData)enemy[i].data;
             enemyData.MinusAP(minusAP);
         }
+        for (int i = 0; i < _sources.Count; ++i)
+        {
+            _sources[i].UpdateAP();
+        }
+    }
+
+    private void MakeSpell(int spellID)
+    {
+        AddSpell(spellID);
+        OnUpdateCard?.Invoke();
     }
 }

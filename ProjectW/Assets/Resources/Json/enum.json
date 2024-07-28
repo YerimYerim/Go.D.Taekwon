@@ -304,5 +304,35 @@
     "enum_name": "ally_hp_lowest",
     "source_enum_name": "TARGET_TYPE_ALLY_HP_LOWEST",
     "enum_value": 3
+  },
+  {
+    "group_name": "map_type",
+    "enum_name": "battle_normal",
+    "source_enum_name": "MAP_TYPE_BATTLE_NORMAL",
+    "enum_value": 0
+  },
+  {
+    "group_name": "map_type",
+    "enum_name": "battle_elite",
+    "source_enum_name": "MAP_TYPE_BATTLE_ELITE",
+    "enum_value": 1
+  },
+  {
+    "group_name": "map_type",
+    "enum_name": "battle_boss",
+    "source_enum_name": "MAP_TYPE_BATTLE_BOSS",
+    "enum_value": 2
+  },
+  {
+    "group_name": "map_type",
+    "enum_name": "shop",
+    "source_enum_name": "MAP_TYPE_SHOP",
+    "enum_value": 3
+  },
+  {
+    "group_name": "map_type",
+    "enum_name": "enhance",
+    "source_enum_name": "MAP_TYPE_ENHANCE",
+    "enum_value": 4
   }
 ]

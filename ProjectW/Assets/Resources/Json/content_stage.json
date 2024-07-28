@@ -1,0 +1,16 @@
+[
+  {
+    "stage_id": 11,
+    "map_group_1": [101, 102, 103],
+    "advent_cnt_1": 2,
+    "map_group_2": [],
+    "advent_cnt_2": null
+  },
+  {
+    "stage_id": 12,
+    "map_group_1": [101],
+    "advent_cnt_1": 1,
+    "map_group_2": [102, 103],
+    "advent_cnt_2": 1
+  }
+]

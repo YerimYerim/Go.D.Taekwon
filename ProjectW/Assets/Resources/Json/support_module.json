@@ -1,0 +1,62 @@
+[
+  {
+    "support_module_id": 1001,
+    "source_id": 1001,
+    "level": 1,
+    "support_module_effect": 0,
+    "effect_value": 1,
+    "support_module_img": null,
+    "support_module_name": "sup_mod_name_1001",
+    "support_module_desc": "sup_mod_desc_1001_01"
+  },
+  {
+    "support_module_id": 1002,
+    "source_id": 1001,
+    "level": 1,
+    "support_module_effect": 3,
+    "effect_value": 1,
+    "support_module_img": null,
+    "support_module_name": "sup_mod_name_1002",
+    "support_module_desc": "sup_mod_desc_1002_01"
+  },
+  {
+    "support_module_id": 1003,
+    "source_id": 1001,
+    "level": 1,
+    "support_module_effect": 4,
+    "effect_value": 10103,
+    "support_module_img": null,
+    "support_module_name": "sup_mod_name_1003",
+    "support_module_desc": "sup_mod_desc_1003_01"
+  },
+  {
+    "support_module_id": 1004,
+    "source_id": 1001,
+    "level": 1,
+    "support_module_effect": 1,
+    "effect_value": 1,
+    "support_module_img": null,
+    "support_module_name": "sup_mod_name_1004",
+    "support_module_desc": "sup_mod_desc_1004_01"
+  },
+  {
+    "support_module_id": 1004,
+    "source_id": 1001,
+    "level": 1,
+    "support_module_effect": 3,
+    "effect_value": 1,
+    "support_module_img": null,
+    "support_module_name": "sup_mod_name_1004",
+    "support_module_desc": "sup_mod_desc_1004_01"
+  },
+  {
+    "support_module_id": 1004,
+    "source_id": 1001,
+    "level": 2,
+    "support_module_effect": 3,
+    "effect_value": 1,
+    "support_module_img": null,
+    "support_module_name": "sup_mod_name_1004",
+    "support_module_desc": "sup_mod_desc_1004_02"
+  }
+]

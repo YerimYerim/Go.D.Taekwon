@@ -2,6 +2,8 @@
   {
     "actor_id": 1000001,
     "stat_hp": 100,
-    "first_reward_id": 1000001
+    "first_reward_id": 1000001,
+    "slot": 5,
+    "slot_max": 10
   }
 ]

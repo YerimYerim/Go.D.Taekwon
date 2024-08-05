@@ -282,6 +282,36 @@
     "enum_value": 28
   },
   {
+    "group_name": "support_module_effect",
+    "enum_name": "reduce_product_ap",
+    "source_enum_name": "SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_AP",
+    "enum_value": 0
+  },
+  {
+    "group_name": "support_module_effect",
+    "enum_name": "increase_product_ap",
+    "source_enum_name": "SUPPORT_MODULE_EFFECT_INCREASE_PRODUCT_AP",
+    "enum_value": 1
+  },
+  {
+    "group_name": "support_module_effect",
+    "enum_name": "reduce_product_value",
+    "source_enum_name": "SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_VALUE",
+    "enum_value": 2
+  },
+  {
+    "group_name": "support_module_effect",
+    "enum_name": "increase_product_value",
+    "source_enum_name": "SUPPORT_MODULE_EFFECT_INCREASE_PRODUCT_VALUE",
+    "enum_value": 3
+  },
+  {
+    "group_name": "support_module_effect",
+    "enum_name": "change_product_spell",
+    "source_enum_name": "SUPPORT_MODULE_EFFECT_CHANGE_PRODUCT_SPELL",
+    "enum_value": 4
+  },
+  {
     "group_name": "target_type",
     "enum_name": "self",
     "source_enum_name": "TARGET_TYPE_SELF",

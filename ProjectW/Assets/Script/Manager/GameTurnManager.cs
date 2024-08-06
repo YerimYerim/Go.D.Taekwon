@@ -40,7 +40,10 @@ public class GameTurnManager : Singleton<GameTurnManager>
         var actIsDraw = new BTNodeIsDraw();
         // 유저 선택
         var actPlayerTurn = new BTNodePlayerTurn();
+        // 모든 적을 죽였는간
+        var mapClear = new BTNodeIsMapClear();
 
+        _root.AddChild(mapClear);
         _root.AddChild(actIsDead);
         _root.AddChild(actIsEnemyTurn);
         _root.AddChild(actIsDraw);

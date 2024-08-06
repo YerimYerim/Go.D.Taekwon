@@ -8,7 +8,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
 {
     private readonly string[] _pageJsonFileNames = {"config", "spell", "string", "spell_combine", 
         "spell_effect", "actor_rsc", "actor", "playable_character", "monster","skill_pattern_group", "skill_group",
-        "spell_source"
+        "spell_source", "content_map", "content_chapter", "content_stage"
     };
     
     internal List<ConfigTableData> _configTableData = new();
@@ -23,6 +23,9 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
     internal List<SkillPatternGroupTableData> _patternGroupTableDatas= new();
     internal List<SkillGroupTableData> _skillGroupTableDatas= new();
     internal List<SpellSourceTableData> _spellSourceTableDatas= new();
+    internal List<ContentMapTableData> _contentMapTableDatas = new();
+    internal List<ContentChapterTableData> _contentChapterTableDatas = new();
+    internal List<ContentStageTableData> _contentStageTableDatas = new();
 
     protected override void Awake()
     {
@@ -47,6 +50,9 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
         _patternGroupTableDatas = ReadJsonFiles<SkillPatternGroupTableData>(_pageJsonFileNames[9]);
         _skillGroupTableDatas = ReadJsonFiles<SkillGroupTableData>(_pageJsonFileNames[10]);
         _spellSourceTableDatas = ReadJsonFiles<SpellSourceTableData>(_pageJsonFileNames[11]);
+        _contentMapTableDatas  = ReadJsonFiles<ContentMapTableData>(_pageJsonFileNames[12]);
+        _contentChapterTableDatas  = ReadJsonFiles<ContentChapterTableData>(_pageJsonFileNames[13]);
+        _contentStageTableDatas  = ReadJsonFiles<ContentStageTableData>(_pageJsonFileNames[14]);
     }
 
     private static List<T> ReadJsonFiles<T>(string fileName)

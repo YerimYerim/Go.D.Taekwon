@@ -15,7 +15,6 @@ public class GameBattleManager : Singleton<GameBattleManager>
     public readonly List<GameDeckManager.SpellData> spellDatas = new();
     public List<int> spellIDs = new();
 
-    public string actorParent = "Actors";
     public event Action<int> OnEventRemoveCard;
     public event Action OnUpdateCard;
 
@@ -31,6 +30,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
     protected override void Init()
     {
         GameDataManager.Instance.LoadData();
+        
         // spell
         spellIDs.AddRange(new []{10101,10103, 20104,20107,});
         spellDatas.Clear();
@@ -40,32 +40,16 @@ public class GameBattleManager : Singleton<GameBattleManager>
         }
         OnUpdateCard?.Invoke();
         
-        // ?? : 스테이지에서 몬스터 정보 로드 후 프리팹 생성
-        // ?? : 아직 스테이지 관련된게 없어서 걍 액터 id 에 있는거 주워옴
+
         var actorTableData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_PLAYER);
         var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == (actorTableData?.actor_id ?? 0));
-        var actorMonsterDatas = GameDataManager.Instance._actorDatas.FindAll(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
 
         var pcPrefab = GameUtil.GetActorPrefab(actorTableData?.rsc_id ?? 0);
-        pcPrefab.transform.SetParent(GameObject.Find(actorParent).transform);
+        pcPrefab.transform.SetParent(GameObject.Find(GameMapManager.Instance.actorParent).transform);
         player = GameActormanager.Instance.GetActor(pcPrefab.name);
         player.data.Init(playableTableData?.stat_hp ?? 0);
         player.OnUpdateHp();
         
-        for (int i = 0; i < actorMonsterDatas.Count; ++i)
-        {
-            var actorPrefab = GameUtil.GetActorPrefab(actorMonsterDatas[i]?.rsc_id ?? 0);
-            actorPrefab.transform.SetParent(GameObject.Find(actorParent).transform);
-            var monsterData = GameDataManager.Instance._monsterTableDatas.Find(_ => _.actor_id == actorMonsterDatas[i].actor_id);
-            enemy.Add(GameActormanager.Instance.GetActor(actorPrefab.name));
-
-            var enemyData = new ActorEnemyData();
-            enemyData.Init(monsterData?.stat_hp?? 0);
-            enemyData.InitAP(monsterData?.skill_pattern_group ?? 0);
-            enemy[i].data = enemyData;
-            enemy[i].OnUpdateHp();
-        }
-
         
         var sourceTableData = GameDataManager.Instance._spellSourceTableDatas;
 
@@ -75,6 +59,29 @@ public class GameBattleManager : Singleton<GameBattleManager>
             source.Init(sourceTableData[i]?.source_id ?? 0, MakeSpell);
             _sources.Add(source);
         }
+        GameMapManager.Instance.SpawnActors();
+    }
+
+    public void UpdateEnemyHp()
+    {
+        for (int i = 0; i < enemy.Count; ++i)
+        {
+            enemy[i].OnUpdateHp();
+        }
+    }
+
+    public void SetEnemyData(int i, ActorEnemyData enemyData)
+    {
+        enemy[i].data = enemyData;
+    }
+
+    public void SpawnEnemy(GameActor actorPrefab)
+    {
+        enemy.Add(GameActormanager.Instance.GetActor(actorPrefab.name));
+    }
+    public void RemoveAllEnemy(GameActor actorPrefab)
+    {
+        
     }
 
     public GameSpellSource GetSource(int index)
@@ -112,7 +119,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
             var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
             switch (effect.target)
             {
-                case TARGET_TYPE.TARGET_TYPE_ALLY:
+                case TARGET_TYPE.TARGET_TYPE_SELF:
                 {
                     skillEffectBase.DoSkill(new List<GameActor> {player}, player);
                 } break;
@@ -121,10 +128,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
                     skillEffectBase.DoSkill(enemy, player);
                 } break;
             }
-
-            
             ++passivePoint;
-            GameTurnManager.Instance.TurnStart();
         }
         else
         {
@@ -132,14 +136,13 @@ public class GameBattleManager : Singleton<GameBattleManager>
         }
     }
     /// <summary>
-    ///  player 가 적에 주는 Damage
+    ///  적이 주는 Damage
     /// </summary>
     /// <param name="damage"></param>
     public void DoSKillEnemyTurn()
     {
-        if (GameTurnManager.Instance.IsMyTurn == false)
+        if (IsEnemyTurn() == true)
         {
-            
             for (int i = 0; i < enemy.Count; ++i)
             {
                 var skill = ((ActorEnemyData)enemy[i].data).GetSkill();
@@ -149,7 +152,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
                     var skillEffectBase = GameUtil.GetSkillEffectBase(skilleffect);
                     switch (skilleffect.target)
                     {
-                        case TARGET_TYPE.TARGET_TYPE_ALLY:
+                        case TARGET_TYPE.TARGET_TYPE_SELF:
                         {
                             skillEffectBase.DoSkill(new List<GameActor> {enemy[i]}, enemy[i]);
                         } break;
@@ -245,5 +248,19 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         AddSpell(spellID);
         OnUpdateCard?.Invoke();
+    }
+
+    public bool IsAllEnemyDead()
+    {
+        for (int i = 0; i < enemy.Count; ++i)
+        {
+            if (enemy[i].data.GetHp() > 0)
+            {
+                return false;
+            };
+        }
+
+        return true;
+        
     }
 }

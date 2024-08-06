@@ -95,7 +95,7 @@ public class UISpell : UIDragable
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
         Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 2f);
         var colideObject = Physics2D.RaycastAll(ray.origin, ray.direction);
-
+        bool isUseSkill = false;
         foreach (var hit in colideObject)
         {
             var actor = hit.transform.GetComponent<GameActor>();
@@ -107,12 +107,13 @@ public class UISpell : UIDragable
                 {
                     var effect = GameDataManager.Instance._spelleffectDatas.Find(_ => spellEffect[i] == _.effect_id);
                     GameBattleManager.Instance.DoSkill(this._spellTableData.tableData.spell_id ?? 0, effect);
-
+                    isUseSkill = true;
                 }
             }
         }
 
         GameBattleManager.Instance.MinusAP(1);
+        GameTurnManager.Instance.TurnStart();
         MoveReset();
     }
 

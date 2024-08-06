@@ -21,7 +21,7 @@ public class ActorDataBase
     // - 피해량 = (스킬 공격력 + 피해 정수 증폭) * (1+피해 계수 증폭) * (1-대상 받는피해량 계수 증감)
     // - 회복공식 = 회복량 * (1+회복 계수 증폭)
     // - 명중 체크 = 100*(1 - 회피율)%, (min=30%)
-    public void Init(int hp)
+    public void Init(int hp)    
     {
         Hp = hp;
         MaxHp = hp;

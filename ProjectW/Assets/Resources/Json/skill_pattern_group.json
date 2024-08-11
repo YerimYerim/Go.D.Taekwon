@@ -102,5 +102,21 @@
     "phase_condition_value": null,
     "pattern_type": 0,
     "skill_group": 200040301
+  },
+  {
+    "skill_pattern_group_id": 2010101,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 0,
+    "skill_group": 201010101
+  },
+  {
+    "skill_pattern_group_id": 2010102,
+    "phase": 2,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 0,
+    "skill_group": 201010201
   }
 ]

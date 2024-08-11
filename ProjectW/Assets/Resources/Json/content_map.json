@@ -1,8 +1,17 @@
 [
   {
     "map_id": 101,
-    "map_type": null,
-    "actor_id": [20001],
+    "map_type": 0,
+    "actor_id": [20001,20001],
+    "map_bg": "temp_stage_bg",
+    "map_img": "temp_stage_img",
+    "map_name": "map_name_101",
+    "map_desc": "map_desc_101"
+  },
+  {
+    "map_id": 101,
+    "map_type": 0,
+    "actor_id": [20002,20003],
     "map_bg": "temp_stage_bg",
     "map_img": "temp_stage_img",
     "map_name": "map_name_101",
@@ -10,8 +19,8 @@
   },
   {
     "map_id": 102,
-    "map_type": null,
-    "actor_id": [20001, 20001],
+    "map_type": 1,
+    "actor_id": [20003,20101,20003],
     "map_bg": "temp_stage_bg",
     "map_img": "temp_stage_img",
     "map_name": "map_name_102",
@@ -19,7 +28,7 @@
   },
   {
     "map_id": 103,
-    "map_type": null,
+    "map_type": 2,
     "actor_id": [20003],
     "map_bg": "temp_stage_bg",
     "map_img": "temp_stage_img",

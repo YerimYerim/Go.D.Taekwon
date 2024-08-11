@@ -1,7 +1,132 @@
 [
   {
-    "material_1": 1,
-    "material_2": 2,
-    "result_spell": 3
+    "material_1": 10101,
+    "material_2": 10101,
+    "result_spell": 20201
+  },
+  {
+    "material_1": 10101,
+    "material_2": 10102,
+    "result_spell": 20202
+  },
+  {
+    "material_1": 10101,
+    "material_2": 10103,
+    "result_spell": 20203
+  },
+  {
+    "material_1": 10101,
+    "material_2": 10104,
+    "result_spell": 20204
+  },
+  {
+    "material_1": 10102,
+    "material_2": 10102,
+    "result_spell": 20205
+  },
+  {
+    "material_1": 10102,
+    "material_2": 10103,
+    "result_spell": 20206
+  },
+  {
+    "material_1": 10102,
+    "material_2": 10104,
+    "result_spell": 20207
+  },
+  {
+    "material_1": 10103,
+    "material_2": 10103,
+    "result_spell": 20208
+  },
+  {
+    "material_1": 10103,
+    "material_2": 10104,
+    "result_spell": 20209
+  },
+  {
+    "material_1": 10104,
+    "material_2": 10104,
+    "result_spell": 20210
+  },
+  {
+    "material_1": 20201,
+    "material_2": 10101,
+    "result_spell": 30101
+  },
+  {
+    "material_1": 20202,
+    "material_2": 10101,
+    "result_spell": 30201
+  },
+  {
+    "material_1": 20202,
+    "material_2": 10102,
+    "result_spell": 30202
+  },
+  {
+    "material_1": 20203,
+    "material_2": 10101,
+    "result_spell": 30301
+  },
+  {
+    "material_1": 20203,
+    "material_2": 10103,
+    "result_spell": 30302
+  },
+  {
+    "material_1": 20204,
+    "material_2": 10101,
+    "result_spell": 30401
+  },
+  {
+    "material_1": 20204,
+    "material_2": 10104,
+    "result_spell": 30402
+  },
+  {
+    "material_1": 20205,
+    "material_2": 10102,
+    "result_spell": 30501
+  },
+  {
+    "material_1": 20206,
+    "material_2": 10102,
+    "result_spell": 30601
+  },
+  {
+    "material_1": 20206,
+    "material_2": 10103,
+    "result_spell": 30602
+  },
+  {
+    "material_1": 20207,
+    "material_2": 10102,
+    "result_spell": 30701
+  },
+  {
+    "material_1": 20207,
+    "material_2": 10104,
+    "result_spell": 30702
+  },
+  {
+    "material_1": 20208,
+    "material_2": 10103,
+    "result_spell": 30801
+  },
+  {
+    "material_1": 20209,
+    "material_2": 10103,
+    "result_spell": 30901
+  },
+  {
+    "material_1": 20209,
+    "material_2": 10104,
+    "result_spell": 30902
+  },
+  {
+    "material_1": 20210,
+    "material_2": 10104,
+    "result_spell": 31001
   }
 ]

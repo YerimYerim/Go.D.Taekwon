@@ -2,52 +2,52 @@
   {
     "material_1": 10101,
     "material_2": 10101,
-    "result_spell": 20201
+    "result_spell": 20101
   },
   {
     "material_1": 10101,
     "material_2": 10102,
-    "result_spell": 20202
+    "result_spell": 20102
   },
   {
     "material_1": 10101,
     "material_2": 10103,
-    "result_spell": 20203
+    "result_spell": 20103
   },
   {
     "material_1": 10101,
     "material_2": 10104,
-    "result_spell": 20204
+    "result_spell": 20104
   },
   {
     "material_1": 10102,
     "material_2": 10102,
-    "result_spell": 20205
+    "result_spell": 20105
   },
   {
     "material_1": 10102,
     "material_2": 10103,
-    "result_spell": 20206
+    "result_spell": 20106
   },
   {
     "material_1": 10102,
     "material_2": 10104,
-    "result_spell": 20207
+    "result_spell": 20107
   },
   {
     "material_1": 10103,
     "material_2": 10103,
-    "result_spell": 20208
+    "result_spell": 20108
   },
   {
     "material_1": 10103,
     "material_2": 10104,
-    "result_spell": 20209
+    "result_spell": 20109
   },
   {
     "material_1": 10104,
     "material_2": 10104,
-    "result_spell": 20210
+    "result_spell": 20110
   },
   {
     "material_1": 20201,

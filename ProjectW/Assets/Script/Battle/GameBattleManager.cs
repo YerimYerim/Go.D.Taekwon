@@ -14,12 +14,11 @@ public class GameBattleManager : Singleton<GameBattleManager>
     public int passivePoint = 1;
     public readonly List<GameDeckManager.SpellData> spellDatas = new();
     public List<int> spellIDs = new();
-
+    public List<GameSpellSource> _sources = new();
     public event Action<int> OnEventRemoveCard;
     public event Action OnUpdateCard;
 
     // sourceId, spellSource
-    public List<GameSpellSource> _sources = new();
 
     protected override void Awake()
     {
@@ -36,7 +35,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
         spellDatas.Clear();
         foreach (var cardKey in spellIDs)
         {
-            AddSpell(cardKey);
+            AddSpell(cardKey, 1);
         }
         OnUpdateCard?.Invoke();
         
@@ -86,7 +85,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
 
     public GameSpellSource GetSource(int index)
     {
-        if (index >= _sources.Count)
+        if (index >=  _sources.Count)
         {
             GameDataManager.Instance.LoadData();
             var sourceTableData = GameDataManager.Instance._spellSourceTableDatas;
@@ -100,11 +99,12 @@ public class GameBattleManager : Singleton<GameBattleManager>
         }
         return _sources[index];
     }
-    private void AddSpell(int cardKey)
+    private void AddSpell(int cardKey, int amount)
     {
         SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
         var spellData = new GameDeckManager.SpellData(spellTableData);
-        spellDatas.Add(spellData);
+        for(int i = 0; i< amount; ++i)
+            spellDatas.Add(spellData);
     }
 
     public int GetMyHp()
@@ -244,9 +244,9 @@ public class GameBattleManager : Singleton<GameBattleManager>
         }
     }
 
-    private void MakeSpell(int spellID)
+    private void MakeSpell(int spellID, int amount)
     {
-        AddSpell(spellID);
+        AddSpell(spellID, amount);
         OnUpdateCard?.Invoke();
     }
 

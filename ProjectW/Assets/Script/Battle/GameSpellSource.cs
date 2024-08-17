@@ -105,4 +105,18 @@ public class GameSpellSource
     {
         _productionSpellId = _tableData.spell_id ?? 0;
     }
+    
+    public int GetRemainAp()
+    {
+        return _remainAP;
+    }
+
+    /// <summary>
+    /// _remainAP 감소
+    /// </summary>
+    public void ReduceAP(int amount)
+    {
+        for(int i = 0; i< amount; ++i)
+            UpdateAP();
+    }
 }

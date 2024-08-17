@@ -86,8 +86,9 @@ GameObject:
   - component: {fileID: 6276790505816997729}
   - component: {fileID: 7586303695007603839}
   - component: {fileID: 5306746298516850886}
+  - component: {fileID: 1865013345979936273}
   m_Layer: 5
-  m_Name: UIPopUpMapSelect
+  m_Name: UI_PopUp_MapSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +154,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1865013345979936273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636910092113771041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9c01eb128643447ab94dc7ef07d792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapSelectObjects: []
 --- !u!1 &3841867969916814956
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,13 +735,78 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4913677519012971775, guid: d2d334dc6da122c41ad0edfdcae30856, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3853746106994130250}
   m_SourcePrefab: {fileID: 100100000, guid: d2d334dc6da122c41ad0edfdcae30856, type: 3}
+--- !u!114 &4747816616005914863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8358063657651258596, guid: d2d334dc6da122c41ad0edfdcae30856, type: 3}
+  m_PrefabInstance: {fileID: 3611443332965536779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8515901419546104052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8217516702134637960 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4617341310402953603, guid: d2d334dc6da122c41ad0edfdcae30856, type: 3}
   m_PrefabInstance: {fileID: 3611443332965536779}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8515901419546104052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4913677519012971775, guid: d2d334dc6da122c41ad0edfdcae30856, type: 3}
+  m_PrefabInstance: {fileID: 3611443332965536779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3853746106994130250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8515901419546104052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594a6aa432c32ca4a8b440354fd86f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 4747816616005914863}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  minLongClickTime: 0.1
+  touchSoundKey: 
 --- !u!1001 &5170852146814166814
 PrefabInstance:
   m_ObjectHideFlags: 0

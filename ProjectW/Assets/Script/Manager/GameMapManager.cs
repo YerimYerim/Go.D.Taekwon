@@ -3,36 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using Script.Manager;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameMapManager : Singleton<GameMapManager>
 {
     private MapData curMap = new ();
-    public string actorParent = "Actors";
+    public string enemy = "Enemy";
+    public string actor = "Actors";
 
 
     protected override void Init()
     {
         base.Init();
-        curMap.mapId = 101;
+        curMap.mapId = 1000101;
     }
     public void SpawnActors()
     {
         var curMapData = GameDataManager.Instance._contentMapTableDatas.Find(_ => _.map_id == curMap.mapId);
         var curMapActor = curMapData.actor_id.ToList();
-        var actorMonsterDatas = GameDataManager.Instance._actorDatas.FindAll(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER
-            && curMapActor.Contains(_.actor_id ?? 0) == true);
+        List<ActorTableData> actorMonsterDatas = new();
+        for (int i = 0; i < curMapActor.Count; ++i)
+        {
+            var actorData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_id == curMapActor[i] && _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
+            actorMonsterDatas.Add(actorData);
+        }
         for (int i = 0; i < actorMonsterDatas.Count; ++i)
         {
             var actorPrefab = GameUtil.GetActorPrefab(actorMonsterDatas[i]?.rsc_id ?? 0);
-            actorPrefab.transform.SetParent(GameObject.Find(actorParent).transform);
+            actorPrefab.name = actorPrefab.name + "_" + (i + 1);
+            
+            GameActormanager.Instance.AddActors(actorPrefab.name, actorPrefab);
+            Transform prefabTransform = actorPrefab.transform;
+            
+            var prefabTransformParent = GameObject.Find(enemy + "_" + (i + 1)).transform;
+            prefabTransform.SetParent(prefabTransformParent);
+            prefabTransform.position = prefabTransformParent.position;
+
             var monsterData = GameDataManager.Instance._monsterTableDatas.Find(_ => _.actor_id == actorMonsterDatas[i].actor_id);
             var enemyData = new ActorEnemyData();
+            
             enemyData.Init(monsterData?.stat_hp?? 0);
             enemyData.InitAP(monsterData?.skill_pattern_group ?? 0);
-            
+
             GameBattleManager.Instance.SpawnEnemy(GameActormanager.Instance.GetActor(actorPrefab.name));
             GameBattleManager.Instance.SetEnemyData(i,enemyData);
         }
         GameBattleManager.Instance.UpdateEnemyHp();
+    }
+
+    public void SetMap(int mapId)
+    {
+        curMap.mapId = mapId;
+        SpawnActors();
+    }
+
+    public void ShowMapSelect()
+    {
+
+
+        //GameDataManager.Instance._contentMapTableDatas;
+        //GameDataManager.Instance._contentChapterTableDatas;
+        //GameDataManager.Instance._contentStageTableDatas;
+        //if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
+        //{
+        //    ui.SetData();
+        //};
     }
 }

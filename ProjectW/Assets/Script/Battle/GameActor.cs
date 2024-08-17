@@ -14,7 +14,6 @@ public class GameActor : MonoBehaviour
     
     private void Awake()
     {
-        GameActormanager.Instance.AddActors(transform.gameObject.name, this);
         CreateUIActorBottom();
     }
     
@@ -34,7 +33,15 @@ public class GameActor : MonoBehaviour
 
     public void OnUpdateHp()
     {
-        uiActorBottom.SetHPUI(data.MaxHp, data.Hp);
+        if (data.Hp <= 0)
+        {
+            this.gameObject.SetActive(false);
+            uiActorBottom.Hide();
+        }
+        else
+        {
+            uiActorBottom.SetHPUI(data.MaxHp, data.Hp);
+        }
     }
 
     public void OnSelected()

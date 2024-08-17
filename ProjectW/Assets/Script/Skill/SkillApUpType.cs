@@ -6,7 +6,18 @@ public class SkillApUp : SkillEffectBase, ISkillTargetAPUp
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
-        AddAp(targetActor);
+        for (int i = 0; i < targetActor.Count; ++i)
+        {
+            if(targetActor[i].data is ActorEnemyData)
+                ((ActorEnemyData)targetActor[i].data).AddAP(table?.value_1 ?? 0);
+            else if (targetActor[i].data is ActorPlayerData)
+            {
+                for(int j  = 0; j< GameBattleManager.Instance._sources.Count; ++j)
+                {
+                    GameBattleManager.Instance._sources[j].ReduceAP((table?.value_1 ?? 0));
+                }
+            }
+        }
     }
 
     public override void InitSkillType(SpellEffectTableData data)

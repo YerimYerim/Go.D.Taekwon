@@ -60,7 +60,7 @@ public class UICardDeckOnHand : UIBase
         SetUI();
     }
 
-    public void RemoveCard(int id)
+    public void RemoveCard()
     {
         SetUI();
     }

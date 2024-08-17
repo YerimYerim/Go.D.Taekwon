@@ -109,14 +109,14 @@ namespace Script.UI
         private void PressLong()
         {
             LongPressEvent?.Invoke();
-            Debug.Log("long Press");
+  //          Debug.Log("long Press");
         }
 
         private void OnLongClick()
         {
             LongClickEvent?.Invoke();
             _isLongClick = false;
-            Debug.Log("long Click");
+//            Debug.Log("long Click");
         }
 
         private void OnHoverEventStart()

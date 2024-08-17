@@ -30,7 +30,6 @@ public class UI_Cheat : MonoBehaviour
 
     void OnClick3()
     {
-        GameBattleManager.Instance.HealEnemyActor(5);
         SetText();
     }
 

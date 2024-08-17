@@ -9,7 +9,7 @@ public class BTNodeIsDraw : BTNodeAction
         if (GameBattleManager.Instance.IsDraw())
         {
             Debug.Log("원소 카드를 뽑았습니다.");
-            GameBattleManager.Instance.passivePoint += 1;
+            GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.Draw);
             return State.Success;
         };
         return State.Failure;

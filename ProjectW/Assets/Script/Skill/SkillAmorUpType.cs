@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class SkillAmorUpType : SkillEffectBase, ISkillAmorUp
@@ -8,7 +9,12 @@ public class SkillAmorUpType : SkillEffectBase, ISkillAmorUp
     {
         for (int i = 0; i < targetActor.Count; ++i)
         {
-            ((ActorEnemyData)targetActor[i].data).AddAP(table?.value_1 ?? 0);
+            if(targetActor[i].data is ActorEnemyData)
+                ((ActorEnemyData)targetActor[i].data).AddAmorStat(table?.value_1 ?? 0);
+            else if (targetActor[i].data is ActorPlayerData)
+            {
+                ((ActorPlayerData)targetActor[i].data).AddAmorStat(table?.value_1 ?? 0);
+            }
         }
     }
 

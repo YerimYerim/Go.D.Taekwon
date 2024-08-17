@@ -12,6 +12,6 @@
 
     public void AddAmor(int amorValue)
     {
-        amorValue += amor;
+        amor += amorValue;
     }
 }

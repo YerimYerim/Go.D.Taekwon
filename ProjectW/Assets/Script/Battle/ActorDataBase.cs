@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public class ActorDataBase
@@ -30,7 +31,7 @@ public class ActorDataBase
     }
     public void DoDamaged(int damage)
     {
-        Hp -= amor.GetFinalDamage(damage);
+        Hp -= Math.Max(0,amor.GetFinalDamage(damage));
     }
     
     public void DoHeal(int addHp)

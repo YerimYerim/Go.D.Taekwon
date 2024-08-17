@@ -1,12 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
 using Script.Manager;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameTurnManager : Singleton<GameTurnManager>
 {   
     private int _actionPoint;
-    private BTNodeSelector _root = new BTNodeSelector();
-    public bool IsMyTurn = false;
+    private readonly BTNodeSelector _root = new();
+
+    /// <summary>
+    /// 턴을 실행할때마다 실행할 액션을 저장하는 스택
+    /// state + 지연시간
+    /// </summary>
+    private Queue<TurnState>  _turnStack = new();
+
+    public enum TurnState
+    {
+        PlayerTurn,
+        EnemyTurn,
+        Draw,
+        GameOver,
+        MapClear
+    }
 
     protected override void Awake()
     {
@@ -28,19 +43,11 @@ public class GameTurnManager : Singleton<GameTurnManager>
         var actGameOver = new BTNodeGameOver();
         // 적들 중에 AP <= 0  이하인게 하나 이상 있는가.
         var actIsEnemyTurn = new BTNodeIsEnemyTurn();
-        // EnemyTurn selector 
-        var actEnemyTurnSequence = new BTNodeSequence();
-        // 적의 공격
-        var actEnemyTurnAttack = new BTNodeEnemyAttack();
-        // 도망을 선택한 적이 있는가
-        var actIsRunaway = new BTNodeIsRunaway();
-        // 도망
-        var actSelectedRunaway = new BTNodeSelectedRunaway();
         // 드로우 할건가
         var actIsDraw = new BTNodeIsDraw();
-        // 유저 선택
+        // 유저 선택 차례
         var actPlayerTurn = new BTNodePlayerTurn();
-        // 모든 적을 죽였는간
+        // 모든 적을 죽였는가
         var mapClear = new BTNodeIsMapClear();
 
         _root.AddChild(mapClear);
@@ -50,19 +57,45 @@ public class GameTurnManager : Singleton<GameTurnManager>
         _root.AddChild(actPlayerTurn);
         
         actIsDead.AddChild(actGameOver);
-        actIsEnemyTurn.AddChild(actEnemyTurnSequence);
-        actEnemyTurnSequence.AddChild(actEnemyTurnAttack);
-        actEnemyTurnSequence.AddChild(actIsRunaway);
-        actIsRunaway.AddChild(actSelectedRunaway);
     }
     public void TurnStart()
     {
         _root.Evaluate();
-        GameBattleManager.Instance.DoTurn();
+       //StartCoroutine(DoTurnStack());
+       // GameBattleManager.Instance.DoTurn();
     }
-
-    public void DoActionEnemy()
+    
+    public void AddTurnStack(TurnState turnState)
     {
-        
+        //_turnStack.Enqueue(turnState);
+    }
+    
+    public IEnumerator DoTurnStack()
+    {
+        while (_turnStack.Count > 0)
+        {
+            var state = _turnStack.Dequeue();
+            
+            switch (state)
+            {
+                case TurnState.PlayerTurn:
+                    yield return new WaitForSeconds(1);
+                    TurnStart();
+                    break;
+                case TurnState.EnemyTurn:
+                    TurnStart();
+                    yield return new WaitForSeconds(1);
+                    break;
+                case TurnState.Draw:
+                    yield return new WaitForSeconds(1);
+                    break;
+                case TurnState.GameOver:
+                    yield return new WaitForSeconds(1);
+                    break;
+                case TurnState.MapClear:
+                    yield return new WaitForSeconds(1);
+                    break;
+            }
+        }
     }
 }

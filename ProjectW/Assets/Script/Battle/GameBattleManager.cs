@@ -1,21 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Script.Manager;
 using UnityEngine;
 
-/// <summary>
-/// battlemanager
-/// </summary>
 public class GameBattleManager : Singleton<GameBattleManager>
 {
     public List<GameActor> enemy = new();
     public GameActor player = new();
     
-    public int passivePoint = 1;
     public readonly List<GameDeckManager.SpellData> spellDatas = new();
     public List<int> spellIDs = new();
     public List<GameSpellSource> _sources = new();
-    public event Action<int> OnEventRemoveCard;
+    public event Action OnEventRemoveCard;
     public event Action OnUpdateCard;
 
     // sourceId, spellSource
@@ -44,9 +41,12 @@ public class GameBattleManager : Singleton<GameBattleManager>
         var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == (actorTableData?.actor_id ?? 0));
 
         var pcPrefab = GameUtil.GetActorPrefab(actorTableData?.rsc_id ?? 0);
-        pcPrefab.transform.SetParent(GameObject.Find(GameMapManager.Instance.actorParent).transform);
+        pcPrefab.transform.SetParent(GameObject.Find(GameMapManager.Instance.actor).transform);
+        GameActormanager.Instance.AddActors(pcPrefab.name, pcPrefab);
         player = GameActormanager.Instance.GetActor(pcPrefab.name);
-        player.data.Init(playableTableData?.stat_hp ?? 0);
+        var playerData =  new ActorPlayerData();
+        playerData.Init(playableTableData?.stat_hp ?? 0);
+        player.data = playerData;
         player.OnUpdateHp();
         
         
@@ -103,32 +103,53 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
         var spellData = new GameDeckManager.SpellData(spellTableData);
-        for(int i = 0; i< amount; ++i)
+        for (int i = 0; i < amount; ++i)
+        {
+            Debug.Log(GameUtil.GetString(spellData.tableData.spell_name) + amount + "생산");
             spellDatas.Add(spellData);
+        }
     }
 
     public int GetMyHp()
     {
         return player.data.GetHp();
     }
-    public void DoSkill(int spellid, SpellEffectTableData effect)
+    public void DoSkill(GameDeckManager.SpellData spellData, GameActor targetActor)
     {
         if (Instance.IsEnemyTurn() == false)
         {
-            Instance.RemoveCard(spellid);
-            var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
-            switch (effect.target)
+            Instance.RemoveCard(spellData);
+            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
-                case TARGET_TYPE.TARGET_TYPE_SELF:
+                var spellEffect = spellData.tableData.spell_effect;
+                for (int i = 0; i < spellEffect.Length; ++i)
                 {
-                    skillEffectBase.DoSkill(new List<GameActor> {player}, player);
-                } break;
-                case TARGET_TYPE.TARGET_TYPE_ENEMY:
-                {
-                    skillEffectBase.DoSkill(enemy, player);
-                } break;
-            }
-            ++passivePoint;
+                    var index = i;
+                    var effect = GameDataManager.Instance._spelleffectDatas.Find(_ => spellEffect[index] == _.effect_id);
+                    var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
+                    switch (effect.target)
+                    {
+                        case TARGET_TYPE.TARGET_TYPE_SELF:
+                        {
+                            skillEffectBase.DoSkill(new List<GameActor> {player}, player);
+
+                        }
+                            break;
+                        case TARGET_TYPE.TARGET_TYPE_ENEMY:
+                        {
+                            if(effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
+                                skillEffectBase.DoSkill(new List<GameActor> {targetActor}, player);
+                            else if(effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
+                                skillEffectBase.DoSkill(enemy, player);
+                        }
+                            break;
+                    }
+                }
+                MinusAP(1);
+                GameTurnManager.Instance.TurnStart();
+            }), 0.1f);
+
+            CommandManager.Instance.StartGameCommand();
         }
         else
         {
@@ -139,7 +160,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
     ///  적이 주는 Damage
     /// </summary>
     /// <param name="damage"></param>
-    public void DoSKillEnemyTurn()
+    public void DoSkillEnemyTurn()
     {
         if (IsEnemyTurn() == true)
         {
@@ -150,45 +171,40 @@ public class GameBattleManager : Singleton<GameBattleManager>
                 {
                     var skilleffect = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill?.effect_id);
                     var skillEffectBase = GameUtil.GetSkillEffectBase(skilleffect);
+                    var index = i;
                     switch (skilleffect.target)
                     {
                         case TARGET_TYPE.TARGET_TYPE_SELF:
                         {
-                            skillEffectBase.DoSkill(new List<GameActor> {enemy[i]}, enemy[i]);
+                            EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
+                            {
+                                skillEffectBase.DoSkill(new List<GameActor> {enemy[index]}, enemy[index]);
+                                ((ActorEnemyData) enemy[index].data).ResetAP();
+                            });
+                            CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
+                        
                         } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
                         {
-                            skillEffectBase.DoSkill(new List<GameActor>{player}, enemy[i]);
+                            EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
+                            {
+                                skillEffectBase.DoSkill(new List<GameActor>{player}, enemy[index]);
+                                ((ActorEnemyData) enemy[index].data).ResetAP();
+                                player.OnUpdateHp();
+                            });
+                            CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
+                            
                         } break;
                     }
-                    ((ActorEnemyData) enemy[i].data).ResetAP();
+                   
                 }
             }
-            player.OnUpdateHp();
-            ++passivePoint;
-            GameTurnManager.Instance.TurnStart();
+            CommandManager.Instance.AddCommand(new EnemyTurnCommand(GameTurnManager.Instance.TurnStart),0.5f);
+            CommandManager.Instance.StartGameCommand();
         }
         else
         {
             Debug.Log("내 턴입니다. 적이 공격할 수 없습니다.");
-        }
-    }
-    public void HealEnemyActor(int addHp)
-    {
-        if (GameTurnManager.Instance.IsMyTurn == false)
-        {
-            for (int i = 0; i < enemy.Count; ++i)
-            {
-                enemy[i].data.DoHeal(addHp);
-                enemy[i].OnUpdateHp();
-                ((ActorEnemyData)enemy[i].data).ResetAP();
-            }
-            ++passivePoint;
-            GameTurnManager.Instance.TurnStart();
-        }
-        else
-        {
-            Debug.Log("내 턴입니다. 적이 회복 할 수 없습니다.");
         }
     }
 
@@ -217,18 +233,16 @@ public class GameBattleManager : Singleton<GameBattleManager>
         player.UpdateDebuff();
         player.UpdateBuff();
         player.OnUpdateHp();
-
     }
     public bool IsDraw()
     {
-        // ?? : config  로 바꿀예정
-        return passivePoint % 5 == 0;
+        return _sources.Any(t => t.GetRemainAp() <= 0);
     }
 
-    private void RemoveCard(int id)
+    private void RemoveCard(GameDeckManager.SpellData spell)
     {
-        Instance.spellIDs.Remove(id);
-        OnEventRemoveCard?.Invoke(id);
+        spellDatas.Remove(spell);
+        OnEventRemoveCard?.Invoke();
     }
 
     public void MinusAP(int minusAP)

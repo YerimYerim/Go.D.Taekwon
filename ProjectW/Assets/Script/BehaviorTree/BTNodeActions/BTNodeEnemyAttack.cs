@@ -9,6 +9,8 @@ public class BTNodeEnemyAttack : BTNodeAction
         Debug.Log("BTNodeEnemyAttack");
         if (GameBattleManager.Instance.IsEnemyTurn())
         {
+            GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.EnemyTurn);
+
             return State.Running;
         };
         return State.Failure;

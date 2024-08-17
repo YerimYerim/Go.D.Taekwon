@@ -1270,7 +1270,7 @@
   },
   {
     "effect_id": 30601,
-    "effect_tag": 4,
+    "effect_tag": 5,
     "effect_type": 9,
     "value_1": 1,
     "remain_turn_count": 0,
@@ -1279,7 +1279,7 @@
   },
   {
     "effect_id": 30602,
-    "effect_tag": 4,
+    "effect_tag": 5,
     "effect_type": 9,
     "value_1": 2,
     "remain_turn_count": 0,
@@ -1288,7 +1288,7 @@
   },
   {
     "effect_id": 30603,
-    "effect_tag": 4,
+    "effect_tag": 5,
     "effect_type": 9,
     "value_1": 3,
     "remain_turn_count": 0,
@@ -1297,7 +1297,7 @@
   },
   {
     "effect_id": 30604,
-    "effect_tag": 4,
+    "effect_tag": 5,
     "effect_type": 9,
     "value_1": 4,
     "remain_turn_count": 0,
@@ -1306,7 +1306,7 @@
   },
   {
     "effect_id": 30605,
-    "effect_tag": 4,
+    "effect_tag": 5,
     "effect_type": 9,
     "value_1": 5,
     "remain_turn_count": 0,
@@ -1662,7 +1662,7 @@
     "value_1": 1,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100302,
@@ -1671,7 +1671,7 @@
     "value_1": 2,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100303,
@@ -1680,7 +1680,7 @@
     "value_1": 3,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100304,
@@ -1689,7 +1689,7 @@
     "value_1": 4,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100305,
@@ -1698,7 +1698,7 @@
     "value_1": 5,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100306,
@@ -1707,7 +1707,7 @@
     "value_1": 6,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100307,
@@ -1716,7 +1716,7 @@
     "value_1": 7,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100308,
@@ -1725,7 +1725,7 @@
     "value_1": 8,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100309,
@@ -1734,7 +1734,7 @@
     "value_1": 9,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 100310,
@@ -1743,7 +1743,7 @@
     "value_1": 10,
     "remain_turn_count": 0,
     "target": 3,
-    "target_count": 3
+    "target_count": 2
   },
   {
     "effect_id": 130201,
@@ -1878,6 +1878,51 @@
     "value_1": 15,
     "remain_turn_count": 0,
     "target": 3,
+    "target_count": 1
+  },
+  {
+    "effect_id": 130601,
+    "effect_tag": 5,
+    "effect_type": 9,
+    "value_1": 1,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 130602,
+    "effect_tag": 5,
+    "effect_type": 9,
+    "value_1": 2,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 130603,
+    "effect_tag": 5,
+    "effect_type": 9,
+    "value_1": 3,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 130604,
+    "effect_tag": 5,
+    "effect_type": 9,
+    "value_1": 4,
+    "remain_turn_count": 0,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 130605,
+    "effect_tag": 5,
+    "effect_type": 9,
+    "value_1": 5,
+    "remain_turn_count": 0,
+    "target": 1,
     "target_count": 1
   }
 ]

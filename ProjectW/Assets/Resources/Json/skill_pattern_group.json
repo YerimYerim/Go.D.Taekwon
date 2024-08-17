@@ -106,25 +106,41 @@
   {
     "skill_pattern_group_id": 2010101,
     "phase": 1,
-    "phase_condition": 0,
-    "phase_condition_value": null,
+    "phase_condition": 1,
+    "phase_condition_value": 0,
     "pattern_type": 0,
     "skill_group": 201010101
   },
   {
-    "skill_pattern_group_id": 2010102,
+    "skill_pattern_group_id": 2010101,
     "phase": 2,
     "phase_condition": 0,
     "phase_condition_value": null,
     "pattern_type": 0,
-    "skill_group": 201010201
+    "skill_group": 201010102
   },
   {
     "skill_pattern_group_id": 2020101,
     "phase": 1,
+    "phase_condition": 1,
+    "phase_condition_value": 0,
+    "pattern_type": 1,
+    "skill_group": 202010101
+  },
+  {
+    "skill_pattern_group_id": 2020101,
+    "phase": 2,
+    "phase_condition": 1,
+    "phase_condition_value": 0,
+    "pattern_type": 1,
+    "skill_group": 202010102
+  },
+  {
+    "skill_pattern_group_id": 2020101,
+    "phase": 3,
     "phase_condition": 0,
     "phase_condition_value": null,
     "pattern_type": 0,
-    "skill_group": 202010101
+    "skill_group": 202010103
   }
 ]

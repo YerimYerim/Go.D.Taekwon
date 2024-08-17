@@ -125,119 +125,119 @@
   },
   {
     "string_key": "spell_desc_10102",
-    "value_kor": "물의 기운입니다. 방어도 감소 (-8)"
+    "value_kor": "물의 기운입니다.\\n방어도 감소 (-7)"
   },
   {
     "string_key": "spell_desc_10103",
-    "value_kor": "공기의 기운입니다. AP 2 감소 (AP증가/감소 재정립 필요)"
+    "value_kor": "공기의 기운입니다.\\n자신 AP 1감소 or 적 AP 1증가"
   },
   {
     "string_key": "spell_desc_10104",
-    "value_kor": "흙의 기운입니다. 방어도 (+4)"
+    "value_kor": "흙의 기운입니다.\\n방어도 (+4)"
   },
   {
     "string_key": "spell_desc_20101",
-    "value_kor": "none 대미지 타입 효과 (+9) + 지속 피해 (+2/3턴)"
+    "value_kor": "플라즈마의 기운입니다.\\n대미지 타입 효과 (+8) + 지속 피해 (+2/3턴)"
   },
   {
     "string_key": "spell_desc_20102",
-    "value_kor": "증기의 기운입니다. 방어력 감소 (-10) + 대미지 타입 효과 (+8)"
+    "value_kor": "증기의 기운입니다.\\n방어력 감소 (-10) + 대미지 타입 효과 (+8)"
   },
   {
     "string_key": "spell_desc_20103",
-    "value_kor": "열의 기운입니다. AP 3 감소 + 대미지 타입 효과 (+7)"
+    "value_kor": "열의 기운입니다.\\n(자신 AP 3감소 or 적 AP 3증가) + 대미지 타입 효과 (+7)"
   },
   {
     "string_key": "spell_desc_20104",
-    "value_kor": "용암의 기운입니다. 방어도 (+6) + 대미지 타입 효과 (+7)"
+    "value_kor": "용암의 기운입니다.\\n방어도 (+6) + 대미지 타입 효과 (+7)"
   },
   {
     "string_key": "spell_desc_20105",
-    "value_kor": "none 디버프 해제 (+1)"
+    "value_kor": "(제작 금지) 바다의 기운입니다."
   },
   {
     "string_key": "spell_desc_20106",
-    "value_kor": "구름의 기운입니다. AP 증가_지속 (미구현)"
+    "value_kor": "구름의 기운입니다.\\n방어도 감소 (-10) + (자신 AP 2감소 or 적 AP 2증가)"
   },
   {
     "string_key": "spell_desc_20107",
-    "value_kor": "풀의 기운입니다. 체력 회복 효과_지속 (+3/3턴)"
+    "value_kor": "풀의 기운입니다.\\n체력 회복 효과_지속 (+3/3턴)"
   },
   {
     "string_key": "spell_desc_20108",
-    "value_kor": "바람의 기운입니다. n턴 간 AP 가속"
+    "value_kor": "바람의 기운입니다.\\n(자신 AP 1감소 or 적 AP 1증가) * 3"
   },
   {
     "string_key": "spell_desc_20109",
-    "value_kor": "모래의 기운입니다. 행동 무효화 (3턴)"
+    "value_kor": "모래의 기운입니다.\\n자신 AP 5감소 or 적 AP 5증가"
   },
   {
     "string_key": "spell_desc_20110",
-    "value_kor": "바위의 기운입니다. 방어도 (+12)"
+    "value_kor": "바위의 기운입니다.\\n방어도 (+10)"
   },
   {
     "string_key": "spell_desc_30101",
-    "value_kor": "붉은 플라즈마의 기운입니다."
+    "value_kor": "붉은 플라즈마의 기운입니다.\\n대미지 타입 효과 (+25)"
   },
   {
     "string_key": "spell_desc_30201",
-    "value_kor": "붉은 증기의 기운입니다."
+    "value_kor": "붉은 증기의 기운입니다.\\n방어력 감소 (-10) + 대미지 타입 효과 (+15)"
   },
   {
     "string_key": "spell_desc_30202",
-    "value_kor": "푸른 증기의 기운입니다."
+    "value_kor": "푸른 증기의 기운입니다.\\n방어력 감소 (-20) + 대미지 타입 효과 (+8)"
   },
   {
     "string_key": "spell_desc_30301",
-    "value_kor": "붉은 열의 기운입니다."
+    "value_kor": "붉은 열의 기운입니다.\\n(자신 AP 3감소 or 적 AP 3증가) + 대미지 타입 효과 (+15)"
   },
   {
     "string_key": "spell_desc_30302",
-    "value_kor": "하얀 열의 기운입니다."
+    "value_kor": "하얀 열의 기운입니다.\\n(자신 AP 5감소 or 적 AP 5증가) + 대미지 타입 효과 (+7)"
   },
   {
     "string_key": "spell_desc_30401",
-    "value_kor": "붉은 용암의 기운입니다."
+    "value_kor": "붉은 용암의 기운입니다.\\n방어도 (+6) + 대미지 타입 효과 (+15)"
   },
   {
     "string_key": "spell_desc_30402",
-    "value_kor": "어두운 용암의 기운입니다."
+    "value_kor": "어두운 용암의 기운입니다.\\n방어도 (+12) + 대미지 타입 효과 (+7)"
   },
   {
     "string_key": "spell_desc_30501",
-    "value_kor": "푸른 바다의 기운입니다."
+    "value_kor": "(제작 금지) 푸른 바다의 기운입니다."
   },
   {
     "string_key": "spell_desc_30601",
-    "value_kor": "푸른 구름의 기운입니다."
+    "value_kor": "(제작 금지) 푸른 구름의 기운입니다."
   },
   {
     "string_key": "spell_desc_30602",
-    "value_kor": "하얀 구름의 기운입니다."
+    "value_kor": "(제작 금지) 하얀 구름의 기운입니다."
   },
   {
     "string_key": "spell_desc_30701",
-    "value_kor": "푸른 풀의 기운입니다."
+    "value_kor": "푸른 풀의 기운입니다.\\n체력 회복 효과_지속 (+2/3턴) + 체력 회복 (+5)"
   },
   {
     "string_key": "spell_desc_30702",
-    "value_kor": "어두운 풀의 기운입니다."
+    "value_kor": "어두운 풀의 기운입니다.\\n체력 회복 효과_지속 (+4/3턴) + 방어도 (+6)"
   },
   {
     "string_key": "spell_desc_30801",
-    "value_kor": "하얀 바람의 기운입니다."
+    "value_kor": "(제작 금지) 하얀 바람의 기운입니다."
   },
   {
     "string_key": "spell_desc_30901",
-    "value_kor": "하얀 모래의 기운입니다."
+    "value_kor": "(제작 금지) 하얀 모래의 기운입니다."
   },
   {
     "string_key": "spell_desc_30902",
-    "value_kor": "어두운 모래의 기운입니다."
+    "value_kor": "(제작 금지) 어두운 모래의 기운입니다."
   },
   {
     "string_key": "spell_desc_31001",
-    "value_kor": "어두운 바위의 기운입니다."
+    "value_kor": "어두운 바위의 기운입니다.\\n방어도 (+20)"
   },
   {
     "string_key": "n_pc_temp",

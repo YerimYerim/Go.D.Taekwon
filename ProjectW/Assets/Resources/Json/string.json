@@ -248,16 +248,52 @@
     "value_kor": "임시 몬스터"
   },
   {
-    "string_key": "map_name_101",
-    "value_kor": "임시 맵 101"
+    "string_key": "map_name_1000101",
+    "value_kor": "입학식"
   },
   {
-    "string_key": "map_name_102",
-    "value_kor": "임시 맵 102"
+    "string_key": "map_name_1000201",
+    "value_kor": "동아리 가두모집"
   },
   {
-    "string_key": "map_name_103",
-    "value_kor": "임시 맵 103"
+    "string_key": "map_name_1010301",
+    "value_kor": "1학년 중간고사"
+  },
+  {
+    "string_key": "map_name_1000401",
+    "value_kor": "현장학습"
+  },
+  {
+    "string_key": "map_name_1000501",
+    "value_kor": "운동회"
+  },
+  {
+    "string_key": "map_name_1020601",
+    "value_kor": "1학년 기말고사"
+  },
+  {
+    "string_key": "map_desc_1000101",
+    "value_kor": "신입생들이 모여 있고, 상당히 소란스럽습니다. 당신에게도 시비를 걸어오는 학생을 피할 수는 없을 것 같습니다."
+  },
+  {
+    "string_key": "map_desc_1000201",
+    "value_kor": "온갖 선배님들이 군침을 흘리며 신입생들을 노려보고 있습니다. 그들과 눈이 마주친다면.. 아시죠?"
+  },
+  {
+    "string_key": "map_desc_1010301",
+    "value_kor": "중간고사는 대련 형식입니다. 중간고사에서 인정을 받아야 우습게 보이지 않을 것입니다."
+  },
+  {
+    "string_key": "map_desc_1000401",
+    "value_kor": "저마다 원하는 진로에 맞게 현장 체험 학습을 다녀옵니다. 쉽지는 않을 것 같네요."
+  },
+  {
+    "string_key": "map_desc_1000501",
+    "value_kor": "역사와 유서가 깊은 운동회는 수단과 방법을 가리지 않는 배틀로얄 식 전투로 이루어집니다. 물론 그 안에서의 담합까지 말이죠."
+  },
+  {
+    "string_key": "map_desc_1020601",
+    "value_kor": "마지막 전투인 기말고사는 교수님에게 인상적인 전투를 남겨야 합니다. 하지만 패배한 학생 중 통과했다는 말은 못 들어봤군요."
   },
   {
     "string_key": "map_desc_101",

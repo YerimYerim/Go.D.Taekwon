@@ -1,16 +1,44 @@
 [
   {
-    "stage_id": 11,
-    "map_group_1": [101, 102, 103],
-    "advent_cnt_1": 2,
+    "stage_id": 10001,
+    "map_group_1": [1000101],
+    "advent_cnt_1": 1,
     "map_group_2": [],
     "advent_cnt_2": null
   },
   {
-    "stage_id": 12,
-    "map_group_1": [101],
+    "stage_id": 10002,
+    "map_group_1": [1000201],
     "advent_cnt_1": 1,
-    "map_group_2": [102, 103],
-    "advent_cnt_2": 1
+    "map_group_2": [],
+    "advent_cnt_2": null
+  },
+  {
+    "stage_id": 10103,
+    "map_group_1": [1010301],
+    "advent_cnt_1": 1,
+    "map_group_2": [],
+    "advent_cnt_2": null
+  },
+  {
+    "stage_id": 10004,
+    "map_group_1": [1000401],
+    "advent_cnt_1": 1,
+    "map_group_2": [],
+    "advent_cnt_2": null
+  },
+  {
+    "stage_id": 10005,
+    "map_group_1": [1000501],
+    "advent_cnt_1": 1,
+    "map_group_2": [],
+    "advent_cnt_2": null
+  },
+  {
+    "stage_id": 10206,
+    "map_group_1": [1020601],
+    "advent_cnt_1": 1,
+    "map_group_2": [],
+    "advent_cnt_2": null
   }
 ]

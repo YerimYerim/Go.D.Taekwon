@@ -121,59 +121,59 @@
   },
   {
     "string_key": "spell_desc_10101",
-    "value_kor": "불의 기운입니다."
+    "value_kor": "불의 기운입니다.\\n대미지 타입 효과 (+5)"
   },
   {
     "string_key": "spell_desc_10102",
-    "value_kor": "물의 기운입니다."
+    "value_kor": "물의 기운입니다. 방어도 감소 (-8)"
   },
   {
     "string_key": "spell_desc_10103",
-    "value_kor": "공기의 기운입니다."
+    "value_kor": "공기의 기운입니다. AP 2 감소 (AP증가/감소 재정립 필요)"
   },
   {
     "string_key": "spell_desc_10104",
-    "value_kor": "흙의 기운입니다."
+    "value_kor": "흙의 기운입니다. 방어도 (+4)"
   },
   {
     "string_key": "spell_desc_20101",
-    "value_kor": "none"
+    "value_kor": "none 대미지 타입 효과 (+9) + 지속 피해 (+2/3턴)"
   },
   {
     "string_key": "spell_desc_20102",
-    "value_kor": "증기의 기운입니다."
+    "value_kor": "증기의 기운입니다. 방어력 감소 (-10) + 대미지 타입 효과 (+8)"
   },
   {
     "string_key": "spell_desc_20103",
-    "value_kor": "열의 기운입니다."
+    "value_kor": "열의 기운입니다. AP 3 감소 + 대미지 타입 효과 (+7)"
   },
   {
     "string_key": "spell_desc_20104",
-    "value_kor": "용암의 기운입니다."
+    "value_kor": "용암의 기운입니다. 방어도 (+6) + 대미지 타입 효과 (+7)"
   },
   {
     "string_key": "spell_desc_20105",
-    "value_kor": "none"
+    "value_kor": "none 디버프 해제 (+1)"
   },
   {
     "string_key": "spell_desc_20106",
-    "value_kor": "구름의 기운입니다."
+    "value_kor": "구름의 기운입니다. AP 증가_지속 (미구현)"
   },
   {
     "string_key": "spell_desc_20107",
-    "value_kor": "풀의 기운입니다."
+    "value_kor": "풀의 기운입니다. 체력 회복 효과_지속 (+3/3턴)"
   },
   {
     "string_key": "spell_desc_20108",
-    "value_kor": "바람의 기운입니다."
+    "value_kor": "바람의 기운입니다. n턴 간 AP 가속"
   },
   {
     "string_key": "spell_desc_20109",
-    "value_kor": "모래의 기운입니다."
+    "value_kor": "모래의 기운입니다. 행동 무효화 (3턴)"
   },
   {
     "string_key": "spell_desc_20110",
-    "value_kor": "바위의 기운입니다."
+    "value_kor": "바위의 기운입니다. 방어도 (+12)"
   },
   {
     "string_key": "spell_desc_30101",

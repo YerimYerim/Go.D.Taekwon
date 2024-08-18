@@ -17,7 +17,7 @@
   },
   {
     "string_key": "spell_name_20101",
-    "value_kor": "none"
+    "value_kor": "플라즈마"
   },
   {
     "string_key": "spell_name_20102",
@@ -33,7 +33,7 @@
   },
   {
     "string_key": "spell_name_20105",
-    "value_kor": "none"
+    "value_kor": "바다"
   },
   {
     "string_key": "spell_name_20106",
@@ -165,11 +165,11 @@
   },
   {
     "string_key": "spell_desc_20108",
-    "value_kor": "바람의 기운입니다.\\n(자신 AP 1감소 or 적 AP 1증가) * 2"
+    "value_kor": "바람의 기운입니다.\\n자신 AP 3감소 or 적 AP 3증가"
   },
   {
     "string_key": "spell_desc_20109",
-    "value_kor": "모래의 기운입니다.\\n자신 AP 3감소 or 적 AP 3증가"
+    "value_kor": "모래의 기운입니다.\\n(자신 AP 1감소 or 적 AP 1증가) * 2"
   },
   {
     "string_key": "spell_desc_20110",

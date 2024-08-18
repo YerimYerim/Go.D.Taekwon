@@ -27,19 +27,14 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         GameDataManager.Instance.LoadData();
         
-        // spell
-        spellIDs.AddRange(new []{10101,10103, 20104,20107,});
-        spellDatas.Clear();
-        foreach (var cardKey in spellIDs)
-        {
-            AddSpell(cardKey, 1);
-        }
+
         OnUpdateCard?.Invoke();
         
 
         var actorTableData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_type == ACTOR_TYPE.ACTOR_TYPE_PLAYER);
         var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == (actorTableData?.actor_id ?? 0));
-
+        var firstreward = GameDataManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
+        
         var pcPrefab = GameUtil.GetActorPrefab(actorTableData?.rsc_id ?? 0);
         pcPrefab.transform.SetParent(GameObject.Find(GameMapManager.Instance.actor).transform);
         GameActormanager.Instance.AddActors(pcPrefab.name, pcPrefab);
@@ -48,15 +43,18 @@ public class GameBattleManager : Singleton<GameBattleManager>
         playerData.Init(playableTableData?.stat_hp ?? 0);
         player.data = playerData;
         player.OnUpdateHp();
-        
-        
-        var sourceTableData = GameDataManager.Instance._spellSourceTableDatas;
 
-        for (int i = 0; i < sourceTableData.Count; ++i)
+
+        spellDatas.Clear();
+
+        for (int i = 0; i < firstreward.Count; ++i)
         {
+            var sourceTableData = GameDataManager.Instance._spellSourceTableDatas.Find(_=>firstreward[i].source_id == _.source_id);
             GameSpellSource source = new GameSpellSource();
-            source.Init(sourceTableData[i]?.source_id ?? 0, MakeSpell);
+            source.Init(sourceTableData?.source_id ?? 0, MakeSpell);
             _sources.Add(source);
+            
+            AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ??0);
         }
         GameMapManager.Instance.SpawnActors();
     }

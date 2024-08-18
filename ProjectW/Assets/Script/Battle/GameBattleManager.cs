@@ -116,7 +116,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         if (Instance.IsEnemyTurn() == false)
         {
-            Instance.RemoveCard(spellData);
+
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
                 var spellEffect = spellData.tableData.spell_effect;
@@ -134,14 +134,24 @@ public class GameBattleManager : Singleton<GameBattleManager>
                         } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
                         {
-                            if(effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
-                                skillEffectBase.DoSkill(new List<GameActor> {targetActor}, player);
+                            if (effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
+                            {
+                                if (targetActor != player)
+                                {
+                                    skillEffectBase.DoSkill(new List<GameActor> {targetActor}, player);
+                                    Debug.Log(targetActor.gameObject.name + "에게 사용" + (effect?.effect_type ?? null) + "수치" + (effect?.value_1 ?? 0));
+                                }
+                                else
+                                {
+                                    Debug.Log("대상이 잘못지정되었습니다. ");
+                                    return;
+                                }
+                            }
                             
-                            Debug.Log(enemy[i].gameObject.name +"에게 사용"+ (effect?.effect_type ?? null)+ "수치" + (effect?.value_1 ?? 0));
-                        }
-                            break;
+                        } break;
                     }
                 }
+                Instance.RemoveCard(spellData);
                 MinusAP(1);
                 GameTurnManager.Instance.TurnStart();
             }), 0.1f);

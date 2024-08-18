@@ -57,8 +57,7 @@ public class UISpell : UIDragable
         var otherSpellUI = FindUISpell(eventData);
         if (otherSpellUI != null)
         {
-            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ =>
-                (_.material_1 == _spellTableData.tableData.spell_id ||
+            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id ||
                  _.material_2 == _spellTableData.tableData.spell_id)
                 && (_.material_1 == otherSpellUI._spellTableData.tableData.spell_id ||
                     _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));

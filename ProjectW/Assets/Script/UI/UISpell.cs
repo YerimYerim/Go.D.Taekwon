@@ -65,21 +65,21 @@ public class UISpell : UIDragable
 
             if (spellCombineData == null)
                 return;
-            var resultSpell =
-                GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
+            SpellTableData resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
             if (resultSpell == null)
                 return;
-            MoveReset();
-            _parents.MergeSpell(otherSpellUI._spellTableData?.tableData?.spell_id ?? 0,
-                _spellTableData?.tableData?.spell_id ?? 0, resultSpell.spell_id ?? 0);
-            
-            GameBattleManager.Instance.MinusAP(1);
-        }
 
-        GameActor actor = FindGameActor(eventData);
-        if (actor != null && actor.isActiveAndEnabled)
+            _parents.MergeSpell(otherSpellUI._spellTableData?.tableData?.spell_id ?? 0, _spellTableData?.tableData?.spell_id ?? 0, resultSpell.spell_id ?? 0);
+            GameBattleManager.Instance.MinusAP(1);
+            GameTurnManager.Instance.TurnStart();
+        }
+        else
         {
-            GameBattleManager.Instance.DoSkill(_spellTableData, actor );
+            GameActor actor = FindGameActor(eventData);
+            if (actor != null && actor.isActiveAndEnabled)
+            {
+                GameBattleManager.Instance.DoSkill(_spellTableData, actor );
+            }
         }
         
         MoveReset();

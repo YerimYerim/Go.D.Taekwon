@@ -99,7 +99,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
         }
         return _sources[index];
     }
-    private void AddSpell(int cardKey, int amount)
+    public void AddSpell(int cardKey, int amount)
     {
         SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
         var spellData = new GameDeckManager.SpellData(spellTableData);

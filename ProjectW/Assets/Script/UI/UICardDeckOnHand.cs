@@ -54,9 +54,9 @@ public class UICardDeckOnHand : UIBase
 
     public void MergeSpell(int spellID01, int spellID2 ,int resultSpellID)
     {
-        GameBattleManager.Instance.spellIDs.Remove(spellID01);
-        GameBattleManager.Instance.spellIDs.Remove(spellID2);
-        GameBattleManager.Instance.spellIDs.Add(resultSpellID);
+        GameBattleManager.Instance.spellDatas.Remove(GameBattleManager.Instance.spellDatas.Find(_ => _.tableData.spell_id == spellID01));
+        GameBattleManager.Instance.spellDatas.Remove(GameBattleManager.Instance.spellDatas.Find(_ => _.tableData.spell_id == spellID2));
+        GameBattleManager.Instance.AddSpell(resultSpellID, 1);
         SetUI();
     }
 

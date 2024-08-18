@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Script.Manager;
@@ -88,5 +89,10 @@ public class GameActor : MonoBehaviour
                 currentNode = currentNode.Next; // 다음 노드로 이동
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        uiActorBottom.Hide();
     }
 }

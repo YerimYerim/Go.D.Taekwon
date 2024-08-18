@@ -21,7 +21,7 @@ public class PlayerTurnCommand : ICommand
     {
         // Logic for player turn
         OnAction?.Invoke();
-        Debug.Log("Player's turn.");
+    //    Debug.Log("Player's turn.");
     }
 }
 
@@ -35,7 +35,7 @@ public class EnemyTurnCommand : ICommand
     public void Execute()
     {
         OnAction?.Invoke();
-        Debug.Log("Enemy's turn executed.");
+//        Debug.Log("Enemy's turn executed.");
     }
 }
 
@@ -50,7 +50,7 @@ public class DrawCommand : ICommand
     {
         // Logic for draw
         OnAction?.Invoke();
-        Debug.Log("Draw executed.");
+    //    Debug.Log("Draw executed.");
     }
 }
 
@@ -66,7 +66,7 @@ public class GameOverCommand : ICommand
     {
         // Logic for game over
         OnAction?.Invoke();
-        Debug.Log("Game over executed.");
+     //   Debug.Log("Game over executed.");
     }
 }
 
@@ -82,6 +82,6 @@ public class MapClearCommand : ICommand
     {
         // Logic for map clear
         OnAction?.Invoke();
-        Debug.Log("Map clear executed.");
+   //     Debug.Log("Map clear executed.");
     }
 }

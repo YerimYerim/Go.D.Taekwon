@@ -81,4 +81,8 @@ public class ActorDataBase
         debuffs.AddLast(debuff);
     }
 
+    public int GetAmor()
+    {
+        return amor.amor;
+    }
 }

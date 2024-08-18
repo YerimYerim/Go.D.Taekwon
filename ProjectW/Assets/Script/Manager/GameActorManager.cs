@@ -35,4 +35,22 @@ public class GameActormanager : Singleton<GameActormanager>
         return null;
     }
 
+    public void RemoveAllMonsterActors()
+    {
+        List<string> keysToRemove = new List<string>();
+
+        foreach (KeyValuePair<string, GameActor> actor in actors)
+        {
+            if (actor.Value.data is ActorEnemyData)
+            {
+                Destroy(actor.Value.gameObject);
+                keysToRemove.Add(actor.Key);
+            }
+        }
+
+        foreach (string key in keysToRemove)
+        {
+            actors.Remove(key);
+        }
+    }
 }

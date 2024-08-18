@@ -14,7 +14,8 @@ public class UI_PopUp_MapSelect : UIBase
             if (i < data.Count)
             {
                 _mapSelectObjects[i].SetData(GameResourceManager.Instance.GetImage(data[i].map_img), data[i].map_name, data[i].map_desc, data[i].map_type ?? MAP_TYPE.MAP_TYPE_BATTLE_NORMAL);
-                _mapSelectObjects[i].SetButtonEvent(OnClickMapSelect);
+                var captureIndex = i;
+                _mapSelectObjects[i].SetButtonEvent(()=>OnClickMapSelect(data[captureIndex]));
                 _mapSelectObjects[i].gameObject.SetActive(true);
             }
             else
@@ -23,10 +24,10 @@ public class UI_PopUp_MapSelect : UIBase
             }
         }
     }
-    public void OnClickMapSelect()
+    public void OnClickMapSelect(ContentMapTableData data)
     {
-        //CommandManager.Instance.AddCommand(new MapClearCommand( ), 0.1f);
+        GameMapManager.Instance.OnClickMapSelect(data);
+        Hide();
     }
-    
     
 }

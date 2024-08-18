@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 public class GameMapManager : Singleton<GameMapManager>
 {
     private MapData curMap = new ();
+    
     public string enemy = "Enemy";
     public string actor = "Actors";
 
@@ -15,7 +16,11 @@ public class GameMapManager : Singleton<GameMapManager>
     protected override void Init()
     {
         base.Init();
+        
         curMap.mapId = 1000101;
+        curMap.chapterId = 1;
+        curMap.curStageList = new List<int> {10001, 10002, 10103, 10004, 10005, 10206};
+        curMap.stageId = 10001;
     }
     public void SpawnActors()
     {
@@ -59,14 +64,60 @@ public class GameMapManager : Singleton<GameMapManager>
 
     public void ShowMapSelect()
     {
+        // 현 스테이지 index 
+        var curStageIndex = curMap.curStageList.FindIndex(_ => _ == curMap.stageId);
+        // 다음 스테이지 고르기
+        var stageTable = GameDataManager.Instance._contentStageTableDatas.Find(_ => _.stage_id == curMap.curStageList[curStageIndex + 1]);
 
+        var firstGroupSelect = stageTable?.advent_cnt_1 ?? 0;
+        var firstGroupMap = stageTable?.map_group_1;
+        List<int> selectableMap = new List<int>();
+        if (firstGroupMap != null)
+        {
+            List<int> availableMaps = new List<int>(firstGroupMap);
 
-        //GameDataManager.Instance._contentMapTableDatas;
+            for (int i = 0; i < firstGroupSelect; ++i)
+            {
+                int randomIndex = Random.Range(0, availableMaps.Count);
+                selectableMap.Add(availableMaps[randomIndex]);
+                availableMaps.RemoveAt(randomIndex);
+            }
+        }
+
+        var SecondGroupSelect = stageTable?.advent_cnt_2 ?? 0;
+        var SecondGroupMap = stageTable?.map_group_2;
+        if (firstGroupMap != null)
+        {
+            List<int> availableMaps = new List<int>(SecondGroupMap);
+
+            for (int i = 0; i < SecondGroupSelect; ++i)
+            {
+                int randomIndex = Random.Range(0, availableMaps.Count);
+                selectableMap.Add(availableMaps[randomIndex]);
+                availableMaps.RemoveAt(randomIndex);
+            }
+        }
+        
+        // GameDataManager.Instance._contentMapTableDatas;
         //GameDataManager.Instance._contentChapterTableDatas;
-        //GameDataManager.Instance._contentStageTableDatas;
-        //if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
-        //{
-        //    ui.SetData();
-        //};
+        
+        curMap.stageId = stageTable?.stage_id ?? 0;
+        if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
+        {
+            var mapData = GameDataManager.Instance._contentMapTableDatas.FindAll(_ => selectableMap.Contains(_.map_id?? 0));
+            ui.SetData(mapData);
+            ui.Show();
+        };
+    }
+    public void RemoveActorsAll()
+    {
+        GameActormanager.Instance.RemoveAllMonsterActors();
+        GameBattleManager.Instance.RemoveAllEnemy();
+    }
+    public void OnClickMapSelect(ContentMapTableData data)
+    {
+        curMap.mapId = data.map_id ?? 0;
+        RemoveActorsAll();
+        SpawnActors();
     }
 }

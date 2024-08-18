@@ -78,9 +78,9 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         enemy.Add(GameActormanager.Instance.GetActor(actorPrefab.name));
     }
-    public void RemoveAllEnemy(GameActor actorPrefab)
+    public void RemoveAllEnemy()
     {
-        
+        enemy.Clear();
     }
 
     public GameSpellSource GetSource(int index)

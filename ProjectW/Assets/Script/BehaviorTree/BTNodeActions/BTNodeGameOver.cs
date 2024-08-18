@@ -6,6 +6,7 @@ public class BTNodeGameOver : BTNodeAction
     {
         Debug.Log("IS Game Over");
         GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.GameOver);
+
         return State.Failure;
     }
 }

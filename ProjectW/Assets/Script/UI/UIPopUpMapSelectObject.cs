@@ -18,8 +18,8 @@ public class UIPopUpMapSelectObject : MonoBehaviour
     public void SetData(Sprite mainImage, string title, string desc, MAP_TYPE type)
     {
         this.mainImage.sprite = mainImage;
-        this.title.text = title;
-        this.desc.text = desc;
+        this.title.text = GameUtil.GetString(title);
+        this.desc.text = GameUtil.GetString(desc);
         SetBGColor(type);
     }
     

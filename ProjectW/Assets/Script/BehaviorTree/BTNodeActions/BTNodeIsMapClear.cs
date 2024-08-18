@@ -11,6 +11,7 @@ public class BTNodeIsMapClear : BTNodeAction
         {
             Debug.Log("MapClear");
             GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.MapClear);
+            GameMapManager.Instance.ShowMapSelect();
             return State.Success;
         }
         else

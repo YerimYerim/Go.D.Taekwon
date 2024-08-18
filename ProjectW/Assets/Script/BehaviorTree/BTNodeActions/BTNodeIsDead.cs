@@ -9,12 +9,12 @@ public class BTNodeIsDead : BTNodeAction
     {
         if (GameBattleManager.Instance.GetMyHp() <= 0)
         {
-            Debug.Log("PlayerDead");
+  //          Debug.Log("PlayerDead");
             return State.Success;
         }
         else
         {
-            Debug.Log("PlayerNotDead");
+//            Debug.Log("PlayerNotDead");
             return State.Failure;
         }
     }

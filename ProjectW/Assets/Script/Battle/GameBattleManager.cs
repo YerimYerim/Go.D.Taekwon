@@ -101,9 +101,9 @@ public class GameBattleManager : Singleton<GameBattleManager>
     {
         SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
         var spellData = new GameDeckManager.SpellData(spellTableData);
+        Debug.Log(GameUtil.GetString(spellData.tableData.spell_name) + amount + "생산");
         for (int i = 0; i < amount; ++i)
         {
-            Debug.Log(GameUtil.GetString(spellData.tableData.spell_name) + amount + "생산");
             spellDatas.Add(spellData);
         }
     }
@@ -130,15 +130,14 @@ public class GameBattleManager : Singleton<GameBattleManager>
                         case TARGET_TYPE.TARGET_TYPE_SELF:
                         {
                             skillEffectBase.DoSkill(new List<GameActor> {player}, player);
-
-                        }
-                            break;
+                            Debug.Log(player.gameObject.name +"사용"+ effect.effect_type + "수치" + effect.value_1);
+                        } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
                         {
                             if(effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
                                 skillEffectBase.DoSkill(new List<GameActor> {targetActor}, player);
-                            else if(effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
-                                skillEffectBase.DoSkill(enemy, player);
+                            
+                            Debug.Log(enemy[i].gameObject.name +"에게 사용"+ (effect?.effect_type ?? null)+ "수치" + (effect?.value_1 ?? 0));
                         }
                             break;
                     }
@@ -153,6 +152,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
         {
             Debug.Log("적의 턴입니다. 공격할 수 없습니다.");
         }
+        Debug.Log(player.gameObject.name + "의 체력: " + player.data.Hp + "방어도:" + player.data.GetAmor());
     }
     /// <summary>
     ///  적이 주는 Damage
@@ -180,6 +180,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
                                 ((ActorEnemyData) enemy[index].data).ResetAP();
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
+                            Debug.Log(enemy[i].gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
                         
                         } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
@@ -191,6 +192,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
                                 player.OnUpdateHp();
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
+                            Debug.Log(enemy[i].gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
                             
                         } break;
                     }

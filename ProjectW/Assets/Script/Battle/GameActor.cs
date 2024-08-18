@@ -42,6 +42,7 @@ public class GameActor : MonoBehaviour
         else
         {
             uiActorBottom.SetHPUI(data.MaxHp, data.Hp);
+            Debug.Log(gameObject.name + "의 체력이 " + data.Hp + "방어도 " + data.GetAmor());
         }
     }
 

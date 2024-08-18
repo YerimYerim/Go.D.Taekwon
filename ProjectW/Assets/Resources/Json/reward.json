@@ -1,0 +1,68 @@
+[
+  {
+    "reward_id": 1001,
+    "index": 1,
+    "reward_type": 2,
+    "content_id": 1001,
+    "cnt_min": 1,
+    "cnt_max": 1,
+    "prob_weight": 1,
+    "exception_type": null,
+    "exception_value": []
+  },
+  {
+    "reward_id": 1001,
+    "index": 2,
+    "reward_type": 2,
+    "content_id": 1002,
+    "cnt_min": 1,
+    "cnt_max": 1,
+    "prob_weight": 1,
+    "exception_type": 1,
+    "exception_value": [1001]
+  },
+  {
+    "reward_id": 1002,
+    "index": 1,
+    "reward_type": 1,
+    "content_id": 1001,
+    "cnt_min": 1,
+    "cnt_max": 1,
+    "prob_weight": 1,
+    "exception_type": null,
+    "exception_value": []
+  },
+  {
+    "reward_id": 1002,
+    "index": 2,
+    "reward_type": 1,
+    "content_id": 1003,
+    "cnt_min": 1,
+    "cnt_max": 1,
+    "prob_weight": 1,
+    "exception_type": null,
+    "exception_value": []
+  },
+  {
+    "reward_id": 1003,
+    "index": 1,
+    "reward_type": 1,
+    "content_id": 1001,
+    "cnt_min": 1,
+    "cnt_max": 1,
+    "prob_weight": 1,
+    "exception_type": 0,
+    "exception_value": [1001]
+  },
+  {
+    "reward_id": 1004,
+    "index": 1,
+    "reward_type": 1,
+    "content_id": 1001,
+    "cnt_min": 1,
+    "cnt_max": 1,
+    "prob_weight": 1,
+    "exception_type": null,
+    "exception_value": []
+  }
+]

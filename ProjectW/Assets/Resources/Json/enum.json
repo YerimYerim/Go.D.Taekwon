@@ -364,5 +364,47 @@
     "enum_name": "enhance",
     "source_enum_name": "MAP_TYPE_ENHANCE",
     "enum_value": 4
+  },
+  {
+    "group_name": "reward_type",
+    "enum_name": "item",
+    "source_enum_name": "REWARD_TYPE_ITEM",
+    "enum_value": 0
+  },
+  {
+    "group_name": "reward_type",
+    "enum_name": "spell_source",
+    "source_enum_name": "REWARD_TYPE_SPELL_SOURCE",
+    "enum_value": 1
+  },
+  {
+    "group_name": "reward_type",
+    "enum_name": "support_module",
+    "source_enum_name": "REWARD_TYPE_SUPPORT_MODULE",
+    "enum_value": 2
+  },
+  {
+    "group_name": "exception_type",
+    "enum_name": "own_spell_source",
+    "source_enum_name": "EXCEPTION_TYPE_OWN_SPELL_SOURCE",
+    "enum_value": 0
+  },
+  {
+    "group_name": "exception_type",
+    "enum_name": "no_spell_source",
+    "source_enum_name": "EXCEPTION_TYPE_NO_SPELL_SOURCE",
+    "enum_value": 1
+  },
+  {
+    "group_name": "exception_type",
+    "enum_name": "clear_map",
+    "source_enum_name": "EXCEPTION_TYPE_CLEAR_MAP",
+    "enum_value": 2
+  },
+  {
+    "group_name": "exception_type",
+    "enum_name": "not_clear_map",
+    "source_enum_name": "EXCEPTION_TYPE_NOT_CLEAR_MAP",
+    "enum_value": 3
   }
 ]

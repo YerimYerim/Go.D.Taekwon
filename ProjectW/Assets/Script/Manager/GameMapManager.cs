@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Script.Manager;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameMapManager : Singleton<GameMapManager>
 {
@@ -24,6 +22,7 @@ public class GameMapManager : Singleton<GameMapManager>
     }
     public void SpawnActors()
     {
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         var curMapData = GameDataManager.Instance._contentMapTableDatas.Find(_ => _.map_id == curMap.mapId);
         var curMapActor = curMapData.actor_id.ToList();
         List<ActorTableData> actorMonsterDatas = new();
@@ -50,10 +49,15 @@ public class GameMapManager : Singleton<GameMapManager>
             enemyData.Init(monsterData?.stat_hp?? 0);
             enemyData.InitAP(monsterData?.skill_pattern_group ?? 0);
 
-            GameBattleManager.Instance.SpawnEnemy(GameActormanager.Instance.GetActor(actorPrefab.name));
-            GameBattleManager.Instance.SetEnemyData(i,enemyData);
+
+            if(battleMode == null)
+                return;
+            battleMode.BattleHandler.SpawnEnemy(GameActormanager.Instance.GetActor(actorPrefab.name));
+            battleMode.BattleHandler.SetEnemyData(i,enemyData);
         }
-        GameBattleManager.Instance.UpdateEnemyHp();
+        if(battleMode == null)
+            return;
+        battleMode.BattleHandler.UpdateEnemyHp();
     }
 
     public void SetMap(int mapId)
@@ -112,7 +116,8 @@ public class GameMapManager : Singleton<GameMapManager>
     public void RemoveActorsAll()
     {
         GameActormanager.Instance.RemoveAllMonsterActors();
-        GameBattleManager.Instance.RemoveAllEnemy();
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        battleMode.BattleHandler.RemoveAllEnemy();
     }
     public void OnClickMapSelect(ContentMapTableData data)
     {

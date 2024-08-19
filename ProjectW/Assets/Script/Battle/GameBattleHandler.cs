@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Script.Manager;
 using UnityEngine;
 
-public class GameBattleManager : Singleton<GameBattleManager>
+public class GameBattleHandler
 {
     public List<GameActor> enemy = new();
     public GameActor player = new();
@@ -17,17 +16,9 @@ public class GameBattleManager : Singleton<GameBattleManager>
 
     // sourceId, spellSource
 
-    protected override void Awake()
-    {
-        base.Awake();
-        GameDataManager.Instance.LoadData();
-    }
-
-    protected override void Init()
+    public void Init()
     {
         GameDataManager.Instance.LoadData();
-        
-
         OnUpdateCard?.Invoke();
         
 
@@ -114,7 +105,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
     }
     public void DoSkill(GameDeckManager.SpellData spellData, GameActor targetActor)
     {
-        if (Instance.IsEnemyTurn() == false)
+        if (IsEnemyTurn() == false)
         {
 
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
@@ -151,7 +142,7 @@ public class GameBattleManager : Singleton<GameBattleManager>
                         } break;
                     }
                 }
-                Instance.RemoveCard(spellData);
+                RemoveCard(spellData);
                 MinusAP(1);
                 GameTurnManager.Instance.TurnStart();
             }), 0.1f);

@@ -27,11 +27,21 @@ public class UISpellSource : MonoBehaviour
 
     private void OnEnable()
     {
-        GameBattleManager.Instance.GetSource(sourceIndex).OnUpdateUI += SetText;
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode.BattleHandler.GetSource(sourceIndex).OnUpdateUI += SetText;
     }
 
     private void OnDisable()
     {
-        GameBattleManager.Instance.GetSource(sourceIndex).OnUpdateUI -= SetText;
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode.BattleHandler.GetSource(sourceIndex).OnUpdateUI -= SetText;
     }
 }

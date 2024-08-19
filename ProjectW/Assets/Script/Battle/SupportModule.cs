@@ -100,7 +100,10 @@ public class SupportModule
     
     public void ApplyEffect(int resourceID ,SUPPORT_MODULE_EFFECT effectType, int value)
     {
-        var source = GameBattleManager.Instance._sources.Find(_ => _.GetSourceId() == resourceID);
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (battleMode == null)
+            return;
+        var source = battleMode.BattleHandler._sources.Find(_ => _.GetSourceId() == resourceID);
         // apply effect
         switch (effectType)
         {

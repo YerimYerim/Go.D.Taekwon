@@ -69,7 +69,13 @@ public class UISpell : UIDragable
                 return;
 
             _parents.MergeSpell(otherSpellUI._spellTableData?.tableData?.spell_id ?? 0, _spellTableData?.tableData?.spell_id ?? 0, resultSpell.spell_id ?? 0);
-            GameBattleManager.Instance.MinusAP(1);
+            
+            var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+            if (gameBattleMode == null)
+            {
+                return;
+            }
+            gameBattleMode.BattleHandler.MinusAP(1);
             GameTurnManager.Instance.TurnStart();
         }
         else
@@ -77,7 +83,12 @@ public class UISpell : UIDragable
             GameActor actor = FindGameActor(eventData);
             if (actor != null && actor.isActiveAndEnabled)
             {
-                GameBattleManager.Instance.DoSkill(_spellTableData, actor );
+                var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+                if (gameBattleMode == null)
+                {
+                    return;
+                }
+                gameBattleMode.BattleHandler.DoSkill(_spellTableData, actor );
             }
         }
         

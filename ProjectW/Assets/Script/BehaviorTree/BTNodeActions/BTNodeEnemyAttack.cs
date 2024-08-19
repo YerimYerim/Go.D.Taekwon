@@ -7,7 +7,8 @@ public class BTNodeEnemyAttack : BTNodeAction
     public override State Evaluate()
     {
         Debug.Log("BTNodeEnemyAttack");
-        if (GameBattleManager.Instance.IsEnemyTurn())
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (battleMode!= null && battleMode.BattleHandler.IsEnemyTurn())
         {
             GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.EnemyTurn);
 

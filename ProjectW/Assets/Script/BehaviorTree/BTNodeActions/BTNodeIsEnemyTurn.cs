@@ -6,11 +6,12 @@ public class BTNodeIsEnemyTurn : BTNodeAction
 {
     public override State Evaluate()
     {
-        if (GameBattleManager.Instance.IsEnemyTurn())
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (battleMode !=null && battleMode.BattleHandler.IsEnemyTurn())
         {
             Debug.Log("적의 턴");
             GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.EnemyTurn);
-            GameBattleManager.Instance.DoSkillEnemyTurn();
+            battleMode.BattleHandler.DoSkillEnemyTurn();
             return State.Success;
         };
         return State.Failure;

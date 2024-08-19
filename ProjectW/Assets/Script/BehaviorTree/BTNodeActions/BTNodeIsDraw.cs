@@ -6,9 +6,9 @@ public class BTNodeIsDraw : BTNodeAction
 {
     public override State Evaluate()
     {
-        if (GameBattleManager.Instance.IsDraw())
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (battleMode != null && battleMode.BattleHandler.IsDraw())
         {
-//            Debug.Log("원소 카드를 뽑았습니다.");
             GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.Draw);
             return State.Success;
         };

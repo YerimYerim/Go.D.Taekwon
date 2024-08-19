@@ -12,14 +12,25 @@ public class UICardDeckOnHand : UIBase
 
     private void OnEnable()
     {
-        GameBattleManager.Instance.OnEventRemoveCard += RemoveCard;
-        GameBattleManager.Instance.OnUpdateCard += SetUI;
+
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if(gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode.BattleHandler.OnEventRemoveCard += RemoveCard;
+        gameBattleMode.BattleHandler.OnUpdateCard += SetUI;
     }
 
     private void OnDisable()
     {
-        GameBattleManager.Instance.OnEventRemoveCard -= RemoveCard;
-        GameBattleManager.Instance.OnUpdateCard -= SetUI;
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode.BattleHandler.OnEventRemoveCard -= RemoveCard;
+        gameBattleMode.BattleHandler.OnUpdateCard -= SetUI;
     }
 
     private void Awake()
@@ -37,12 +48,13 @@ public class UICardDeckOnHand : UIBase
 
     public void SetUI()
     {
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         for (int i = 0; i < uiCards.Count; ++i)
         {
-            if (i < GameBattleManager.Instance.spellDatas.Count)
+            if (i < gameBattleMode.BattleHandler.spellDatas.Count)
             {
                 uiCards[i].gameObject.SetActive(true);
-                uiCards[i].SetUI(GameBattleManager.Instance.spellDatas[i]);
+                uiCards[i].SetUI(gameBattleMode.BattleHandler.spellDatas[i]);
             }
             else
             {
@@ -54,9 +66,14 @@ public class UICardDeckOnHand : UIBase
 
     public void MergeSpell(int spellID01, int spellID2 ,int resultSpellID)
     {
-        GameBattleManager.Instance.spellDatas.Remove(GameBattleManager.Instance.spellDatas.Find(_ => _.tableData.spell_id == spellID01));
-        GameBattleManager.Instance.spellDatas.Remove(GameBattleManager.Instance.spellDatas.Find(_ => _.tableData.spell_id == spellID2));
-        GameBattleManager.Instance.AddSpell(resultSpellID, 1);
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode.BattleHandler.spellDatas.Remove(gameBattleMode.BattleHandler.spellDatas.Find(_ => _.tableData.spell_id == spellID01));
+        gameBattleMode.BattleHandler.spellDatas.Remove(gameBattleMode.BattleHandler.spellDatas.Find(_ => _.tableData.spell_id == spellID2));
+        gameBattleMode.BattleHandler.AddSpell(resultSpellID, 1);
         SetUI();
     }
 

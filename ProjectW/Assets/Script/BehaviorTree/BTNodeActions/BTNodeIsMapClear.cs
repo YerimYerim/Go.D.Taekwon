@@ -7,7 +7,8 @@ public class BTNodeIsMapClear : BTNodeAction
 {
     public override State Evaluate()
     {
-        if (GameBattleManager.Instance.IsAllEnemyDead())
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (battleMode != null && battleMode.BattleHandler.IsAllEnemyDead())
         {
             Debug.Log("MapClear");
             GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.MapClear);

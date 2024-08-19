@@ -12,9 +12,13 @@ public class SkillApUp : SkillEffectBase, ISkillTargetAPUp
                 ((ActorEnemyData)targetActor[i].data).AddAP(table?.value_1 ?? 0);
             else if (targetActor[i].data is ActorPlayerData)
             {
-                for(int j  = 0; j< GameBattleManager.Instance._sources.Count; ++j)
+                var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+                if(battleMode == null)
+                    return;
+                
+                foreach (var source in battleMode.BattleHandler._sources)
                 {
-                    GameBattleManager.Instance._sources[j].ReduceAP((table?.value_1 ?? 0));
+                    source.ReduceAP((table?.value_1 ?? 0));
                 }
             }
         }

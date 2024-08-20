@@ -22,7 +22,7 @@ public class SkillHealType : SkillEffectBase, ISkillTargetHeal
     public void DoHeal(GameActor targetActor)
     {
         targetActor.data.DoHeal(table.value_1 ??0);
-        targetActor.OnUpdateHp();
+        targetActor.OnUpdateHp(targetActor.data);
     }
 
     public void DoHeal(List<GameActor> targetActor)
@@ -30,7 +30,7 @@ public class SkillHealType : SkillEffectBase, ISkillTargetHeal
         for (int i = 0; i < targetActor.Count; ++i)
         {
             targetActor[i].data.DoHeal(table.value_1 ??0);
-            targetActor[i].OnUpdateHp();
+            targetActor[i].OnUpdateHp(targetActor[i].data);
         }
     }
 }

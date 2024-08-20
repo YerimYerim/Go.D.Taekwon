@@ -32,7 +32,7 @@ public class GameActor : MonoBehaviour
         uiActorBottom.SetPosition(this.uiHpBarSocket);
     }
 
-    public void OnUpdateHp()
+    public void OnUpdateHp(ActorDataBase data)
     {
         if (data.Hp <= 0)
         {

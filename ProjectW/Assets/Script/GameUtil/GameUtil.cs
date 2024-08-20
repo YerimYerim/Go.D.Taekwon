@@ -6,6 +6,13 @@ using UnityEngine;
 
 public static class GameUtil
 {
+    public static int PLAYER_ACTOR_ID = 1000001;
+    public static string ENEMY_PARENT_NAME = "Enemy";
+    public static string PLAEYER_PARENT_NAME = "Actor";
+
+    
+    
+    
     public static string GetString(string key)
     {
         var stringdata = GameDataManager.Instance._stringDatas.Find(_ => _.string_key.Equals(key));
@@ -123,12 +130,6 @@ public static class GameUtil
         return null;
     }
     
-    public static GameActor GetActorPrefab(int rscId)
-    {
-        var rscTableData = GameDataManager.Instance._actorRscDatas.Find(_ => _.rsc_id == rscId);
-        var prefab = GameResourceManager.Instance.GetLoadActorPrefab(rscTableData.actor_rsc_prefab);
-        return prefab.GetComponent<GameActor>();
-    }
 
     public static int NextRingIndex(int cur,  int max, int min= 0)
     {

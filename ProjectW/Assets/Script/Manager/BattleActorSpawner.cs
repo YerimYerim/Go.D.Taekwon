@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using Script.Manager;
 using UnityEngine;
 
-public class GameActormanager : Singleton<GameActormanager>
+public class BattleActorSpawner
 {
     private Dictionary<string, GameActor> actors = new();
 
-
-    public void AddActors(string prefabName, GameActor actor)
+    public void AddActors(GameActor actor)
     {
-        actors.TryAdd(prefabName, actor);
+        actors.TryAdd(actor.name, actor);
     }
 
     public void RemoveActors(string prefabName)
@@ -43,7 +42,7 @@ public class GameActormanager : Singleton<GameActormanager>
         {
             if (actor.Value.data is ActorEnemyData)
             {
-                Destroy(actor.Value.gameObject);
+                Object.Destroy(actor.Value.gameObject);
                 keysToRemove.Add(actor.Key);
             }
         }
@@ -53,4 +52,23 @@ public class GameActormanager : Singleton<GameActormanager>
             actors.Remove(key);
         }
     }
+    
+    public GameActor SpawnActorPrefab(ActorTableData actorTableData, string parentsObjectName, string actorName = "")
+    {
+        var rscTableData = GameDataManager.Instance._actorRscDatas.Find(_ => _.rsc_id == actorTableData.rsc_id);
+        var prefab = GameResourceManager.Instance.GetLoadActorPrefab(rscTableData.actor_rsc_prefab);
+        var parentsObjectTr = GameObject.Find(parentsObjectName).transform;
+        if(parentsObjectTr == null)
+            return null;
+        
+        prefab.transform.SetParent(parentsObjectTr);
+        prefab.transform.position = parentsObjectTr.position;
+        prefab.name = actorName.Equals(string.Empty) == false ? actorName : prefab.name;
+        
+        var actor = prefab.GetComponent<GameActor>();
+        AddActors(actor);
+        
+        return actor;
+    }
+
 }

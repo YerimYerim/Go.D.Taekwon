@@ -35,8 +35,7 @@ public class UISpell : UIDragable
                 _.material_2 == isSpellUI._spellTableData.tableData.spell_id);
             if (resultCombineSpell == null)
                 return false;
-            SpellTableData resultSpell =
-                GameDataManager.Instance._spellData.Find(_ => _.spell_id == resultCombineSpell.result_spell);
+            SpellTableData resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == resultCombineSpell.result_spell);
             if (resultSpell == null)
                 return false;
             return true;

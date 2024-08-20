@@ -24,7 +24,7 @@ public class SkillDamageType : SkillEffectBase, ISkillTargetDamage
         for(int i=0; i< targetActor.Count;++i)
         {
             targetActor[i].data.DoDamaged(damage);
-            targetActor[i].OnUpdateHp();
+            targetActor[i].OnUpdateHp(targetActor[i].data);
         }
     }
 

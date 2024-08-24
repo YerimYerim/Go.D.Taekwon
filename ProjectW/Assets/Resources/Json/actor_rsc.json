@@ -1,10 +1,12 @@
 [
   {
     "rsc_id": 1000001,
-    "actor_rsc_prefab": "ActorPlayer"
+    "actor_rsc_prefab": "ActorPlayer",
+    "actor_portrait_small": null
   },
   {
     "rsc_id": 2000001,
-    "actor_rsc_prefab": "ActorEnemy"
+    "actor_rsc_prefab": "ActorEnemy",
+    "actor_portrait_small": "temp_actor_portrait_01"
   }
 ]

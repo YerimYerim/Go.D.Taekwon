@@ -62,7 +62,9 @@ MonoBehaviour:
   _progressBar: {fileID: 4795326650350050066}
   _text: {fileID: 9130117189580383195}
   moveRectTransform: {fileID: 6202928197238724691}
-  apParent: {fileID: 6012940441130812300}
+  defText: {fileID: 7415595873085391636}
+  defRectTransform: {fileID: 3134724036146186591}
+  defImage: {fileID: 8080581858296404003}
 --- !u!1 &2413678141401651304
 GameObject:
   m_ObjectHideFlags: 0

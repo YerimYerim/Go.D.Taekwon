@@ -10,10 +10,9 @@ public class UI_Actor_Bottom : UIBase
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private RectTransform moveRectTransform;
     
-    [SerializeField] private Transform apParent;
-    
-    private const string AbnormalPrefabName = "UIAbnormal";
-    private List<UIAbnormal> _coolTimeAbnormal = new();
+    [SerializeField] private TextMeshProUGUI defText;
+    [SerializeField] private RectTransform defRectTransform;
+    [SerializeField] private Image defImage;
     private int hp;
     public int _curHp
     {
@@ -27,12 +26,18 @@ public class UI_Actor_Bottom : UIBase
         _text.text = $"{curHp.ToString()}/{ maxHP.ToString()}"; //, ,).ToString();
     }
 
+    public void SetDef(int def)
+    {
+        defText.text = def.ToString();
+        defImage.gameObject.SetActive(def > 0);
+    }
     public void SetPosition(Transform gameTransform)
     {
         if (Camera.main != null)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(gameTransform.position);
             moveRectTransform.transform.position = screenPos;
+            defRectTransform.transform.position = screenPos;
         }
     }
 

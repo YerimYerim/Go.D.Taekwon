@@ -12,6 +12,14 @@
 
     public void AddAmor(int amorValue)
     {
-        amor += amorValue;
+        // amor 가 음수가 되지 않도록 보호
+        if (amor + amorValue < 0)
+        {
+            amor = 0;
+        }
+        else
+        {
+            amor += amorValue;
+        }
     }
 }

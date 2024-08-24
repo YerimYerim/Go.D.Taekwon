@@ -133,6 +133,7 @@ public class GameBattleHandler
                 }
                 RemoveCard(spellData);
                 MinusAP(1);
+                player.OnUpdateHp(handler.playerData);
             }), 1f);
 
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
@@ -145,6 +146,7 @@ public class GameBattleHandler
         {
             Debug.Log("적의 턴입니다. 공격할 수 없습니다.");
         }
+
         Debug.Log(player.gameObject.name + "의 체력: " + handler.playerData.Hp + "방어도:" + handler.playerData.GetAmor());
     }
     /// <summary>

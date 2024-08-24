@@ -13,8 +13,8 @@ public class CommandManager : Singleton<CommandManager>
     {
         if (_executeCommandsCoroutine != null)
         {
-            StopCoroutine(_executeCommandsCoroutine);
-            _executeCommandsCoroutine = null;
+            // StopCoroutine(_executeCommandsCoroutine);
+            // _executeCommandsCoroutine = null;
         }
         else
         {
@@ -33,9 +33,8 @@ public class CommandManager : Singleton<CommandManager>
         {
             var command = _commandQueue.Dequeue();
             command.commands.Execute();
-            yield return new WaitForSeconds(0.1f); //command.seconds); // Example delay between commands
+            yield return new WaitForSeconds(command.seconds); //command.seconds); // Example delay between commands
         }
-
         _executeCommandsCoroutine = null;
     }
 }

@@ -14,9 +14,15 @@ public class UI_Actor_Bottom : UIBase
     
     private const string AbnormalPrefabName = "UIAbnormal";
     private List<UIAbnormal> _coolTimeAbnormal = new();
+    private int hp;
+    public int _curHp
+    {
+        get => hp;
+        private set => hp = value;
+    }
     public void SetHPUI(int maxHP, int curHp)
     {
-        StringBuilder stringBuilder = new();
+        _curHp = curHp;
         _progressBar.fillAmount = (float) curHp / maxHP;
         _text.text = $"{curHp.ToString()}/{ maxHP.ToString()}"; //, ,).ToString();
     }

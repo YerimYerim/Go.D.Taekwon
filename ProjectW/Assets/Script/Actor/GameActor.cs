@@ -7,7 +7,10 @@ using UnityEngine;
 public class GameActor : MonoBehaviour
 {
     private UI_Actor_Bottom uiActorBottom;
+    private UI_Actor_DMGFloater uiActorDMGFloater;
+    
     [SerializeField] private Transform uiHpBarSocket;
+    [SerializeField] private Transform uiDMGFloaterSocket;
     [SerializeField] private Material outlineMaterial;
     [SerializeField] private Material normalMaterrial;
     [SerializeField] private SpriteRenderer renderer;
@@ -16,6 +19,7 @@ public class GameActor : MonoBehaviour
     private void Awake()
     {
         CreateUIActorBottom();
+        CreateUIActorDMGFloater();
     }
     
     private void CreateUIActorBottom()
@@ -27,22 +31,37 @@ public class GameActor : MonoBehaviour
         }
     }
     
+    private void CreateUIActorDMGFloater()
+    {
+        if (GameUIManager.Instance.TryCreate<UI_Actor_DMGFloater>(true, UILayer.LEVEL_3, out var ui))
+        {
+            uiActorDMGFloater = ui;
+            uiActorDMGFloater.Show();
+        }
+    }
+    
+    
+    
     private void Start()
     {
         uiActorBottom.SetPosition(this.uiHpBarSocket);
+        uiActorDMGFloater.SetPosition(this.uiDMGFloaterSocket);
     }
 
-    public void OnUpdateHp(ActorDataBase data)
+    public void OnUpdateHp(ActorDataBase lastData)
     {
-        if (data.Hp <= 0)
+        if (lastData.Hp <= 0)
         {
+            data = lastData;
             this.gameObject.SetActive(false);
             uiActorBottom.Hide();
         }
         else
         {
-            uiActorBottom.SetHPUI(data.MaxHp, data.Hp);
-            Debug.Log(gameObject.name + "의 체력이 " + data.Hp + "방어도 " + data.GetAmor());
+            data = lastData;
+            uiActorDMGFloater.ShowDamage(lastData.Hp -uiActorBottom._curHp);
+            uiActorBottom.SetHPUI(lastData.MaxHp, lastData.Hp);
+            Debug.Log(gameObject.name + "의 체력이 " + lastData.Hp + "방어도 " + lastData.GetAmor());
         }
     }
 

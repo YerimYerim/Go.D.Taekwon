@@ -133,9 +133,12 @@ public class GameBattleHandler
                 }
                 RemoveCard(spellData);
                 MinusAP(1);
-                GameTurnManager.Instance.TurnStart();
-            }), 0.1f);
+            }), 1f);
 
+            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
+            {
+                GameTurnManager.Instance.TurnStart();
+            }), 0);
             CommandManager.Instance.StartGameCommand();
         }
         else
@@ -180,7 +183,6 @@ public class GameBattleHandler
                         } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
                         {
-
                             EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
                             {
                                 skillEffectBase.DoSkill(new List<GameActor>{player}, enemy[index]);

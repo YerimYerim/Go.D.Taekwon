@@ -179,7 +179,7 @@ MonoBehaviour:
   - {x: -0.90538883, y: -5.5575852, z: 0}
   m_ShapePathHash: 1110563647
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50304
+  m_InstanceId: 53072
   m_LocalBounds:
     m_Center: {x: -0.009510994, y: -2.975129, z: 0}
     m_Extent: {x: 3.424199, y: 2.5824564, z: 0}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiHpBarSocket: {fileID: 1552725963229519289}
+  uiDMGFloaterSocket: {fileID: 6742490402036071535}
   outlineMaterial: {fileID: 2100000, guid: 588e2c6b6adb77b4f88f977b688d95a7, type: 2}
   normalMaterrial: {fileID: 2100000, guid: 9e30a0e18b35b584a9c7faccdc206044, type: 2}
   renderer: {fileID: 5396732617186177408}

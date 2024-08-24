@@ -12,7 +12,10 @@ public class UI_Actor_DMGFloater : UIBase
     {
         text.text = damage.ToString();
         Show();
-
     }
-    
+
+    public void SetFloater(int damage)
+    {
+        
+    }
 }

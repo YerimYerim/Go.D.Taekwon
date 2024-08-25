@@ -9,11 +9,15 @@ public class SkillAmorUpType : SkillEffectBase, ISkillAmorUp
     {
         for (int i = 0; i < targetActor.Count; ++i)
         {
-            if(targetActor[i].data is ActorEnemyData)
+            if (targetActor[i].data is ActorEnemyData)
+            {
                 ((ActorEnemyData)targetActor[i].data).AddAmorStat(table?.value_1 ?? 0);
+                targetActor[i].OnAddDef(table?.value_1 ?? 0);
+            }
             else if (targetActor[i].data is ActorPlayerData)
             {
                 ((ActorPlayerData)targetActor[i].data).AddAmorStat(table?.value_1 ?? 0);
+                targetActor[i].OnAddDef(table?.value_1 ?? 0);
             }
         }
     }

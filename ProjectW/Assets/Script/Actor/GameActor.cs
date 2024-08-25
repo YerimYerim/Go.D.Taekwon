@@ -66,6 +66,10 @@ public class GameActor : MonoBehaviour
         }
     }
 
+    public void OnAddDef(int addDef)
+    {
+        uiActorBottom.ShowDefFloater(addDef);
+    }
     public void OnSelected()
     {
         renderer.material = outlineMaterial;

@@ -13,6 +13,8 @@ public class UI_Actor_Bottom : UIBase
     [SerializeField] private TextMeshProUGUI defText;
     [SerializeField] private RectTransform defRectTransform;
     [SerializeField] private Image defImage;
+    [SerializeField] private TextMeshProUGUI defFloater;
+    
     private int hp;
     public int _curHp
     {
@@ -38,11 +40,19 @@ public class UI_Actor_Bottom : UIBase
             Vector3 screenPos = Camera.main.WorldToScreenPoint(gameTransform.position);
             moveRectTransform.transform.position = screenPos;
             defRectTransform.transform.position = screenPos;
+            defFloater.text = "";
         }
     }
-
-    public void UpdateAbnormal()
+    
+    public void ShowDefFloater(int addDef)
     {
-        //_coolTimeAbnormal
+        defFloater.text = "+" + addDef;
+        LeanTween.alpha(defFloater.gameObject, 1, 0.8f).setOnComplete(() =>
+        {
+            LeanTween.alpha(defFloater.gameObject, 0, 1f).setOnComplete(() =>
+            {
+                defFloater.text = "";
+            });
+        });
     }
 }

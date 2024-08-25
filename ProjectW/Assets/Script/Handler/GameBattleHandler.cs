@@ -9,7 +9,7 @@ public class GameBattleHandler
 
     public readonly List<GameDeckManager.SpellData> spellDatas = new();
     public List<GameSpellSource> _sources = new();
-    
+    public UICardDeckOnHand UICardDeck;
     public event Action OnEventRemoveCard;
     public event Action OnUpdateCard;
 
@@ -29,6 +29,9 @@ public class GameBattleHandler
             AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ??0);
         }
         GameMapManager.Instance.SpawnActors();
+        
+        UICardDeck = GameObject.Find("UICardDeckOnHand").GetComponent<UICardDeckOnHand>();
+        UICardDeck.SetUI();
     }
 
     public void UpdateEnemyHp()

@@ -15,30 +15,20 @@ public class UISpellSource : MonoBehaviour
         _textMeshProUGUI.text = remain.ToString();
     }
 
-    // public void SetImage(string imgName)
-    // {
-    //     _image.sprite = GameResourceManager.Instance.GetImage(imgName);
-    // }
-    //
-    // public void Init(GameSpellSource source)
-    // {
-    //     SetText(1);
-    // }
-
     private void OnEnable()
     {
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        if (gameBattleMode == null)
+        if (gameBattleMode?.BattleHandler == null)
         {
             return;
         }
         gameBattleMode.BattleHandler.GetSource(sourceIndex).OnUpdateUI += SetText;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        if (gameBattleMode == null)
+        if (gameBattleMode?.BattleHandler == null)
         {
             return;
         }

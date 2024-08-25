@@ -118,6 +118,7 @@ public class GameActor : MonoBehaviour
 
     private void OnDestroy()
     {
-        uiActorBottom.Hide();
+        if (uiActorBottom != null)
+            uiActorBottom.Hide();
     }
 }

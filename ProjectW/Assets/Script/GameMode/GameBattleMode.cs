@@ -23,21 +23,27 @@ public class GameBattleMode : GameModeBase
         // 적로드
         
         // 액터 spawner 
-        BattleActorSpawner = new BattleActorSpawner();
+        
+        BattleActorSpawner ??= new BattleActorSpawner();
             
         // 플레이어 로드
-        PlayerActorHandler = new PlayerActorHandler();
-        PlayerActorHandler.Init(GameUtil.PLAYER_ACTOR_ID);
-        
-        
+        if(PlayerActorHandler == null)
+        {
+            PlayerActorHandler = new PlayerActorHandler();
+            PlayerActorHandler.Init(GameUtil.PLAYER_ACTOR_ID);
+        }
+
         //spell load 
         
         
         
         
         // 배틀 핸들러
-        BattleHandler = new GameBattleHandler();
-        BattleHandler.Init();
+        if(BattleHandler == null)
+        {
+            BattleHandler = new GameBattleHandler();
+            BattleHandler.Init();
+        }
         
         
         

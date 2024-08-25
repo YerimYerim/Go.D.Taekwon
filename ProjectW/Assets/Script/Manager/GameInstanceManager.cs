@@ -11,10 +11,10 @@ public class GameInstanceManager : Singleton<GameInstanceManager>
     {
         base.Awake();
         GameDataManager.Instance.LoadData();
-        ChangeGameMode(GameModeType.Battle);
+        Instance.ChangeGameMode(GameModeType.Battle);   
     }
 
-    public void ChangeGameMode(GameModeType modeType)
+    private void ChangeGameMode(GameModeType modeType)
     {
         if(currentGameMode != null)
         {

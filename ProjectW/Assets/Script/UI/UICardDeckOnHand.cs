@@ -12,7 +12,6 @@ public class UICardDeckOnHand : UIBase
 
     private void OnEnable()
     {
-
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         if(gameBattleMode == null)
         {
@@ -22,7 +21,7 @@ public class UICardDeckOnHand : UIBase
         gameBattleMode.BattleHandler.OnUpdateCard += SetUI;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         if (gameBattleMode == null)
@@ -41,9 +40,8 @@ public class UICardDeckOnHand : UIBase
         {
             card._parents = this;
         }
-        // ?? : 단순 기능 확인을 위한 테스트 나중에 삭제할 부분
- 
-        SetUI();
+        
+        //SetUI();
     }
 
     public void SetUI()

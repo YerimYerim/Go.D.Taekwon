@@ -240,6 +240,150 @@
     "value_kor": "어두운 바위의 기운입니다.\\n방어도 (+20)"
   },
   {
+    "string_key": "abnormal_name_dot_skill_damage",
+    "value_kor": "지속 피해"
+  },
+  {
+    "string_key": "abnormal_name_dot_heal",
+    "value_kor": "지속 회복"
+  },
+  {
+    "string_key": "abnormal_name_stun",
+    "value_kor": "기절"
+  },
+  {
+    "string_key": "abnormal_name_reflect_damage",
+    "value_kor": "반사"
+  },
+  {
+    "string_key": "abnormal_name_reflect_damage_per",
+    "value_kor": "반사(%)"
+  },
+  {
+    "string_key": "abnormal_name_damage_invincible",
+    "value_kor": "피해 무효화"
+  },
+  {
+    "string_key": "abnormal_name_avoid_up",
+    "value_kor": "회피율 증가"
+  },
+  {
+    "string_key": "abnormal_name_avoid_down",
+    "value_kor": "회피율 감소"
+  },
+  {
+    "string_key": "abnormal_name_all_up_per",
+    "value_kor": "계수 증가"
+  },
+  {
+    "string_key": "abnormal_name_all_down_per",
+    "value_kor": "계수 감소"
+  },
+  {
+    "string_key": "abnormal_name_dot_draw",
+    "value_kor": "드로우"
+  },
+  {
+    "string_key": "abnormal_name_debuff_accuracy_up",
+    "value_kor": "디버프 적중률 증가"
+  },
+  {
+    "string_key": "abnormal_name_debuff_accuracy_down",
+    "value_kor": "디버프 적중률 감소"
+  },
+  {
+    "string_key": "abnormal_name_debuff_resistance_up",
+    "value_kor": "디버프 저항률 증가"
+  },
+  {
+    "string_key": "abnormal_name_debuff_resistance_down",
+    "value_kor": "디버프 저항률 감소"
+  },
+  {
+    "string_key": "abnormal_name_damage_spread",
+    "value_kor": "피해 확산"
+  },
+  {
+    "string_key": "abnormal_name_provoke",
+    "value_kor": "도발 "
+  },
+  {
+    "string_key": "abnormal_name_counter",
+    "value_kor": "반격"
+  },
+  {
+    "string_key": "abnormal_desc_dot_skill_damage",
+    "value_kor": "지속적으로 피해를 입습니다."
+  },
+  {
+    "string_key": "abnormal_desc_dot_heal",
+    "value_kor": "지속적으로 체력을 회복합니다."
+  },
+  {
+    "string_key": "abnormal_desc_stun",
+    "value_kor": "행동불가에 빠집니다."
+  },
+  {
+    "string_key": "abnormal_desc_reflect_damage",
+    "value_kor": "대미지의 일부를 상대에게 되돌려줍니다."
+  },
+  {
+    "string_key": "abnormal_desc_reflect_damage_per",
+    "value_kor": "대미지의 일부(비율)를 상대에게 되돌려줍니다."
+  },
+  {
+    "string_key": "abnormal_desc_damage_invincible",
+    "value_kor": "피해를 지속 시간동안 무효화합니다."
+  },
+  {
+    "string_key": "abnormal_desc_avoid_up",
+    "value_kor": "회피율이 증가합니다."
+  },
+  {
+    "string_key": "abnormal_desc_avoid_down",
+    "value_kor": "회피율이 감소합니다."
+  },
+  {
+    "string_key": "abnormal_desc_all_up_per",
+    "value_kor": "대미지가 증가합니다."
+  },
+  {
+    "string_key": "abnormal_desc_all_down_per",
+    "value_kor": "대미지가 감소합니다."
+  },
+  {
+    "string_key": "abnormal_desc_dot_draw",
+    "value_kor": "드로우??"
+  },
+  {
+    "string_key": "abnormal_desc_debuff_accuracy_up",
+    "value_kor": "디버프 적중률이 증가합니다."
+  },
+  {
+    "string_key": "abnormal_desc_debuff_accuracy_down",
+    "value_kor": "디버프 적중률이 감소합니다."
+  },
+  {
+    "string_key": "abnormal_desc_debuff_resistance_up",
+    "value_kor": "디버프 저항률이 증가합니다."
+  },
+  {
+    "string_key": "abnormal_desc_debuff_resistance_down",
+    "value_kor": "디버프 저항률이 감소합니다."
+  },
+  {
+    "string_key": "abnormal_desc_damage_spread",
+    "value_kor": "사용하는 공격의 피해가 확산됩니다."
+  },
+  {
+    "string_key": "abnormal_desc_provoke",
+    "value_kor": "적을 도발합니다. 해당 상태의 적 이외에는 선택할 수 없습니다."
+  },
+  {
+    "string_key": "abnormal_desc_counter",
+    "value_kor": "공격을 받으면 반격을 합니다."
+  },
+  {
     "string_key": "n_pc_temp",
     "value_kor": "임시 PC"
   },

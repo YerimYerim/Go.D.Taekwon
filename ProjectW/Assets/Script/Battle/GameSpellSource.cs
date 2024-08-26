@@ -41,14 +41,13 @@ public class GameSpellSource
         {
             --_remainAP;
             OnUpdateUI?.Invoke(_remainAP);
+            if(_remainAP <= 0)
+            {
+                ResetAp();
+                OnMakeSpellEvent?.Invoke(GetProductionSpellId(), _productionAmount);
+                OnUpdateUI?.Invoke(_remainAP);
+            }
         }
-        else
-        {
-            ResetAp();
-            OnMakeSpellEvent?.Invoke(GetProductionSpellId(), _productionAmount);
-            OnUpdateUI?.Invoke(_remainAP);
-        }
-
     }
     
     public int GetSourceId()
@@ -118,5 +117,11 @@ public class GameSpellSource
     {
         for(int i = 0; i< amount; ++i)
             UpdateAP();
+    }
+    
+    public string GetSourceImage()
+    {
+        var img = GameDataManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_img;
+        return img;
     }
 }

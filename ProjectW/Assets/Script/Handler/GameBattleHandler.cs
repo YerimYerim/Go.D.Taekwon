@@ -10,6 +10,7 @@ public class GameBattleHandler
     public readonly List<GameDeckManager.SpellData> spellDatas = new();
     public List<GameSpellSource> _sources = new();
     public UICardDeckOnHand UICardDeck;
+    public UIApGauge uiApGauge;
     public event Action OnEventRemoveCard;
     public event Action OnUpdateCard;
 
@@ -28,10 +29,13 @@ public class GameBattleHandler
             _sources[i].Init(sourceTableData?.source_id ?? 0, MakeSpell);
             AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ??0);
         }
-        GameMapManager.Instance.SpawnActors();
+        GameMapManager.Instance.SpawnActors(); 
         
         UICardDeck = GameObject.Find("UICardDeckOnHand").GetComponent<UICardDeckOnHand>();
         UICardDeck.SetUI();
+        
+        uiApGauge =  GameObject.Find("UIApGauge").GetComponent<UIApGauge>();
+        uiApGauge.Init(_sources);
     }
 
     public void UpdateEnemyHp()
@@ -265,8 +269,10 @@ public class GameBattleHandler
         }
         for (int i = 0; i < _sources.Count; ++i)
         {
-            _sources[i].UpdateAP();
+            _sources[i].ReduceAP(minusAP);
         }
+
+        uiApGauge.UpdateUI();
     }
 
     private void MakeSpell(int spellID, int amount)

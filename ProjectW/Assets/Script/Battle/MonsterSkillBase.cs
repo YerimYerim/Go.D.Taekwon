@@ -21,6 +21,7 @@ public class MonsterSkillBase : SkillGroupTableData
         if (CurrentAP <= 0)
         {
             ActiveSkill();
+            CurrentAP = MaxAP;
         }
     }
 

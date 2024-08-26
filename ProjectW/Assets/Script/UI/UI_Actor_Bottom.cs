@@ -14,7 +14,7 @@ public class UI_Actor_Bottom : UIBase
     [SerializeField] private RectTransform defRectTransform;
     [SerializeField] private Image defImage;
     [SerializeField] private TextMeshProUGUI defFloater;
-    
+
     private int hp;
     public int _curHp
     {
@@ -30,8 +30,11 @@ public class UI_Actor_Bottom : UIBase
 
     public void SetDef(int def)
     {
-        defText.text = def.ToString();
-        defImage.gameObject.SetActive(def > 0);
+        defRectTransform.gameObject.SetActive(def > 0);
+        if (def > 0)
+        {
+            defText.text = def.ToString();
+        }
     }
     public void SetPosition(Transform gameTransform)
     {

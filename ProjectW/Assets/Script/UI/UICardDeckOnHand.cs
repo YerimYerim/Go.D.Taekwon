@@ -12,13 +12,7 @@ public class UICardDeckOnHand : UIBase
 
     private void OnEnable()
     {
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        if(gameBattleMode == null)
-        {
-            return;
-        }
-        gameBattleMode.BattleHandler.OnEventRemoveCard += RemoveCard;
-        gameBattleMode.BattleHandler.OnUpdateCard += SetUI;
+
     }
 
     private void OnDestroy()
@@ -40,7 +34,13 @@ public class UICardDeckOnHand : UIBase
         {
             card._parents = this;
         }
-        
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if(gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode.BattleHandler.OnEventRemoveCard += RemoveCard;
+        gameBattleMode.BattleHandler.OnUpdateCard += SetUI;
         //SetUI();
     }
 

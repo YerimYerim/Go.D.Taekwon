@@ -34,7 +34,7 @@ namespace Script.Manager
             }
             else
             {
-//                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
 

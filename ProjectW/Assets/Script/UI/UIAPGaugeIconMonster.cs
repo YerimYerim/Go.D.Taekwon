@@ -1,4 +1,8 @@
-public class UIAPGaugeIcon : UIAPGaugeIconBase
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UIAPGaugeIconMonster : UIAPGaugeIconBase
 {
     private GameSpellSource _gameSpellSource;
     

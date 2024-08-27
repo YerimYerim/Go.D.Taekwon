@@ -59,24 +59,28 @@ public class UIApGauge : UIBase
     public void UpdateUI(bool isSmooth = true)
     {
         SetSpellDictionary();
-        for(int i = 0; i< _spellSources.Count; i++)
+        UpdateSourceUI(isSmooth);
+    }
+
+    private void UpdateSourceUI(bool isSmooth)
+    {
+        for (int i = 0; i < _spellSources.Count; i++)
         {
             int sameAPCount = 1;
             int myIndex = 0;
-            if(dictionary.ContainsKey(_spellSources[i].GetRemainSpellAP()))
+            if (dictionary.ContainsKey(_spellSources[i].GetRemainSpellAP()))
             {
                 sameAPCount = dictionary[_spellSources[i].GetRemainSpellAP()].Count;
-                myIndex = dictionary[_spellSources[i].GetRemainSpellAP()].FindIndex(_=>_ == _spellSources[i]);
+                myIndex = dictionary[_spellSources[i].GetRemainSpellAP()].FindIndex(_ => _ == _spellSources[i]);
             }
-            
+
             var remainSpellAP = _spellSources[i].GetRemainSpellAP();
             var position = GetPosition(sameAPCount, remainSpellAP, myIndex);
-            if(isSmooth)
+            if (isSmooth)
                 _spellSources[i].SetPositionSmooth(position);
             else
                 _spellSources[i].SetPosition(position);
         }
-
     }
 
     private Vector3 GetPosition(int sameAPCount, int remainSpellAP, int myIndex)

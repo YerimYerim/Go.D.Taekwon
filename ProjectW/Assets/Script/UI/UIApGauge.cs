@@ -29,23 +29,34 @@ public class UIApGauge : UIBase
     // ap , spell
     private List<UIAPGaugeIcon> _spellSources = new();
 
-    public void Init(List<GameSpellSource> spellSources)
+    public void Awake()
     {
-        SetSpellDictionary();
-        foreach (var spell in spellSources)
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        
+        foreach (var spell in gameBattleMode.BattleHandler._sources)
         {
-            var obj = Instantiate(_apSourcePrefab, _endTransform.position, Quaternion.identity,_apSourceParentsPos);
+            var obj = Instantiate(_apSourcePrefab, _endTransform.position, Quaternion.identity, _apSourceParentsPos);
             var uiApGaugeIcon = obj.GetComponent<UIAPGaugeIcon>();
             uiApGaugeIcon.SetSpellSource(spell);
             _spellSources.Add(uiApGaugeIcon);
         }
-
-        UpdateUI();
+        SetSpellDictionary();
         _apSourcePrefab.gameObject.SetActive(false);
+        UpdateUI(false);
     }
-    
-    
-    public void UpdateUI()
+
+    public void Init()
+    {
+        StartCoroutine(InitCoroutine());
+    }
+
+    private IEnumerator InitCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        UpdateUI();
+    }
+
+    public void UpdateUI(bool isSmooth = true)
     {
         SetSpellDictionary();
         for(int i = 0; i< _spellSources.Count; i++)
@@ -59,23 +70,36 @@ public class UIApGauge : UIBase
             }
             
             var remainSpellAP = _spellSources[i].GetRemainSpellAP();
-            Vector3 position  = Vector3.zero;
-            if (sameAPCount >= 2)
-            {
-                var delta = _apGaugePos[Math.Min(5, remainSpellAP)].position - _apGaugePos[Math.Min(5, remainSpellAP - 1)].position;
-                var pos = delta / (sameAPCount + 1);
-                position = _apGaugePos[Math.Min(5, remainSpellAP)].position + pos * (myIndex+1);
-            }
+            var position = GetPosition(sameAPCount, remainSpellAP, myIndex);
+            if(isSmooth)
+                _spellSources[i].SetPositionSmooth(position);
             else
-            {
-                position = (_apGaugePos[Math.Min(5,remainSpellAP - 1)].position + _apGaugePos[Math.Min(5,remainSpellAP)].position) / 2;
-            }
-            
-            _spellSources[i].SetPositionSmooth(position);
+                _spellSources[i].SetPosition(position);
         }
 
     }
-    
+
+    private Vector3 GetPosition(int sameAPCount, int remainSpellAP, int myIndex)
+    {
+        Vector3 position = Vector3.zero;
+        position.y = _apSourcePrefab.transform.position.y;
+        if (sameAPCount >= 2)
+        {
+            var delta = _apGaugePos[Math.Min(5, remainSpellAP)].position -
+                        _apGaugePos[Math.Min(5, remainSpellAP - 1)].position;
+            var pos = delta / (sameAPCount + 1);
+            position.x = (_apGaugePos[Math.Min(5, remainSpellAP)].position + pos * (myIndex + 1)).x;
+        }
+        else
+        {
+            position.x = ((_apGaugePos[Math.Min(5, remainSpellAP - 1)].position +
+                           _apGaugePos[Math.Min(5, remainSpellAP)].position) /
+                          2).x;
+        }
+
+        return position;
+    }
+
     private void SetSpellDictionary()
     {
         dictionary.Clear();

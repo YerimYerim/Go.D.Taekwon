@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,13 +6,19 @@ public class UICardDeckOnHand : UIBase
 {
     [SerializeField] private List<UISpell> uiCards = new List<UISpell>();
     [SerializeField] private GridLayoutGroup gridLayout;
-
+    
     private void OnEnable()
     {
-
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if(gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode.BattleHandler.OnEventRemoveCard += RemoveCard;
+        gameBattleMode.BattleHandler.OnUpdateCard += SetUI;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         if (gameBattleMode == null)
@@ -34,14 +37,7 @@ public class UICardDeckOnHand : UIBase
         {
             card._parents = this;
         }
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        if(gameBattleMode == null)
-        {
-            return;
-        }
-        gameBattleMode.BattleHandler.OnEventRemoveCard += RemoveCard;
-        gameBattleMode.BattleHandler.OnUpdateCard += SetUI;
-        //SetUI();
+        SetUI();
     }
 
     public void SetUI()

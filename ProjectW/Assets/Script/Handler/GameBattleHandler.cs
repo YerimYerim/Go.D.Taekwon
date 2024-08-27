@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Script.Manager;
 using UnityEngine;
 
 public class GameBattleHandler
@@ -15,7 +16,6 @@ public class GameBattleHandler
     public event Action OnUpdateCard;
 
     // sourceId, spellSource
-
     public void Init()
     {
         OnUpdateCard?.Invoke();
@@ -29,13 +29,22 @@ public class GameBattleHandler
             _sources[i].Init(sourceTableData?.source_id ?? 0, MakeSpell);
             AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ??0);
         }
-        GameMapManager.Instance.SpawnActors(); 
+        GameMapManager.Instance.SpawnActors();
         
-        UICardDeck = GameObject.Find("UICardDeckOnHand").GetComponent<UICardDeckOnHand>();
-        UICardDeck.SetUI();
+        if(GameUIManager.Instance.TryGetOrCreate<UICardDeckOnHand>(false, UILayer.LEVEL_1, out var deckUI))
+        {
+            UICardDeck = deckUI;
+            UICardDeck.Show();
+            UICardDeck.SetUI();
+        }
         
-        uiApGauge =  GameObject.Find("UIApGauge").GetComponent<UIApGauge>();
-        uiApGauge.Init(_sources);
+        
+        if(GameUIManager.Instance.TryGetOrCreate<UIApGauge>(false, UILayer.LEVEL_1, out var gaugeUI))
+        {
+            uiApGauge = gaugeUI;
+            uiApGauge.Show();
+            uiApGauge.Init();
+        }
     }
 
     public void UpdateEnemyHp()

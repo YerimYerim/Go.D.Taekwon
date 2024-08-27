@@ -20,7 +20,7 @@ public class UIDragable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     private void Awake()
     {
         rectTransform = transform.GetComponent<RectTransform>();
-        _canvas = GetComponentInParent<Canvas>();
+        _canvas = FindObjectOfType<Canvas>();
     }
 
     public void InitDragSuccessCondition( Action<PointerEventData> actionFail, Action<PointerEventData> actionSuccess, AdjustIsSuccess adjustIsSuccess, Action<PointerEventData> onDragging)

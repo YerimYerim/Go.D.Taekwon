@@ -20,7 +20,7 @@ public class UIAPGaugeIcon : MonoBehaviour
     
     public void SetPosition(Vector3 position)
     {
-        transform.position = position;
+        transform.SetPositionAndRotation(position, Quaternion.identity);
         transform.gameObject.SetActive(_gameSpellSource.GetRemainAp()<= 5);
     }
     

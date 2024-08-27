@@ -7,7 +7,8 @@
 
     public int GetFinalDamage(int attackDamage)
     {
-        return (int) (attackDamage * (1.0f - takedamage)) - (int) (amor * (1.0f - amorBreakPercent) - amorBreakInt);
+        //return (int) (attackDamage * (1.0f - takedamage)) - (int) (amor * (1.0f - amorBreakPercent) - amorBreakInt);
+        return (int) (attackDamage * (1.0f - takedamage));
     }
 
     public void AddAmor(int amorValue)

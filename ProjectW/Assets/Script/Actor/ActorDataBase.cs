@@ -31,9 +31,9 @@ public class ActorDataBase
     }
     public void DoDamaged(int damage)
     {
-        var leftDamage = amor.amor - Math.Max(0, amor.GetFinalDamage(damage));
-        amor.AddAmor(  Math.Max(0, amor.GetFinalDamage(damage)) );
-        Hp -= Math.Max(0, leftDamage);
+        var leftDamage = amor.amor - amor.GetFinalDamage(damage);
+        amor.amor = Math.Max(0, amor.amor - amor.GetFinalDamage(damage));
+        Hp = Math.Max(0, Hp + leftDamage);
     }
     
     public void DoHeal(int addHp)

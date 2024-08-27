@@ -11,16 +11,13 @@ public class GameInstanceManager : Singleton<GameInstanceManager>
     {
         base.Awake();
         GameDataManager.Instance.LoadData();
-        Instance.ChangeGameMode(GameModeType.Battle);   
+        ChangeGameMode(GameModeType.Battle);
     }
 
-    private void ChangeGameMode(GameModeType modeType)
+    public void ChangeGameMode(GameModeType modeType)
     {
-        if(currentGameMode != null)
-        {
-            currentGameMode.Exit();
-        }
-        
+        currentGameMode?.Exit();
+
         switch (modeType)
         {
             case GameModeType.None:
@@ -35,16 +32,6 @@ public class GameInstanceManager : Singleton<GameInstanceManager>
         }
         
         currentGameMode?.Init();
-    }
-    
-    public override void SaveData(string[] fileNames)
-    {
-        base.SaveData(fileNames);
-    }
-    
-    public override void LoadData(string[] fileName)
-    {
-        base.LoadData(fileName);
     }
     
     public T GetGameMode<T>() where T : GameModeBase

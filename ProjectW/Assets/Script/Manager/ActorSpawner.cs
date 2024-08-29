@@ -1,16 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
-using Script.Manager;
 using UnityEngine;
 
-public class BattleActorSpawner
+public class ActorSpawner
 {
     private Dictionary<string, GameActor> actors = new();
     private List<GameActor> enemy = new();
     
-    public void AddActors(GameActor actor)
+    public GameActor SpawnActor(ActorTableData actorTableData, string parentsObjectName, string actorName = "")
     {
+        var actor = ActorSpawnFactory.SpawnActorPrefab(actorTableData, parentsObjectName, actorName);
         actors.TryAdd(actor.name, actor);
+        return actor;
     }
 
     public void RemoveActors(string prefabName)
@@ -54,23 +54,38 @@ public class BattleActorSpawner
         }
     }
     
-    public GameActor SpawnActorPrefab(ActorTableData actorTableData, string parentsObjectName, string actorName = "")
+
+    /// <summary>
+    /// 적 스폰
+    /// </summary>
+    /// <param name="map"></param>
+    public void SpawnEnemyActors(MapData map)
     {
-        var rscTableData = GameDataManager.Instance._actorRscDatas.Find(_ => _.rsc_id == actorTableData.rsc_id);
-        var prefab = GameResourceManager.Instance.GetLoadActorPrefab(rscTableData.actor_rsc_prefab);
-        var parentsObjectTr = GameObject.Find(parentsObjectName).transform;
-        if(parentsObjectTr == null)
-            return null;
+        List<ActorTableData> actorMonsterDatas = new();
+        for (int i = 0; i < map.enemyActor.Count; ++i)
+        {
+            var actorData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_id ==  map.enemyActor[i] && _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
+            actorMonsterDatas.Add(actorData);
+        }
         
-        prefab.transform.SetParent(parentsObjectTr);
-        prefab.transform.position = parentsObjectTr.position;
-        prefab.name = actorName.Equals(string.Empty) == false ? actorName : prefab.name;
-        
-        var actor = prefab.GetComponent<GameActor>();
-        AddActors(actor);
-        
-        return actor;
+        for (int i = 0; i < map.enemyActor.Count; ++i)
+        {
+            string enemyName = GameUtil.ENEMY_PARENT_NAME + "_" + (i + 1);
+            var actorPrefab =  SpawnActor(actorMonsterDatas[i], enemyName, enemyName);
+            
+            var monsterData = GameDataManager.Instance._monsterTableDatas.Find(_ => _.actor_id == actorMonsterDatas[i].actor_id);
+            var enemyData = new ActorEnemyData();
+            
+            enemyData.Init(monsterData?.stat_hp?? 0);
+            enemyData.InitAP(monsterData?.skill_pattern_group ?? 0);
+
+            SpawnEnemy(GetActor(actorPrefab.name));
+            SetEnemyData(i,enemyData);
+        }
+
+        UpdateEnemyHp();
     }
+    
     public void UpdateEnemyHp()
     {
         for (int i = 0; i < enemy.Count; ++i)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MapHandler
 {
-    private MapData curMap = new();
+    private static MapData curMap = new();
     
     public void Init()
     {
@@ -14,53 +14,20 @@ public class MapHandler
             mapId = 1000101,
             chapterId = 1,
             curStageList = new List<int> {10001, 10002, 10103, 10004, 10005, 10206},
-            stageId = 10001
+            stageId = 10001,
+            enemyActor = new List<int>(){20001}
         };
     }
-
-    public void SpawnActors()
+    
+    public static MapData GetMapId()
     {
-        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        var curMapData = GameDataManager.Instance._contentMapTableDatas.Find(_ => _.map_id == curMap.mapId);
-        var curMapActor = curMapData.actor_id.ToList();
-        List<ActorTableData> actorMonsterDatas = new();
-        for (int i = 0; i < curMapActor.Count; ++i)
-        {
-            var actorData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_id == curMapActor[i] && _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
-            actorMonsterDatas.Add(actorData);
-        }
-        
-        for (int i = 0; i < actorMonsterDatas.Count; ++i)
-        {
-            string enemyName = GameUtil.ENEMY_PARENT_NAME + "_" + (i + 1);
-            
-            var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-            var actorSpawner = gameBattleMode?.BattleActorSpawner;
-        
-            if(actorSpawner == null)
-                return;
-            
-            var actorPrefab = actorSpawner.SpawnActorPrefab(actorMonsterDatas[i], enemyName, enemyName);
-
-            var monsterData = GameDataManager.Instance._monsterTableDatas.Find(_ => _.actor_id == actorMonsterDatas[i].actor_id);
-            var enemyData = new ActorEnemyData();
-            
-            enemyData.Init(monsterData?.stat_hp?? 0);
-            enemyData.InitAP(monsterData?.skill_pattern_group ?? 0);
-
-            if(battleMode == null)
-                return;
-            battleMode.BattleActorSpawner.SpawnEnemy(actorSpawner.GetActor(actorPrefab.name));
-            battleMode.BattleActorSpawner.SetEnemyData(i,enemyData);
-        }
-
-        battleMode?.BattleActorSpawner.UpdateEnemyHp();
+        return curMap;
     }
+
 
     public void SetMap(int mapId)
     {
         curMap.mapId = mapId;
-        SpawnActors();
     }
 
     public void ShowMapSelect()
@@ -85,13 +52,13 @@ public class MapHandler
             }
         }
 
-        var SecondGroupSelect = stageTable?.advent_cnt_2 ?? 0;
-        var SecondGroupMap = stageTable?.map_group_2;
+        var secondGroupSelect = stageTable?.advent_cnt_2 ?? 0;
+        var secondGroupMap = stageTable?.map_group_2;
         if (firstGroupMap != null)
         {
-            List<int> availableMaps = new List<int>(SecondGroupMap);
+            List<int> availableMaps = new List<int>(secondGroupMap);
 
-            for (int i = 0; i < SecondGroupSelect; ++i)
+            for (int i = 0; i < secondGroupSelect; ++i)
             {
                 int randomIndex = Random.Range(0, availableMaps.Count);
                 selectableMap.Add(availableMaps[randomIndex]);
@@ -114,18 +81,30 @@ public class MapHandler
     private void RemoveActorsAll()
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        var actorSpawner = battleMode?.BattleActorSpawner;
+        var actorSpawner = battleMode?.ActorSpawner;
         
         if(actorSpawner == null)
             return;
         
         actorSpawner.RemoveAllMonsterActors();
-        battleMode.BattleActorSpawner.RemoveAllEnemy();
+        battleMode.ActorSpawner.RemoveAllEnemy();
     }
     public void OnClickMapSelect(ContentMapTableData data)
     {
-        curMap.mapId = data.map_id ?? 0;
+        SetCurMap(data.map_id?? 0);
         RemoveActorsAll();
-        SpawnActors();
+       
+    }
+
+    public void SetCurMap(int mapId)
+    {
+        var curMapData = GameDataManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
+        var curMapActor = curMapData.actor_id.ToList();
+        curMap.enemyActor = curMapActor;
+    }
+    
+    public MapData GetCurMap()
+    {
+        return curMap;
     }
 }

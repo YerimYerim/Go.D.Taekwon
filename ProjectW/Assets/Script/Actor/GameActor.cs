@@ -82,7 +82,6 @@ public class GameActor : MonoBehaviour
         renderer.material = normalMaterrial;
     }
     
-    
     public void UpdateDebuff()
     {
         foreach (var debuff in data.debuffs)

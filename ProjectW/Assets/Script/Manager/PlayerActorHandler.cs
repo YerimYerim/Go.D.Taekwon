@@ -23,17 +23,19 @@ public class PlayerActorHandler
     {
         ActorTableData actorTableData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_id == selectActorId);
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        var actorSpawner = gameBattleMode?.BattleActorSpawner;
+        var actorSpawner = gameBattleMode?.ActorSpawner;
         
         if(actorSpawner == null)
             return;
         
-        var actorPrefab = actorSpawner.SpawnActorPrefab(actorTableData, GameUtil.PLAEYER_PARENT_NAME);
-        
+        var actorPrefab = actorSpawner.SpawnActor(actorTableData, GameUtil.PLAEYER_PARENT_NAME);
         player = actorSpawner.GetActor(actorPrefab.name);
-        playerData = new ActorPlayerData();
+        
         var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == selectActorId);
+        
+        playerData = new ActorPlayerData();
         playerData.Init(playableTableData?.stat_hp ?? 0);
+        
         player.data = playerData;
         player.OnUpdateHp(playerData);
     }

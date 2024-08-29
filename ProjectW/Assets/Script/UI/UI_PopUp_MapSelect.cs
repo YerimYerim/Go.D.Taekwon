@@ -33,6 +33,7 @@ public class UI_PopUp_MapSelect : UIBase
             return;
         }
         gameBattleMode?.MapHandler?.OnClickMapSelect(data);
+        gameBattleMode?.ActorSpawner?.SpawnEnemyActors(gameBattleMode?.MapHandler.GetCurMap());
         Hide();
     }
     

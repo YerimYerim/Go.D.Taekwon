@@ -82,7 +82,7 @@ public class GameBattleHandler
         if (player == null)
             return;
         
-        if (battleMode.BattleActorSpawner.IsEnemyTurn() == false)
+        if (battleMode.ActorSpawner.IsEnemyTurn() == false)
         {
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
@@ -120,7 +120,7 @@ public class GameBattleHandler
                 }
                 
                 RemoveCard(spellData);
-                battleMode.BattleActorSpawner.MinusAP(1);
+                battleMode.ActorSpawner.MinusAP(1);
                 MinusAP(1);
                 player.OnUpdateHp(handler.playerData);
             }), 1f);
@@ -146,7 +146,7 @@ public class GameBattleHandler
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         var handler = battleMode.PlayerActorHandler;
-        var ActorHandler = battleMode.BattleActorSpawner;
+        var ActorHandler = battleMode.ActorSpawner;
         
         var player = handler?.player;
         if (player == null)
@@ -155,7 +155,7 @@ public class GameBattleHandler
         if(ActorHandler == null)
             return;
 
-        if (battleMode.BattleActorSpawner.IsEnemyTurn() == true)
+        if (battleMode.ActorSpawner.IsEnemyTurn() == true)
         {
             for (int i = 0; i <  ActorHandler.GetEnemyCount(); ++i)
             {
@@ -216,7 +216,7 @@ public class GameBattleHandler
         {
             return;
         }
-        battleMode.BattleActorSpawner.UpdateEnemyHp();
+        battleMode.ActorSpawner.UpdateEnemyHp();
         
         player.UpdateDebuff();
         player.UpdateBuff();

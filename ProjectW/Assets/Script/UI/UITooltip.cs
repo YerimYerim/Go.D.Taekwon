@@ -23,8 +23,8 @@ public class UITooltip : UIBase
     /// <param name="parentsRect"></param>
     public void CreateInfo(string titleStringKey, string descStringKey, RectTransform parentsRect)
     {
-        txtTitle.text = GameUtil.GetString(titleStringKey);
-        txtDesc.text = GameUtil.GetString(descStringKey);
+        txtTitle.SetText(GameUtil.GetString(titleStringKey));
+        txtDesc.SetText(GameUtil.GetString(descStringKey));
 
         // 화면 중앙 좌표
         Vector2 screenCenter = new(Screen.width * 0.5f , Screen.height * 0.5f);

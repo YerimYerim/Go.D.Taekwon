@@ -19,7 +19,7 @@ public static class GameUtil
         switch (GameSettingManager.Instance.languageType)
         {
             case LANGUAGE_TYPE.LANGUAGE_TYPE_KOR:
-                return stringdata.value_kor;
+                return stringdata.value_kor.Replace("\\n", "\n");
                 break;
             default:
                 return "??";

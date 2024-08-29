@@ -34,11 +34,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
     {
         base.Awake();
     }
-
-    protected override void Init()
-    {
-        LoadData();
-    }
+    
     public void LoadData()
     {
         _configTableData = ReadJsonFiles<ConfigTableData>(_pageJsonFileNames[0]);

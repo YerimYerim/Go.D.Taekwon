@@ -8,8 +8,9 @@ public class GameAniManager : Singleton<GameAniManager>
     
     private Dictionary<ACTOR_TAG, Dictionary<ANI_STATE, Sprite[]>> actorTagTree = new();
 
-    protected override void Init()
+    protected override void Awake()
     {
+        base.Awake();
         var  loadScriptableObject = GameResourceManager.Instance.GetLoadScriptableObject<AnimationPresets>("Animation_DB");
         
         for (int i = 0; i < loadScriptableObject.presets.Count; ++i)

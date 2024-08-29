@@ -26,7 +26,13 @@ public class UI_PopUp_MapSelect : UIBase
     }
     public void OnClickMapSelect(ContentMapTableData data)
     {
-        GameMapManager.Instance.OnClickMapSelect(data);
+
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode?.MapHandler?.OnClickMapSelect(data);
         Hide();
     }
     

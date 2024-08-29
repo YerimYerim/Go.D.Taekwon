@@ -59,7 +59,10 @@ public class GameActor : MonoBehaviour
         else
         {
             data = lastData;
-            uiActorDMGFloater.ShowDamage(lastData.Hp -uiActorBottom._curHp);
+            if (uiActorBottom._curHp != 0)
+            {
+                uiActorDMGFloater.ShowDamage(lastData.Hp - uiActorBottom._curHp);
+            }
             uiActorBottom.SetHPUI(lastData.MaxHp, lastData.Hp);
             uiActorBottom.SetDef(lastData.GetAmor());
             Debug.Log(gameObject.name + "의 체력이 " + lastData.Hp + "방어도 " + lastData.GetAmor());

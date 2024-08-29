@@ -11,9 +11,13 @@ public class GameInstanceManager : Singleton<GameInstanceManager>
     {
         base.Awake();
         GameDataManager.Instance.LoadData();
-        ChangeGameMode(GameModeType.Battle);
     }
 
+    public void BattleStart()
+    {
+        ChangeGameMode(GameModeType.Battle);
+        
+    }
     public void ChangeGameMode(GameModeType modeType)
     {
         currentGameMode?.Exit();

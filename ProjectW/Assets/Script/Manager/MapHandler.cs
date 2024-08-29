@@ -3,22 +3,21 @@ using System.Linq;
 using Script.Manager;
 using UnityEngine;
 
-public class GameMapManager : Singleton<GameMapManager>
+public class MapHandler
 {
-    private MapData curMap = new ();
-
-
-    protected override void Init()
+    private MapData curMap = new();
+    
+    public void Init()
     {
-        base.Init();
-        
-        curMap.mapId = 1000101;
-        curMap.chapterId = 1;
-        curMap.curStageList = new List<int> {10001, 10002, 10103, 10004, 10005, 10206};
-        curMap.stageId = 10001;
+        curMap = new ()
+        {
+            mapId = 1000101,
+            chapterId = 1,
+            curStageList = new List<int> {10001, 10002, 10103, 10004, 10005, 10206},
+            stageId = 10001
+        };
     }
-    
-    
+
     public void SpawnActors()
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
@@ -51,12 +50,11 @@ public class GameMapManager : Singleton<GameMapManager>
 
             if(battleMode == null)
                 return;
-            battleMode.BattleHandler.SpawnEnemy(actorSpawner.GetActor(actorPrefab.name));
-            battleMode.BattleHandler.SetEnemyData(i,enemyData);
+            battleMode.BattleActorSpawner.SpawnEnemy(actorSpawner.GetActor(actorPrefab.name));
+            battleMode.BattleActorSpawner.SetEnemyData(i,enemyData);
         }
-        if(battleMode == null)
-            return;
-        battleMode.BattleHandler.UpdateEnemyHp();
+
+        battleMode?.BattleActorSpawner.UpdateEnemyHp();
     }
 
     public void SetMap(int mapId)
@@ -122,7 +120,7 @@ public class GameMapManager : Singleton<GameMapManager>
             return;
         
         actorSpawner.RemoveAllMonsterActors();
-        battleMode.BattleHandler.RemoveAllEnemy();
+        battleMode.BattleActorSpawner.RemoveAllEnemy();
     }
     public void OnClickMapSelect(ContentMapTableData data)
     {

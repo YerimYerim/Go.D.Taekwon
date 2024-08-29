@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class GameBattleHandler
 {
-    private List<GameActor> enemy = new();
-
     public readonly List<GameDeckManager.SpellData> spellDatas = new();
     public List<GameSpellSource> _sources = new();
     public UICardDeckOnHand UICardDeck;
@@ -29,8 +27,7 @@ public class GameBattleHandler
             _sources[i].Init(sourceTableData?.source_id ?? 0, MakeSpell);
             AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ??0);
         }
-        GameMapManager.Instance.SpawnActors();
-        
+
         if(GameUIManager.Instance.TryGetOrCreate<UICardDeckOnHand>(false, UILayer.LEVEL_1, out var deckUI))
         {
             UICardDeck = deckUI;
@@ -47,37 +44,12 @@ public class GameBattleHandler
         }
     }
 
-    public void UpdateEnemyHp()
-    {
-        for (int i = 0; i < enemy.Count; ++i)
-        {
-            enemy[i].OnUpdateHp(enemy[i].data);
-        }
-    }
 
-    public void SetEnemyData(int i, ActorEnemyData enemyData)
-    {
-        enemy[i].data = enemyData;
-    }
-
-    public void SpawnEnemy(GameActor actorPrefab)
-    {
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        var actorSpawner = gameBattleMode?.BattleActorSpawner;
-        if(actorSpawner == null)
-            return;
-        enemy.Add(actorSpawner.GetActor(actorPrefab.name));
-    }
-    public void RemoveAllEnemy()
-    {
-        enemy.Clear();
-    }
 
     public GameSpellSource GetSource(int index)
     {
         if (index >=  _sources.Count)
         {
-            GameDataManager.Instance.LoadData();
             var sourceTableData = GameDataManager.Instance._spellSourceTableDatas;
 
             for (int i = 0; i < sourceTableData.Count; ++i)
@@ -110,9 +82,8 @@ public class GameBattleHandler
         if (player == null)
             return;
         
-        if (IsEnemyTurn() == false)
+        if (battleMode.BattleActorSpawner.IsEnemyTurn() == false)
         {
-
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
                 var spellEffect = spellData.tableData.spell_effect;
@@ -147,7 +118,9 @@ public class GameBattleHandler
                         } break;
                     }
                 }
+                
                 RemoveCard(spellData);
+                battleMode.BattleActorSpawner.MinusAP(1);
                 MinusAP(1);
                 player.OnUpdateHp(handler.playerData);
             }), 1f);
@@ -173,15 +146,23 @@ public class GameBattleHandler
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         var handler = battleMode.PlayerActorHandler;
+        var ActorHandler = battleMode.BattleActorSpawner;
+        
         var player = handler?.player;
         if (player == null)
             return;
-        if (IsEnemyTurn() == true)
+        
+        if(ActorHandler == null)
+            return;
+
+        if (battleMode.BattleActorSpawner.IsEnemyTurn() == true)
         {
-            for (int i = 0; i < enemy.Count; ++i)
+            for (int i = 0; i <  ActorHandler.GetEnemyCount(); ++i)
             {
-                var skill = ((ActorEnemyData)enemy[i].data).GetSkill();
-                if (skill != null && ((ActorEnemyData)enemy[i].data).IsCanUseSkill())
+                var enemyData = ActorHandler.GetEnemyData(i);
+                var enemyActor = ActorHandler.GetEnemy(i);
+                var skill = enemyData.GetSkill();
+                if (skill != null && enemyData.IsCanUseSkill())
                 {
                     var skilleffect = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill?.effect_id);
                     var skillEffectBase = GameUtil.GetSkillEffectBase(skilleffect);
@@ -192,23 +173,23 @@ public class GameBattleHandler
                         {
                             EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
                             {
-                                skillEffectBase.DoSkill(new List<GameActor> {enemy[index]}, enemy[index]);
-                                ((ActorEnemyData) enemy[index].data).ResetAP();
+                                skillEffectBase.DoSkill(new List<GameActor> {enemyActor}, enemyActor);
+                                enemyData.ResetAP();
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
-                            Debug.Log(enemy[i].gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
+                            Debug.Log(enemyActor.gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
                         
                         } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
                         {
                             EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
                             {
-                                skillEffectBase.DoSkill(new List<GameActor>{player}, enemy[index]);
-                                ((ActorEnemyData) enemy[index].data).ResetAP();
+                                skillEffectBase.DoSkill(new List<GameActor>{player}, enemyActor);
+                                enemyData.ResetAP();
                                 player.OnUpdateHp(handler.playerData);
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
-                            Debug.Log(enemy[i].gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
+                            Debug.Log(enemyActor.gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
                             
                         } break;
                     }
@@ -223,29 +204,10 @@ public class GameBattleHandler
             Debug.Log("내 턴입니다. 적이 공격할 수 없습니다.");
         }
     }
-
-    public bool IsEnemyTurn()
-    {
-        // ?? : config  로 바꿀예정
-        for (int i = 0; i < enemy.Count; ++i)
-        {
-            if (((ActorEnemyData)enemy[i].data).IsCanUseSkill())
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    
 
     public void DoTurn()
     {
-        for (int i = 0; i < enemy.Count; ++i)
-        {
-            enemy[i].UpdateDebuff();
-            enemy[i].UpdateBuff();
-            enemy[i].OnUpdateHp(enemy[i].data);
-        }
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         var handler = battleMode.PlayerActorHandler;
         var player = handler?.player;
@@ -254,9 +216,12 @@ public class GameBattleHandler
         {
             return;
         }
+        battleMode.BattleActorSpawner.UpdateEnemyHp();
+        
         player.UpdateDebuff();
         player.UpdateBuff();
         player.OnUpdateHp(handler.playerData);
+
     }
     public bool IsDraw()
     {
@@ -271,11 +236,6 @@ public class GameBattleHandler
 
     public void MinusAP(int minusAP)
     {
-        for (int i = 0; i < enemy.Count; ++i)
-        {
-            var enemyData = (ActorEnemyData)enemy[i].data;
-            enemyData.MinusAP(minusAP);
-        }
         for (int i = 0; i < _sources.Count; ++i)
         {
             _sources[i].ReduceAP(minusAP);
@@ -290,17 +250,5 @@ public class GameBattleHandler
         OnUpdateCard?.Invoke();
     }
 
-    public bool IsAllEnemyDead()
-    {
-        for (int i = 0; i < enemy.Count; ++i)
-        {
-            if (enemy[i].data.GetHp() > 0)
-            {
-                return false;
-            };
-        }
 
-        return true;
-        
-    }
 }

@@ -26,14 +26,14 @@ public class UI_PopUp_MapSelect : UIBase
     }
     public void OnClickMapSelect(ContentMapTableData data)
     {
-
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         if (gameBattleMode == null)
         {
             return;
         }
+        gameBattleMode?.ActorSpawner?.RemoveAllMonsterActors();
         gameBattleMode?.MapHandler?.OnClickMapSelect(data);
-        gameBattleMode?.ActorSpawner?.SpawnEnemyActors(gameBattleMode?.MapHandler.GetCurMap());
+        gameBattleMode?.ActorSpawner?.SpawnEnemyActors(gameBattleMode?.MapHandler?.GetCurMap());
         Hide();
     }
     

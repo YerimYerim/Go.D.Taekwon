@@ -24,12 +24,7 @@ public class MapHandler
         return curMap;
     }
 
-
-    public void SetMap(int mapId)
-    {
-        curMap.mapId = mapId;
-    }
-
+    
     public void ShowMapSelect()
     {
         // 현 스테이지 index 
@@ -65,11 +60,9 @@ public class MapHandler
                 availableMaps.RemoveAt(randomIndex);
             }
         }
-        
-        // GameDataManager.Instance._contentMapTableDatas;
-        //GameDataManager.Instance._contentChapterTableDatas;
-        
+
         curMap.stageId = stageTable?.stage_id ?? 0;
+        
         if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
         {
             var mapData = GameDataManager.Instance._contentMapTableDatas.FindAll(_ => selectableMap.Contains(_.map_id?? 0));
@@ -77,23 +70,10 @@ public class MapHandler
             ui.Show();
         };
     }
-
-    private void RemoveActorsAll()
-    {
-        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        var actorSpawner = battleMode?.ActorSpawner;
-        
-        if(actorSpawner == null)
-            return;
-        
-        actorSpawner.RemoveAllMonsterActors();
-        battleMode.ActorSpawner.RemoveAllEnemy();
-    }
+    
     public void OnClickMapSelect(ContentMapTableData data)
     {
         SetCurMap(data.map_id?? 0);
-        RemoveActorsAll();
-       
     }
 
     public void SetCurMap(int mapId)

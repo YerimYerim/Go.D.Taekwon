@@ -38,7 +38,6 @@ public class ActorSpawner
     public void RemoveAllMonsterActors()
     {
         List<string> keysToRemove = new List<string>();
-
         foreach (KeyValuePair<string, GameActor> actor in actors)
         {
             if (actor.Value.data is ActorEnemyData)
@@ -50,8 +49,11 @@ public class ActorSpawner
 
         foreach (string key in keysToRemove)
         {
-            actors.Remove(key);
+            RemoveActors(key);
         }
+        enemy.Clear();
+        
+        //actors.Clear();
     }
     
 
@@ -103,11 +105,7 @@ public class ActorSpawner
     {
         enemy.Add(GetActor(actorPrefab.name));
     }
-    public void RemoveAllEnemy()
-    {
-        enemy.Clear();
-    }
-    
+
     public ActorEnemyData GetEnemyData(int i)
     {
         return enemy[i].data as ActorEnemyData;

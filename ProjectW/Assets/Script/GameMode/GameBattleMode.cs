@@ -32,6 +32,7 @@ public class GameBattleMode : GameModeBase
         // 플레이어 로드
 
         PlayerActorHandler.Init(GameUtil.PLAYER_ACTOR_ID);
+        ActorSpawner.SpawnEnemyActors(MapHandler.GetMapId());
         
 
         //spell load 
@@ -42,7 +43,6 @@ public class GameBattleMode : GameModeBase
         // 배틀 핸들러
 
         BattleHandler.Init();
-        ActorSpawner.SpawnEnemyActors(MapHandler.GetMapId());
 
     }
     

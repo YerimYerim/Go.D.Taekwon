@@ -19,6 +19,8 @@ public class ActorEnemyData : ActorDataBase
     private bool IsDoingSkill = false;
 
     private SkillGroupTableData _latestSkill;
+    
+
     public void InitAP(int skillPatternGroupId)
     {
         curPhase = 1;
@@ -140,5 +142,10 @@ public class ActorEnemyData : ActorDataBase
     public void AddAP(int addAp)
     {
         _skillBase.GainAP(addAp);
+    }
+    
+    public int GetRemainAp()
+    {
+        return _skillBase.CurrentAP;
     }
 }

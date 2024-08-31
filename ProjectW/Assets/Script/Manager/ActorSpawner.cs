@@ -52,8 +52,6 @@ public class ActorSpawner
             RemoveActors(key);
         }
         enemy.Clear();
-        
-        //actors.Clear();
     }
     
 
@@ -121,6 +119,7 @@ public class ActorSpawner
         return enemy.Count;
     }
     
+    
     public bool IsEnemyTurn()
     {
         for (int i = 0; i < enemy.Count; ++i)
@@ -163,5 +162,10 @@ public class ActorSpawner
             enemy[i].UpdateBuff();
             enemy[i].OnUpdateHp(enemy[i].data);
         }
+    }
+    
+    public List<GameActor> GetEnemyData()
+    {
+        return enemy;
     }
 }

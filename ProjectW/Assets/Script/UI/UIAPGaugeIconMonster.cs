@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class UIAPGaugeIconMonster : UIAPGaugeIconBase
 {
-    private GameSpellSource _gameSpellSource;
+    private ActorEnemyData enemyData;
     
     public override int GetRemainSpellAP()
     {
-        return _gameSpellSource.GetRemainAp();
+        return enemyData.GetRemainAp();
     }
     
-    public void SetSpellSource(GameSpellSource gameSpellSource)
+    public void SetData(GameActor data)
     {
-        _gameSpellSource = gameSpellSource;
-        SetImage(gameSpellSource.GetSourceImage());
+        enemyData = data.data as ActorEnemyData;
+        SetImage(data.resourceData.actor_portrait_small);
     }
 }

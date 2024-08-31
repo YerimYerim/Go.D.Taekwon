@@ -18,7 +18,7 @@ public class ActorSpawnFactory
         prefab.name = actorName.Equals(string.Empty) == false ? actorName : prefab.name;
         
         var actor = prefab.GetComponent<GameActor>();
+        actor.SetResourceTable(rscTableData);
         return actor;
     }
-
 }

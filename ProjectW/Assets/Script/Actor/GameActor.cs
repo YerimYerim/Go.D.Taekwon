@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Script.Manager;
 using UnityEngine;
 
@@ -15,7 +12,7 @@ public class GameActor : MonoBehaviour
     [SerializeField] private Material normalMaterrial;
     [SerializeField] private SpriteRenderer renderer;
     public ActorDataBase data = new();
-    
+    public ActorRscTableData resourceData = new();
     private void Awake()
     {
         CreateUIActorBottom();
@@ -39,9 +36,7 @@ public class GameActor : MonoBehaviour
             uiActorDMGFloater.Show();
         }
     }
-    
-    
-    
+
     private void Start()
     {
         uiActorBottom.SetPosition(this.uiHpBarSocket);
@@ -122,5 +117,10 @@ public class GameActor : MonoBehaviour
     {
         if (uiActorBottom != null)
             uiActorBottom.Hide();
+    }
+    
+    public void SetResourceTable(ActorRscTableData table)
+    {
+        resourceData = table;
     }
 }

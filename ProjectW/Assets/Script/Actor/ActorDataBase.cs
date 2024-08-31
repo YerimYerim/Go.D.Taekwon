@@ -15,7 +15,6 @@ public class ActorDataBase
     public LinkedList<ISkillTargetBuff> buffs = new();
     
     private bool IsStun = false;
-
     //Enemy 의 경우에만 사용
 
     // - 대미지 = 피해량 - (방어도 * (1-방어도 계수 파괴)  - 방어도 정수 파괴)

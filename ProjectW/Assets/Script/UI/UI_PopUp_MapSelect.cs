@@ -34,6 +34,7 @@ public class UI_PopUp_MapSelect : UIBase
         gameBattleMode?.ActorSpawner?.RemoveAllMonsterActors();
         gameBattleMode?.MapHandler?.OnClickMapSelect(data);
         gameBattleMode?.ActorSpawner?.SpawnEnemyActors(gameBattleMode?.MapHandler?.GetCurMap());
+        gameBattleMode?.BattleHandler?.uiApGauge.Init();
         Hide();
     }
     

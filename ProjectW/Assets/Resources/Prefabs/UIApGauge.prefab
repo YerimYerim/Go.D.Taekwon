@@ -637,8 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee9c6ea907ec7c42b790e244f831d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startTransform: {fileID: 8977407845493355785}
-  _endTransform: {fileID: 5126159555020834191}
   _apGaugePos:
   - {fileID: 8977407845493355785}
   - {fileID: 8407847392941033722}
@@ -647,8 +645,9 @@ MonoBehaviour:
   - {fileID: 909819111069665791}
   - {fileID: 5126159555020834191}
   _apSourcePrefab: {fileID: 5334082271698611832}
-  _apEnemyPrefab: {fileID: 0}
+  _apEnemyPrefab: {fileID: 6231879538311356328}
   _apSourceParentsPos: {fileID: 7639786284549040177}
+  _apEnemyParentsPos: {fileID: 1075519963163946468}
 --- !u!1 &3800571595528026247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1102,7 @@ GameObject:
   - component: {fileID: 1760304730769131127}
   - component: {fileID: 4891980241075056980}
   - component: {fileID: 3695143520250539477}
+  - component: {fileID: 6231879538311356328}
   m_Layer: 5
   m_Name: UIEnermy
   m_TagString: Untagged
@@ -1117,15 +1117,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7015461579472941220}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.5, y: -0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3606785613627266038}
   - {fileID: 7403369510614713727}
   m_Father: {fileID: 5854957107391071128}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 70, y: -45.12515}
@@ -1169,6 +1169,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6231879538311356328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015461579472941220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d814da8875c01314eb8d8b59fdfc2697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 3636681205128442692}
 --- !u!1 &7299398763740851995
 GameObject:
   m_ObjectHideFlags: 0

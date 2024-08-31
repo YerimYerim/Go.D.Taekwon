@@ -5,51 +5,86 @@ using UnityEngine;
 
 public class UIApGauge : UIBase
 {
-    [SerializeField] Transform _startTransform;
-    [SerializeField] Transform _endTransform;
-    
     // 시작과 끝을 다섯칸으로 나눠준다
-    [SerializeField] Transform[] _apGaugePos = new Transform[7];
-    
+    [SerializeField] private Transform[] _apGaugePos;
     
     [SerializeField] UIAPGaugeIcon _apSourcePrefab;
-    [SerializeField] GameObject _apEnemyPrefab;
+    [SerializeField] UIAPGaugeIconMonster _apEnemyPrefab;
     
     [SerializeField] Transform _apSourceParentsPos;
+    [SerializeField] Transform _apEnemyParentsPos;
     
-    Dictionary<int, List<UIAPGaugeIcon>> dictionary = new();
-    //[SerializeField] List<
-    // [0] [1] -> 쿨타임 1  - 1인게 여러개라면 개수만큼 해당 구역을 나눠서 배치
-    // [1] [2] -> 쿨타임 2
-    // [2] [3] -> 쿨타임 3
-    // [3] [4] -> 쿨타임 4
-    // [4] [5] -> 쿨타임 5
-    
+    Dictionary<int, List<UIAPGaugeIcon>> sourceDic = new();
+    Dictionary<int, List<UIAPGaugeIconMonster>> monsterDic = new();
     
     // ap , spell
-    private List<UIAPGaugeIcon> _spellSources = new();
-
-    public void Awake()
+    private readonly List<UIAPGaugeIcon> _spellSources = new();
+    private List<UIAPGaugeIconMonster> _monsters = new();
+    
+    private void SpawnSourceIcon(GameBattleMode gameBattleMode)
     {
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        
         foreach (var spell in gameBattleMode.BattleHandler._sources)
         {
-            var obj = Instantiate(_apSourcePrefab, _endTransform.position, Quaternion.identity, _apSourceParentsPos);
+            var obj = Instantiate(_apSourcePrefab, _apGaugePos[^1].position, Quaternion.identity, _apSourceParentsPos);
             var uiApGaugeIcon = obj.GetComponent<UIAPGaugeIcon>();
             uiApGaugeIcon.SetSpellSource(spell);
             _spellSources.Add(uiApGaugeIcon);
         }
+
         SetSpellDictionary();
         _apSourcePrefab.gameObject.SetActive(false);
-        UpdateUI(false);
     }
 
+    private void SpawnMonsterIcon(GameBattleMode gameBattleMode)
+    {
+        foreach (var monsterData in gameBattleMode.ActorSpawner.GetEnemyData())
+        {
+            var obj = Instantiate(_apEnemyPrefab, _apGaugePos[^1].position, Quaternion.identity, _apEnemyParentsPos);
+            var uiMonster = obj.GetComponent<UIAPGaugeIconMonster>();
+            uiMonster.SetData(monsterData);
+            _monsters.Add(uiMonster);
+        }
+
+        SetMonsterDictionary();
+        _apEnemyPrefab.gameObject.SetActive(false);
+    }
+    
     public void Init()
     {
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        ResetAll();
+        SpawnSourceIcon(gameBattleMode);
+        SpawnMonsterIcon(gameBattleMode);
+        UpdateUI(false);
         StartCoroutine(InitCoroutine());
     }
 
+    private void ResetSource()
+    {
+        foreach (var source in _spellSources)
+        {
+            Destroy(source.gameObject);
+        }
+        sourceDic.Clear();
+        _spellSources.Clear();
+    }
+    
+    private void ResetMonster()
+    {
+        foreach (var monster in _monsters)
+        {
+            Destroy(monster.gameObject);
+        }
+        monsterDic.Clear();
+        _monsters.Clear();
+    }
+
+    public void ResetAll()
+    {
+        ResetSource();
+        ResetMonster();
+    }
+    
     private IEnumerator InitCoroutine()
     {
         yield return new WaitForSeconds(0.1f);
@@ -60,64 +95,85 @@ public class UIApGauge : UIBase
     {
         SetSpellDictionary();
         UpdateSourceUI(isSmooth);
+        SetMonsterDictionary();
+        UpdateMonsterUI(isSmooth);
+    }
+
+    private void UpdateUI<T>(Dictionary<int, List<T>> dictionary, List<T> sources, Transform prefabTransform, bool isSmooth) where T : UIAPGaugeIconBase
+    {
+        for (int i = 0; i < sources.Count; i++)
+        {
+            int remainAP = sources[i].GetRemainSpellAP();
+            int sameAPCount = dictionary.TryGetValue(remainAP, out var value) ? value.Count : 1;
+            int myIndex = dictionary.TryGetValue(remainAP, out var value1) ? value1.FindIndex(_ => _ == sources[i]) : 0;
+
+            var position = GetPosition(sameAPCount, remainAP, myIndex, prefabTransform.position.y);
+            if (isSmooth)
+                sources[i].SetPositionSmooth(position);
+            else
+                sources[i].SetPosition(position);
+        }
     }
 
     private void UpdateSourceUI(bool isSmooth)
     {
-        for (int i = 0; i < _spellSources.Count; i++)
-        {
-            int sameAPCount = 1;
-            int myIndex = 0;
-            if (dictionary.ContainsKey(_spellSources[i].GetRemainSpellAP()))
-            {
-                sameAPCount = dictionary[_spellSources[i].GetRemainSpellAP()].Count;
-                myIndex = dictionary[_spellSources[i].GetRemainSpellAP()].FindIndex(_ => _ == _spellSources[i]);
-            }
-
-            var remainSpellAP = _spellSources[i].GetRemainSpellAP();
-            var position = GetPosition(sameAPCount, remainSpellAP, myIndex);
-            if (isSmooth)
-                _spellSources[i].SetPositionSmooth(position);
-            else
-                _spellSources[i].SetPosition(position);
-        }
+        UpdateUI(sourceDic, _spellSources, _apSourcePrefab.transform, isSmooth);
     }
 
-    private Vector3 GetPosition(int sameAPCount, int remainSpellAP, int myIndex)
+    private void UpdateMonsterUI(bool isSmooth)
     {
-        Vector3 position = Vector3.zero;
-        position.y = _apSourcePrefab.transform.position.y;
-        if (sameAPCount >= 2)
-        {
-            var delta = _apGaugePos[Math.Min(5, remainSpellAP)].position -
-                        _apGaugePos[Math.Min(5, remainSpellAP - 1)].position;
-            var pos = delta / (sameAPCount + 1);
-            position.x = (_apGaugePos[Math.Min(5, remainSpellAP)].position + pos * (myIndex + 1)).x;
-        }
-        else
-        {
-            position.x = ((_apGaugePos[Math.Min(5, remainSpellAP - 1)].position +
-                           _apGaugePos[Math.Min(5, remainSpellAP)].position) /
-                          2).x;
-        }
+        UpdateUI(monsterDic, _monsters, _apEnemyPrefab.transform, isSmooth);
+    }
 
-        return position;
+    #region SetDictionary
+
+    private void SetDictionary<T>(Dictionary<int, List<T>> dictionary, List<T> sources) where T : UIAPGaugeIconBase
+    {
+        dictionary.Clear();
+        foreach (var source in sources)
+        {
+            int remainAP = source.GetRemainSpellAP();
+            if (!dictionary.ContainsKey(remainAP))
+            {
+                dictionary[remainAP] = new List<T>();
+            }
+            dictionary[remainAP].Add(source);
+        }
     }
 
     private void SetSpellDictionary()
     {
-        dictionary.Clear();
-        for (int i = 0; i < _spellSources.Count; i++)
+        SetDictionary(sourceDic, _spellSources);
+    }
+
+    private void SetMonsterDictionary()
+    {
+        SetDictionary(monsterDic, _monsters);
+    }
+    
+
+    #endregion
+    
+    private Vector3 GetPosition(int sameAPCount, int remainSpellAP, int myIndex , float yPos)
+    {
+        Vector3 position = Vector3.zero;
+        int guageMaxCount = _apGaugePos.Length - 1;
+        position.y = yPos;
+        
+        var startPos = _apGaugePos[Math.Min(guageMaxCount, remainSpellAP - 1)].position;
+        var endPos = _apGaugePos[Math.Min(guageMaxCount, remainSpellAP)].position;
+        
+        if (sameAPCount >= 2)
         {
-            _spellSources[i].GetRemainSpellAP();
-            if (dictionary.ContainsKey(_spellSources[i].GetRemainSpellAP()) == false)
-            {
-                dictionary.Add(_spellSources[i].GetRemainSpellAP(), new List<UIAPGaugeIcon>(){_spellSources[i]});
-            }
-            else
-            {
-                dictionary[_spellSources[i].GetRemainSpellAP()].Add(_spellSources[i]);
-            }
+            var delta = endPos - startPos;
+            var pos = delta / (sameAPCount + 1);
+            position.x = endPos.x + pos.x * (myIndex + 1);
         }
+        else
+        {
+            position.x = (startPos.x + endPos.x) / 2;
+        }
+
+        return position;
     }
 }

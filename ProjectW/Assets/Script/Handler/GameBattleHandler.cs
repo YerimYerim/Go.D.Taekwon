@@ -72,7 +72,6 @@ public class GameBattleHandler
         }
     }
 
-
     public void DoSkill(GameDeckManager.SpellData spellData, GameActor targetActor)
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
@@ -249,6 +248,4 @@ public class GameBattleHandler
         AddSpell(spellID, amount);
         OnUpdateCard?.Invoke();
     }
-
-
 }

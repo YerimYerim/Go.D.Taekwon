@@ -27,15 +27,11 @@ public class UISpell : UIDragable
         var isSpellUI = FindUISpell(eventData);
         if (isSpellUI != null)
         {
-            var spellCombineData = GameDataManager.Instance._spellCombineDatas.FindAll(_ =>
-                _.material_1 == _spellTableData.tableData.spell_id ||
-                _.material_2 == _spellTableData.tableData.spell_id);
-            var resultCombineSpell = spellCombineData.Find(_ =>
-                _.material_1 == isSpellUI._spellTableData.tableData.spell_id ||
-                _.material_2 == isSpellUI._spellTableData.tableData.spell_id);
-            if (resultCombineSpell == null)
+            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == isSpellUI._spellTableData.tableData.spell_id));
+            spellCombineData ??= GameDataManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == isSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
+            if (spellCombineData == null)
                 return false;
-            SpellTableData resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == resultCombineSpell.result_spell);
+            SpellTableData resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
             if (resultSpell == null)
                 return false;
             return true;
@@ -56,10 +52,8 @@ public class UISpell : UIDragable
         var otherSpellUI = FindUISpell(eventData);
         if (otherSpellUI != null)
         {
-            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id ||
-                 _.material_2 == _spellTableData.tableData.spell_id)
-                && (_.material_1 == otherSpellUI._spellTableData.tableData.spell_id ||
-                    _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));
+            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));
+            spellCombineData ??= GameDataManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
 
             if (spellCombineData == null)
                 return;
@@ -107,20 +101,17 @@ public class UISpell : UIDragable
     private void OnEventDrag(PointerEventData eventData)
     {
         HideToolTip();
-        var isSpellUI = FindUISpell(eventData);
-        if (isSpellUI != null)
+        var otherSpellID = FindUISpell(eventData);
+        if (otherSpellID != null)
         {
-            var spellCombineData = GameDataManager.Instance._spellCombineDatas.FindAll(_ =>
-                _.material_1 == _spellTableData.tableData.spell_id ||
-                _.material_2 == _spellTableData.tableData.spell_id);
-            var resultCombineSpell = spellCombineData.Find(_ =>
-                _.material_1 == isSpellUI._spellTableData.tableData.spell_id ||
-                _.material_2 == isSpellUI._spellTableData.tableData.spell_id);
-            if (resultCombineSpell == null)
+            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellID._spellTableData.tableData.spell_id));
+            spellCombineData ??= GameDataManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellID._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
+
+            if (spellCombineData == null)
                 return;
 
             var resultSpell =
-                GameDataManager.Instance._spellData.Find(_ => _.spell_id == resultCombineSpell.result_spell);
+                GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
             if (resultSpell == null)
                 return;
 

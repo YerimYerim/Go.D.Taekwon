@@ -20,7 +20,9 @@ public class UIApGauge : UIBase
     // ap , spell
     private readonly List<UIAPGaugeIcon> _spellSources = new();
     private List<UIAPGaugeIconMonster> _monsters = new();
-    
+
+    #region Spawn
+
     private void SpawnSourceIcon(GameBattleMode gameBattleMode)
     {
         foreach (var spell in gameBattleMode.BattleHandler._sources)
@@ -49,6 +51,11 @@ public class UIApGauge : UIBase
         _apEnemyPrefab.gameObject.SetActive(false);
     }
     
+
+    #endregion
+    
+    #region Init
+
     public void Init()
     {
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
@@ -58,6 +65,20 @@ public class UIApGauge : UIBase
         UpdateUI(false);
         StartCoroutine(InitCoroutine());
     }
+    /// <summary>
+    /// 생성후 프레임이 지나지 않았을대 set하면 이상한 위치로 위치하여 0.1초 이후 set
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator InitCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        UpdateUI();
+    }
+    
+
+    #endregion
+
+    #region Reset
 
     private void ResetSource()
     {
@@ -85,11 +106,9 @@ public class UIApGauge : UIBase
         ResetMonster();
     }
     
-    private IEnumerator InitCoroutine()
-    {
-        yield return new WaitForSeconds(0.1f);
-        UpdateUI();
-    }
+    #endregion
+    
+    #region UpdateUI
 
     public void UpdateUI(bool isSmooth = true)
     {
@@ -124,6 +143,9 @@ public class UIApGauge : UIBase
     {
         UpdateUI(monsterDic, _monsters, _apEnemyPrefab.transform, isSmooth);
     }
+    
+
+    #endregion  
 
     #region SetDictionary
 

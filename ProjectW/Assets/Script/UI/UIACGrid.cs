@@ -33,6 +33,7 @@ public class UIACGrid : MonoBehaviour
             uiAbnormal.SetImage(table?.abnormal_icon ?? String.Empty);
             uiAbnormal.SetText(turnskill?.GetRemainTime().ToString()?? string.Empty);
             uiAbnormal.SetBGColor(table?.abnormal_bg ?? String.Empty);
+            uiAbnormal.SetData(table);
             _uiTurnskill.Add(uiAbnormal);
         }
         uiAbnormalPrefab.gameObject.SetActive(false);

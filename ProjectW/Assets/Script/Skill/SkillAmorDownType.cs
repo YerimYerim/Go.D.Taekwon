@@ -6,7 +6,10 @@ public class SkillAmorDownType : SkillEffectBase, ISkillAmorDown
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
-        ReduceAmor(myActor);
+        for (int i = 0; i < targetActor.Count; ++i)
+        {
+            ReduceAmor(targetActor[i]);
+        }
     }
 
     public override void InitSkillType(SpellEffectTableData data)

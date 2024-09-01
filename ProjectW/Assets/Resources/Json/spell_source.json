@@ -2,7 +2,7 @@
   {
     "source_id": 1001,
     "product_ap": 4,
-    "product_value_init": 1,
+    "product_value_init": 2,
     "product_value": 1,
     "spell_id": 10101,
     "support_module_bg": null,
@@ -11,7 +11,7 @@
   {
     "source_id": 1002,
     "product_ap": 5,
-    "product_value_init": 1,
+    "product_value_init": 2,
     "product_value": 1,
     "spell_id": 10102,
     "support_module_bg": null,
@@ -20,7 +20,7 @@
   {
     "source_id": 1003,
     "product_ap": 6,
-    "product_value_init": 1,
+    "product_value_init": 2,
     "product_value": 1,
     "spell_id": 10103,
     "support_module_bg": null,
@@ -29,7 +29,7 @@
   {
     "source_id": 1004,
     "product_ap": 4,
-    "product_value_init": 1,
+    "product_value_init": 2,
     "product_value": 1,
     "spell_id": 10104,
     "support_module_bg": null,

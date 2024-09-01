@@ -216,10 +216,10 @@ public class GameBattleHandler
             return;
         }
         battleMode.ActorSpawner.UpdateEnemyHp();
+        battleMode.ActorSpawner.UpdateTurnSkill();
         
-        player.UpdateDebuff();
-        player.UpdateBuff();
         player.OnUpdateHp(handler.playerData);
+        player.UpdateTurnSkill();
 
     }
     public bool IsDraw()
@@ -241,6 +241,8 @@ public class GameBattleHandler
         }
 
         uiApGauge.UpdateUI();
+        DoTurn();
+        
     }
 
     private void MakeSpell(int spellID, int amount)

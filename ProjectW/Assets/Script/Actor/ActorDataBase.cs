@@ -11,10 +11,7 @@ public class ActorDataBase
     protected HealStat _healStat = new();
     protected AvoidStat _avoidStat = new();
 
-    public LinkedList<ISkillTargetDebuff> debuffs = new();
-    public LinkedList<ISkillTargetBuff> buffs = new();
-    
-    private bool IsStun = false;
+    public List<SkillEffectBase> turnSkill = new() ;
     //Enemy 의 경우에만 사용
 
     // - 대미지 = 피해량 - (방어도 * (1-방어도 계수 파괴)  - 방어도 정수 파괴)
@@ -72,14 +69,9 @@ public class ActorDataBase
         amor.AddAmor(amorStatValue);
     }
 
-    public void AddBuff(ISkillTargetBuff buff)
+    public void AddTurnSkill(SkillEffectBase skill) 
     {
-        buffs.AddLast(buff);
-    }
-
-    public void AddDebuff(ISkillTargetDebuff debuff)
-    {
-        debuffs.AddLast(debuff);
+        turnSkill.Add(skill);
     }
 
     public int GetAmor()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillAmorDownType : SkillEffectBase, ISkillAmorDown, ISkillTargetDebuff
+public class SkillAmorDownType : SkillEffectBase, ISkillAmorDown
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
@@ -28,11 +28,7 @@ public class SkillAmorDownType : SkillEffectBase, ISkillAmorDown, ISkillTargetDe
     public void AddDebuff()
     {
     }
-
-    public void DoDebuff(GameActor enemy)
-    {
-    }
-
+    
     public void RemoveDebuff()
     {
     }

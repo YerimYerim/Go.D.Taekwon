@@ -9,9 +9,6 @@ public static class GameUtil
     public static int PLAYER_ACTOR_ID = 1000001;
     public static string ENEMY_PARENT_NAME = "Enemy";
     public static string PLAEYER_PARENT_NAME = "Actor";
-
-    
-    
     
     public static string GetString(string key)
     {
@@ -43,7 +40,7 @@ public static class GameUtil
                 SkillHealType skillHealType = new SkillHealType();
                 skillHealType.InitSkillType(data);
                 return skillHealType;
-            } break;
+            } break;    
             case EFFECT_TYPE.EFFECT_TYPE_DOT_SKILL_DAMAGE:
             {
                 SkillDotDamageType skillDotDamageType = new SkillDotDamageType();

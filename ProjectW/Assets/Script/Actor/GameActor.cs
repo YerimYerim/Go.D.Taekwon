@@ -60,6 +60,7 @@ public class GameActor : MonoBehaviour
             }
             uiActorBottom.SetHPUI(lastData.MaxHp, lastData.Hp);
             uiActorBottom.SetDef(lastData.GetAmor());
+            uiActorBottom.SetGrid(lastData);
             Debug.Log(gameObject.name + "의 체력이 " + lastData.Hp + "방어도 " + lastData.GetAmor());
         }
     }
@@ -77,42 +78,29 @@ public class GameActor : MonoBehaviour
         renderer.material = normalMaterrial;
     }
     
-    public void UpdateDebuff()
+    public void UpdateTurnSkill()
     {
-        foreach (var debuff in data.debuffs)
+        foreach (var turnSkill in data.turnSkill)
         {
-            debuff.DoDebuff(this);
-        }
-        RemoveTurnOverDebuff();
-    }
-
-    public void UpdateBuff()
-    {
-        foreach (var buff in data.buffs)
-        {
-            buff.DoBuff(this);
-        }
-    }
-
-    public void RemoveTurnOverDebuff()
-    {
-        var currentNode = data.debuffs.First;
-        while (currentNode != null)
-        {
-            var node = (SkillEffectBase)currentNode.Value;
-            if (node.IsNotRemainTurn())
+            if (turnSkill is ISkillTurnSkill skill)
             {
-                var nextNode = currentNode.Next; // 다음 노드를 미리 저장
-                data.debuffs.Remove(currentNode); // 현재 노드 제거
-                currentNode = nextNode; // 현재 노드를 다음 노드로 업데이트
+                skill.DoTurnSkill(this);
             }
-            else
+        }
+        RemoveTurnOverSkill();
+    }
+    public void RemoveTurnOverSkill()
+    {
+        for(int i = 0; i< data.turnSkill.Count; ++i)
+        {
+            SkillEffectBase node = data.turnSkill[i] as SkillEffectBase;
+            if (node?.IsNotRemainTurn() == true)
             {
-                currentNode = currentNode.Next; // 다음 노드로 이동
+                data.turnSkill.RemoveAt(i);
+                --i;
             }
         }
     }
-
     private void OnDestroy()
     {
         if (uiActorBottom != null)

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Script.Manager;
 using Script.UI;
@@ -121,7 +120,7 @@ public class UISpell : UIDragable
                     this.transform.GetComponent<RectTransform>());
                 ui.Show();
             }
-        }
+        }   
 
         var actor = FindGameActor(eventData);
         if (actor != null)

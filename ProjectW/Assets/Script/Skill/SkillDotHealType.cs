@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-public class SkillDotHealType : SkillEffectBase, ISkillTargetBuff, ISkillTargetHeal
+public class SkillDotHealType : SkillEffectBase, ISkillTurnSkill, ISkillTargetHeal
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
         for (int i = 0; i < targetActor.Count; i++)
         {
-            targetActor[i].data.AddBuff(this);
+            targetActor[i].data.AddTurnSkill(this);
         }  
     }
 
@@ -22,12 +22,18 @@ public class SkillDotHealType : SkillEffectBase, ISkillTargetBuff, ISkillTargetH
         return table?.value_1 ?? 0;
     }
 
-    public void DoBuff(GameActor enemy)
+    public void DoTurnSkill(GameActor enemy)
     {
         var list = new List<GameActor> {enemy};
         DoHeal(list);
         --remainTurn;
     }
+
+    public int GetRemainTime()
+    {
+        return remainTurn;
+    }
+
     public void DoHeal(List<GameActor> targetActor)
     {
         for (int i = 0; i < targetActor.Count; ++i)

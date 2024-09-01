@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,23 +7,26 @@ public class UI_Actor_Bottom : UIBase
     [SerializeField] private Image _progressBar;
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private RectTransform moveRectTransform;
-    
+
     [SerializeField] private TextMeshProUGUI defText;
     [SerializeField] private RectTransform defRectTransform;
     [SerializeField] private Image defImage;
     [SerializeField] private TextMeshProUGUI defFloater;
+    [SerializeField] private UIACGrid _uiacGrid;
 
     private int hp;
+
     public int _curHp
     {
         get => hp;
         private set => hp = value;
     }
+
     public void SetHPUI(int maxHP, int curHp)
     {
         _curHp = curHp;
         _progressBar.fillAmount = (float) curHp / maxHP;
-        _text.text = $"{curHp.ToString()}/{ maxHP.ToString()}"; //, ,).ToString();
+        _text.text = $"{curHp.ToString()}/{maxHP.ToString()}"; //, ,).ToString();
     }
 
     public void SetDef(int def)
@@ -36,6 +37,7 @@ public class UI_Actor_Bottom : UIBase
             defText.text = def.ToString();
         }
     }
+
     public void SetPosition(Transform gameTransform)
     {
         if (Camera.main != null)
@@ -46,16 +48,18 @@ public class UI_Actor_Bottom : UIBase
             defFloater.text = "";
         }
     }
-    
+
     public void ShowDefFloater(int addDef)
     {
         defFloater.text = "+" + addDef;
         LeanTween.alpha(defFloater.gameObject, 1, 0.8f).setOnComplete(() =>
         {
-            LeanTween.alpha(defFloater.gameObject, 0, 1f).setOnComplete(() =>
-            {
-                defFloater.text = "";
-            });
+            LeanTween.alpha(defFloater.gameObject, 0, 1f).setOnComplete(() => { defFloater.text = ""; });
         });
+    }
+    
+    public void SetGrid(ActorDataBase dataBase)
+    {
+        _uiacGrid.Set(dataBase);
     }
 }

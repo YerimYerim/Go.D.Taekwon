@@ -5,16 +5,22 @@ using UnityEngine.UI;
 
 public class UIAbnormal : MonoBehaviour
 {
+    [SerializeField] private Image BG;
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI text;
     
-    private void SetImage(string imageName)
+    public void SetImage(string imageName)
     {
         image.sprite = GameResourceManager.Instance.GetImage(imageName);
     }
 
-    private void SetText(string str)
+    public void SetText(string str)
     {
         text.SetText(str);
+    }
+    
+    public void SetBGColor(string str)
+    {
+        BG.sprite = GameResourceManager.Instance.GetImage(str);
     }
 }

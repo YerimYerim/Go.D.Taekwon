@@ -154,12 +154,11 @@ public class ActorSpawner
         }
     }
 
-    public void UpdateBuff()
+    public void UpdateTurnSkill()
     {
         for (int i = 0; i < enemy.Count; ++i)
         {
-            enemy[i].UpdateDebuff();
-            enemy[i].UpdateBuff();
+            enemy[i].UpdateTurnSkill();
             enemy[i].OnUpdateHp(enemy[i].data);
         }
     }

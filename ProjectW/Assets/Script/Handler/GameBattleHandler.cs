@@ -18,15 +18,7 @@ public class GameBattleHandler
     {
         OnUpdateCard?.Invoke();
         spellDatas.Clear();
-        var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == GameUtil.PLAYER_ACTOR_ID);
-        var firstreward = GameDataManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
-        for (int i = 0; i < firstreward.Count; ++i)
-        {
-            var sourceTableData = GameDataManager.Instance._spellSourceTableDatas.Find(_=>firstreward[i].source_id == _.source_id);
-            _sources.Add(new GameSpellSource());
-            _sources[i].Init(sourceTableData?.source_id ?? 0, MakeSpell);
-            AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ??0);
-        }
+        SetFirstSource(GameUtil.PLAYER_ACTOR_ID);
 
         if(GameUIManager.Instance.TryGetOrCreate<UICardDeckOnHand>(false, UILayer.LEVEL_1, out var deckUI))
         {
@@ -44,6 +36,21 @@ public class GameBattleHandler
         }
     }
 
+    public void SetFirstSource(int actorId)
+    {        
+        var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == actorId);
+        spellDatas.Clear();
+        _sources.Clear();
+        
+        var firstreward = GameDataManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
+        for (int i = 0; i < firstreward.Count; ++i)
+        {
+            var sourceTableData = GameDataManager.Instance._spellSourceTableDatas.Find(_ => firstreward[i].source_id == _.source_id);
+            _sources.Add(new GameSpellSource());
+            _sources[i].Init(sourceTableData?.source_id ?? 0, MakeSpell);
+            AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ?? 0);
+        }
+    }
 
 
     public GameSpellSource GetSource(int index)
@@ -240,9 +247,8 @@ public class GameBattleHandler
             _sources[i].ReduceAP(minusAP);
         }
 
-        uiApGauge.UpdateUI();
         DoTurn();
-        
+        uiApGauge.UpdateUI();
     }
 
     private void MakeSpell(int spellID, int amount)

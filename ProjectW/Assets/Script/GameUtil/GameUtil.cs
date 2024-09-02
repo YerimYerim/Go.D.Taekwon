@@ -79,7 +79,9 @@ public static class GameUtil
             } break;
             case EFFECT_TYPE.EFFECT_TYPE_AP_STOP:
             {
-                
+                SkillApDownType skillApUp = new SkillApDownType();
+                skillApUp.InitSkillType(data);
+                return skillApUp;
             }
                 break;
             case EFFECT_TYPE.EFFECT_TYPE_ACTION_CANCEL:

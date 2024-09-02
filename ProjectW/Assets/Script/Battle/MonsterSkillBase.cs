@@ -31,7 +31,7 @@ public class MonsterSkillBase : SkillGroupTableData
     }
     public void GainAP(int ap)
     {
-        CurrentAP = Math.Clamp(CurrentAP + ap, 0, MaxAP);
+        CurrentAP += ap;
     }
 
     private void ActiveSkill()

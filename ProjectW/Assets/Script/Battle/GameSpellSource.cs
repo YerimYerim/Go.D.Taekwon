@@ -35,7 +35,7 @@ public class GameSpellSource
         _remainAP = _maxAp;
     }
 
-    public void UpdateAP()
+    public void ReduceAp()
     {
         if (_remainAP > 0)
         {
@@ -48,6 +48,12 @@ public class GameSpellSource
                 OnUpdateUI?.Invoke(_remainAP);
             }
         }
+    }
+    
+    public void AddAp()
+    {
+        ++_remainAP;
+        OnUpdateUI?.Invoke(_remainAP);
     }
     
     public int GetSourceId()
@@ -116,9 +122,16 @@ public class GameSpellSource
     public void ReduceAP(int amount)
     {
         for(int i = 0; i< amount; ++i)
-            UpdateAP();
+            ReduceAp();
     }
-    
+    /// <summary>
+    /// _remainAP 증가
+    /// </summary>
+    public void AddAP(int amount)
+    {
+        for(int i = 0; i< amount; ++i)
+            AddAp();
+    }
     public string GetSourceImage()
     {
         var img = GameDataManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_img;

@@ -130,7 +130,10 @@ public class GameBattleHandler
                 MinusAP(1);
                 player.OnUpdateHp(handler.playerData);
             }), 1f);
-
+            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
+            {
+                uiApGauge.UpdateUI();
+            }), 0.1f);
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
                 GameTurnManager.Instance.TurnStart();

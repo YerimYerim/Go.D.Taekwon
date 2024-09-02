@@ -9,7 +9,6 @@ public class ActorDataBase
     protected AmorStat amor = new();
     protected AttackStat _attackStat = new();
     protected HealStat _healStat = new();
-    protected AvoidStat _avoidStat = new();
 
     public List<SkillEffectBase> turnSkill = new() ;
     //Enemy 의 경우에만 사용

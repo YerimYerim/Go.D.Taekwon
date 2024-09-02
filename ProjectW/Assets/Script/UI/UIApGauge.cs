@@ -58,8 +58,8 @@ public class UIApGauge : UIBase
 
     public void Init()
     {
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         ResetAll();
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         SpawnSourceIcon(gameBattleMode);
         SpawnMonsterIcon(gameBattleMode);
         UpdateUI(false);
@@ -170,6 +170,11 @@ public class UIApGauge : UIBase
 
     private void SetMonsterDictionary()
     {
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        for (var i = 0; i < _monsters.Count; i++)
+        {
+            _monsters[i].SetData(gameBattleMode.ActorSpawner.GetEnemy(i));
+        }
         SetDictionary(monsterDic, _monsters);
     }
     

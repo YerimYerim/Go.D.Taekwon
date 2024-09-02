@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-public class SkillApUp : SkillEffectBase, ISkillTargetAPUp
+public class SkillApDownType : SkillEffectBase, ISkillTargetApDown
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
-        AddAp(targetActor);
+        DownAp(targetActor);
     }
 
     public override void InitSkillType(SpellEffectTableData data)
@@ -18,7 +18,7 @@ public class SkillApUp : SkillEffectBase, ISkillTargetAPUp
         return table.value_1 ?? 0;
     }
 
-    public void AddAp(List<GameActor> enemyTarget)
+    public void DownAp(List<GameActor> enemyTarget)
     {
         for (int i = 0; i < enemyTarget.Count; ++i)
         {
@@ -36,7 +36,7 @@ public class SkillApUp : SkillEffectBase, ISkillTargetAPUp
                 
                     foreach (var source in battleMode.BattleHandler._sources)
                     {
-                        source.AddAP((table?.value_1 ?? 0));
+                        source.ReduceAP((table?.value_1 ?? 0));
                     }
                 } break;
             }

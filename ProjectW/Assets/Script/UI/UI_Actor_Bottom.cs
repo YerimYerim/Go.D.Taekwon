@@ -14,6 +14,8 @@ public class UI_Actor_Bottom : UIBase
     [SerializeField] private TextMeshProUGUI defFloater;
     [SerializeField] private UIACGrid _uiacGrid;
 
+    [SerializeField] private UIPredictAction _uiPredictAction;
+    
     private int hp;
 
     public int _curHp
@@ -61,5 +63,18 @@ public class UI_Actor_Bottom : UIBase
     public void SetGrid(ActorDataBase dataBase)
     {
         _uiacGrid.Set(dataBase);
+    }
+    
+    public void ShowPredictAction(ActorDataBase dataBase)
+    {
+        var enemy = dataBase as ActorEnemyData;
+        if (enemy == null)
+        {
+            _uiPredictAction.Hide();
+            return;
+        }
+
+        _uiPredictAction.Show();
+        //_uiPredictAction.ShowPredictAction();
     }
 }

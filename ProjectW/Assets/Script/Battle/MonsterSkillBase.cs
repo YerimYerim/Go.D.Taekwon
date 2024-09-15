@@ -8,7 +8,6 @@ public class MonsterSkillBase : SkillGroupTableData
     public int MaxAP { get; private set; }
     public int CurrentAP{ get; private set; }
 
-    public event Action OnEventAPZero;
     public MonsterSkillBase(int maxAP)
     {
         MaxAP = maxAP;
@@ -36,7 +35,8 @@ public class MonsterSkillBase : SkillGroupTableData
 
     private void ActiveSkill()
     {
-        OnEventAPZero?.Invoke();
+       var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+       gameMode?.BattleHandler?.DoSkillEnemyTurn();
     }
     
 }

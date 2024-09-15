@@ -67,8 +67,7 @@ public class UISpell : UIDragable
             {
                 return;
             }
-            gameBattleMode.BattleHandler.MinusAP(1);
-            GameTurnManager.Instance.TurnStart();
+
         }
         else
         {

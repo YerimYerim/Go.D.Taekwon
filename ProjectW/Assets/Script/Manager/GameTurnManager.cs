@@ -69,33 +69,4 @@ public class GameTurnManager : Singleton<GameTurnManager>
     {
         //_turnStack.Enqueue(turnState);
     }
-    
-    public IEnumerator DoTurnStack()
-    {
-        while (_turnStack.Count > 0)
-        {
-            var state = _turnStack.Dequeue();
-            
-            switch (state)
-            {
-                case TurnState.PlayerTurn:
-                    yield return new WaitForSeconds(1);
-                    TurnStart();
-                    break;
-                case TurnState.EnemyTurn:
-                    TurnStart();
-                    yield return new WaitForSeconds(1);
-                    break;
-                case TurnState.Draw:
-                    yield return new WaitForSeconds(1);
-                    break;
-                case TurnState.GameOver:
-                    yield return new WaitForSeconds(1);
-                    break;
-                case TurnState.MapClear:
-                    yield return new WaitForSeconds(1);
-                    break;
-            }
-        }
-    }
 }

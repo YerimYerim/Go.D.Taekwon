@@ -187,7 +187,7 @@ public class UIApGauge : UIBase
         int guageMaxCount = _apGaugePos.Length - 1;
         position.y = yPos;
         
-        var startPos = _apGaugePos[Math.Min(guageMaxCount, remainSpellAP - 1)].position;
+        var startPos = _apGaugePos[Math.Min(guageMaxCount, Math.Max(0, remainSpellAP - 1))].position;
         var endPos = _apGaugePos[Math.Min(guageMaxCount, remainSpellAP)].position;
         
         if (sameAPCount >= 2)

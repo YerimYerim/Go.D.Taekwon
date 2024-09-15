@@ -759,13 +759,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6559567792203992556}
+  - component: {fileID: 7502446970060900229}
   m_Layer: 5
   m_Name: UIActionPredict
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6559567792203992556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -787,6 +788,20 @@ RectTransform:
   m_AnchoredPosition: {x: -142.6, y: -180.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7502446970060900229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048333173722268111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ace8da17b6fa0c429fac3109f57dc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 0}
+  moveRectTransform: {fileID: 0}
 --- !u!1 &5057359854223067982
 GameObject:
   m_ObjectHideFlags: 0

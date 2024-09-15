@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 public class ActorEnemyData : ActorDataBase
 {
@@ -30,11 +31,14 @@ public class ActorEnemyData : ActorDataBase
         StartSkillCoolTime();
     }
 
-    private void StartSkillCoolTime()
+    public void StartSkillCoolTime()
     {
-        var skillGroupTable = GetSkill();
-        _skillBase = new MonsterSkillBase(skillGroupTable?.action_point ?? 0);
-        
+        var skillGroupTable = StartSkill();
+        _skillBase = new MonsterSkillBase(skillGroupTable?.action_point ?? 0)
+        {
+            skill_group_id = skillGroupTable?.skill_group_id ?? 0,
+            effect_id = skillGroupTable?.effect_id ?? 0
+        };
     }
     private void InitSkillGroup()
     {
@@ -77,9 +81,13 @@ public class ActorEnemyData : ActorDataBase
             ++curPhase;
         }
     }
-    
 
-    public SkillGroupTableData GetSkill()
+    public int GetSkillID()
+    {
+        return _skillBase?.effect_id ?? 0;
+    }
+
+    private SkillGroupTableData StartSkill()
     {
         //if(IsCanUseSkill())
         {
@@ -87,10 +95,9 @@ public class ActorEnemyData : ActorDataBase
             {
                 case PATTERN_TYPE.PATTERN_TYPE_RANDOM:
                 {
-                    uint maxIndex = (uint) skillGroup[curPhase].Count;
-
-                    var index = Unity.Mathematics.Random.CreateFromIndex(maxIndex);
-                    SkillGroupTableData skillGroupTableData = skillGroup[curPhase][index.NextInt((int) maxIndex)];
+                    int maxIndex = skillGroup[curPhase].Count;
+                    var index = Random.Range(0,maxIndex);
+                    SkillGroupTableData skillGroupTableData = skillGroup[curPhase][index];
                     return skillGroupTableData;
                 }
                     break;
@@ -136,6 +143,7 @@ public class ActorEnemyData : ActorDataBase
     }
     public void ResetAP()
     {
+        StartSkillCoolTime();
         _skillBase.ResetAp();
     }
     public void AddAP(int addAp)

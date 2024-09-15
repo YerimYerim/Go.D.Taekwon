@@ -32,7 +32,7 @@ public class ActorDataBase
     }
     
     public void DoHeal(int addHp)
-    {
+    { 
         Hp = Math.Min(Hp + addHp, MaxHp);
     }
 

@@ -126,18 +126,14 @@ public class GameBattleHandler
                 }
                 
                 RemoveCard(spellData);
+                MinusResourceAP(1);
                 battleMode.ActorSpawner.MinusAP(1);
-                MinusAP(1);
-                player.OnUpdateHp(handler.playerData);
-            }), 1f);
+            }), 0.11f);
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
+                player.OnUpdateHp(handler.playerData);
                 uiApGauge.UpdateUI();
             }), 0.1f);
-            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
-            {
-                GameTurnManager.Instance.TurnStart();
-            }), 0);
             CommandManager.Instance.StartGameCommand();
         }
         else
@@ -146,6 +142,11 @@ public class GameBattleHandler
         }
 
         Debug.Log(player.gameObject.name + "의 체력: " + handler.playerData.Hp + "방어도:" + handler.playerData.GetAmor());
+    }
+
+    public void UpdateUIApGauge()
+    {
+        uiApGauge.UpdateUI();
     }
     /// <summary>
     ///  적이 주는 Damage
@@ -170,12 +171,11 @@ public class GameBattleHandler
             {
                 var enemyData = ActorHandler.GetEnemyData(i);
                 var enemyActor = ActorHandler.GetEnemy(i);
-                var skill = enemyData.GetSkill();
-                if (skill != null && enemyData.IsCanUseSkill())
+                var skill = enemyData.GetSkillID();
+                if (enemyData.IsCanUseSkill())
                 {
-                    var skilleffect = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill?.effect_id);
+                    var skilleffect = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill);
                     var skillEffectBase = GameUtil.GetSkillEffectBase(skilleffect);
-                    var index = i;
                     switch (skilleffect.target)
                     {
                         case TARGET_TYPE.TARGET_TYPE_SELF:
@@ -184,6 +184,7 @@ public class GameBattleHandler
                             {
                                 skillEffectBase.DoSkill(new List<GameActor> {enemyActor}, enemyActor);
                                 enemyData.ResetAP();
+                                UpdateUIApGauge();
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
                             Debug.Log(enemyActor.gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
@@ -196,6 +197,7 @@ public class GameBattleHandler
                                 skillEffectBase.DoSkill(new List<GameActor>{player}, enemyActor);
                                 enemyData.ResetAP();
                                 player.OnUpdateHp(handler.playerData);
+                                UpdateUIApGauge();
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
                             Debug.Log(enemyActor.gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
@@ -243,7 +245,7 @@ public class GameBattleHandler
         OnEventRemoveCard?.Invoke();
     }
 
-    public void MinusAP(int minusAP)
+    public void MinusResourceAP(int minusAP)
     {
         for (int i = 0; i < _sources.Count; ++i)
         {
@@ -251,7 +253,6 @@ public class GameBattleHandler
         }
 
         DoTurn();
-        uiApGauge.UpdateUI();
     }
 
     private void MakeSpell(int spellID, int amount)

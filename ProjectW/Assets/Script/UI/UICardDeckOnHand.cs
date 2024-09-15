@@ -68,6 +68,10 @@ public class UICardDeckOnHand : UIBase
         gameBattleMode.BattleHandler.spellDatas.Remove(gameBattleMode.BattleHandler.spellDatas.Find(_ => _.tableData.spell_id == spellID01));
         gameBattleMode.BattleHandler.spellDatas.Remove(gameBattleMode.BattleHandler.spellDatas.Find(_ => _.tableData.spell_id == spellID2));
         gameBattleMode.BattleHandler.AddSpell(resultSpellID, 1);
+        gameBattleMode.BattleHandler.MinusResourceAP(1);
+        gameBattleMode.ActorSpawner.MinusAP(1);
+        gameBattleMode.BattleHandler.UpdateUIApGauge();
+        GameTurnManager.Instance.TurnStart();
         SetUI();
     }
 

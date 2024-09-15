@@ -80,17 +80,13 @@ public class UI_Actor_Bottom : UIBase
             return;
         }
 
-        if(enemy.GetRemainAp() == 2)
-        {
-            _uiPredictAction.Show();
-            var spellEffectData = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == enemy.GetSkillID());
-            var resource = GameDataManager.Instance._predictResource.Find(_ => _.effect_type == spellEffectData.effect_type);
-            _uiPredictAction.ShowPredictAction(resource.predict_resource_icon);
-        }
-        else
-        {
-            _uiPredictAction.Hide();
-        }
+        //if(enemy.GetRemainAp() == 2)
+    
+        var spellEffectData = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == enemy.GetSkillID());
+        var resource = GameDataManager.Instance._predictResource.Find(_ => _.effect_type == spellEffectData.effect_type);
+        _uiPredictAction.ShowPredictAction(resource.predict_resource_icon);
+        _uiPredictAction.Show();
+        
     }
 
     public void SetPredictPosition(Transform uiPredictSocket)

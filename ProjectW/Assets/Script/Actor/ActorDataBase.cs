@@ -29,6 +29,10 @@ public class ActorDataBase
         var leftDamage = amor.amor - amor.GetFinalDamage(damage);
         amor.amor = Math.Max(0, amor.amor - amor.GetFinalDamage(damage));
         Hp = Math.Max(0, Hp + leftDamage);
+        if(Hp <= 0)
+        {
+            GameTurnManager.Instance.TurnStart();
+        }
     }
     
     public void DoHeal(int addHp)

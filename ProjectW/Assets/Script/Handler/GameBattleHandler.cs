@@ -184,6 +184,7 @@ public class GameBattleHandler
                             {
                                 skillEffectBase.DoSkill(new List<GameActor> {enemyActor}, enemyActor);
                                 enemyData.ResetAP();
+                                player.OnUpdateHp(handler.playerData);
                                 UpdateUIApGauge();
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);

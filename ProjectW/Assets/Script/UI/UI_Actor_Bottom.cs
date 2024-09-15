@@ -1,3 +1,4 @@
+using Script.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,11 +11,14 @@ public class UI_Actor_Bottom : UIBase
 
     [SerializeField] private TextMeshProUGUI defText;
     [SerializeField] private RectTransform defRectTransform;
+    
+    
     [SerializeField] private Image defImage;
     [SerializeField] private TextMeshProUGUI defFloater;
     [SerializeField] private UIACGrid _uiacGrid;
 
     [SerializeField] private UIPredictAction _uiPredictAction;
+    [SerializeField] private RectTransform predictActionRectTransform;
     
     private int hp;
 
@@ -47,6 +51,7 @@ public class UI_Actor_Bottom : UIBase
             Vector3 screenPos = Camera.main.WorldToScreenPoint(gameTransform.position);
             moveRectTransform.transform.position = screenPos;
             defRectTransform.transform.position = screenPos;
+            predictActionRectTransform.transform.position =  new (screenPos.x - 142, screenPos.y-180, screenPos.z);
             defFloater.text = "";
         }
     }
@@ -68,13 +73,32 @@ public class UI_Actor_Bottom : UIBase
     public void ShowPredictAction(ActorDataBase dataBase)
     {
         var enemy = dataBase as ActorEnemyData;
+            
         if (enemy == null)
         {
             _uiPredictAction.Hide();
             return;
         }
 
-        _uiPredictAction.Show();
-        //_uiPredictAction.ShowPredictAction();
+        if(enemy.GetRemainAp() == 2)
+        {
+            _uiPredictAction.Show();
+            var spellEffectData = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == enemy.GetSkillID());
+            var resource = GameDataManager.Instance._predictResource.Find(_ => _.effect_type == spellEffectData.effect_type);
+            _uiPredictAction.ShowPredictAction(resource.predict_resource_icon);
+        }
+        else
+        {
+            _uiPredictAction.Hide();
+        }
+    }
+
+    public void SetPredictPosition(Transform uiPredictSocket)
+    {
+        if (Camera.main != null)
+        {
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(uiPredictSocket.position);
+            predictActionRectTransform.transform.position = screenPos;
+        }
     }
 }

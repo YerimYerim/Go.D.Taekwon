@@ -8,6 +8,7 @@ public class GameActor : MonoBehaviour
     
     [SerializeField] private Transform uiHpBarSocket;
     [SerializeField] private Transform uiDMGFloaterSocket;
+    [SerializeField] private Transform uiPredictSocket;
     [SerializeField] private Material outlineMaterial;
     [SerializeField] private Material normalMaterrial;
     [SerializeField] private SpriteRenderer renderer;
@@ -40,6 +41,7 @@ public class GameActor : MonoBehaviour
     private void Start()
     {
         uiActorBottom.SetPosition(this.uiHpBarSocket);
+        uiActorBottom.SetPredictPosition(this.uiPredictSocket);
         uiActorDMGFloater.SetPosition(this.uiDMGFloaterSocket);
     }
 
@@ -61,6 +63,7 @@ public class GameActor : MonoBehaviour
             uiActorBottom.SetHPUI(lastData.MaxHp, lastData.Hp);
             uiActorBottom.SetDef(lastData.GetAmor());
             uiActorBottom.SetGrid(lastData);
+            uiActorBottom.ShowPredictAction(lastData);
             Debug.Log(gameObject.name + "의 체력이 " + lastData.Hp + "방어도 " + lastData.GetAmor());
         }
     }

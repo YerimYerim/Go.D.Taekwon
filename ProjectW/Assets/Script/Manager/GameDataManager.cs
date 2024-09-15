@@ -9,7 +9,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
     private readonly string[] _pageJsonFileNames = {"config", "spell", "string", "spell_combine", 
         "spell_effect", "actor_rsc", "actor", "playable_character", "monster","skill_pattern_group", "skill_group",
         "spell_source", "content_map", "content_chapter", "content_stage",
-        "support_module", "first_reward", "abnormal" 
+        "support_module", "first_reward", "abnormal", "predict_resource"
     };
     
     internal List<ConfigTableData> _configTableData = new();
@@ -30,6 +30,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
     internal List<SupportModuleTableData> _supportModuleTable= new();
     internal List<FirstRewardTableData> _firstRewardTable= new();
     internal List<AbnormalTableData> _abnormalTable= new();
+    internal List<PredictResourceTableData> _predictResource= new();
 
     protected override void Awake()
     {
@@ -56,6 +57,7 @@ public class GameDataManager : Script.Manager.Singleton<GameDataManager>
         _supportModuleTable  = ReadJsonFiles<SupportModuleTableData>(_pageJsonFileNames[15]);
         _firstRewardTable  = ReadJsonFiles<FirstRewardTableData>(_pageJsonFileNames[16]);
         _abnormalTable  = ReadJsonFiles<AbnormalTableData>(_pageJsonFileNames[17]);
+        _predictResource  = ReadJsonFiles<PredictResourceTableData>(_pageJsonFileNames[18]);
     }
 
     private static List<T> ReadJsonFiles<T>(string fileName)

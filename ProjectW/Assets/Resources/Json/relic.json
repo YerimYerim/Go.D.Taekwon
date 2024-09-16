@@ -1,6 +1,7 @@
 [
   {
     "relic_id": 1,
+    "rarity": "normal",
     "relic_resource": "img_support_module_none",
     "relic_name": "app_name_01",
     "relic_desc": "app_desc_01",
@@ -18,6 +19,7 @@
   },
   {
     "relic_id": 2,
+    "rarity": "rare",
     "relic_resource": "icon_predict_resource_debuff",
     "relic_name": "app_name_02",
     "relic_desc": "app_desc_02",

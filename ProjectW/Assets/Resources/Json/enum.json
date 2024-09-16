@@ -444,6 +444,24 @@
     "enum_value": 3
   },
   {
+    "group_name": "rarity",
+    "enum_name": "normal",
+    "source_enum_name": "RARITY_NORMAL",
+    "enum_value": 0
+  },
+  {
+    "group_name": "rarity",
+    "enum_name": "rare",
+    "source_enum_name": "RARITY_RARE",
+    "enum_value": 1
+  },
+  {
+    "group_name": "rarity",
+    "enum_name": "epic",
+    "source_enum_name": "RARITY_EPIC",
+    "enum_value": 2
+  },
+  {
     "group_name": "logical_operator",
     "enum_name": "AND",
     "source_enum_name": "LOGICAL_OPERATOR_AND",

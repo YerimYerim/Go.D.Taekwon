@@ -466,5 +466,13 @@
   {
     "string_key": "app_desc_02",
     "value_kor": "어플리케이션 설명은 이러쿵 저러쿵 쿵따리 샤바라 빱빠빠"
+  },
+  {
+    "string_key": "money_name_coin",
+    "value_kor": "시험 토큰"
+  },
+  {
+    "string_key": "money_desc_coin",
+    "value_kor": "시험 기간동안 임시로 사용할 수 있는 재화. 일부 이벤트에서 시험에 도움이 될 상품과 교환할 수 있다."
   }
 ]

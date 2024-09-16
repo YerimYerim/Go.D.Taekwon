@@ -1,0 +1,36 @@
+[
+  {
+    "relic_id": 1,
+    "relic_resource": "img_support_module_none",
+    "relic_name": "app_name_01",
+    "relic_desc": "app_desc_01",
+    "active_condition_1": "battle_start",
+    "active_value_1": null,
+    "active_condition_2": "hp_minus_value",
+    "active_value_2": 20,
+    "condition_logic": "AND",
+    "relic_effect_1": "armor",
+    "effect_value_1": 5,
+    "relic_effect_2": "heal",
+    "effect_value_2": 10,
+    "relic_effect_3": "heal",
+    "effect_value_3": 5
+  },
+  {
+    "relic_id": 2,
+    "relic_resource": "icon_predict_resource_debuff",
+    "relic_name": "app_name_02",
+    "relic_desc": "app_desc_02",
+    "active_condition_1": "hp_minus_value",
+    "active_value_1": 10,
+    "active_condition_2": "hp_percent",
+    "active_value_2": 90,
+    "condition_logic": "OR",
+    "relic_effect_1": "heal",
+    "effect_value_1": 10,
+    "relic_effect_2": null,
+    "effect_value_2": null,
+    "relic_effect_3": null,
+    "effect_value_3": null
+  }
+]

@@ -450,5 +450,21 @@
   {
     "string_key": "map_desc_103",
     "value_kor": "임시 맵 설명 103. 이 편지는 영국으로부터 시작되어… 한둘셋넷다여칠팔구십한둘셋넷다여칠팔구십한둘셋넷다여칠팔구십한둘셋넷다여칠팔구십한둘셋넷다여칠팔구십"
+  },
+  {
+    "string_key": "app_name_01",
+    "value_kor": "어플리케이션 임시 01"
+  },
+  {
+    "string_key": "app_name_02",
+    "value_kor": "어플리케이션 임시 02"
+  },
+  {
+    "string_key": "app_desc_01",
+    "value_kor": "어플리케이션 설명은 이러쿵 저러쿵 쿵따리 샤바라 빱빠빠"
+  },
+  {
+    "string_key": "app_desc_02",
+    "value_kor": "어플리케이션 설명은 이러쿵 저러쿵 쿵따리 샤바라 빱빠빠"
   }
 ]

@@ -336,6 +336,42 @@
     "enum_value": 3
   },
   {
+    "group_name": "active_condition",
+    "enum_name": "battle_start",
+    "source_enum_name": "ACTIVE_CONDITION_BATTLE_START",
+    "enum_value": 0
+  },
+  {
+    "group_name": "active_condition",
+    "enum_name": "battle_end",
+    "source_enum_name": "ACTIVE_CONDITION_BATTLE_END",
+    "enum_value": 1
+  },
+  {
+    "group_name": "active_condition",
+    "enum_name": "hp_minus_value",
+    "source_enum_name": "ACTIVE_CONDITION_HP_MINUS_VALUE",
+    "enum_value": 2
+  },
+  {
+    "group_name": "active_condition",
+    "enum_name": "hp_percent",
+    "source_enum_name": "ACTIVE_CONDITION_HP_PERCENT",
+    "enum_value": 3
+  },
+  {
+    "group_name": "relic_effect",
+    "enum_name": "heal",
+    "source_enum_name": "RELIC_EFFECT_HEAL",
+    "enum_value": 0
+  },
+  {
+    "group_name": "relic_effect",
+    "enum_name": "armor",
+    "source_enum_name": "RELIC_EFFECT_ARMOR",
+    "enum_value": 1
+  },
+  {
     "group_name": "map_type",
     "enum_name": "battle_normal",
     "source_enum_name": "MAP_TYPE_BATTLE_NORMAL",
@@ -406,5 +442,17 @@
     "enum_name": "not_clear_map",
     "source_enum_name": "EXCEPTION_TYPE_NOT_CLEAR_MAP",
     "enum_value": 3
+  },
+  {
+    "group_name": "logical_operator",
+    "enum_name": "AND",
+    "source_enum_name": "LOGICAL_OPERATOR_AND",
+    "enum_value": 0
+  },
+  {
+    "group_name": "logical_operator",
+    "enum_name": "OR",
+    "source_enum_name": "LOGICAL_OPERATOR_OR",
+    "enum_value": 1
   }
 ]

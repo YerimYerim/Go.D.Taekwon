@@ -13,15 +13,21 @@ public static class GameUtil
     public static string GetString(string key)
     {
         var stringdata = GameDataManager.Instance._stringDatas.Find(_ => _.string_key.Equals(key));
-        switch (GameSettingManager.Instance.languageType)
+        if(stringdata != null)
         {
-            case LANGUAGE_TYPE.LANGUAGE_TYPE_KOR:
-                return stringdata.value_kor.Replace("\\n", "\n");
-                break;
-            default:
-                return "??";
+            switch (GameSettingManager.Instance.languageType)
+            {
+                case LANGUAGE_TYPE.LANGUAGE_TYPE_KOR:
+                    return stringdata.value_kor.Replace("\\n", "\n");
+                    break;
+                default:
+                    return "??";
+            }
         }
-        
+        else
+        {
+            return key+"??";
+        }
         return string.Empty;
     }
 

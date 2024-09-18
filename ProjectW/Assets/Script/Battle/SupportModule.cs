@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Script.Manager;
 using UnityEngine;
 
@@ -11,9 +12,10 @@ public class SupportModule
 
     // support module effect , value
     private Dictionary<SUPPORT_MODULE_EFFECT, int> effect;
-    private Sprite img;
+    private string imgName;
     private string moduleName;
     private string moduleDesc;
+    private int sourceID;
 
     public SupportModule(int id, int level)
     {
@@ -32,6 +34,7 @@ public class SupportModule
             int? effectValue = data[i].effect_value;
             SUPPORT_MODULE_EFFECT? supportModuleEffect = data[i].support_module_effect;
             int? sourceID = data[i].source_id;
+            this.sourceID = sourceID ?? 0;
             if (effectValue != null && supportModuleEffect != null && sourceID != null)
             {
                 UpdateEffect(supportModuleEffect.Value, effectValue.Value);
@@ -42,7 +45,7 @@ public class SupportModule
 
     private void SetResource(List<SupportModuleTableData> data)
     {
-        img = GameResourceManager.Instance.GetImage(data[^1].support_module_img);
+        imgName = data[^1].support_module_img;
         moduleName = data[^1].support_module_name;
         moduleDesc = data[^1].support_module_desc;
     }
@@ -78,9 +81,9 @@ public class SupportModule
         return effect.TryGetValue(effectType, out var value) ? value : 0;
     }
 
-    public Sprite GetImage()
+    public string GetImageName()
     {
-        return img;
+        return imgName;
     }
 
     public string GetName()
@@ -97,7 +100,11 @@ public class SupportModule
     {
         return moduleId;
     }
-    
+    public bool GetApplySource(int source)
+    {
+        return sourceID == source;
+    }
+
     public void ApplyEffect(int resourceID ,SUPPORT_MODULE_EFFECT effectType, int value)
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();

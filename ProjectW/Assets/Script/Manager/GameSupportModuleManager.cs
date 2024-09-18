@@ -7,9 +7,10 @@ using UnityEngine;
 public class GameSupportModuleManager : Singleton<GameSupportModuleManager>
 {
     private List<SupportModule> supportModules = new();
-    protected override void Init()
+    protected override void Awake()
     {
-        base.Init();
+        base.Awake();
+        supportModules.Clear();
         
         var uniqueModuleIds = GameDataManager.Instance._supportModuleTable
             .Select(module => module.support_module_id)
@@ -36,11 +37,6 @@ public class GameSupportModuleManager : Singleton<GameSupportModuleManager>
         module?.SetLevel(level);
     }
     
-    public Sprite GetSupportModuleImage(int moduleId)
-    {
-        var module = GetSupportModule(moduleId);
-        return module?.GetImage();
-    }
     
     public string GetSupportModuleName(int moduleId)
     {
@@ -64,6 +60,10 @@ public class GameSupportModuleManager : Singleton<GameSupportModuleManager>
     {
         data = GameDataManager.Instance._supportModuleTable.Find(_ => _.support_module_id == moduleId && _.level == level);
     }
-    
 
+    public List<SupportModule> GetSupportModules(int resource)
+    {
+        var rusultModules  = supportModules.FindAll(_=>_.GetApplySource(resource));
+        return rusultModules;
+    }
 }

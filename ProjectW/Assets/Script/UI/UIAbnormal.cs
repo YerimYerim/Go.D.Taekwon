@@ -32,7 +32,7 @@ public class UIAbnormal : MonoBehaviour
         button.SetHoverEvent(
             () =>
             {
-                if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_3, out var ui))
+                if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var ui))
                 {
                     ui.CreateInfo(data.abnormal_name, data.abnormal_desc, rectTransform);
                     ui.Show();
@@ -40,7 +40,7 @@ public class UIAbnormal : MonoBehaviour
             } , 
             () =>
             {
-                if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_3, out var ui))
+                if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var ui))
                 {
                     ui.Hide();
                 }

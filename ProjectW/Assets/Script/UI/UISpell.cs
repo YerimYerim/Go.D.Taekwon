@@ -113,7 +113,7 @@ public class UISpell : UIDragable
             if (resultSpell == null)
                 return;
 
-            if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_2, out var ui))
+            if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var ui))
             {
                 ui.CreateInfo(resultSpell.spell_name, resultSpell.spell_desc,
                     this.transform.GetComponent<RectTransform>());
@@ -178,7 +178,7 @@ public class UISpell : UIDragable
 
     private void ShowToolTip()
     {
-        if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_2, out var ui))
+        if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var ui))
         {
             ui.CreateInfo(_spellTableData.tableData.spell_name, _spellTableData.tableData.spell_desc,
                 this.transform.GetComponent<RectTransform>());

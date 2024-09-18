@@ -1,37 +1,35 @@
 using System;
 using Script.Manager;
-using TMPro;
+using Script.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UISpellSource : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
     [SerializeField] private Image _image;
+    [SerializeField] private Image _bg;
+    [SerializeField] private DTButton _button;
+    [SerializeField] private Transform _isSelected;
 
-    [SerializeField] private int sourceIndex = 0;
-    public void SetText(int remain)
+    [SerializeField] public RectTransform rect;
+    public void SetImage(string imgName, string bgName)
     {
-        _textMeshProUGUI.text = remain.ToString();
+        _image.sprite = GameResourceManager.Instance.GetImage(imgName);
+        _bg.sprite = GameResourceManager.Instance.GetImage(bgName);
+        
     }
-
-    private void OnEnable()
+    
+    public void SetOnClickButton(Action action)
     {
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        if (gameBattleMode?.BattleHandler == null)
-        {
-            return;
-        }
-        gameBattleMode.BattleHandler.GetSource(sourceIndex).OnUpdateUI += SetText;
+        _button.onClick.RemoveAllListeners();
+        _button.onClick.AddListener(() => action());
     }
-
-    private void OnDestroy()
+    public void SetHoverEvent(Action OnAction, Action OffAction)
     {
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        if (gameBattleMode?.BattleHandler == null)
-        {
-            return;
-        }
-        gameBattleMode.BattleHandler.GetSource(sourceIndex).OnUpdateUI -= SetText;
+        _button.SetHoverEvent(OnAction, OffAction);
+    }
+    public void SetSelected(bool isSelected)
+    {
+        _isSelected.gameObject.SetActive(isSelected);
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Script.Manager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,8 +7,12 @@ using UnityEngine.UI;
 public abstract class UIAPGaugeIconBase : MonoBehaviour
 {
     [SerializeField] protected Image _image;
+    private readonly List<LTDescr> _tweens = new();
+    private readonly List<LTDescr> _tweensToRemove = new();
+    
 
     public abstract int GetRemainSpellAP();
+    public abstract int GetResetAp();
 
     protected void SetImage(string image)
     {
@@ -14,13 +20,37 @@ public abstract class UIAPGaugeIconBase : MonoBehaviour
     }
     public void SetPosition(Vector3 position)
     {
+        transform.gameObject.SetActive(GetRemainSpellAP() <= 5);
         transform.SetPositionAndRotation(position, Quaternion.identity);
-        transform.gameObject.SetActive(GetRemainSpellAP()<= 5);
     }
 
-    public void SetPositionSmooth(Vector3 position)
+    public void AddPositionSmooth(Vector3 position)
     {
-        transform.gameObject.SetActive(GetRemainSpellAP()<= 5);
-        LeanTween.move(gameObject, position, 0.2f);
+        transform.gameObject.SetActive(GetRemainSpellAP() <= 5);
+        _tweens.Add(LeanTween.move(gameObject, position, 0.1f).pause());
+    }
+
+    private void Update()
+    {
+        if(_tweens.Count > 0)
+        {
+            foreach (var tween in _tweens)
+            {
+                if (LeanTween.isTweening(tween.id) == false)
+                {
+                    _tweensToRemove.Add(tween);
+                }
+            }
+            foreach (var tween in _tweensToRemove)
+            {
+                _tweens.Remove(tween);
+            }
+            
+            if(_tweens.Count > 0)
+            {
+                LeanTween.resume(_tweens[0].id);
+            }
+            _tweensToRemove.Clear();
+        }
     }
 }

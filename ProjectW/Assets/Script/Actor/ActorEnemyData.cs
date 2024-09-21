@@ -155,4 +155,9 @@ public class ActorEnemyData : ActorDataBase
     {
         return _skillBase.CurrentAP;
     }
+    
+    public int GetMaxAp()
+    {
+        return _skillBase.MaxAP;
+    }
 }

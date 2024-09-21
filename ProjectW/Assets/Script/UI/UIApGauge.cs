@@ -112,9 +112,7 @@ public class UIApGauge : UIBase
 
     public void UpdateUI(bool isSmooth = true)
     {
-        SetSpellDictionary();
         UpdateSourceUI(isSmooth);
-        SetMonsterDictionary();
         UpdateMonsterUI(isSmooth);
     }
 
@@ -123,33 +121,55 @@ public class UIApGauge : UIBase
         for (int i = 0; i < sources.Count; i++)
         {
             int remainAP = sources[i].GetRemainSpellAP();
+
+            
             int sameAPCount = dictionary.TryGetValue(remainAP, out var value) ? value.Count : 1;
             int myIndex = dictionary.TryGetValue(remainAP, out var value1) ? value1.FindIndex(_ => _ == sources[i]) : 0;
 
             var position = GetPosition(sameAPCount, remainAP, myIndex, prefabTransform.position.y);
+
             if (isSmooth)
-                sources[i].SetPositionSmooth(position);
+            {
+                if (sources[i].GetResetAp() == remainAP)
+                {
+                    var resetPosition = GetPosition(sameAPCount, _apGaugePos.Length - 1, myIndex, prefabTransform.position.y);
+                    sources[i].SetPosition(resetPosition);
+                }
+                sources[i].AddPositionSmooth(position);
+            }
             else
+            {
                 sources[i].SetPosition(position);
+            }
         }
     }
 
-    private void UpdateSourceUI(bool isSmooth)
+    public void UpdateSourceUI(bool isSmooth)
     {
+        SetSpellDictionary();
         UpdateUI(sourceDic, _spellSources, _apSourcePrefab.transform, isSmooth);
     }
 
-    private void UpdateMonsterUI(bool isSmooth)
+    public void UpdateMonsterUI(bool isSmooth)
     {
+        SetMonsterDictionary();
         UpdateUI(monsterDic, _monsters, _apEnemyPrefab.transform, isSmooth);
     }
-    
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UpdateSourceUI(false);
+        }
+    }
 
     #endregion  
 
     #region SetDictionary
 
-    private void SetDictionary<T>(Dictionary<int, List<T>> dictionary, List<T> sources) where T : UIAPGaugeIconBase
+    private void SetDictionary<T>(IDictionary<int, List<T>> dictionary, List<T> sources) where T : UIAPGaugeIconBase
     {
         dictionary.Clear();
         foreach (var source in sources)
@@ -165,6 +185,11 @@ public class UIApGauge : UIBase
 
     private void SetSpellDictionary()
     {
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        for (var i = 0; i < _spellSources.Count; i++)
+        {
+            _spellSources[i].SetSpellSource(gameBattleMode.BattleHandler._sources[i]);
+        }
         SetDictionary(sourceDic, _spellSources);
     }
 
@@ -187,14 +212,17 @@ public class UIApGauge : UIBase
         int guageMaxCount = _apGaugePos.Length - 1;
         position.y = yPos;
         
-        var startPos = _apGaugePos[Math.Min(guageMaxCount, Math.Max(0, remainSpellAP - 1))].position;
-        var endPos = _apGaugePos[Math.Min(guageMaxCount, remainSpellAP)].position;
+        var startPosIndex = Math.Min(guageMaxCount, Math.Max(0, remainSpellAP - 1));
+        var endPosIndex = Math.Min(guageMaxCount, remainSpellAP);
         
-        if (sameAPCount >= 2)
+        var startPos = _apGaugePos[startPosIndex].position;
+        var endPos = _apGaugePos[endPosIndex].position;
+        
+        if (sameAPCount > 1)
         {
             var delta = endPos - startPos;
             var pos = delta / (sameAPCount + 1);
-            position.x = endPos.x + pos.x * (myIndex + 1);
+            position.x = startPos.x + pos.x * (myIndex + 1);
         }
         else
         {
@@ -203,4 +231,5 @@ public class UIApGauge : UIBase
 
         return position;
     }
+    
 }

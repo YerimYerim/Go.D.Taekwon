@@ -6,7 +6,12 @@ public class UIAPGaugeIcon : UIAPGaugeIconBase
     {
         return _gameSpellSource.GetRemainAp();
     }
-    
+
+    public override int GetResetAp()
+    {
+        return _gameSpellSource.GetMaxAp();
+    }
+
     public void SetSpellSource(GameSpellSource gameSpellSource)
     {
         _gameSpellSource = gameSpellSource;

@@ -6,7 +6,12 @@ public class UIAPGaugeIconMonster : UIAPGaugeIconBase
     {
         return enemyData.GetRemainAp();
     }
-    
+
+    public override int GetResetAp()
+    {
+        return enemyData.GetMaxAp();
+    }
+
     public void SetData(GameActor data)
     {
         enemyData = data.data as ActorEnemyData;

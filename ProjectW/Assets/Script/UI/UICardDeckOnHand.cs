@@ -54,7 +54,6 @@ public class UICardDeckOnHand : UIBase
             {
                 uiCards[i].gameObject.SetActive(false);
             }
-            
         }
     }
 

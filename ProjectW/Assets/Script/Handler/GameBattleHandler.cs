@@ -47,27 +47,11 @@ public class GameBattleHandler
         {
             var sourceTableData = GameDataManager.Instance._spellSourceTableDatas.Find(_ => firstreward[i].source_id == _.source_id);
             _sources.Add(new GameSpellSource());
-            _sources[i].Init(sourceTableData?.source_id ?? 0, MakeSpell);
-            AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ?? 0);
+            _sources[i].Init(sourceTableData , MakeSpell, ()=>uiApGauge.UpdateSourceUI(true));
+            AddSpell(sourceTableData?.spell_id ?? 0,  sourceTableData?.product_value_init ?? 0);
         }
     }
-
-
-    public GameSpellSource GetSource(int index)
-    {
-        if (index >=  _sources.Count)
-        {
-            var sourceTableData = GameDataManager.Instance._spellSourceTableDatas;
-
-            for (int i = 0; i < sourceTableData.Count; ++i)
-            {
-                GameSpellSource source = new GameSpellSource();
-                source.Init(sourceTableData[i]?.source_id ?? 0, MakeSpell);
-                _sources.Add(source);
-            }
-        }
-        return _sources[index];
-    }
+    
     public void AddSpell(int cardKey, int amount)
     {
         SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
@@ -128,11 +112,11 @@ public class GameBattleHandler
                 RemoveCard(spellData);
                 MinusResourceAP(1);
                 battleMode.ActorSpawner.MinusAP(1);
+                uiApGauge.UpdateMonsterUI(true);
             }), 0.11f);
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
                 player.OnUpdateHp(handler.playerData);
-                uiApGauge.UpdateUI();
             }), 0.1f);
             CommandManager.Instance.StartGameCommand();
         }
@@ -185,7 +169,7 @@ public class GameBattleHandler
                                 skillEffectBase.DoSkill(new List<GameActor> {enemyActor}, enemyActor);
                                 enemyData.ResetAP();
                                 player.OnUpdateHp(handler.playerData);
-                                UpdateUIApGauge();
+                                uiApGauge.UpdateMonsterUI(true);
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
                             Debug.Log(enemyActor.gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
@@ -198,7 +182,7 @@ public class GameBattleHandler
                                 skillEffectBase.DoSkill(new List<GameActor>{player}, enemyActor);
                                 enemyData.ResetAP();
                                 player.OnUpdateHp(handler.playerData);
-                                UpdateUIApGauge();
+                                uiApGauge.UpdateMonsterUI(true);
                             });
                             CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
                             Debug.Log(enemyActor.gameObject.name +"사용"+ skilleffect.effect_type + "수치" + skilleffect.value_1);
@@ -248,11 +232,11 @@ public class GameBattleHandler
 
     public void MinusResourceAP(int minusAP)
     {
-        for (int i = 0; i < _sources.Count; ++i)
+        for (int i = 0; i < _sources.Count; ++i)    
         {
             _sources[i].ReduceAP(minusAP);
         }
-
+        uiApGauge.UpdateSourceUI(true);
         DoTurn();
     }
 

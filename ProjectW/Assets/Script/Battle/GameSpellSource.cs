@@ -12,48 +12,43 @@ public class GameSpellSource
 
     // spell id
     public event Action<int, int > OnMakeSpellEvent;
-    
-    /// <summary>
-    /// remainAP
-    /// </summary>
-    public event Action<int> OnUpdateUI;
-    
+    public event Action OnUpdateGauge;
+
     // id, amount 
-    public void Init(int sourceID, Action<int, int> onMakeSpellEvent)
+    public void Init(SpellSourceTableData sourceTable, Action<int, int> onMakeSpellEvent, Action onUpdateGauge)
     {
         OnMakeSpellEvent = onMakeSpellEvent;
-        _sourceId = sourceID;
-        _tableData = GameDataManager.Instance._spellSourceTableDatas.Find(_ => _.source_id == sourceID);
-        _maxAp = _tableData.product_ap ?? 0;
-        _productionAmount = _tableData.product_value?? 0;
-        _productionSpellId = _tableData.spell_id ?? 0;
+        OnUpdateGauge = onUpdateGauge;
+        _sourceId = sourceTable?.source_id ?? 0;
+        _tableData = sourceTable;
+        _maxAp = sourceTable?.product_ap ?? 0;
+        _productionAmount = sourceTable?.product_value?? 0;
+        _productionSpellId = sourceTable?.spell_id ?? 0;
         _remainAP = _maxAp;
     }
 
-    public void ResetAp()
+    private void ResetAp()
     {
         _remainAP = _maxAp;
     }
 
-    public void ReduceAp()
+    private void ReduceAp()
     {
         if (_remainAP > 0)
         {
             --_remainAP;
-            OnUpdateUI?.Invoke(_remainAP);
             if(_remainAP <= 0)
             {
+                //OnUpdateGauge?.Invoke();
                 ResetAp();
                 OnMakeSpellEvent?.Invoke(GetProductionSpellId(), _productionAmount);
-                OnUpdateUI?.Invoke(_remainAP);
             }
         }
     }
-    
-    public void AddAp()
+
+    private void AddAp()
     {
         ++_remainAP;
-        OnUpdateUI?.Invoke(_remainAP);
     }
     
     public int GetSourceId()

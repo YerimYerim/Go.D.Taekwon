@@ -14,8 +14,12 @@ public class UI_PopUp_BattleMenu : UIBase
     // 서포트 모듈
     [SerializeField] private UISupportModule _uiSupportModule;
     [SerializeField] private GameObject _uiSupportModuleParent;
-    
     private List<UISupportModule> _supportModules = new();
+    
+    [SerializeField] private UIApplication _uiApplication;
+    [SerializeField] private GameObject _uiApplicationParent;
+    private List<UIApplication> _uiApplications = new();
+    
 
     [SerializeField] private DTButton _btnClose;
     private int curSelectedSource = 0;
@@ -109,11 +113,47 @@ public class UI_PopUp_BattleMenu : UIBase
         curSelectedSource = sourceID;
         SetSupportModule(GameSupportModuleManager.Instance.GetSupportModules(curSelectedSource));
     }
+    
+    private void SetApplication(List<Relic> relic)
+    {
+        for (int i = 0; i < relic.Count; ++i)
+        {
+            var index = i;
+            
+            if(_uiApplications.Count <= i)
+            {
+                var relicObject =  Instantiate(_uiApplication.gameObject, _uiApplicationParent.transform);
+                _uiApplications.Add( relicObject.GetComponent<UIApplication>());
+            }
+            
+            _uiApplications[index].gameObject.SetActive(true);
+            _uiApplications[index].SetImage(relic[index].GetImage());
+            _uiApplications[index].SetOnClickButton(() => SetSelectedSource(index));
+            _uiApplications[index].SetHoverEvent(() =>
+            {
+                if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var uiTooltip))
+                {
+                    uiTooltip.CreateInfo(relic[index].GetName(), relic[index].GetDesc(), _uiApplications[index].rect );
+                    uiTooltip.Show();
+                }
+            }, () =>
+            {
+                if (GameUIManager.Instance.TryGet<UITooltip>(out var uiTooltip))
+                {
+                    uiTooltip.Hide();
+                }
+            });
+
+        }
+        _uiApplication.gameObject.SetActive(false);
+    }
+    
     public override void Show()
     {
         base.Show();
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         SetSpellSource(gameBattleMode.BattleHandler._sources);
         SetSelectedSource(0);
+        SetApplication(gameBattleMode.BattleHandler.relics);
     }
 }

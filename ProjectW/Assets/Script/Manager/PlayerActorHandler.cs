@@ -34,7 +34,8 @@ public class PlayerActorHandler
         var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == selectActorId);
         
         playerData = new ActorPlayerData();
-        playerData.Init(playableTableData?.stat_hp ?? 0);
+        //playerData.Init(playableTableData?.stat_hp ?? 0);
+        playerData.Init(10);
         
         player.data = playerData;
         player.OnUpdateHp(playerData);

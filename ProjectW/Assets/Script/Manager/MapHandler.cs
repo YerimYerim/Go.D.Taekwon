@@ -1,12 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Script.Manager;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MapHandler
 {
     private static MapData curMap = new();
-    
+    public event Action OnGameEnd;
     public void Init()
     {
         curMap = new ()
@@ -27,48 +28,59 @@ public class MapHandler
     
     public void ShowMapSelect()
     {
-        // 현 스테이지 index 
-        var curStageIndex = curMap.curStageList.FindIndex(_ => _ == curMap.stageId);
-        // 다음 스테이지 고르기
-        var stageTable = GameDataManager.Instance._contentStageTableDatas.Find(_ => _.stage_id == curMap.curStageList[curStageIndex + 1]);
-
-        var firstGroupSelect = stageTable?.advent_cnt_1 ?? 0;
-        var firstGroupMap = stageTable?.map_group_1;
-        List<int> selectableMap = new List<int>();
-        if (firstGroupMap != null)
-        {
-            List<int> availableMaps = new List<int>(firstGroupMap);
-
-            for (int i = 0; i < firstGroupSelect; ++i)
+        CommandManager.Instance.AddCommand(new PlayerTurnCommand(() => OnGameEnd?.Invoke()), 1f);
+        CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
-                int randomIndex = Random.Range(0, availableMaps.Count);
-                selectableMap.Add(availableMaps[randomIndex]);
-                availableMaps.RemoveAt(randomIndex);
+                // 현 스테이지 index 
+                var curStageIndex = curMap.curStageList.FindIndex(_ => _ == curMap.stageId);
+                // 다음 스테이지 고르기
+                var stageTable =
+                    GameDataManager.Instance._contentStageTableDatas.Find(_ =>
+                        _.stage_id == curMap.curStageList[curStageIndex + 1]);
+
+                var firstGroupSelect = stageTable?.advent_cnt_1 ?? 0;
+                var firstGroupMap = stageTable?.map_group_1;
+                List<int> selectableMap = new List<int>();
+                if (firstGroupMap != null)
+                {
+                    List<int> availableMaps = new List<int>(firstGroupMap);
+
+                    for (int i = 0; i < firstGroupSelect; ++i)
+                    {
+                        int randomIndex = Random.Range(0, availableMaps.Count);
+                        selectableMap.Add(availableMaps[randomIndex]);
+                        availableMaps.RemoveAt(randomIndex);
+                    }
+                }
+
+                var secondGroupSelect = stageTable?.advent_cnt_2 ?? 0;
+                var secondGroupMap = stageTable?.map_group_2;
+                if (firstGroupMap != null)
+                {
+                    List<int> availableMaps = new List<int>(secondGroupMap);
+
+                    for (int i = 0; i < secondGroupSelect; ++i)
+                    {
+                        int randomIndex = Random.Range(0, availableMaps.Count);
+                        selectableMap.Add(availableMaps[randomIndex]);
+                        availableMaps.RemoveAt(randomIndex);
+                    }
+                }
+
+                curMap.stageId = stageTable?.stage_id ?? 0;
+
+                if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
+                {
+                    var mapData =
+                        GameDataManager.Instance._contentMapTableDatas.FindAll(_ =>
+                            selectableMap.Contains(_.map_id ?? 0));
+                    ui.SetData(mapData);
+                    ui.Show();
+                }
+
+                ;
             }
-        }
-
-        var secondGroupSelect = stageTable?.advent_cnt_2 ?? 0;
-        var secondGroupMap = stageTable?.map_group_2;
-        if (firstGroupMap != null)
-        {
-            List<int> availableMaps = new List<int>(secondGroupMap);
-
-            for (int i = 0; i < secondGroupSelect; ++i)
-            {
-                int randomIndex = Random.Range(0, availableMaps.Count);
-                selectableMap.Add(availableMaps[randomIndex]);
-                availableMaps.RemoveAt(randomIndex);
-            }
-        }
-
-        curMap.stageId = stageTable?.stage_id ?? 0;
-        
-        if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
-        {
-            var mapData = GameDataManager.Instance._contentMapTableDatas.FindAll(_ => selectableMap.Contains(_.map_id?? 0));
-            ui.SetData(mapData);
-            ui.Show();
-        };
+        ), 0.1f);
     }
     
     public void OnClickMapSelect(ContentMapTableData data)

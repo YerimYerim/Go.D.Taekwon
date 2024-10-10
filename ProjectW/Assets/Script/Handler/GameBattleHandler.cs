@@ -10,8 +10,11 @@ public class GameBattleHandler
     public List<GameSpellSource> _sources = new();
     public UICardDeckOnHand UICardDeck;
     public UIApGauge uiApGauge;
+    public List<Relic> relics = new();
+    
     public event Action OnEventRemoveCard;
     public event Action OnUpdateCard;
+    public event Action OnGameStart;
 
     // sourceId, spellSource
     public void Init()
@@ -20,22 +23,40 @@ public class GameBattleHandler
         spellDatas.Clear();
         SetFirstSource(GameUtil.PLAYER_ACTOR_ID);
 
-        if(GameUIManager.Instance.TryGetOrCreate<UICardDeckOnHand>(false, UILayer.LEVEL_1, out var deckUI))
+        if (GameUIManager.Instance.TryGetOrCreate<UICardDeckOnHand>(false, UILayer.LEVEL_1, out var deckUI))
         {
             UICardDeck = deckUI;
             UICardDeck.Show();
             UICardDeck.SetUI();
         }
-        
-        
-        if(GameUIManager.Instance.TryGetOrCreate<UIApGauge>(false, UILayer.LEVEL_1, out var gaugeUI))
+
+
+        if (GameUIManager.Instance.TryGetOrCreate<UIApGauge>(false, UILayer.LEVEL_1, out var gaugeUI))
         {
             uiApGauge = gaugeUI;
             uiApGauge.Show();
             uiApGauge.Init();
         }
+
+        relics.Add(new Relic(GameDataManager.Instance._relicTable[0]));
+        relics.Add(new Relic(GameDataManager.Instance._relicTable[1]));
+
+        for (int i = 0; i < relics.Count; ++i)
+        {
+            relics[i].RegisterEvent();
+        }
+
+        OnGameStart?.Invoke();
     }
 
+    public void OnDispose()
+    {
+        for (int i = 0; i < relics.Count; ++i)
+        {
+            relics[i].UnregisterEvent();
+        }
+
+    }
     public void SetFirstSource(int actorId)
     {        
         var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == actorId);

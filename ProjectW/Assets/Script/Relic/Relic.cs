@@ -8,37 +8,36 @@ public class Relic
     private record Condition 
     {
         public ACTIVE_CONDITION condition;
-        public int conditionValue;
-        public bool isActivated;
-
-        public bool isCheck;
+        public int ConditionValue;
+        public bool IsActivated;
+        public bool IsCheck;
     }
 
     private record Effect
     {
         public RELIC_EFFECT effect;
-        public int effectValue;
-        public TARGET_TYPE targetType;
-        public int targetCount;
+        public int EffectValue;
+        public TARGET_TYPE TargetType;
+        public int TargetCount;
     }
     
-    private RelicTableData relicTableData;
+    private readonly RelicTableData _relicTableData;
     
-    private List<Condition> _conditions = new();
-    private List<Effect> _effects = new();
-    private LOGICAL_OPERATOR conditionLogic => relicTableData.condition_logic ?? LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND;
+    private readonly List<Condition> _conditions = new();
+    private readonly List<Effect> _effects = new();
+    private LOGICAL_OPERATOR ConditionLogic => _relicTableData.condition_logic ?? LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND;
     
     private bool IsAllConditionActivated
     {
         get
         {
-            if (conditionLogic == LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND)
+            if (ConditionLogic == LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND)
             {
-                return _conditions.All(_ => _.isActivated);
+                return _conditions.All(_ => _.IsActivated);
             }
             else
             {
-                return true;
+                return _conditions.Any(_ => _.IsActivated);
             }
         }
     }
@@ -47,9 +46,9 @@ public class Relic
     {
         get {
             int count = 0;
-            if(relicTableData.active_condition_1 != null)
+            if(_relicTableData.active_condition_1 != null)
                 ++count;
-            if (relicTableData.active_condition_2 != null)
+            if (_relicTableData.active_condition_2 != null)
                 ++count;
             return count;
         }
@@ -59,11 +58,11 @@ public class Relic
     {
         get {
             int count = 0;
-            if(relicTableData.relic_effect_1 != null)
+            if(_relicTableData.relic_effect_1 != null)
                 ++count;
-            if (relicTableData.relic_effect_2 != null)
+            if (_relicTableData.relic_effect_2 != null)
                 ++count;
-            if (relicTableData.relic_effect_3 != null)
+            if (_relicTableData.relic_effect_3 != null)
                 ++count;
             return count;
         }
@@ -71,7 +70,7 @@ public class Relic
     
     public Relic(RelicTableData relicTableData)
     {
-        this.relicTableData = relicTableData;
+        this._relicTableData = relicTableData;
         for(int i  = 0; i< conditionCount; ++i)
         {
             switch (i)
@@ -81,8 +80,8 @@ public class Relic
                     var condition = new Condition
                     {
                         condition = relicTableData.active_condition_1 ?? ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START,
-                        conditionValue = relicTableData.active_value_1 ?? 0,
-                        isActivated = false
+                        ConditionValue = relicTableData.active_value_1 ?? 0,
+                        IsActivated = false,
                     };
                     _conditions.Add(condition);
                     break;
@@ -92,15 +91,15 @@ public class Relic
                     var condition = new Condition
                     {
                         condition = relicTableData.active_condition_2 ?? ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START,
-                        conditionValue = relicTableData.active_value_2 ?? 0,
-                        isActivated = false
+                        ConditionValue = relicTableData.active_value_2 ?? 0,
+                        IsActivated = false,
                     };
                     _conditions.Add(condition);
                     break;
                 }
             }
         }
-
+        
         for (int i = 0; i < effectCount; ++i)
         {
             Effect effect = new Effect();
@@ -108,96 +107,105 @@ public class Relic
             {
                 case 0:
                     effect.effect = relicTableData.relic_effect_1 ?? RELIC_EFFECT.RELIC_EFFECT_ARMOR;
-                    effect.effectValue = relicTableData.effect_value_1 ?? 0;
-                    effect.targetType = relicTableData.target_1 ?? TARGET_TYPE.TARGET_TYPE_SELF;
-                    effect.targetCount = relicTableData.target_count_1 ?? 0;
+                    effect.EffectValue = relicTableData.effect_value_1 ?? 0;
+                    effect.TargetType = relicTableData.target_1 ?? TARGET_TYPE.TARGET_TYPE_SELF;
+                    effect.TargetCount = relicTableData.target_count_1 ?? 0;
                     break;
                 case 1:
                     effect.effect = relicTableData.relic_effect_2 ?? RELIC_EFFECT.RELIC_EFFECT_ARMOR;
-                    effect.effectValue = relicTableData.effect_value_2 ?? 0;
-                    effect.targetType = relicTableData.target_2 ?? TARGET_TYPE.TARGET_TYPE_SELF;
-                    effect.targetCount = relicTableData.target_count_2 ?? 0;
+                    effect.EffectValue = relicTableData.effect_value_2 ?? 0;
+                    effect.TargetType = relicTableData.target_2 ?? TARGET_TYPE.TARGET_TYPE_SELF;
+                    effect.TargetCount = relicTableData.target_count_2 ?? 0;
                     break;
                 case 2:
                     effect.effect = relicTableData.relic_effect_3 ?? RELIC_EFFECT.RELIC_EFFECT_ARMOR;
-                    effect.effectValue = relicTableData.effect_value_3 ?? 0;
-                    effect.targetType = relicTableData.target_3 ?? TARGET_TYPE.TARGET_TYPE_SELF;
-                    effect.targetCount = relicTableData.target_count_3 ?? 0;
+                    effect.EffectValue = relicTableData.effect_value_3 ?? 0;
+                    effect.TargetType = relicTableData.target_3 ?? TARGET_TYPE.TARGET_TYPE_SELF;
+                    effect.TargetCount = relicTableData.target_count_3 ?? 0;
                     break;
             }
             _effects.Add(effect);
         }
+        
+        
     }
 
+    private Action GetActiveAction(ACTIVE_CONDITION? activeCondition)
+    {
+        return activeCondition switch
+        {
+            ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START => OnBattleStart,
+            ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_END => OnBattleEnd,
+            ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT => OnHPPercentMinus,
+            ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE => OnHPMinus,
+            _ => null
+        };
+    }
+
+    void RegisterCondition(ACTIVE_CONDITION? condition, Action action)
+    {
+         var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        switch (condition)
+        {
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START:
+                gameMode.BattleHandler.OnGameStart += action;
+                break;
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_END:
+                gameMode.MapHandler.OnGameEnd += action;
+                break;
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT:
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE:
+                gameMode.PlayerActorHandler.player.data.OnEventDamaged += action;
+                break;
+        }
+    }
     public void RegisterEvent()
     {
+        if (ConditionLogic == LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND)
+        {
+            RegisterCondition(_relicTableData.active_condition_1, GetActiveAction(_relicTableData.active_condition_1));
+            RegisterCondition(_relicTableData.active_condition_1, GetActiveAction(_relicTableData.active_condition_2));
+        }
+        else if (ConditionLogic == LOGICAL_OPERATOR.LOGICAL_OPERATOR_OR)
+        {
+            RegisterCondition(_relicTableData.active_condition_1, GetActiveAction(_relicTableData.active_condition_1));
+            RegisterCondition(_relicTableData.active_condition_2, GetActiveAction(_relicTableData.active_condition_2));
+        }
+    }
+    
+    private void UnregisterCondition(ACTIVE_CONDITION? condition, Action action)
+    {
         var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        
-        if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START
-            || relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START)
+        switch (condition)
         {
-            // 게임 시작시
-            gameMode.BattleHandler.OnGameStart += OnBattleStart;
-            gameMode.BattleHandler.OnGameStart += OnHPPercentMinus;
-            gameMode.BattleHandler.OnGameStart += OnHPMinus;
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START:
+                gameMode.BattleHandler.OnGameStart -= action;
+                break;
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_END:
+                gameMode.MapHandler.OnGameEnd -= action;
+                break;
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT:
+            case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE:
+                gameMode.PlayerActorHandler.player.data.OnEventDamaged -= action;
+                break;
         }
-        else if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_END ||
-                 relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_END)
-        {
-            gameMode.MapHandler.OnGameEnd += OnBattleEnd;
-            gameMode.MapHandler.OnGameEnd += OnHPPercentMinus;
-            gameMode.MapHandler.OnGameEnd += OnHPMinus;
-            // 게임 종료시
-        }
-        else if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT ||
-                 relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT)
-        {
-            // 데미지시
-            gameMode.PlayerActorHandler.player.data.OnEventDamaged += OnHPPercentMinus;
-        }
-        else if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE ||
-                 relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE)
-        {
-            gameMode.PlayerActorHandler.player.data.OnEventDamaged += OnHPMinus;
-            // 데미지시
-        }
-        
     }
     
     public void UnregisterEvent()
     {
-        var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-
-        if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START
-            || relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START)
+        if (ConditionLogic == LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND)
         {
-            // 게임 시작시
-            // 게임 시작시
-            gameMode.BattleHandler.OnGameStart -= OnBattleStart;
-            gameMode.BattleHandler.OnGameStart -= OnHPPercentMinus;
-            gameMode.BattleHandler.OnGameStart -= OnHPMinus;
+            UnregisterCondition(_relicTableData.active_condition_1, GetActiveAction(_relicTableData.active_condition_1));
+            UnregisterCondition(_relicTableData.active_condition_1, GetActiveAction(_relicTableData.active_condition_2));
         }
-        else if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_END ||
-                 relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_END)
+        else if (ConditionLogic == LOGICAL_OPERATOR.LOGICAL_OPERATOR_OR)
         {
-            gameMode.MapHandler.OnGameEnd -= OnBattleEnd;
-            gameMode.MapHandler.OnGameEnd -= OnHPPercentMinus;
-            gameMode.MapHandler.OnGameEnd -= OnHPMinus;
-        }
-        else if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT ||
-                 relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT)
-        {
-            // 데미지시
-            gameMode.PlayerActorHandler.player.data.OnEventDamaged -= OnHPPercentMinus;
-        }
-        else if (relicTableData.active_condition_1 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE ||
-                 relicTableData.active_condition_2 == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE)
-        {
-            gameMode.PlayerActorHandler.player.data.OnEventDamaged -= OnHPMinus;
+            UnregisterCondition(_relicTableData.active_condition_1, GetActiveAction(_relicTableData.active_condition_1));
+            UnregisterCondition(_relicTableData.active_condition_2, GetActiveAction(_relicTableData.active_condition_2));
         }
     }
     
-    
+   
     private void OnBattleStart()
     {
         ActivateCondition(ACTIVE_CONDITION.ACTIVE_CONDITION_BATTLE_START, true);
@@ -214,7 +222,7 @@ public class Relic
         
         var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         var condition = _conditions.Find(_ => _.condition == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE);
-        if (gameMode.PlayerActorHandler.player.data.GetHp() <= condition.conditionValue)
+        if (gameMode.PlayerActorHandler.player.data.GetHp() <= condition.ConditionValue)
         {
             isActivated = true;
         }
@@ -226,10 +234,10 @@ public class Relic
     {
         bool isActivated = false;
         var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        var hpPercnet = (float)gameMode.PlayerActorHandler.player.data.GetHp()/  gameMode.PlayerActorHandler.player.data.GetMaxHp();
-        hpPercnet *= 100;
+        var hpPercent = (float)gameMode.PlayerActorHandler.player.data.GetHp()/  gameMode.PlayerActorHandler.player.data.GetMaxHp();
+        hpPercent *= 100;
         var condition = _conditions.Find(_ => _.condition == ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT);
-        if (hpPercnet <= condition?.conditionValue)
+        if (hpPercent <= condition?.ConditionValue)
         {
             isActivated = true;
         }
@@ -238,15 +246,13 @@ public class Relic
 
     private void ActivateCondition(ACTIVE_CONDITION conditionType, bool isActivated)
     {
-        var condition = _conditions.Find(_ => _.condition == conditionType);
-        if (condition == null)
+        var index = _conditions.FindIndex(_ => _.condition == conditionType);
+        if (_conditions[index] == null)
             return;
         
-        condition.isActivated = isActivated;
-        condition.isCheck = true;
+        _conditions[index].IsActivated = isActivated;
+        _conditions[index].IsCheck = true;
         
-        bool isAllCheck = _conditions.All(_=>_.isCheck == false);
-
         if (IsAllConditionActivated)
         {
             for (int i = 0; i < effectCount; ++i)
@@ -255,23 +261,32 @@ public class Relic
             }
         }
 
-        if (isAllCheck)
+        switch (ConditionLogic)
         {
-            _conditions.ForEach(_ => _.isActivated = false);
-            _conditions.ForEach(_=>_.isCheck = false);
-        } 
+            case LOGICAL_OPERATOR.LOGICAL_OPERATOR_OR:
+                _conditions.ForEach(_ => { _.IsActivated = false; _.IsCheck = false; });
+                break;
+            case LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND:
+            {
+                if (_conditions.All(_ => _.IsCheck))
+                {
+                    _conditions.ForEach(_ => { _.IsActivated = false; _.IsCheck = false; });
+                }
+                break;
+            }
+        }
     }
-
+    
     private void DoEffect(Effect effect)
     {
-        Debug.Log("DoEffect"+ effect.effect + " 타겟 "+effect.targetType );
+        Debug.Log("DoEffect"+ effect.effect + " 타겟 "+effect.TargetType );
         switch (effect.effect)
         {
             case RELIC_EFFECT.RELIC_EFFECT_HEAL:
-                DoEffectHeal(effect.targetType, effect.targetCount, effect.effectValue);
+                DoEffectHeal(effect.TargetType, effect.TargetCount, effect.EffectValue);
                 break;
             case RELIC_EFFECT.RELIC_EFFECT_ARMOR:
-                DoEffectAmor(effect.targetType, effect.targetCount, effect.effectValue);
+                DoEffectAmor(effect.TargetType, effect.TargetCount, effect.EffectValue);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(effect), effect, null);
@@ -309,16 +324,16 @@ public class Relic
 
     public string GetImage()
     {
-        return relicTableData.relic_resource;
+        return _relicTableData.relic_resource;
     }
     
     public string GetDesc()
     {
-        return GameUtil.GetString(relicTableData.relic_desc);
+        return GameUtil.GetString(_relicTableData.relic_desc);
     }
 
     public string GetName()
     {
-        return GameUtil.GetString(relicTableData.relic_name);
+        return GameUtil.GetString(_relicTableData.relic_name);
     }
 }

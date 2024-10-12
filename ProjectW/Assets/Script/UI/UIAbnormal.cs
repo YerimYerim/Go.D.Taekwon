@@ -22,7 +22,7 @@ public class UIAbnormal : MonoBehaviour
         text.SetText(str);
     }
     
-    public void SetBGColor(string str)
+    public void SetBgColor(string str)
     {
         BG.sprite = GameResourceManager.Instance.GetImage(str);
     }

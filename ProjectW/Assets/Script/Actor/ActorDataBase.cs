@@ -11,6 +11,10 @@ public class ActorDataBase
     protected HealStat _healStat = new();
 
     public List<SkillEffectBase> turnSkill = new() ;
+    
+    public event Action OnEventDamaged;
+    public event Action OnHeal;
+    
     //Enemy 의 경우에만 사용
 
     // - 대미지 = 피해량 - (방어도 * (1-방어도 계수 파괴)  - 방어도 정수 파괴)
@@ -29,6 +33,7 @@ public class ActorDataBase
         var leftDamage = amor.amor - amor.GetFinalDamage(damage);
         amor.amor = Math.Max(0, amor.amor - amor.GetFinalDamage(damage));
         Hp = Math.Max(0, Hp + leftDamage);
+        OnEventDamaged?.Invoke();
         if(Hp <= 0)
         {
             GameTurnManager.Instance.TurnStart();
@@ -38,13 +43,17 @@ public class ActorDataBase
     public void DoHeal(int addHp)
     { 
         Hp = Math.Min(Hp + addHp, MaxHp);
+        OnHeal?.Invoke();
     }
 
     public int GetHp()
     {
         return Hp;
     }    
-    
+    public int GetMaxHp()
+    {
+        return MaxHp;
+    }
 
     public void InitAmorStat(int amor, int amorBreakInt, float amorBreakper, float takedDamage)
     {

@@ -44,10 +44,14 @@ public class GameBattleMode : GameModeBase
 
         BattleHandler.Init();
 
+        
+        ActorSpawner.UpdateEnemyHp();
+        PlayerActorHandler.player.OnUpdateHp(PlayerActorHandler.playerData);
     }
     
     public override void Exit()
     {
+        BattleHandler.OnDispose();
         base.Exit();
     }
 }

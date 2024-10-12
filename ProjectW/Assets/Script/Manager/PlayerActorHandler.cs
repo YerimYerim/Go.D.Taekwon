@@ -35,6 +35,7 @@ public class PlayerActorHandler
         
         playerData = new ActorPlayerData();
         playerData.Init(playableTableData?.stat_hp ?? 0);
+        //playerData.Init(10);
         
         player.data = playerData;
         player.OnUpdateHp(playerData);

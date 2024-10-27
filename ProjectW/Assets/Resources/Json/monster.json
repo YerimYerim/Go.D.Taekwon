@@ -2,77 +2,77 @@
   {
     "actor_id": 20001,
     "level": 1,
-    "stat_hp": 40,
+    "stat_hp": 60,
     "monster_type": 0,
     "skill_pattern_group": 2000101
   },
   {
     "actor_id": 20001,
     "level": 2,
-    "stat_hp": 100,
+    "stat_hp": 120,
     "monster_type": 0,
     "skill_pattern_group": 2000102
   },
   {
     "actor_id": 20001,
     "level": 3,
-    "stat_hp": 120,
+    "stat_hp": 180,
     "monster_type": 0,
     "skill_pattern_group": 2000103
   },
   {
     "actor_id": 20002,
     "level": 1,
-    "stat_hp": 45,
+    "stat_hp": 90,
     "monster_type": 2,
     "skill_pattern_group": 2000201
   },
   {
     "actor_id": 20002,
     "level": 2,
-    "stat_hp": 120,
+    "stat_hp": 180,
     "monster_type": 2,
     "skill_pattern_group": 2000202
   },
   {
     "actor_id": 20002,
     "level": 3,
-    "stat_hp": 240,
+    "stat_hp": 250,
     "monster_type": 2,
     "skill_pattern_group": 2000203
   },
   {
     "actor_id": 20003,
     "level": 1,
-    "stat_hp": 32,
+    "stat_hp": 50,
     "monster_type": 1,
     "skill_pattern_group": 2000301
   },
   {
     "actor_id": 20003,
     "level": 2,
-    "stat_hp": 90,
+    "stat_hp": 100,
     "monster_type": 1,
     "skill_pattern_group": 2000302
   },
   {
     "actor_id": 20003,
     "level": 3,
-    "stat_hp": 100,
+    "stat_hp": 150,
     "monster_type": 1,
     "skill_pattern_group": 2000303
   },
   {
     "actor_id": 20101,
     "level": 1,
-    "stat_hp": 100,
+    "stat_hp": 150,
     "monster_type": 0,
     "skill_pattern_group": 2010101
   },
   {
     "actor_id": 20201,
     "level": 1,
-    "stat_hp": 160,
+    "stat_hp": 300,
     "monster_type": 0,
     "skill_pattern_group": 2020101
   }

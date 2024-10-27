@@ -38,8 +38,8 @@ public class GameBattleHandler
             uiApGauge.Init();
         }
 
-        relics.Add(new Relic(GameDataManager.Instance._relicTable[0]));
-        relics.Add(new Relic(GameDataManager.Instance._relicTable[1]));
+        relics.Add(new Relic(GameTableManager.Instance._relicTable[0]));
+        relics.Add(new Relic(GameTableManager.Instance._relicTable[1]));
 
         for (int i = 0; i < relics.Count; ++i)
         {
@@ -59,23 +59,30 @@ public class GameBattleHandler
     }
     public void SetFirstSource(int actorId)
     {        
-        var playableTableData = GameDataManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == actorId);
+        var playableTableData = GameTableManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == actorId);
         spellDatas.Clear();
-        _sources.Clear();
+        //_sources.Clear();
         
-        var firstreward = GameDataManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
+        var firstreward = GameTableManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
         for (int i = 0; i < firstreward.Count; ++i)
         {
-            var sourceTableData = GameDataManager.Instance._spellSourceTableDatas.Find(_ => firstreward[i].source_id == _.source_id);
-            _sources.Add(new GameSpellSource());
-            _sources[i].Init(sourceTableData , MakeSpell, ()=>uiApGauge.UpdateSourceUI(true));
-            AddSpell(sourceTableData?.spell_id ?? 0,  sourceTableData?.product_value_init ?? 0);
+            if (_sources.All(_ => _.GetSourceId() != firstreward[i].source_id))
+            {
+                AddSource(firstreward[i].source_id ?? 0);
+            }
         }
+    }
+    public void AddSource(int sourceId)
+    {
+        var sourceTableData = GameTableManager.Instance._spellSourceTableDatas.Find(_ => sourceId == _.source_id);
+        _sources.Add(new GameSpellSource());
+        _sources[^1].Init(sourceTableData, MakeSpell, ()=>uiApGauge.UpdateSourceUI(true));
+        AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ?? 0);
     }
     
     public void AddSpell(int cardKey, int amount)
     {
-        SpellTableData spellTableData = GameDataManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
+        var spellTableData = GameTableManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
         var spellData = new GameDeckManager.SpellData(spellTableData);
         Debug.Log(GameUtil.GetString(spellData.tableData.spell_name) + amount + "생산");
         for (int i = 0; i < amount; ++i)
@@ -101,7 +108,7 @@ public class GameBattleHandler
                 for (int i = 0; i < spellEffect.Length; ++i)
                 {
                     var index = i;
-                    var effect = GameDataManager.Instance._spelleffectDatas.Find(_ => spellEffect[index] == _.effect_id);
+                    var effect = GameTableManager.Instance._spelleffectDatas.Find(_ => spellEffect[index] == _.effect_id);
                     var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
                     switch (effect.target)
                     {
@@ -179,7 +186,7 @@ public class GameBattleHandler
                 var skill = enemyData.GetSkillID();
                 if (enemyData.IsCanUseSkill())
                 {
-                    var skilleffect = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill);
+                    var skilleffect = GameTableManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill);
                     var skillEffectBase = GameUtil.GetSkillEffectBase(skilleffect);
                     switch (skilleffect.target)
                     {

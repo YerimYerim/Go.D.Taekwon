@@ -8,6 +8,8 @@ public class MapHandler
 {
     private static MapData curMap = new();
     public event Action OnGameEnd;
+    
+    private List<RewardTableData> rewardTableDatas = new List<RewardTableData>();
     public void Init()
     {
         curMap = new ()
@@ -35,7 +37,7 @@ public class MapHandler
                 var curStageIndex = curMap.curStageList.FindIndex(_ => _ == curMap.stageId);
                 // 다음 스테이지 고르기
                 var stageTable =
-                    GameDataManager.Instance._contentStageTableDatas.Find(_ =>
+                    GameTableManager.Instance._contentStageTableDatas.Find(_ =>
                         _.stage_id == curMap.curStageList[curStageIndex + 1]);
 
                 var firstGroupSelect = stageTable?.advent_cnt_1 ?? 0;
@@ -72,7 +74,7 @@ public class MapHandler
                 if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
                 {
                     var mapData =
-                        GameDataManager.Instance._contentMapTableDatas.FindAll(_ =>
+                        GameTableManager.Instance._contentMapTableDatas.FindAll(_ =>
                             selectableMap.Contains(_.map_id ?? 0));
                     ui.SetData(mapData);
                     ui.Show();
@@ -81,6 +83,8 @@ public class MapHandler
                 ;
             }
         ), 0.1f);
+        
+        CommandManager.Instance.StartGameCommand();
     }
     
     public void OnClickMapSelect(ContentMapTableData data)
@@ -90,13 +94,26 @@ public class MapHandler
 
     public void SetCurMap(int mapId)
     {
-        var curMapData = GameDataManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
+        rewardTableDatas.Clear();
+        var curMapData = GameTableManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
         var curMapActor = curMapData.actor_id.ToList();
+
+        for (int i = 0; i < curMapData.reward_id.Length; i++)
+        {
+            var fixedrewards = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == curMapData.reward_id[i]);
+            rewardTableDatas.AddRange(fixedrewards);
+        }
+        
         curMap.enemyActor = curMapActor;
     }
     
     public MapData GetCurMap()
     {
         return curMap;
+    }
+    
+    public List<RewardTableData> GetRewardTableDatas()
+    {
+        return rewardTableDatas;
     }
 }

@@ -64,7 +64,7 @@ public class ActorSpawner
         List<ActorTableData> actorMonsterDatas = new();
         for (int i = 0; i < map.enemyActor.Count; ++i)
         {
-            var actorData = GameDataManager.Instance._actorDatas.Find(_ => _.actor_id ==  map.enemyActor[i] && _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
+            var actorData = GameTableManager.Instance._actorDatas.Find(_ => _.actor_id ==  map.enemyActor[i] && _.actor_type == ACTOR_TYPE.ACTOR_TYPE_MONSTER);
             actorMonsterDatas.Add(actorData);
         }
         
@@ -73,7 +73,7 @@ public class ActorSpawner
             string enemyName = GameUtil.ENEMY_PARENT_NAME + "_" + (i + 1);
             var actorPrefab =  SpawnActor(actorMonsterDatas[i], enemyName, enemyName);
             
-            var monsterData = GameDataManager.Instance._monsterTableDatas.Find(_ => _.actor_id == actorMonsterDatas[i].actor_id);
+            var monsterData = GameTableManager.Instance._monsterTableDatas.Find(_ => _.actor_id == actorMonsterDatas[i].actor_id);
             var enemyData = new ActorEnemyData();
             
             enemyData.Init(monsterData?.stat_hp?? 0);

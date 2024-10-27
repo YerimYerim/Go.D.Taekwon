@@ -13,10 +13,10 @@ public class UISupportModule : MonoBehaviour
     [SerializeField] private DTButton _button;
     [SerializeField] public RectTransform rect;
     
-    public void SetImage(string iconName, string bgName)
+    public void SetImage(string iconName)
     {
         icon.sprite = GameResourceManager.Instance.GetImage(iconName);
-        bg.sprite = GameResourceManager.Instance.GetImage(bgName);
+        bg.sprite = GameResourceManager.Instance.GetImage("support_module_bg");
     }
 
     public void SetHoverEvent(Action OnAction, Action OffAction)

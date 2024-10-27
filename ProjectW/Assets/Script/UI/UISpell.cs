@@ -26,11 +26,11 @@ public class UISpell : UIDragable
         var isSpellUI = FindUISpell(eventData);
         if (isSpellUI != null)
         {
-            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == isSpellUI._spellTableData.tableData.spell_id));
-            spellCombineData ??= GameDataManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == isSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
+            var spellCombineData = GameTableManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == isSpellUI._spellTableData.tableData.spell_id));
+            spellCombineData ??= GameTableManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == isSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
             if (spellCombineData == null)
                 return false;
-            SpellTableData resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
+            SpellTableData resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
             if (resultSpell == null)
                 return false;
             return true;
@@ -51,12 +51,12 @@ public class UISpell : UIDragable
         var otherSpellUI = FindUISpell(eventData);
         if (otherSpellUI != null)
         {
-            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));
-            spellCombineData ??= GameDataManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
+            var spellCombineData = GameTableManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));
+            spellCombineData ??= GameTableManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
 
             if (spellCombineData == null)
                 return;
-            SpellTableData resultSpell = GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
+            SpellTableData resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
             if (resultSpell == null)
                 return;
 
@@ -102,14 +102,14 @@ public class UISpell : UIDragable
         var otherSpellID = FindUISpell(eventData);
         if (otherSpellID != null)
         {
-            var spellCombineData = GameDataManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellID._spellTableData.tableData.spell_id));
-            spellCombineData ??= GameDataManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellID._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
+            var spellCombineData = GameTableManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellID._spellTableData.tableData.spell_id));
+            spellCombineData ??= GameTableManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellID._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
 
             if (spellCombineData == null)
                 return;
 
             var resultSpell =
-                GameDataManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
+                GameTableManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
             if (resultSpell == null)
                 return;
 

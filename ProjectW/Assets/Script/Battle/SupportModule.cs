@@ -28,7 +28,7 @@ public class SupportModule
 
     private void SetSupportModuleData(int id, int level, out List<SupportModuleTableData> data)
     {
-        data = GameDataManager.Instance._supportModuleTable.FindAll(_ => _.support_module_id == id && _.level == level);
+        data = GameTableManager.Instance._supportModuleTable.FindAll(_ => _.support_module_id == id && _.level == level);
         for (int i = 0; i < data.Count; i++)
         {
             int? effectValue = data[i].effect_value;

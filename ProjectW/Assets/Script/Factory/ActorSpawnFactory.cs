@@ -7,7 +7,7 @@ public class ActorSpawnFactory
 {    
     public static GameActor SpawnActorPrefab(ActorTableData actorTableData, string parentsObjectName, string actorName = "")
     {
-        var rscTableData = GameDataManager.Instance._actorRscDatas.Find(_ => _.rsc_id == actorTableData.rsc_id);
+        var rscTableData = GameTableManager.Instance._actorRscDatas.Find(_ => _.rsc_id == actorTableData.rsc_id);
         var prefab = GameResourceManager.Instance.GetLoadActorPrefab(rscTableData.actor_rsc_prefab);
         var parentsObjectTr = GameObject.Find(parentsObjectName).transform;
         if(parentsObjectTr == null)

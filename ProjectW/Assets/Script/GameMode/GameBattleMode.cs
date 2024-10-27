@@ -4,8 +4,7 @@ public class GameBattleMode : GameModeBase
     public PlayerActorHandler PlayerActorHandler { get; private set; } = new();
     public GameBattleHandler BattleHandler  { get; private set; } = new();
     public MapHandler MapHandler { get; private set; } = new();
-    //public GameActormanager
-    
+
     // 임시 엑터
 
 

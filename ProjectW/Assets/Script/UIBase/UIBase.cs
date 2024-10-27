@@ -23,7 +23,13 @@ public class UIBase : MonoBehaviour
     public virtual void Hide()
     {
         onEventHide?.Invoke();
+        onEventHide = null;
         transform.gameObject.SetActive(false);
         OnHide();
+    }
+    
+    public void SetHideEvent(Action action)
+    {
+        onEventHide += action;
     }
 }

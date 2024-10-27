@@ -29,7 +29,7 @@
   },
   {
     "string_key": "spell_name_20104",
-    "value_kor": "용암"
+    "value_kor": "마그마"
   },
   {
     "string_key": "spell_name_20105",
@@ -57,67 +57,67 @@
   },
   {
     "string_key": "spell_name_30101",
-    "value_kor": "붉은 플라즈마"
+    "value_kor": "대폭발"
   },
   {
     "string_key": "spell_name_30201",
-    "value_kor": "붉은 증기"
+    "value_kor": "증기 폭발"
   },
   {
     "string_key": "spell_name_30202",
-    "value_kor": "푸른 증기"
+    "value_kor": "구름"
   },
   {
     "string_key": "spell_name_30301",
-    "value_kor": "붉은 열"
+    "value_kor": "태양풍"
   },
   {
     "string_key": "spell_name_30302",
-    "value_kor": "하얀 열"
+    "value_kor": "불꽃회오리"
   },
   {
     "string_key": "spell_name_30401",
-    "value_kor": "붉은 용암"
+    "value_kor": "용암"
   },
   {
     "string_key": "spell_name_30402",
-    "value_kor": "어두운 용암"
+    "value_kor": "탄소"
   },
   {
     "string_key": "spell_name_30501",
-    "value_kor": "푸른 바다"
+    "value_kor": "바다"
   },
   {
     "string_key": "spell_name_30601",
-    "value_kor": "푸른 구름"
+    "value_kor": "빙하"
   },
   {
     "string_key": "spell_name_30602",
-    "value_kor": "하얀 구름"
+    "value_kor": "서리"
   },
   {
     "string_key": "spell_name_30701",
-    "value_kor": "푸른 풀"
+    "value_kor": "수렁"
   },
   {
     "string_key": "spell_name_30702",
-    "value_kor": "어두운 풀"
+    "value_kor": "땅"
   },
   {
     "string_key": "spell_name_30801",
-    "value_kor": "하얀 바람"
+    "value_kor": "태풍"
   },
   {
     "string_key": "spell_name_30901",
-    "value_kor": "하얀 모래"
+    "value_kor": "모래바람"
   },
   {
     "string_key": "spell_name_30902",
-    "value_kor": "어두운 모래"
+    "value_kor": "모래지옥"
   },
   {
     "string_key": "spell_name_31001",
-    "value_kor": "어두운 바위"
+    "value_kor": "지진"
   },
   {
     "string_key": "spell_desc_10101",
@@ -193,7 +193,7 @@
   },
   {
     "string_key": "spell_desc_30302",
-    "value_kor": "불꽃 회오리의 기운입니다.\\n적 전체 피해 (30) + 대상 지속 피해 (5, 3AP)"
+    "value_kor": "불꽃회오리의 기운입니다.\\n적 전체 피해 (30) + 대상 지속 피해 (5, 3AP)"
   },
   {
     "string_key": "spell_desc_30401",

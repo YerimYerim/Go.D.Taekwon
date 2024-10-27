@@ -10,7 +10,9 @@ public class GameInstanceManager : Singleton<GameInstanceManager>
     protected override void Awake()
     {
         base.Awake();
-        GameDataManager.Instance.LoadData();
+        GameTableManager.Instance.LoadData();
+        GameRewardManager.Instance.Init();
+        GameDataManager.Instance.Init();
     }
 
     public void BattleStart()

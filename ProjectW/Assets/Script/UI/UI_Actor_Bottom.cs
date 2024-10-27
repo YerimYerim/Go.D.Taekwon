@@ -82,8 +82,8 @@ public class UI_Actor_Bottom : UIBase
 
         //if(enemy.GetRemainAp() == 2)
     
-        var spellEffectData = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == enemy.GetSkillID());
-        var resource = GameDataManager.Instance._predictResource.Find(_ => _.effect_type == spellEffectData.effect_type);
+        var spellEffectData = GameTableManager.Instance._spelleffectDatas.Find(_ => _.effect_id == enemy.GetSkillID());
+        var resource = GameTableManager.Instance._predictResource.Find(_ => _.effect_type == spellEffectData.effect_type);
         _uiPredictAction.ShowPredictAction(resource.predict_resource_icon);
         _uiPredictAction.Show();
         

@@ -12,12 +12,25 @@ public class GameSupportModuleManager : Singleton<GameSupportModuleManager>
         base.Awake();
         supportModules.Clear();
         
-        var uniqueModuleIds = GameDataManager.Instance._supportModuleTable
+        var uniqueModuleIds = GameTableManager.Instance._supportModuleTable
             .Select(module => module.support_module_id)
             .Distinct()
             .ToList();
         
         supportModules.AddRange(uniqueModuleIds.Select(moduleId => new SupportModule(moduleId ?? 0, 1)));
+    }
+    public void AddModule(int moduleId)
+    {
+        var module = GetSupportModule(moduleId);
+        if (module == null)
+        {
+            supportModules.Add(new SupportModule(moduleId, 1));
+        }
+    }
+    public void Add(int moduleId)
+    {
+        var module = GetSupportModule(moduleId);
+        module?.AddLevel(1);
     }
 
     private SupportModule GetSupportModule(int moduleId)
@@ -58,7 +71,7 @@ public class GameSupportModuleManager : Singleton<GameSupportModuleManager>
 
     public void SetSupportModuleData(int moduleId, int level, out SupportModuleTableData data)
     {
-        data = GameDataManager.Instance._supportModuleTable.Find(_ => _.support_module_id == moduleId && _.level == level);
+        data = GameTableManager.Instance._supportModuleTable.Find(_ => _.support_module_id == moduleId && _.level == level);
     }
 
     public List<SupportModule> GetSupportModules(int resource)

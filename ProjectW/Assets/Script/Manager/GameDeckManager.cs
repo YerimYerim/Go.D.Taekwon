@@ -19,7 +19,7 @@ public class GameDeckManager : Singleton<GameDeckManager>
             effectData.Clear();
             foreach (var effect in data.spell_effect)
             {
-                var effectTableData = GameDataManager.Instance._spelleffectDatas.Find(_ => _.effect_id == effect);
+                var effectTableData = GameTableManager.Instance._spelleffectDatas.Find(_ => _.effect_id == effect);
                 effectData.Add(effectTableData);
             }
         }

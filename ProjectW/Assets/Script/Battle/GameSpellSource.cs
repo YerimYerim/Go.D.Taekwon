@@ -129,30 +129,30 @@ public class GameSpellSource
     }
     public string GetSourceImage()
     {
-        var img = GameDataManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_img;
+        var img = GameTableManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_img;
         return img;
     }   
     
     public string GetSourceBgImage()
     {
-        var img = GameDataManager.Instance._spellSourceTableDatas.Find(_ => _.source_id == _sourceId).support_module_bg;
+        var img = GameTableManager.Instance._spellSourceTableDatas.Find(_ => _.source_id == _sourceId).support_module_bg;
         return img;
     }
     public string GetSourceIconImage()
     {
-        var img = GameDataManager.Instance._spellSourceTableDatas.Find(_ => _.source_id == _sourceId).source_img;
+        var img = GameTableManager.Instance._spellSourceTableDatas.Find(_ => _.source_id == _sourceId).source_img;
         return img;
     }
 
     public string GetSourceName()
     {
-        var name = GameDataManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_name;
+        var name = GameTableManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_name;
         return name;
     }
     
     public string GetSourceDesc()
     {
-        var desc = GameDataManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_desc;
+        var desc = GameTableManager.Instance._spellData.Find(_ => _.spell_id == _productionSpellId)?.spell_desc;
         return desc;
     }
 }

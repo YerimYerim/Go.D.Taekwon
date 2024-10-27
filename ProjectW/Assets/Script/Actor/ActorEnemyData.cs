@@ -45,13 +45,13 @@ public class ActorEnemyData : ActorDataBase
         var patternGroupValue = patternGroup.Values.ToList();
         for (int i = 0; i < patternGroupValue.Count; ++i)
         {
-            var skillGroupTable = GameDataManager.Instance._skillGroupTableDatas.FindAll(_ => _.skill_group_id == patternGroupValue[i].skill_group);
+            var skillGroupTable = GameTableManager.Instance._skillGroupTableDatas.FindAll(_ => _.skill_group_id == patternGroupValue[i].skill_group);
             skillGroup.Add(patternGroupValue[i].phase ?? 0, skillGroupTable);
         }
     }
     private void InitPatternGroup(int skillPatternGroupId)
     {
-        var patternGroupTable = GameDataManager.Instance._patternGroupTableDatas.FindAll(_ => _.skill_pattern_group_id == skillPatternGroupId);
+        var patternGroupTable = GameTableManager.Instance._patternGroupTableDatas.FindAll(_ => _.skill_pattern_group_id == skillPatternGroupId);
         patternGroupTable.Sort((a, b) => (a?.phase ?? 0).CompareTo(b?.phase ?? 0));
 
         for (int i = 0; i < patternGroupTable.Count; ++i)

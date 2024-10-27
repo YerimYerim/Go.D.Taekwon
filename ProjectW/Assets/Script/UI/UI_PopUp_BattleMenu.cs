@@ -74,7 +74,7 @@ public class UI_PopUp_BattleMenu : UIBase
                 var supportModule = Instantiate(_uiSupportModule.gameObject, _uiSupportModuleParent.transform);
                 UISupportModule ui = supportModule.GetComponent<UISupportModule>();
                 ui.gameObject.SetActive(true);
-                ui.SetImage(module[i].GetImageName(), "support_module_bg");
+                ui.SetImage(module[i].GetImageName());
                 var index = i;
                 ui.SetHoverEvent(() =>
                 {
@@ -95,7 +95,7 @@ public class UI_PopUp_BattleMenu : UIBase
             else
             {
                 _supportModules[i].gameObject.SetActive(true);
-                _supportModules[i].SetImage(module[i].GetImageName(), "support_module_bg");
+                _supportModules[i].SetImage(module[i].GetImageName());
             }
         }
         _uiSupportModule.gameObject.SetActive(false);
@@ -104,8 +104,7 @@ public class UI_PopUp_BattleMenu : UIBase
     {
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         var sourceID = gameBattleMode.BattleHandler._sources[index].GetSourceId();
-        
-        
+
         for (int i = 0; i < _uIspellSources.Count; i++)
         {
             _uIspellSources[i].SetSelected(false);

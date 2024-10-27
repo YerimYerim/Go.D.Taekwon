@@ -27,7 +27,7 @@ public class UIACGrid : MonoBehaviour
             var abnormal = _actorDataBase.turnSkill[i];
             var turnskill = abnormal as ISkillTurnSkill;
             EFFECT_TYPE? effectType = abnormal.GetTable().effect_type;
-            var table = GameDataManager.Instance._abnormalTable.Find(_ => _.effect_type == effectType);
+            var table = GameTableManager.Instance._abnormalTable.Find(_ => _.effect_type == effectType);
             
             UIAbnormal uiAbnormal = Instantiate(uiAbnormalPrefab, transform);
             uiAbnormal.SetImage(table?.abnormal_icon ?? String.Empty);

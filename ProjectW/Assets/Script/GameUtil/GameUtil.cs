@@ -12,7 +12,7 @@ public static class GameUtil
     
     public static string GetString(string key)
     {
-        var stringdata = GameDataManager.Instance._stringDatas.Find(_ => _.string_key.Equals(key));
+        var stringdata = GameTableManager.Instance._stringDatas.Find(_ => _.string_key.Equals(key));
         if(stringdata != null)
         {
             switch (GameSettingManager.Instance.languageType)

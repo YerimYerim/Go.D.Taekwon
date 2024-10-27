@@ -4,6 +4,8 @@ public class ContentMapTableData
     public int? map_id { get; set; }			//식별자
     public MAP_TYPE? map_type { get; set; }			//맵 타입
     public int[] actor_id { get; set; }			//등장 액터 ID
+    public int[] reward_id { get; set; }			//보상 ID
+    public int[] select_reward_id { get; set; }			//선택형 보상 ID
     public string map_bg { get; set; }			//맵 배경 리소스
     public string map_img { get; set; }			//맵 대표 이미지 - 선택지 표시 용
     public string map_name { get; set; }			//맵 이름 - 선택지 표시 용

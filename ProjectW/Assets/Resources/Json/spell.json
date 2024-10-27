@@ -4,160 +4,209 @@
     "spell_img": "img_spell_01_temp",
     "spell_name": "spell_name_10101",
     "spell_desc": "spell_desc_10101",
-    "spell_effect": [10105]
+    "spell_effect": [10110]
   },
   {
     "spell_id": 10102,
     "spell_img": "img_spell_02_temp",
     "spell_name": "spell_name_10102",
     "spell_desc": "spell_desc_10102",
-    "spell_effect": [30307]
+    "spell_effect": [10206]
   },
   {
     "spell_id": 10103,
     "spell_img": "img_spell_03_temp",
     "spell_name": "spell_name_10103",
     "spell_desc": "spell_desc_10103",
-    "spell_effect": [30601,30701]
+    "spell_effect": [10105,10105]
   },
   {
     "spell_id": 10104,
     "spell_img": "img_spell_04_temp",
     "spell_name": "spell_name_10104",
     "spell_desc": "spell_desc_10104",
-    "spell_effect": [30204]
+    "spell_effect": [30208]
   },
   {
     "spell_id": 20101,
     "spell_img": "img_spell_05_temp",
     "spell_name": "spell_name_20101",
     "spell_desc": "spell_desc_20101",
-    "spell_effect": [10108,20102]
+    "spell_effect": [10115,20105]
   },
   {
     "spell_id": 20102,
     "spell_img": "img_spell_07_temp",
     "spell_name": "spell_name_20102",
     "spell_desc": "spell_desc_20102",
-    "spell_effect": [30310,10108]
+    "spell_effect": [10120,0]
   },
   {
     "spell_id": 20103,
     "spell_img": "img_spell_08_temp",
     "spell_name": "spell_name_20103",
     "spell_desc": "spell_desc_20103",
-    "spell_effect": [30602,30702,10107]
+    "spell_effect": [10320]
   },
   {
     "spell_id": 20104,
     "spell_img": "img_spell_06_temp",
     "spell_name": "spell_name_20104",
     "spell_desc": "spell_desc_20104",
-    "spell_effect": [30206,10107]
+    "spell_effect": [10120,30210]
+  },
+  {
+    "spell_id": 20105,
+    "spell_img": "img_spell_11_temp",
+    "spell_name": "spell_name_20105",
+    "spell_desc": "spell_desc_20105",
+    "spell_effect": [10207,20203]
   },
   {
     "spell_id": 20106,
     "spell_img": "img_spell_13_temp",
     "spell_name": "spell_name_20106",
     "spell_desc": "spell_desc_20106",
-    "spell_effect": [30310,30602,30702]
+    "spell_effect": [10115,10209]
   },
   {
     "spell_id": 20107,
     "spell_img": "img_spell_09_temp",
     "spell_name": "spell_name_20107",
     "spell_desc": "spell_desc_20107",
-    "spell_effect": [20203]
+    "spell_effect": [0,0]
   },
   {
     "spell_id": 20108,
     "spell_img": "img_spell_24_temp",
     "spell_name": "spell_name_20108",
     "spell_desc": "spell_desc_20108",
-    "spell_effect": [30603,30703]
+    "spell_effect": [10108,10108,10108]
   },
   {
     "spell_id": 20109,
     "spell_img": "img_spell_10_temp",
     "spell_name": "spell_name_20109",
     "spell_desc": "spell_desc_20109",
-    "spell_effect": [30601,30601,30701,30701]
+    "spell_effect": [10110,0]
   },
   {
     "spell_id": 20110,
     "spell_img": "img_spell_12_temp",
     "spell_name": "spell_name_20110",
     "spell_desc": "spell_desc_20110",
-    "spell_effect": [30210]
+    "spell_effect": [30220,30401]
   },
   {
     "spell_id": 30101,
     "spell_img": "img_spell_14_temp",
     "spell_name": "spell_name_30101",
     "spell_desc": "spell_desc_30101",
-    "spell_effect": [10125]
+    "spell_effect": [10150,0]
   },
   {
     "spell_id": 30201,
     "spell_img": "img_spell_15_temp",
     "spell_name": "spell_name_30201",
     "spell_desc": "spell_desc_30201",
-    "spell_effect": [30310,10115]
+    "spell_effect": [10130,0]
   },
   {
     "spell_id": 30202,
     "spell_img": "img_spell_16_temp",
     "spell_name": "spell_name_30202",
     "spell_desc": "spell_desc_30202",
-    "spell_effect": [30320,10108]
+    "spell_effect": [10120,0]
   },
   {
     "spell_id": 30301,
     "spell_img": "img_spell_17_temp",
     "spell_name": "spell_name_30301",
     "spell_desc": "spell_desc_30301",
-    "spell_effect": [30603,30703,10115]
+    "spell_effect": [10130,0]
   },
   {
     "spell_id": 30302,
     "spell_img": "img_spell_18_temp",
     "spell_name": "spell_name_30302",
     "spell_desc": "spell_desc_30302",
-    "spell_effect": [30605,30705,10107]
+    "spell_effect": [10330,20305]
   },
   {
     "spell_id": 30401,
     "spell_img": "img_spell_19_temp",
     "spell_name": "spell_name_30401",
     "spell_desc": "spell_desc_30401",
-    "spell_effect": [30206,10115]
+    "spell_effect": [20410]
   },
   {
     "spell_id": 30402,
     "spell_img": "img_spell_20_temp",
     "spell_name": "spell_name_30402",
     "spell_desc": "spell_desc_30402",
-    "spell_effect": [30212,10107]
+    "spell_effect": [20405,0]
+  },
+  {
+    "spell_id": 30501,
+    "spell_img": "img_spell_04_temp",
+    "spell_name": "spell_name_30501",
+    "spell_desc": "spell_desc_30501",
+    "spell_effect": [10220,0]
+  },
+  {
+    "spell_id": 30601,
+    "spell_img": "img_spell_04_temp",
+    "spell_name": "spell_name_30601",
+    "spell_desc": "spell_desc_30601",
+    "spell_effect": [10215,0]
+  },
+  {
+    "spell_id": 30602,
+    "spell_img": "img_spell_04_temp",
+    "spell_name": "spell_name_30602",
+    "spell_desc": "spell_desc_30602",
+    "spell_effect": [10120,0]
   },
   {
     "spell_id": 30701,
     "spell_img": "img_spell_21_temp",
     "spell_name": "spell_name_30701",
     "spell_desc": "spell_desc_30701",
-    "spell_effect": [20203,10205]
+    "spell_effect": [30220,0]
   },
   {
     "spell_id": 30702,
     "spell_img": "img_spell_22_temp",
     "spell_name": "spell_name_30702",
     "spell_desc": "spell_desc_30702",
-    "spell_effect": [20204,30206]
+    "spell_effect": [30225,0]
+  },
+  {
+    "spell_id": 30801,
+    "spell_img": "img_spell_04_temp",
+    "spell_name": "spell_name_30801",
+    "spell_desc": "spell_desc_30801",
+    "spell_effect": [10310,10310,10310,10310,0]
+  },
+  {
+    "spell_id": 30901,
+    "spell_img": "img_spell_04_temp",
+    "spell_name": "spell_name_30901",
+    "spell_desc": "spell_desc_30901",
+    "spell_effect": [20410,0]
+  },
+  {
+    "spell_id": 30902,
+    "spell_img": "img_spell_04_temp",
+    "spell_name": "spell_name_30902",
+    "spell_desc": "spell_desc_30902",
+    "spell_effect": [10130,30602]
   },
   {
     "spell_id": 31001,
     "spell_img": "img_spell_23_temp",
     "spell_name": "spell_name_31001",
     "spell_desc": "spell_desc_31001",
-    "spell_effect": [30220]
+    "spell_effect": [0,30210]
   }
 ]

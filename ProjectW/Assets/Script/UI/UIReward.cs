@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script.Manager;
 using UnityEngine;
 
 public class UIReward : MonoBehaviour
@@ -22,12 +23,40 @@ public class UIReward : MonoBehaviour
                 var source = GameTableManager.Instance._spellData.Find(_ => _.spell_id == id);
                 spellSource.gameObject.SetActive(true);
                 spellSource.SetImage(source.spell_img, source.spell_img);
+                spellSource.SetHoverEvent(() =>
+                {
+                    if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var uiTooltip))
+                    {
+                        uiTooltip.CreateInfo(source.spell_name, source.spell_desc, spellSource.rect );
+                        uiTooltip.Show();
+                    }
+                }, () =>
+                {
+                    if (GameUIManager.Instance.TryGet<UITooltip>(out var uiTooltip))
+                    {
+                        uiTooltip.Hide();
+                    }
+                });
             } break;
             case REWARD_TYPE.REWARD_TYPE_SUPPORT_MODULE:
             {
                 var module = GameTableManager.Instance._supportModuleTable.Find(_=>_.support_module_id == id);
                 uiSupportModule.gameObject.SetActive(true);
                 uiSupportModule.SetImage(module.support_module_img);
+                uiSupportModule.SetHoverEvent(() =>
+                {
+                    if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var uiTooltip))
+                    {
+                        uiTooltip.CreateInfo(module.support_module_name, module.support_module_desc, uiSupportModule.rect);
+                        uiTooltip.Show();
+                    }
+                }, () =>
+                {
+                    if (GameUIManager.Instance.TryGet<UITooltip>(out var uiTooltip))
+                    {
+                        uiTooltip.Hide();
+                    }
+                });
             } break;
             case REWARD_TYPE.REWARD_TYPE_MONEY:
                 break;

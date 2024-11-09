@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Script.Manager;
 using Script.UI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_PopUp_BattleMenu : UIBase
@@ -111,7 +112,7 @@ public class UI_PopUp_BattleMenu : UIBase
         }
         _uIspellSources[index].SetSelected(true);
         curSelectedSource = sourceID;
-        SetSupportModule(GameSupportModuleManager.Instance.GetSupportModules(curSelectedSource));
+        SetSupportModule(GameSupportModuleManager.Instance.GetSupportModules(sourceID));
     }
     
     private void SetApplication(List<Relic> relic)

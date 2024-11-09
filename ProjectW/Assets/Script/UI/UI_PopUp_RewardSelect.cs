@@ -32,7 +32,7 @@ public class UI_PopUp_RewardSelect : UIBase
         {
             return;
         }
-        if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_RewardResult>(true, UILayer.LEVEL_4, out var rewardResult))
+        if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_RewardResult>(true, UILayer.LEVEL_3, out var rewardResult))
         {
             var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
             if (battleMode == null)
@@ -42,7 +42,6 @@ public class UI_PopUp_RewardSelect : UIBase
 
             var rewardTableDatas = battleMode.MapHandler.GetRewardTableDatas();
             rewardTableDatas.Add(data);
-            
             rewardResult.ShowRewardResult(rewardTableDatas);
         }
         Hide();

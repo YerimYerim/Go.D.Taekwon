@@ -7,6 +7,7 @@ public class GameSpellSource
     private int _sourceId;
     private int _productionAmount;
     private int _productionSpellId;
+    private int _productionInitAmount;
     
     private SpellSourceTableData _tableData;
 
@@ -25,6 +26,7 @@ public class GameSpellSource
         _productionAmount = sourceTable?.product_value?? 0;
         _productionSpellId = sourceTable?.spell_id ?? 0;
         _remainAP = _maxAp;
+        _productionInitAmount = sourceTable?.product_value_init ?? 0;
     }
 
     private void ResetAp()
@@ -110,7 +112,11 @@ public class GameSpellSource
     {
         return _remainAP;
     }
-
+    public int GetInitProductionAmount()
+    {
+        return _productionInitAmount;
+    }
+    
     /// <summary>
     /// _remainAP 감소
     /// </summary>

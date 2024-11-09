@@ -9,15 +9,15 @@ public class GameSupportModuleManager : Singleton<GameSupportModuleManager>
     private List<SupportModule> supportModules = new();
     protected override void Awake()
     {
-        base.Awake();
-        supportModules.Clear();
-        
-        var uniqueModuleIds = GameTableManager.Instance._supportModuleTable
-            .Select(module => module.support_module_id)
-            .Distinct()
-            .ToList();
-        
-        supportModules.AddRange(uniqueModuleIds.Select(moduleId => new SupportModule(moduleId ?? 0, 1)));
+        // base.Awake();
+        // supportModules.Clear();
+        //
+        // var uniqueModuleIds = GameTableManager.Instance._supportModuleTable
+        //     .Select(module => module.support_module_id)
+        //     .Distinct()
+        //     .ToList();
+        //
+        // supportModules.AddRange(uniqueModuleIds.Select(moduleId => new SupportModule(moduleId ?? 0, 1)));
     }
     public void AddModule(int moduleId)
     {
@@ -76,7 +76,7 @@ public class GameSupportModuleManager : Singleton<GameSupportModuleManager>
 
     public List<SupportModule> GetSupportModules(int resource)
     {
-        var rusultModules  = supportModules.FindAll(_=>_.GetApplySource(resource));
-        return rusultModules;
+        var result  = supportModules.FindAll(_=>_.GetApplySource(resource));
+        return result;
     }
 }

@@ -20,6 +20,7 @@ public class MapHandler
             stageId = 10001,
             enemyActor = new List<int>(){20001}
         };
+        SetCurMap(1000101);
     }
     
     public static MapData GetMapId()
@@ -79,8 +80,6 @@ public class MapHandler
                     ui.SetData(mapData);
                     ui.Show();
                 }
-
-                ;
             }
         ), 0.1f);
         
@@ -97,12 +96,21 @@ public class MapHandler
         rewardTableDatas.Clear();
         var curMapData = GameTableManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
         var curMapActor = curMapData.actor_id.ToList();
-
+        int curMapRewardTotalWeight = 0;
         for (int i = 0; i < curMapData.reward_id.Length; i++)
         {
-            var fixedrewards = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == curMapData.reward_id[i]);
-            rewardTableDatas.AddRange(fixedrewards);
+            var reward = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == curMapData.reward_id[i]);
+            curMapRewardTotalWeight += reward.Sum(_ => _.prob_weight) ?? 0;
+            var randomInt = Random.Range(0, curMapRewardTotalWeight);
+            var curMapReward = reward.Find(_ =>
+            {
+                randomInt -= _.prob_weight ?? 0;
+                return randomInt <= 0;
+            });
+            
+            rewardTableDatas.Add(curMapReward);
         }
+
         
         curMap.enemyActor = curMapActor;
     }

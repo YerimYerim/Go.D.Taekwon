@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Script.UI;
 using TMPro;
@@ -18,18 +19,18 @@ public class UI_PopUp_RewardResult : UIBase
     private void Awake()
     {
         closeButton.onClick.AddListener(Hide);
-        SetHideEvent(            
-        () =>
-        {
-            var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-            if (gameBattleMode == null)
-            {
-                return;
-            }
-            gameBattleMode?.MapHandler?.ShowMapSelect();
-                    
-        });
+        SetHideEvent(HideAction);
         
+    }
+
+    private static void HideAction()
+    {
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        if (gameBattleMode == null)
+        {
+            return;
+        }
+        gameBattleMode?.MapHandler?.ShowMapSelect();
     }
 
     public void ShowRewardResult(List<RewardTableData> data)

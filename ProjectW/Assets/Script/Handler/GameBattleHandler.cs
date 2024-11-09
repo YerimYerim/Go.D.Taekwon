@@ -66,14 +66,23 @@ public class GameBattleHandler
         var firstreward = GameTableManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
         for (int i = 0; i < firstreward.Count; ++i)
         {
-            if (_sources.All(_ => _.GetSourceId() != firstreward[i].source_id))
-            {
-                AddSource(firstreward[i].source_id ?? 0);
-            }
+            AddSource(firstreward[i].source_id ?? 0);
         }
     }
+    
+    public void StartNewGame()
+    {
+        spellDatas.Clear();
+        for(int i = 0; i< _sources.Count; ++i)
+        {
+            AddSpell(_sources[i].GetProductionSpellId(), _sources[i].GetInitProductionAmount());
+        }
+        OnUpdateCard?.Invoke();
+    } 
     public void AddSource(int sourceId)
     {
+        if(_sources.Any(_ => _.GetSourceId() == sourceId))
+            return;
         var sourceTableData = GameTableManager.Instance._spellSourceTableDatas.Find(_ => sourceId == _.source_id);
         _sources.Add(new GameSpellSource());
         _sources[^1].Init(sourceTableData, MakeSpell, ()=>uiApGauge.UpdateSourceUI(true));

@@ -16,7 +16,7 @@ public class UISupportModule : MonoBehaviour
     public void SetImage(string iconName)
     {
         icon.sprite = GameResourceManager.Instance.GetImage(iconName);
-        bg.sprite = GameResourceManager.Instance.GetImage("support_module_bg");
+        bg.sprite = GameResourceManager.Instance.GetImage("ui_bg_supportmodule");
     }
 
     public void SetHoverEvent(Action OnAction, Action OffAction)

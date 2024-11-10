@@ -88,44 +88,13 @@ public static class GameUtil
                 SkillApDownType skillApUp = new SkillApDownType();
                 skillApUp.InitSkillType(data);
                 return skillApUp;
-            }
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_ACTION_CANCEL:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_FUSION_LEVEL_UP:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_STUN:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_REFLECT_DAMAGE:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_REFLECT_DAMAGE_PER:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_DAMAGE_INVINCIBLE:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_AVOID_UP:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_AVOID_DOWN:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_ALL_UP_PER:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_ALL_DOWN_PER:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_DOT_DRAW:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_DEBUFF_ACCURACY_UP:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_DEBUFF_ACCURACY_DOWN:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_DEBUFF_RESISTANCE_UP:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_DEBUFF_RESISTANCE_DOWN:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_DAMAGE_SPREAD:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_PROVOKE:
-                break;
-            case EFFECT_TYPE.EFFECT_TYPE_COUNTER:
-                break;
+            } break;
+            case EFFECT_TYPE.EFFECT_TYPE_DOT_AMOR:
+            {
+                SkillDotAmorType skillDotAmorType = new SkillDotAmorType();
+                skillDotAmorType.InitSkillType(data);
+                return skillDotAmorType;
+            } break;
             case null:
                 break;
             default:

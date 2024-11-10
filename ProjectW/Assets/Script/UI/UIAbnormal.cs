@@ -34,7 +34,7 @@ public class UIAbnormal : MonoBehaviour
             {
                 if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var ui))
                 {
-                    ui.CreateInfo(data.abnormal_name, data.abnormal_desc, rectTransform);
+                    ui.CreateInfo(data?.abnormal_name?? "알수 없음", data?.abnormal_desc ?? "알수없음", rectTransform);
                     ui.Show();
                 }
             } , 

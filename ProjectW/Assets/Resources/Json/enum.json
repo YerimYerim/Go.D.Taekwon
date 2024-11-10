@@ -282,6 +282,12 @@
     "enum_value": 28
   },
   {
+    "group_name": "effect_type",
+    "enum_name": "dot_amor",
+    "source_enum_name": "EFFECT_TYPE_DOT_AMOR",
+    "enum_value": 29
+  },
+  {
     "group_name": "support_module_effect",
     "enum_name": "reduce_product_ap",
     "source_enum_name": "SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_AP",

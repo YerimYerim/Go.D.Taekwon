@@ -342,6 +342,12 @@
     "enum_value": 3
   },
   {
+    "group_name": "target_type",
+    "enum_name": "enemy_all",
+    "source_enum_name": "TARGET_TYPE_ENEMY_ALL",
+    "enum_value": 4
+  },
+  {
     "group_name": "active_condition",
     "enum_name": "battle_start",
     "source_enum_name": "ACTIVE_CONDITION_BATTLE_START",

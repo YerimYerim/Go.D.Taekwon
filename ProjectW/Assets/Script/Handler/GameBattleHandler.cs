@@ -143,6 +143,11 @@ public class GameBattleHandler
                             }
                             
                         } break;
+                        case TARGET_TYPE.TARGET_TYPE_ENEMY_ALL:
+                        {
+                            skillEffectBase.DoSkill(battleMode.ActorSpawner.GetEnemyData(), player);
+                            Debug.Log("모든 적에게 사용" + (effect?.effect_type ?? null) + "수치" + (effect?.value_1 ?? 0));
+                        } break;
                     }
                 }
                 

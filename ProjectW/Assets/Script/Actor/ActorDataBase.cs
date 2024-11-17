@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ActorDataBase
 {
@@ -7,8 +8,10 @@ public class ActorDataBase
     public int MaxHp { get; private set; }
 
     protected AmorStat amor = new();
-    protected AttackStat _attackStat = new();
-    protected HealStat _healStat = new();
+    protected List<TakeDamageStat> takeDamageStat;
+    protected AttackStat attackStat = new();
+    protected HealStat healStat = new();
+    
 
     public List<SkillEffectBase> turnSkill = new() ;
     
@@ -20,19 +23,21 @@ public class ActorDataBase
     // - 대미지 = 피해량 - (방어도 * (1-방어도 계수 파괴)  - 방어도 정수 파괴)
     // - 피해량 = (스킬 공격력 + 피해 정수 증폭) * (1+피해 계수 증폭) * (1-대상 받는피해량 계수 증감)
     // - 회복공식 = 회복량 * (1+회복 계수 증폭)
-    // - 명중 체크 = 100*(1 - 회피율)%, (min=30%)
     public void Init(int hp)    
     {
         Hp = hp;
         MaxHp = hp;
         InitAmorStat(0, 0, 0f, 0f);
         InitAttackStat(0, 0, 0f);
+        SetTakeDamageStat(0, 0);
     }
     public void DoDamaged(int damage)
     {
+        // 남은 데미지
         var leftDamage = amor.amor - amor.GetFinalDamage(damage);
         amor.amor = Math.Max(0, amor.amor - amor.GetFinalDamage(damage));
-        Hp = Math.Max(0, Hp + leftDamage);
+        
+        Hp = Mathf.CeilToInt(Mathf.Max(0f, Hp + (leftDamage)));
         OnEventDamaged?.Invoke();
         if(Hp <= 0)
         {
@@ -68,7 +73,7 @@ public class ActorDataBase
     
     public void InitAttackStat(int skillDamage, int damageUpInt, float damageUpPer)
     {
-        _attackStat = new()
+        attackStat = new()
         {
             skillDamage = skillDamage,
             damageUpInt = damageUpInt,
@@ -76,6 +81,11 @@ public class ActorDataBase
         };
     }
 
+    public void SetTakeDamageStat(int takeDamage, int takeTurn)
+    {
+       // this.takeDamageStat = new TakeDamageStat(takeDamage, takeTurn);
+    }    
+    
     public void AddAmorStat(int amorStatValue)
     {
         amor.AddAmor(amorStatValue);

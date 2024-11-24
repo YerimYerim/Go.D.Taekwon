@@ -1,0 +1,30 @@
+[
+  {
+    "dialog_id": 10001,
+    "index": 1,
+    "dialog_type": null,
+    "button_id": null,
+    "dialog_string": "dialog_shop_title_1000101"
+  },
+  {
+    "dialog_id": 10001,
+    "index": 2,
+    "dialog_type": null,
+    "button_id": null,
+    "dialog_string": "dialog_shop_text_1000102"
+  },
+  {
+    "dialog_id": 10001,
+    "index": 3,
+    "dialog_type": null,
+    "button_id": 1000103,
+    "dialog_string": "dialog_shop_button_1000103"
+  },
+  {
+    "dialog_id": 10001,
+    "index": 4,
+    "dialog_type": null,
+    "button_id": 1000104,
+    "dialog_string": "dialog_shop_button_1000104"
+  }
+]

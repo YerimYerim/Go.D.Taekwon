@@ -40,5 +40,12 @@
     "actor_function_value": null,
     "actor_name": "n_mon_temp",
     "rsc_id": 2000001
+  },
+  {
+    "actor_id": 999,
+    "actor_type": null,
+    "actor_function_value": null,
+    "actor_name": "n_npc_temp",
+    "rsc_id": 2000001
   }
 ]

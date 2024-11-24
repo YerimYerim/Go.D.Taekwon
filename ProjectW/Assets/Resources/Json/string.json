@@ -474,5 +474,33 @@
   {
     "string_key": "money_desc_coin",
     "value_kor": "시험 기간동안 임시로 사용할 수 있는 재화. 일부 이벤트에서 시험에 도움이 될 상품과 교환할 수 있다."
+  },
+  {
+    "string_key": "n_npc_temp",
+    "value_kor": "상점(임시)"
+  },
+  {
+    "string_key": "map_name_101",
+    "value_kor": "상점(임시)"
+  },
+  {
+    "string_key": "map_desc_101",
+    "value_kor": "상점입니다.(임시)"
+  },
+  {
+    "string_key": "dialog_shop_title_1000101",
+    "value_kor": "상점 이벤트(임시)"
+  },
+  {
+    "string_key": "dialog_shop_text_1000102",
+    "value_kor": "상점 이벤트입니다.(임시)"
+  },
+  {
+    "string_key": "dialog_shop_button_1000103",
+    "value_kor": "상품보기(임시)"
+  },
+  {
+    "string_key": "dialog_shop_button_1000104",
+    "value_kor": "나가기(임시)"
   }
 ]

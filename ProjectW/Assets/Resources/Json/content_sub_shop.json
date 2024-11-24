@@ -1,0 +1,23 @@
+[
+  {
+    "shop_id": 1000103,
+    "index": 1,
+    "item_type": null,
+    "item_id": 1001,
+    "cost": 100
+  },
+  {
+    "shop_id": 1000103,
+    "index": 2,
+    "item_type": null,
+    "item_id": 1001,
+    "cost": 200
+  },
+  {
+    "shop_id": 1000103,
+    "index": 3,
+    "item_type": null,
+    "item_id": 1,
+    "cost": 300
+  }
+]

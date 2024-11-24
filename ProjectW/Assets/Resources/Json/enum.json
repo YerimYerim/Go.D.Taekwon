@@ -18,6 +18,12 @@
     "enum_value": 1
   },
   {
+    "group_name": "actor_type",
+    "enum_name": "npc",
+    "source_enum_name": "ACTOR_TYPE_NPC",
+    "enum_value": 2
+  },
+  {
     "group_name": "monster_type",
     "enum_name": "warrior",
     "source_enum_name": "MONSTER_TYPE_WARRIOR",
@@ -414,6 +420,12 @@
     "enum_value": 4
   },
   {
+    "group_name": "map_type",
+    "enum_name": "special",
+    "source_enum_name": "MAP_TYPE_SPECIAL",
+    "enum_value": 5
+  },
+  {
     "group_name": "reward_type",
     "enum_name": "item",
     "source_enum_name": "REWARD_TYPE_ITEM",
@@ -490,5 +502,95 @@
     "enum_name": "OR",
     "source_enum_name": "LOGICAL_OPERATOR_OR",
     "enum_value": 1
+  },
+  {
+    "group_name": "dialog_type",
+    "enum_name": "title",
+    "source_enum_name": "DIALOG_TYPE_TITLE",
+    "enum_value": 0
+  },
+  {
+    "group_name": "dialog_type",
+    "enum_name": "text",
+    "source_enum_name": "DIALOG_TYPE_TEXT",
+    "enum_value": 1
+  },
+  {
+    "group_name": "dialog_type",
+    "enum_name": "button",
+    "source_enum_name": "DIALOG_TYPE_BUTTON",
+    "enum_value": 2
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "reward",
+    "source_enum_name": "BUTTON_FUNCTION_REWARD",
+    "enum_value": 0
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "select_reward",
+    "source_enum_name": "BUTTON_FUNCTION_SELECT_REWARD",
+    "enum_value": 1
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "delete_source",
+    "source_enum_name": "BUTTON_FUNCTION_DELETE_SOURCE",
+    "enum_value": 2
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "delete_support_module",
+    "source_enum_name": "BUTTON_FUNCTION_DELETE_SUPPORT_MODULE",
+    "enum_value": 3
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "delete_relic",
+    "source_enum_name": "BUTTON_FUNCTION_DELETE_RELIC",
+    "enum_value": 4
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "shop",
+    "source_enum_name": "BUTTON_FUNCTION_SHOP",
+    "enum_value": 5
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "enhance",
+    "source_enum_name": "BUTTON_FUNCTION_ENHANCE",
+    "enum_value": 6
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "exchange",
+    "source_enum_name": "BUTTON_FUNCTION_EXCHANGE",
+    "enum_value": 7
+  },
+  {
+    "group_name": "button_function",
+    "enum_name": "exit",
+    "source_enum_name": "BUTTON_FUNCTION_EXIT",
+    "enum_value": 8
+  },
+  {
+    "group_name": "item_type",
+    "enum_name": "source",
+    "source_enum_name": "ITEM_TYPE_SOURCE",
+    "enum_value": 0
+  },
+  {
+    "group_name": "item_type",
+    "enum_name": "support_module",
+    "source_enum_name": "ITEM_TYPE_SUPPORT_MODULE",
+    "enum_value": 1
+  },
+  {
+    "group_name": "item_type",
+    "enum_name": "relic",
+    "source_enum_name": "ITEM_TYPE_RELIC",
+    "enum_value": 2
   }
 ]

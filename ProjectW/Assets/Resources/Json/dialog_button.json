@@ -1,0 +1,20 @@
+[
+  {
+    "button_id": 1000103,
+    "function_condition": 0,
+    "function_type_1": null,
+    "value_1": 1000103,
+    "function_type_2": null,
+    "value_2": null,
+    "function_prob": []
+  },
+  {
+    "button_id": 1000104,
+    "function_condition": 0,
+    "function_type_1": null,
+    "value_1": null,
+    "function_type_2": null,
+    "value_2": null,
+    "function_prob": []
+  }
+]

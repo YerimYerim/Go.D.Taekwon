@@ -34,6 +34,11 @@ public class SkillDotHealType : SkillEffectBase, ISkillTurnSkill, ISkillTargetHe
         return remainTurn;
     }
 
+    public void DoTurnEndSkill(GameActor target)
+    {
+        
+    }
+
     public void DoHeal(List<GameActor> targetActor)
     {
         for (int i = 0; i < targetActor.Count; ++i)

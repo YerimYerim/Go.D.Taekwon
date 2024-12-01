@@ -21,9 +21,10 @@ public class SkillDamageType : SkillEffectBase, ISkillTargetDamage
 
     public override void DoSkill(List<GameActor> targetActor,  GameActor myActor)
     {
+        var attackStat = myActor.data.GetAttackStat();
         for(int i=0; i< targetActor.Count;++i)
         {
-            targetActor[i].data.DoDamaged(damage);
+            targetActor[i].data.DoDamaged(GetValue()  * Mathf.CeilToInt(1 + attackStat * 0.01f));
             targetActor[i].OnUpdateHp(targetActor[i].data);
         }
     }

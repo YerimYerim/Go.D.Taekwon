@@ -199,99 +199,69 @@
   },
   {
     "group_name": "effect_type",
-    "enum_name": "reflect_damage",
-    "source_enum_name": "EFFECT_TYPE_REFLECT_DAMAGE",
-    "enum_value": 14
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "reflect_damage_per",
-    "source_enum_name": "EFFECT_TYPE_REFLECT_DAMAGE_PER",
-    "enum_value": 15
-  },
-  {
-    "group_name": "effect_type",
     "enum_name": "damage_invincible",
     "source_enum_name": "EFFECT_TYPE_DAMAGE_INVINCIBLE",
-    "enum_value": 16
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "avoid_up",
-    "source_enum_name": "EFFECT_TYPE_AVOID_UP",
-    "enum_value": 17
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "avoid_down",
-    "source_enum_name": "EFFECT_TYPE_AVOID_DOWN",
-    "enum_value": 18
+    "enum_value": 14
   },
   {
     "group_name": "effect_type",
     "enum_name": "all_up_per",
     "source_enum_name": "EFFECT_TYPE_ALL_UP_PER",
-    "enum_value": 19
+    "enum_value": 15
   },
   {
     "group_name": "effect_type",
     "enum_name": "all_down_per",
     "source_enum_name": "EFFECT_TYPE_ALL_DOWN_PER",
-    "enum_value": 20
+    "enum_value": 16
   },
   {
     "group_name": "effect_type",
     "enum_name": "dot_draw",
     "source_enum_name": "EFFECT_TYPE_DOT_DRAW",
-    "enum_value": 21
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "debuff_accuracy_up",
-    "source_enum_name": "EFFECT_TYPE_DEBUFF_ACCURACY_UP",
-    "enum_value": 22
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "debuff_accuracy_down",
-    "source_enum_name": "EFFECT_TYPE_DEBUFF_ACCURACY_DOWN",
-    "enum_value": 23
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "debuff_resistance_up",
-    "source_enum_name": "EFFECT_TYPE_DEBUFF_RESISTANCE_UP",
-    "enum_value": 24
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "debuff_resistance_down",
-    "source_enum_name": "EFFECT_TYPE_DEBUFF_RESISTANCE_DOWN",
-    "enum_value": 25
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "damage_spread",
-    "source_enum_name": "EFFECT_TYPE_DAMAGE_SPREAD",
-    "enum_value": 26
+    "enum_value": 17
   },
   {
     "group_name": "effect_type",
     "enum_name": "provoke",
     "source_enum_name": "EFFECT_TYPE_PROVOKE",
-    "enum_value": 27
+    "enum_value": 18
   },
   {
     "group_name": "effect_type",
     "enum_name": "counter",
     "source_enum_name": "EFFECT_TYPE_COUNTER",
-    "enum_value": 28
+    "enum_value": 19
   },
   {
     "group_name": "effect_type",
     "enum_name": "dot_amor",
     "source_enum_name": "EFFECT_TYPE_DOT_AMOR",
-    "enum_value": 29
+    "enum_value": 20
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "take_damage_up_buff",
+    "source_enum_name": "EFFECT_TYPE_TAKE_DAMAGE_UP_BUFF",
+    "enum_value": 21
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "take_damage_down_buff",
+    "source_enum_name": "EFFECT_TYPE_TAKE_DAMAGE_DOWN_BUFF",
+    "enum_value": 22
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "give_damage_up_buff",
+    "source_enum_name": "EFFECT_TYPE_GIVE_DAMAGE_UP_BUFF",
+    "enum_value": 23
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "give_damage_down_buff",
+    "source_enum_name": "EFFECT_TYPE_GIVE_DAMAGE_DOWN_BUFF",
+    "enum_value": 24
   },
   {
     "group_name": "support_module_effect",

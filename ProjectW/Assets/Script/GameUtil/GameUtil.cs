@@ -95,6 +95,27 @@ public static class GameUtil
                 skillDotAmorType.InitSkillType(data);
                 return skillDotAmorType;
             } break;
+            case EFFECT_TYPE.EFFECT_TYPE_TAKE_DAMAGE_UP_BUFF:
+            case EFFECT_TYPE.EFFECT_TYPE_TAKE_DAMAGE_DOWN_BUFF:
+            {
+                SkillTakeDamageUpType skillTakeDamageType = new SkillTakeDamageUpType();
+                skillTakeDamageType.InitSkillType(data);
+                return skillTakeDamageType;
+            } break;
+            case EFFECT_TYPE.EFFECT_TYPE_GIVE_DAMAGE_UP_BUFF:
+            {
+                SkillDamageUpType skillDamageUpType = new SkillDamageUpType();
+                skillDamageUpType.InitSkillType(data);
+                return skillDamageUpType;
+            }
+                break;
+            case EFFECT_TYPE.EFFECT_TYPE_GIVE_DAMAGE_DOWN_BUFF:
+            {
+                SkillDamageDownType skillDamageDownType = new SkillDamageDownType();
+                skillDamageDownType.InitSkillType(data);
+                return skillDamageDownType;
+
+            } break;
             case null:
                 break;
             default:

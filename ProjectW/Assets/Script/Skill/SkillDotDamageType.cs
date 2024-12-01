@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTurnSkill
 {
+    
+    GameActor myActor;
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
+        myActor = this.myActor;
         for (int i = 0; i < targetActor.Count; ++i)
         {
             targetActor[i].data.AddTurnSkill(this);
@@ -35,8 +38,14 @@ public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTur
         return remainTurn;
     }
 
+    public void DoTurnEndSkill(GameActor target)
+    {
+        
+    }
+
     public void DoDamage(GameActor enemy)
     {
-        enemy.data.DoDamaged(GetValue());
+        var attackStat = myActor.data.GetAttackStat();
+        enemy.data.DoDamaged(GetValue()  * Mathf.CeilToInt(1 + attackStat* 0.01f));
     }
 }

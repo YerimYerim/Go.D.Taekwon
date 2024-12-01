@@ -12,6 +12,8 @@ public interface ISkillTurnSkill
     ///  턴마다 시행되는 스킬
     /// </summary>
     /// <param name="enemy"></param>
-    abstract void DoTurnSkill(GameActor enemy);
+    abstract void DoTurnSkill(GameActor target);
     abstract int GetRemainTime();
+
+    abstract void DoTurnEndSkill(GameActor target);
 }

@@ -99,6 +99,8 @@ public class GameActor : MonoBehaviour
             SkillEffectBase node = data.turnSkill[i] as SkillEffectBase;
             if (node?.IsNotRemainTurn() == true)
             {
+                var turnSkill = node as ISkillTurnSkill;
+                turnSkill?.DoTurnEndSkill(this);
                 data.turnSkill.RemoveAt(i);
                 --i;
             }

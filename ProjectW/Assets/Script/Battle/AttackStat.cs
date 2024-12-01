@@ -1,11 +1,23 @@
 ﻿public record AttackStat
 {
-    public int skillDamage;
     public int damageUpInt;
-    public float damageUpPercent;
     
-    public int GetFinalAttackDamage(int attackDamage)
+    public AttackStat(int takeDamage)
     {
-        return (int)((skillDamage + damageUpInt) * (1.0f + damageUpPercent));
+        this.damageUpInt = 0;
+    }
+    
+    public void SetAttackStat(int takeDamage)
+    {
+        this.damageUpInt += takeDamage;
+    }
+    public void AddAttackStat(int damage)
+    {
+        damageUpInt += damage;
+    }
+
+    public void MinusAttackStat(int damage)
+    {
+        damageUpInt -= damage;
     }
 }

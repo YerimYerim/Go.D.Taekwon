@@ -32,6 +32,12 @@ public class SkillDotAmorType : SkillEffectBase, ISkillAmorUp, ISkillTurnSkill
     {
         return remainTurn;
     }
+
+    public void DoTurnEndSkill(GameActor target)
+    {
+        
+    }
+
     public void AddAmor(GameActor target)
     {
         target.data.AddAmorStat(table.value_1??0);

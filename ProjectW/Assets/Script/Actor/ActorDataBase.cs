@@ -8,8 +8,8 @@ public class ActorDataBase
     public int MaxHp { get; private set; }
 
     protected AmorStat amor = new();
-    protected List<TakeDamageStat> takeDamageStat;
-    protected AttackStat attackStat = new();
+    protected DamageTakeStat damageTakeStat;
+    protected AttackStat attackStat;
     protected HealStat healStat = new();
     
 
@@ -28,14 +28,15 @@ public class ActorDataBase
         Hp = hp;
         MaxHp = hp;
         InitAmorStat(0, 0, 0f, 0f);
-        InitAttackStat(0, 0, 0f);
-        SetTakeDamageStat(0, 0);
+        InitAttackStat(0);
+        InitTakeDamageStat(0);
+        SetTakeDamageStat(0);
     }
     public void DoDamaged(int damage)
     {
         // 남은 데미지
-        var leftDamage = amor.amor - amor.GetFinalDamage(damage);
-        amor.amor = Math.Max(0, amor.amor - amor.GetFinalDamage(damage));
+        var leftDamage = Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage) * (1f + damageTakeStat.takeDamage * 0.01f)));
+        amor.amor = Math.Max(0, Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage)  * (1f + damageTakeStat.takeDamage * 0.01f))));
         
         Hp = Mathf.CeilToInt(Mathf.Max(0f, Hp + (leftDamage)));
         OnEventDamaged?.Invoke();
@@ -71,21 +72,27 @@ public class ActorDataBase
         };
     }    
     
-    public void InitAttackStat(int skillDamage, int damageUpInt, float damageUpPer)
+    public void InitAttackStat( int damageUpInt)
     {
-        attackStat = new()
-        {
-            skillDamage = skillDamage,
-            damageUpInt = damageUpInt,
-            damageUpPercent = damageUpPer,
-        };
+        attackStat = new(damageUpInt);
     }
-
-    public void SetTakeDamageStat(int takeDamage, int takeTurn)
+    public void InitTakeDamageStat( int damageUpInt)
     {
-       // this.takeDamageStat = new TakeDamageStat(takeDamage, takeTurn);
+        damageTakeStat = new(damageUpInt);
+    }
+    public void SetTakeDamageStat(int takeDamage)
+    {
+       damageTakeStat.SetDamageStat(takeDamage);
+    }    
+    public void SetAttackStat(int stat)
+    { 
+        attackStat.SetAttackStat(stat);
     }    
     
+    public int GetAttackStat()
+    {
+        return attackStat.damageUpInt;
+    }
     public void AddAmorStat(int amorStatValue)
     {
         amor.AddAmor(amorStatValue);

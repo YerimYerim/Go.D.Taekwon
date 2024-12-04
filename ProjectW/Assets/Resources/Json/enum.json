@@ -264,6 +264,18 @@
     "enum_value": 24
   },
   {
+    "group_name": "effect_type",
+    "enum_name": "invalid_damage",
+    "source_enum_name": "EFFECT_TYPE_INVALID_DAMAGE",
+    "enum_value": 25
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "ignore_damage",
+    "source_enum_name": "EFFECT_TYPE_IGNORE_DAMAGE",
+    "enum_value": 26
+  },
+  {
     "group_name": "support_module_effect",
     "enum_name": "reduce_product_ap",
     "source_enum_name": "SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_AP",

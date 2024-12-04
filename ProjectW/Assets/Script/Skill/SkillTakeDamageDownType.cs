@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillTakeDamageDown : SkillEffectBase, ISkillTakeDamageUp, ISkillTurnSkill
+public class SkillTakeDamageDownType : SkillEffectBase, ISkillTakeDamageUp, ISkillTurnSkill
 {
     public override void InitSkillType(SpellEffectTableData data)
     {

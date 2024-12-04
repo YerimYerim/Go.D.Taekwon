@@ -21,7 +21,7 @@ public class UIACGrid : MonoBehaviour
         
         _uiTurnskill.ForEach(_=> Destroy(_.gameObject));
         _uiTurnskill.Clear();
-        
+
         for (int i = 0; i < _actorDataBase.turnSkill.Count; i++)
         {
             var abnormal = _actorDataBase.turnSkill[i];

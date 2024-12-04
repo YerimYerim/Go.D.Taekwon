@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTurnSkill
+public class SkillIgnoreDamage : SkillEffectBase, ISkillIgnoreDamage, ISkillTurnSkill
 {
-    GameActor myActor;
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
-        myActor = this.myActor;
         for (int i = 0; i < targetActor.Count; ++i)
         {
             targetActor[i].data.AddTurnSkill(this);
@@ -18,17 +16,25 @@ public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTur
     {
         table = data;
         effectId = data?.effect_id ?? 0;
-        remainTurn = data?.remain_turn_count ??0;
     }
 
     public override int GetValue()
     {
-        return table.value_1 ?? 0;
+        throw new System.NotImplementedException();
+    }
+
+    public void SetIgnoreDamage(GameActor target)
+    {
+        target.data.SetIgnoreDamage(true);
+    }
+
+    public void RemoveIgnoreDamage(GameActor target)
+    {
+        target.data.SetIgnoreDamage(false);
     }
     
-    public void DoTurnSkill(GameActor enemy)
+    public void DoTurnSkill(GameActor target)
     {
-        DoDamage(enemy);
         --remainTurn;
     }
 
@@ -39,12 +45,6 @@ public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTur
 
     public void DoTurnEndSkill(GameActor target)
     {
-        
-    }
-
-    public void DoDamage(GameActor enemy)
-    {
-        var attackStat = myActor.data.GetAttackStat();
-        enemy.data.DoDamaged(GetValue()  * Mathf.CeilToInt(1 + attackStat* 0.01f));
+        RemoveIgnoreDamage(target);
     }
 }

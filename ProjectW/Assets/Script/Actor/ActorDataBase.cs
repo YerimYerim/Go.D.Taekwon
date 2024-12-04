@@ -11,8 +11,8 @@ public class ActorDataBase
     protected DamageTakeStat damageTakeStat;
     protected AttackStat attackStat;
     protected HealStat healStat = new();
+    protected bool ignoreDamage = false;
     
-
     public List<SkillEffectBase> turnSkill = new() ;
     
     public event Action OnEventDamaged;
@@ -106,5 +106,15 @@ public class ActorDataBase
     public int GetAmor()
     {
         return amor.amor;
+    }
+    
+    public bool IsIgnoreDamage()
+    {
+        return ignoreDamage;
+    }
+    
+    public void SetIgnoreDamage(bool ignore)
+    {
+        ignoreDamage = ignore;
     }
 }

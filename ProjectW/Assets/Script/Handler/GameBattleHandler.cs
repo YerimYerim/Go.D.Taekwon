@@ -61,8 +61,7 @@ public class GameBattleHandler
     {        
         var playableTableData = GameTableManager.Instance._playableCharacterDatas.Find(_=>_.actor_id == actorId);
         spellDatas.Clear();
-        //_sources.Clear();
-        
+
         var firstreward = GameTableManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
         for (int i = 0; i < firstreward.Count; ++i)
         {
@@ -118,12 +117,12 @@ public class GameBattleHandler
                 {
                     var index = i;
                     var effect = GameTableManager.Instance._spelleffectDatas.Find(_ => spellEffect[index] == _.effect_id);
-                    var skillEffectBase = GameUtil.GetSkillEffectBase(effect);
+                    var skillEffectBase = SkillEffectFactory.GetSkillEffectBase(effect);
                     switch (effect.target)
                     {
                         case TARGET_TYPE.TARGET_TYPE_SELF:
                         {
-                            skillEffectBase.DoSkill(new List<GameActor> {battleMode.PlayerActorHandler.player}, player);
+                            skillEffectBase.DoSkill(new List<GameActor> {player}, player);
                             Debug.Log(player.gameObject.name +"사용"+ effect.effect_type + "수치" + effect.value_1);
                         } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
@@ -201,7 +200,7 @@ public class GameBattleHandler
                 if (enemyData.IsCanUseSkill())
                 {
                     var skilleffect = GameTableManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill);
-                    var skillEffectBase = GameUtil.GetSkillEffectBase(skilleffect);
+                    var skillEffectBase = SkillEffectFactory.GetSkillEffectBase(skilleffect);
                     switch (skilleffect.target)
                     {
                         case TARGET_TYPE.TARGET_TYPE_SELF:

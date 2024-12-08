@@ -5,10 +5,12 @@ public class GameActor : MonoBehaviour
 {
     private UI_Actor_Bottom uiActorBottom;
     private UI_Actor_DMGFloater uiActorDMGFloater;
+    private UI_Actor_Name _uiActorName;
     
     [SerializeField] private Transform uiHpBarSocket;
     [SerializeField] private Transform uiDMGFloaterSocket;
     [SerializeField] private Transform uiPredictSocket;
+    [SerializeField] private Transform uiNameSocket;
     [SerializeField] private Material outlineMaterial;
     [SerializeField] private Material normalMaterrial;
     [SerializeField] private SpriteRenderer renderer;
@@ -18,6 +20,7 @@ public class GameActor : MonoBehaviour
     {
         CreateUIActorBottom();
         CreateUIActorDMGFloater();
+        CreateUIActorName();
     }
     
     private void CreateUIActorBottom()
@@ -37,12 +40,21 @@ public class GameActor : MonoBehaviour
             uiActorDMGFloater.Show();
         }
     }
+    private void CreateUIActorName()
+    {
+        if (GameUIManager.Instance.TryCreate<UI_Actor_Name>(true, UILayer.LEVEL_3, out var ui))
+        {
+            _uiActorName = ui;
+            _uiActorName.Show();
+        }
+    }
 
     private void Start()
     {
         uiActorBottom.SetPosition(this.uiHpBarSocket);
         uiActorBottom.SetPredictPosition(this.uiPredictSocket);
         uiActorDMGFloater.SetPosition(this.uiDMGFloaterSocket);
+        _uiActorName.SetPosition(this.uiNameSocket);
     }
 
     public void OnUpdateHp(ActorDataBase lastData)
@@ -115,5 +127,11 @@ public class GameActor : MonoBehaviour
     public void SetResourceTable(ActorRscTableData table)
     {
         resourceData = table;
+
+    }
+
+    public void SetActorName(ActorTableData actorTableData)
+    {
+        _uiActorName.ShowName(GameUtil.GetString(actorTableData.actor_name));
     }
 }

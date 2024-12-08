@@ -19,6 +19,7 @@ public class ActorSpawnFactory
         
         var actor = prefab.GetComponent<GameActor>();
         actor.SetResourceTable(rscTableData);
+        actor.SetActorName(actorTableData);
         return actor;
     }
 }

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1044911055146966245}
   - component: {fileID: 7739174109443339598}
-  - component: {fileID: 2097202300015501674}
   - component: {fileID: 7253076320924450361}
+  - component: {fileID: 7824933192803638876}
   m_Layer: 5
-  m_Name: UI_Actor_DMGFloater
+  m_Name: UI_Actor_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,21 +47,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188535453355075659}
   m_CullTransparentMesh: 1
---- !u!114 &2097202300015501674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188535453355075659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc31ac9cd4e8a8048a127273487942e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 9130117189580383195}
-  canvasGroup: {fileID: 7253076320924450361}
-  moveRectTransform: {fileID: 6202928197238724691}
 --- !u!225 &7253076320924450361
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -74,6 +59,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7824933192803638876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188535453355075659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7ca403415abd443a97512e83198472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 9130117189580383195}
+  canvasGroup: {fileID: 7253076320924450361}
+  moveRectTransform: {fileID: 6202928197238724691}
 --- !u!1 &7575302491766845605
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20.4}
+  m_AnchoredPosition: {x: 0, y: 0.0000019073486}
   m_SizeDelta: {x: 300, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8858729963088200795
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC5B4\uCA4C\uAD6C \uC774\uB984"
+  m_text: "\uC774\uB984\uD45C\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35a27a988ca86674d9da15bf8ebb9e55, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 78081c6d8a8aa3542b672c3ffe8413a4, type: 2}

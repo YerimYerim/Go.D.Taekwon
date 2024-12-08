@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillIgnoreDamage : SkillEffectBase, ISkillIgnoreDamage, ISkillTurnSkill
+public class SkillStackIgnoreDamage : SkillEffectBase, ISkillIgnoreDamage, ISkillStackable, ISkillTurnSkill
 {
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
@@ -22,7 +22,8 @@ public class SkillIgnoreDamage : SkillEffectBase, ISkillIgnoreDamage, ISkillTurn
     {
         return remainTurn;
     }
-
+    
+    // ISkillIgnoreDamage
     public void SetIgnoreDamage(GameActor target)
     {
         target.data.SetIgnoreDamage(true);
@@ -33,9 +34,20 @@ public class SkillIgnoreDamage : SkillEffectBase, ISkillIgnoreDamage, ISkillTurn
         target.data.SetIgnoreDamage(false);
     }
     
-    public void DoTurnSkill(GameActor target)
+    public void RemoveStack()
     {
         --remainTurn;
+    }
+
+    public void DoStackEffect(GameActor target)
+    {
+        
+    }
+
+    // ISkillTurnSkill
+    public void DoTurnSkill(GameActor target)
+    {
+
     }
 
     public int GetRemainTime()

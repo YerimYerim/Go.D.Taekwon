@@ -32,6 +32,8 @@ public static class SkillEffectFactory
                 return CreateSkillEffect<SkillDamageDownType>(data);
             case EFFECT_TYPE.EFFECT_TYPE_IGNORE_DAMAGE:
                 return CreateSkillEffect<SkillIgnoreDamage>(data);
+            case EFFECT_TYPE.EFFECT_TYPE_INVALID_DAMAGE:
+                return CreateSkillEffect<SkillStackIgnoreDamage>(data);
             default:
                 return null;
         }

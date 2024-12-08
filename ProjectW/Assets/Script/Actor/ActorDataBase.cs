@@ -35,6 +35,16 @@ public class ActorDataBase
     public void DoDamaged(int damage)
     {
         // 남은 데미지
+        if (ignoreDamage == true)
+        {
+            var ignoreSkill = turnSkill.Find(_ => _ is ISkillIgnoreDamage);
+            
+            if (ignoreSkill is ISkillStackable stackableIgnoreSkill)
+            {
+                stackableIgnoreSkill.RemoveStack();
+            }
+            return;
+        }
         var leftDamage = Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage) * (1f + damageTakeStat.takeDamage * 0.01f)));
         amor.amor = Math.Max(0, Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage)  * (1f + damageTakeStat.takeDamage * 0.01f))));
         

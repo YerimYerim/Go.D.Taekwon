@@ -25,6 +25,7 @@ public class Relic
     
     private readonly List<Condition> _conditions = new();
     private readonly List<Effect> _effects = new();
+    private Action<int> _onEventDamagedAction;
     private LOGICAL_OPERATOR ConditionLogic => _relicTableData.condition_logic ?? LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND;
     
     private bool IsAllConditionActivated
@@ -155,7 +156,10 @@ public class Relic
                 break;
             case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT:
             case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE:
-                gameMode.PlayerActorHandler.player.data.OnEventDamaged += action;
+                gameMode.PlayerActorHandler.player.data.OnEventDamaged += _onEventDamagedAction = (int _) =>
+                {
+                    action?.Invoke();
+                };
                 break;
         }
     }
@@ -186,11 +190,14 @@ public class Relic
                 break;
             case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_PERCENT:
             case ACTIVE_CONDITION.ACTIVE_CONDITION_HP_MINUS_VALUE:
-                gameMode.PlayerActorHandler.player.data.OnEventDamaged -= action;
+                gameMode.PlayerActorHandler.player.data.OnEventDamaged -= _onEventDamagedAction = (int _) =>
+                {
+                    action?.Invoke();
+                };
                 break;
         }
     }
-    
+        
     public void UnregisterEvent()
     {
         if (ConditionLogic == LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND)

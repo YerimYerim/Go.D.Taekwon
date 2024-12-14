@@ -294,24 +294,6 @@
     "enum_value": 29
   },
   {
-    "group_name": "effect_type",
-    "enum_name": "heal_proportion_given_damage_buff",
-    "source_enum_name": "EFFECT_TYPE_HEAL_PROPORTION_GIVEN_DAMAGE_BUFF",
-    "enum_value": 30
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "heal_proportion_taken_damage_buff",
-    "source_enum_name": "EFFECT_TYPE_HEAL_PROPORTION_TAKEN_DAMAGE_BUFF",
-    "enum_value": 31
-  },
-  {
-    "group_name": "effect_type",
-    "enum_name": "damage_proportion_overheal_buff",
-    "source_enum_name": "EFFECT_TYPE_DAMAGE_PROPORTION_OVERHEAL_BUFF",
-    "enum_value": 32
-  },
-  {
     "group_name": "support_module_effect",
     "enum_name": "reduce_product_ap",
     "source_enum_name": "SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_AP",

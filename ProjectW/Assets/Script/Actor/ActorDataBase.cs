@@ -14,10 +14,10 @@ public class ActorDataBase
     protected bool ignoreDamage = false;
     
     public List<SkillEffectBase> turnSkill = new() ;
-    
-    public event Action OnEventDamaged;
+
+    public event Action</* damage */int> OnEventDamaged;
     public event Action OnHeal;
-    public event Action<int> OnGiveDamage;
+    public event Action</* damage */int> OnGiveDamage;
     
     //Enemy 의 경우에만 사용
 
@@ -50,7 +50,7 @@ public class ActorDataBase
         var leftDamage = Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage) * (1f + damageTakeStat.takeDamage * 0.01f)));
         amor.amor = Math.Max(0, Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage)  * (1f + damageTakeStat.takeDamage * 0.01f))));
         Hp = Mathf.CeilToInt(Mathf.Max(0f, Hp + (leftDamage)));
-        OnEventDamaged?.Invoke();
+        OnEventDamaged?.Invoke(leftDamage);
         if(Hp <= 0)
         {
             GameTurnManager.Instance.TurnStart();

@@ -2243,7 +2243,7 @@
   {
     "effect_id": 40100,
     "effect_tag": 4,
-    "effect_type": 14,
+    "effect_type": null,
     "value_1": 2,
     "remain_turn_count": 2,
     "target": 0,
@@ -2252,7 +2252,7 @@
   {
     "effect_id": 40200,
     "effect_tag": 4,
-    "effect_type": 15,
+    "effect_type": null,
     "value_1": 0,
     "remain_turn_count": 2,
     "target": 0,
@@ -2261,7 +2261,7 @@
   {
     "effect_id": 40300,
     "effect_tag": 4,
-    "effect_type": 16,
+    "effect_type": 14,
     "value_1": 0,
     "remain_turn_count": 1,
     "target": 0,
@@ -2270,7 +2270,7 @@
   {
     "effect_id": 40400,
     "effect_tag": 4,
-    "effect_type": 17,
+    "effect_type": null,
     "value_1": 0,
     "remain_turn_count": 2,
     "target": 0,
@@ -2279,7 +2279,7 @@
   {
     "effect_id": 40500,
     "effect_tag": 5,
-    "effect_type": 18,
+    "effect_type": null,
     "value_1": 0,
     "remain_turn_count": 2,
     "target": 1,
@@ -2288,7 +2288,7 @@
   {
     "effect_id": 40600,
     "effect_tag": 4,
-    "effect_type": 19,
+    "effect_type": 15,
     "value_1": 0,
     "remain_turn_count": 3,
     "target": 0,
@@ -2297,7 +2297,7 @@
   {
     "effect_id": 40700,
     "effect_tag": 5,
-    "effect_type": 20,
+    "effect_type": 16,
     "value_1": 0,
     "remain_turn_count": 3,
     "target": 1,
@@ -2306,7 +2306,7 @@
   {
     "effect_id": 40800,
     "effect_tag": 2,
-    "effect_type": 21,
+    "effect_type": 17,
     "value_1": 1,
     "remain_turn_count": 3,
     "target": 0,
@@ -2315,7 +2315,7 @@
   {
     "effect_id": 40900,
     "effect_tag": 4,
-    "effect_type": 22,
+    "effect_type": null,
     "value_1": 0,
     "remain_turn_count": 4,
     "target": 0,
@@ -2324,7 +2324,7 @@
   {
     "effect_id": 41000,
     "effect_tag": 5,
-    "effect_type": 23,
+    "effect_type": null,
     "value_1": 0,
     "remain_turn_count": 1,
     "target": 1,
@@ -2333,7 +2333,7 @@
   {
     "effect_id": 41100,
     "effect_tag": 4,
-    "effect_type": 24,
+    "effect_type": null,
     "value_1": 0,
     "remain_turn_count": 4,
     "target": 0,
@@ -2342,7 +2342,7 @@
   {
     "effect_id": 41200,
     "effect_tag": 5,
-    "effect_type": 25,
+    "effect_type": null,
     "value_1": 0,
     "remain_turn_count": 1,
     "target": 1,
@@ -2351,7 +2351,7 @@
   {
     "effect_id": 41300,
     "effect_tag": 4,
-    "effect_type": 26,
+    "effect_type": null,
     "value_1": 1,
     "remain_turn_count": 0,
     "target": 1,
@@ -2360,7 +2360,7 @@
   {
     "effect_id": 50100,
     "effect_tag": 5,
-    "effect_type": 27,
+    "effect_type": 18,
     "value_1": 0,
     "remain_turn_count": 3,
     "target": 1,
@@ -2369,7 +2369,7 @@
   {
     "effect_id": 50200,
     "effect_tag": 0,
-    "effect_type": 28,
+    "effect_type": 19,
     "value_1": 0,
     "remain_turn_count": 0,
     "target": 0,

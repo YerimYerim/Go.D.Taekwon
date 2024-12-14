@@ -17,6 +17,7 @@ public class ActorDataBase
     
     public event Action OnEventDamaged;
     public event Action OnHeal;
+    public event Action<int> OnGiveDamage;
     
     //Enemy 의 경우에만 사용
 
@@ -32,7 +33,7 @@ public class ActorDataBase
         InitTakeDamageStat(0);
         SetTakeDamageStat(0);
     }
-    public void DoDamaged(int damage)
+    public void TakeDamage(int damage)
     {
         // 남은 데미지
         if (ignoreDamage == true)
@@ -44,16 +45,21 @@ public class ActorDataBase
                 stackableIgnoreSkill.RemoveStack();
             }
             return;
-        }
+        } 
+
         var leftDamage = Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage) * (1f + damageTakeStat.takeDamage * 0.01f)));
         amor.amor = Math.Max(0, Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage)  * (1f + damageTakeStat.takeDamage * 0.01f))));
-        
         Hp = Mathf.CeilToInt(Mathf.Max(0f, Hp + (leftDamage)));
         OnEventDamaged?.Invoke();
         if(Hp <= 0)
         {
             GameTurnManager.Instance.TurnStart();
         }
+    }
+    
+    public void GiveDamage(int damage)
+    {
+        OnGiveDamage?.Invoke(damage);
     }
     
     public void DoHeal(int addHp)

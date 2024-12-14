@@ -23,7 +23,7 @@ public class UI_Actor_DMGFloater : UIBase
         if (Camera.main != null)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(gameTransform.position);
-            startPostion = screenPos + Vector3.down*5;
+            startPostion = screenPos + Vector3.down*5;  
             targetPosition = screenPos;
             moveRectTransform.transform.position = screenPos;
         }

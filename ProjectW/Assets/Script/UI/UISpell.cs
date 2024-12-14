@@ -160,16 +160,19 @@ public class UISpell : UIDragable
 
     private GameActor FindGameActor(PointerEventData eventData)
     {
-        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-        Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 2f);
-        var colideObject = Physics2D.RaycastAll(ray.origin, ray.direction);
-
-        foreach (var hit in colideObject)
+        if (Camera.main != null)
         {
-            var actor = hit.transform.GetComponent<GameActor>();
-            if (actor != null)
+            var ray = Camera.main.ScreenPointToRay(eventData.position);
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 1000, Color.red, 2f);
+            var collideObject = Physics2D.RaycastAll(ray.origin, ray.direction);
+
+            foreach (var hit in collideObject)
             {
-                return actor;
+                var actor = hit.transform.GetComponent<GameActor>();
+                if (actor != null)
+                {
+                    return actor;
+                }
             }
         }
 

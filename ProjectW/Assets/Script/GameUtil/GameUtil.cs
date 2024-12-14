@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class GameUtil
 {
     public static int PLAYER_ACTOR_ID = 1000001;
@@ -31,5 +33,10 @@ public static class GameUtil
         var nextIndex = cur + 1;
 
         return nextIndex >= max ? min : nextIndex;
+    }
+    
+    public static void Log(string log)
+    {
+        Debug.Log(log);
     }
 }

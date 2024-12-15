@@ -2241,6 +2241,1086 @@
     "target_count": 1
   },
   {
+    "effect_id": 31101,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 1,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31102,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 2,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31103,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 3,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31104,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 4,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31105,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 5,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31106,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 6,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31107,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 7,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31108,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 8,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31109,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 9,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31110,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 10,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31111,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 11,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31112,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 12,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31113,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 13,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31114,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 14,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31115,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 15,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31116,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 16,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31117,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 17,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31118,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 18,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31119,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 19,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31120,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 20,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31121,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 21,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31122,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 22,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31123,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 23,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31124,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 24,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31125,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 25,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31126,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 26,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31127,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 27,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31128,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 28,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31129,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 29,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31130,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 30,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31201,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 1,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31202,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 2,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31203,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 3,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31204,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 4,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31205,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 5,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31206,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 6,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31207,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 7,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31208,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 8,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31209,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 9,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31210,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 10,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31211,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 11,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31212,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 12,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31213,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 13,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31214,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 14,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31215,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 15,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31216,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 16,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31217,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 17,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31218,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 18,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31219,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 19,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31220,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 20,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31221,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 21,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31222,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 22,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31223,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 23,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31224,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 24,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31225,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 25,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31226,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 26,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31227,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 27,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31228,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 28,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31229,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 29,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31230,
+    "effect_tag": 4,
+    "effect_type": 23,
+    "value_1": 30,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31301,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 1,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31302,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 2,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31303,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 3,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31304,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 4,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31305,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 5,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31306,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 6,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31307,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 7,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31308,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 8,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31309,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 9,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31310,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 10,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31311,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 11,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31312,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 12,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31313,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 13,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31314,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 14,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31315,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 15,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31316,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 16,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31317,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 17,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31318,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 18,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31319,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 19,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31320,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 20,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31321,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 21,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31322,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 22,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31323,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 23,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31324,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 24,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31325,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 25,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31326,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 26,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31327,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 27,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31328,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 28,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31329,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 29,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31330,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 30,
+    "remain_turn_count": 99,
+    "target": 1,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31401,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 1,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31402,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 2,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31403,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 3,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31404,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 4,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31405,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 5,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31406,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 6,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31407,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 7,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31408,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 8,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31409,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 9,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31410,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 10,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31411,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 11,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31412,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 12,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31413,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 13,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31414,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 14,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31415,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 15,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31416,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 16,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31417,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 17,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31418,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 18,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31419,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 19,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31420,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 20,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31421,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 21,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31422,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 22,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31423,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 23,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31424,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 24,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31425,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 25,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31426,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 26,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31427,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 27,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31428,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 28,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31429,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 29,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
+    "effect_id": 31430,
+    "effect_tag": 5,
+    "effect_type": 21,
+    "value_1": 30,
+    "remain_turn_count": 99,
+    "target": 0,
+    "target_count": 1
+  },
+  {
     "effect_id": 40100,
     "effect_tag": 4,
     "effect_type": null,

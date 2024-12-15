@@ -75,5 +75,173 @@
     "stat_hp": 300,
     "monster_type": 0,
     "skill_pattern_group": 2020101
+  },
+  {
+    "actor_id": 20011,
+    "level": 1,
+    "stat_hp": 60,
+    "monster_type": 0,
+    "skill_pattern_group": 2001101
+  },
+  {
+    "actor_id": 20011,
+    "level": 2,
+    "stat_hp": 120,
+    "monster_type": 0,
+    "skill_pattern_group": 2001102
+  },
+  {
+    "actor_id": 20011,
+    "level": 3,
+    "stat_hp": 180,
+    "monster_type": 0,
+    "skill_pattern_group": 2001103
+  },
+  {
+    "actor_id": 20011,
+    "level": 4,
+    "stat_hp": 240,
+    "monster_type": 0,
+    "skill_pattern_group": 2001104
+  },
+  {
+    "actor_id": 20012,
+    "level": 1,
+    "stat_hp": 70,
+    "monster_type": 0,
+    "skill_pattern_group": 2001201
+  },
+  {
+    "actor_id": 20012,
+    "level": 2,
+    "stat_hp": 140,
+    "monster_type": 0,
+    "skill_pattern_group": 2001202
+  },
+  {
+    "actor_id": 20012,
+    "level": 3,
+    "stat_hp": 210,
+    "monster_type": 0,
+    "skill_pattern_group": 2001203
+  },
+  {
+    "actor_id": 20012,
+    "level": 4,
+    "stat_hp": 280,
+    "monster_type": 0,
+    "skill_pattern_group": 2001204
+  },
+  {
+    "actor_id": 20013,
+    "level": 1,
+    "stat_hp": 55,
+    "monster_type": 0,
+    "skill_pattern_group": 2001301
+  },
+  {
+    "actor_id": 20013,
+    "level": 2,
+    "stat_hp": 110,
+    "monster_type": 0,
+    "skill_pattern_group": 2001302
+  },
+  {
+    "actor_id": 20013,
+    "level": 3,
+    "stat_hp": 165,
+    "monster_type": 0,
+    "skill_pattern_group": 2001303
+  },
+  {
+    "actor_id": 20013,
+    "level": 4,
+    "stat_hp": 220,
+    "monster_type": 0,
+    "skill_pattern_group": 2001304
+  },
+  {
+    "actor_id": 20111,
+    "level": 1,
+    "stat_hp": 150,
+    "monster_type": 0,
+    "skill_pattern_group": 2011101
+  },
+  {
+    "actor_id": 20111,
+    "level": 2,
+    "stat_hp": 300,
+    "monster_type": 0,
+    "skill_pattern_group": 2011102
+  },
+  {
+    "actor_id": 20111,
+    "level": 3,
+    "stat_hp": 450,
+    "monster_type": 0,
+    "skill_pattern_group": 2011103
+  },
+  {
+    "actor_id": 20111,
+    "level": 4,
+    "stat_hp": 600,
+    "monster_type": 0,
+    "skill_pattern_group": 2011104
+  },
+  {
+    "actor_id": 20112,
+    "level": 1,
+    "stat_hp": 120,
+    "monster_type": 0,
+    "skill_pattern_group": 2011201
+  },
+  {
+    "actor_id": 20112,
+    "level": 2,
+    "stat_hp": 240,
+    "monster_type": 0,
+    "skill_pattern_group": 2011202
+  },
+  {
+    "actor_id": 20112,
+    "level": 3,
+    "stat_hp": 360,
+    "monster_type": 0,
+    "skill_pattern_group": 2011203
+  },
+  {
+    "actor_id": 20112,
+    "level": 4,
+    "stat_hp": 480,
+    "monster_type": 0,
+    "skill_pattern_group": 2011204
+  },
+  {
+    "actor_id": 20211,
+    "level": 1,
+    "stat_hp": 300,
+    "monster_type": 0,
+    "skill_pattern_group": 2021101
+  },
+  {
+    "actor_id": 20211,
+    "level": 2,
+    "stat_hp": 600,
+    "monster_type": 0,
+    "skill_pattern_group": 2021102
+  },
+  {
+    "actor_id": 20211,
+    "level": 3,
+    "stat_hp": 900,
+    "monster_type": 0,
+    "skill_pattern_group": 2021103
+  },
+  {
+    "actor_id": 20211,
+    "level": 4,
+    "stat_hp": 1200,
+    "monster_type": 0,
+    "skill_pattern_group": 2021104
   }
 ]

@@ -142,5 +142,229 @@
     "phase_condition_value": null,
     "pattern_type": 0,
     "skill_group": 202010103
+  },
+  {
+    "skill_pattern_group_id": 2001101,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200110101
+  },
+  {
+    "skill_pattern_group_id": 2001102,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200110201
+  },
+  {
+    "skill_pattern_group_id": 2001103,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200110301
+  },
+  {
+    "skill_pattern_group_id": 2001104,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200110401
+  },
+  {
+    "skill_pattern_group_id": 2001201,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200120101
+  },
+  {
+    "skill_pattern_group_id": 2001202,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200120201
+  },
+  {
+    "skill_pattern_group_id": 2001203,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200120301
+  },
+  {
+    "skill_pattern_group_id": 2001204,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200120401
+  },
+  {
+    "skill_pattern_group_id": 2001301,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200130101
+  },
+  {
+    "skill_pattern_group_id": 2001302,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200130201
+  },
+  {
+    "skill_pattern_group_id": 2001303,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200130301
+  },
+  {
+    "skill_pattern_group_id": 2001304,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 200130401
+  },
+  {
+    "skill_pattern_group_id": 2011101,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201110101
+  },
+  {
+    "skill_pattern_group_id": 2011102,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201110201
+  },
+  {
+    "skill_pattern_group_id": 2011103,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201110301
+  },
+  {
+    "skill_pattern_group_id": 2011104,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201110401
+  },
+  {
+    "skill_pattern_group_id": 2011201,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201120101
+  },
+  {
+    "skill_pattern_group_id": 2011202,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201120201
+  },
+  {
+    "skill_pattern_group_id": 2011203,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201120301
+  },
+  {
+    "skill_pattern_group_id": 2011204,
+    "phase": 1,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 201120401
+  },
+  {
+    "skill_pattern_group_id": 2021101,
+    "phase": 1,
+    "phase_condition": 1,
+    "phase_condition_value": 0,
+    "pattern_type": 1,
+    "skill_group": 202110101
+  },
+  {
+    "skill_pattern_group_id": 2021101,
+    "phase": 2,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 202110102
+  },
+  {
+    "skill_pattern_group_id": 2021102,
+    "phase": 1,
+    "phase_condition": 1,
+    "phase_condition_value": 0,
+    "pattern_type": 1,
+    "skill_group": 202110201
+  },
+  {
+    "skill_pattern_group_id": 2021102,
+    "phase": 2,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 202110202
+  },
+  {
+    "skill_pattern_group_id": 2021103,
+    "phase": 1,
+    "phase_condition": 1,
+    "phase_condition_value": 0,
+    "pattern_type": 1,
+    "skill_group": 202110301
+  },
+  {
+    "skill_pattern_group_id": 2021103,
+    "phase": 2,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 202110302
+  },
+  {
+    "skill_pattern_group_id": 2021104,
+    "phase": 1,
+    "phase_condition": 1,
+    "phase_condition_value": 0,
+    "pattern_type": 1,
+    "skill_group": 202110401
+  },
+  {
+    "skill_pattern_group_id": 2021104,
+    "phase": 2,
+    "phase_condition": 0,
+    "phase_condition_value": null,
+    "pattern_type": 1,
+    "skill_group": 202110402
   }
 ]

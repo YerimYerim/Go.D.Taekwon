@@ -16,7 +16,7 @@ public class ActorDataBase
     public List<SkillEffectBase> turnSkill = new() ;
 
     public event Action</* damage */int> OnEventDamaged;
-    public event Action OnHeal;
+    public event Action</*totalHeal*/int, /*overHeal*/ int> OnHeal;
     public event Action</* damage */int> OnGiveDamage;
     
     //Enemy 의 경우에만 사용
@@ -64,8 +64,9 @@ public class ActorDataBase
     
     public void DoHeal(int addHp)
     { 
-        Hp = Math.Min(Hp + addHp, MaxHp);
-        OnHeal?.Invoke();
+        Hp = Mathf.Min(Hp + addHp, MaxHp);
+        var overHeal = Mathf.Max(0, Hp + addHp - MaxHp);
+        OnHeal?.Invoke(addHp, overHeal);
     }
 
     public int GetHp()

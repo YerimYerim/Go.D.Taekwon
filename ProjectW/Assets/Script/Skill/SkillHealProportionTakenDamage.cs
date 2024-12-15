@@ -40,7 +40,7 @@ public class SkillHealProportionTakeDamage : SkillEffectBase, ISkillTurnSkill, I
 
     public void DoHeal(List<GameActor> targetActor)
     {
-      
+        
     }
 
     public void OnTakenDamage(int damage)

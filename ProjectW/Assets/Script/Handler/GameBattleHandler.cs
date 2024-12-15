@@ -111,12 +111,12 @@ public class GameBattleHandler
         
         if (battleMode.ActorSpawner.IsEnemyTurn() == false)
         {
-            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
+            var spellEffect = spellData.tableData.spell_effect;
+            for (int i = 0; i < spellEffect.Length; ++i)
             {
-                var spellEffect = spellData.tableData.spell_effect;
-                for (int i = 0; i < spellEffect.Length; ++i)
+                var index = i;
+                CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
                 {
-                    var index = i;
                     var effect = GameTableManager.Instance._spelleffectDatas.Find(_ => spellEffect[index] == _.effect_id);
                     var skillEffectBase = SkillEffectFactory.GetSkillEffectBase(effect);
                     switch (effect.target)
@@ -124,8 +124,9 @@ public class GameBattleHandler
                         case TARGET_TYPE.TARGET_TYPE_SELF:
                         {
                             skillEffectBase.DoSkill(new List<GameActor> {player}, player);
-                            GameUtil.Log(player.gameObject.name +"사용"+ effect.effect_type + "수치" + effect.value_1);
-                        } break;
+                            GameUtil.Log(player.gameObject.name + "사용" + effect.effect_type + "수치" + effect.value_1);
+                        }
+                            break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY:
                         {
                             if (effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
@@ -141,7 +142,6 @@ public class GameBattleHandler
                                     return;
                                 }
                             }
-                            
                         } break;
                         case TARGET_TYPE.TARGET_TYPE_ENEMY_ALL:
                         {
@@ -149,13 +149,15 @@ public class GameBattleHandler
                             GameUtil.Log("모든 적에게 사용" + (effect?.effect_type ?? null) + "수치" + (effect?.value_1 ?? 0));
                         } break;
                     }
-                }
-                
+                }), 0.4f);
+            }
+            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
+            {
                 RemoveCard(spellData);
                 MinusResourceAP(1);
                 battleMode.ActorSpawner.MinusAP(1);
                 uiApGauge.UpdateMonsterUI(true);
-            }), 0.11f);
+            }),0.11f);
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
                 player.OnUpdateHp(handler.playerData);

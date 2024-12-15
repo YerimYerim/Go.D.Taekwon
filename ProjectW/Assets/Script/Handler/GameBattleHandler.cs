@@ -197,39 +197,46 @@ public class GameBattleHandler
             {
                 var enemyData = ActorHandler.GetEnemyData(i);
                 var enemyActor = ActorHandler.GetEnemy(i);
-                var skill = enemyData.GetSkillID();
+                var skills = enemyData.GetSkillID();
                 if (enemyData.IsCanUseSkill())
                 {
-                    var skillEffect = GameTableManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill);
-                    var skillEffectBase = SkillEffectFactory.GetSkillEffectBase(skillEffect);
-                    switch (skillEffect.target)
+                    foreach(var skill in skills)
                     {
-                        case TARGET_TYPE.TARGET_TYPE_SELF:
+                        var skillEffect = GameTableManager.Instance._spelleffectDatas.Find(_ => _.effect_id == skill);
+                        var skillEffectBase = SkillEffectFactory.GetSkillEffectBase(skillEffect);
+                        switch (skillEffect.target)
                         {
-                            EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
+                            case TARGET_TYPE.TARGET_TYPE_SELF:
                             {
-                                skillEffectBase.DoSkill(new List<GameActor> {enemyActor}, enemyActor);
-                                enemyData.ResetAP();
-                                player.OnUpdateHp(handler.playerData);
-                                uiApGauge.UpdateMonsterUI(true);
-                            });
-                            CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
-                            GameUtil.Log(enemyActor.gameObject.name +"사용"+ skillEffect.effect_type + "수치" + skillEffect.value_1);
-                        
-                        } break;
-                        case TARGET_TYPE.TARGET_TYPE_ENEMY:
-                        {
-                            EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
+                                EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
+                                {
+                                    skillEffectBase.DoSkill(new List<GameActor> {enemyActor}, enemyActor);
+                                    enemyData.ResetAP();
+                                    player.OnUpdateHp(handler.playerData);
+                                    uiApGauge.UpdateMonsterUI(true);
+                                });
+                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.5f);
+                                GameUtil.Log(enemyActor.gameObject.name + "사용" + skillEffect.effect_type + "수치" +
+                                             skillEffect.value_1);
+
+                            }
+                                break;
+                            case TARGET_TYPE.TARGET_TYPE_ENEMY:
                             {
-                                skillEffectBase.DoSkill(new List<GameActor>{player}, enemyActor);
-                                enemyData.ResetAP();
-                                player.OnUpdateHp(handler.playerData);
-                                uiApGauge.UpdateMonsterUI(true);
-                            });
-                            CommandManager.Instance.AddCommand(enemyTurnCommand,0.5f);
-                            GameUtil.Log(enemyActor.gameObject.name +"사용"+ skillEffect.effect_type + "수치" + skillEffect.value_1);
-                            
-                        } break;
+                                EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
+                                {
+                                    skillEffectBase.DoSkill(new List<GameActor> {player}, enemyActor);
+                                    enemyData.ResetAP();
+                                    player.OnUpdateHp(handler.playerData);
+                                    uiApGauge.UpdateMonsterUI(true);
+                                });
+                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.5f);
+                                GameUtil.Log(enemyActor.gameObject.name + "사용" + skillEffect.effect_type + "수치" +
+                                             skillEffect.value_1);
+
+                            }
+                                break;
+                        }
                     }
                    
                 }

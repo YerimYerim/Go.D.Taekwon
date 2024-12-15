@@ -37,7 +37,7 @@ public class ActorEnemyData : ActorDataBase
         _skillBase = new MonsterSkillBase(skillGroupTable?.action_point ?? 0)
         {
             skill_group_id = skillGroupTable?.skill_group_id ?? 0,
-            effect_id = skillGroupTable?.effect_id ?? 0
+            effect_id = skillGroupTable?.effect_id,
         };
     }
     private void InitSkillGroup()
@@ -82,9 +82,9 @@ public class ActorEnemyData : ActorDataBase
         }
     }
 
-    public int GetSkillID()
+    public int[] GetSkillID()
     {
-        return _skillBase?.effect_id ?? 0;
+        return _skillBase?.effect_id;
     }
 
     private SkillGroupTableData StartSkill()

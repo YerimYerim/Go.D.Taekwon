@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Script.Manager;
-using UnityEngine;
 
 public class GameBattleHandler
 {
@@ -149,7 +148,7 @@ public class GameBattleHandler
                             GameUtil.Log("모든 적에게 사용" + (effect?.effect_type ?? null) + "수치" + (effect?.value_1 ?? 0));
                         } break;
                     }
-                }), 0.4f);
+                }), 0.1f);
             }
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {

@@ -33,7 +33,7 @@ public class ActorDataBase
         InitTakeDamageStat(0);
         SetTakeDamageStat(0);
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int trueDamage = 0)
     {
         // 남은 데미지
         if (ignoreDamage == true)
@@ -50,6 +50,8 @@ public class ActorDataBase
         var leftDamage = Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage) * (1f + damageTakeStat.takeDamage * 0.01f)));
         amor.amor = Math.Max(0, Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage)  * (1f + damageTakeStat.takeDamage * 0.01f))));
         Hp = Mathf.CeilToInt(Mathf.Max(0f, Hp + (leftDamage)));
+        Hp = Mathf.Max(0, Hp - trueDamage);
+        
         OnEventDamaged?.Invoke(leftDamage);
         if(Hp <= 0)
         {
@@ -91,7 +93,7 @@ public class ActorDataBase
     
     public void InitAttackStat( int damageUpInt)
     {
-        attackStat = new(damageUpInt);
+        attackStat = new();
     }
     public void InitTakeDamageStat( int damageUpInt)
     {
@@ -105,11 +107,21 @@ public class ActorDataBase
     { 
         attackStat.SetAttackStat(stat);
     }    
+    public void SetFixedDamageStat(int fixedDamage)
+    { 
+        attackStat.SetFixedAttackStat(fixedDamage);
+    }       
     
-    public int GetAttackStat()
+    public void SetTrueDamage(int trueDamage)
+    { 
+        attackStat.SetTrueDamage(trueDamage);
+    }    
+    
+    public AttackStat GetAttackStat()
     {
-        return attackStat.damageUpInt;
+        return attackStat;
     }
+    
     public void AddAmorStat(int amorStatValue)
     {
         amor.AddAmor(amorStatValue);

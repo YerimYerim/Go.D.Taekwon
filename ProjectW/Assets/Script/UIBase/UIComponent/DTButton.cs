@@ -15,7 +15,7 @@ namespace Script.UI
         
         private double _onclickStartTime;
         
-        public float minLongClickTime = 0.1f;
+        private float minLongClickTime = 10f;
         public string touchSoundKey;
         
         private Coroutine _coCheckLongClick;

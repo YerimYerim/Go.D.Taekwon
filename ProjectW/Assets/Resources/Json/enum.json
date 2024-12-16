@@ -294,6 +294,24 @@
     "enum_value": 29
   },
   {
+    "group_name": "effect_type",
+    "enum_name": "give_damage_up_fixed",
+    "source_enum_name": "EFFECT_TYPE_GIVE_DAMAGE_UP_FIXED",
+    "enum_value": 30
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "give_damage_down_fixed",
+    "source_enum_name": "EFFECT_TYPE_GIVE_DAMAGE_DOWN_FIXED",
+    "enum_value": 31
+  },
+  {
+    "group_name": "effect_type",
+    "enum_name": "give_true_damage_up",
+    "source_enum_name": "EFFECT_TYPE_GIVE_TRUE_DAMAGE_UP",
+    "enum_value": 32
+  },
+  {
     "group_name": "support_module_effect",
     "enum_name": "reduce_product_ap",
     "source_enum_name": "SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_AP",
@@ -352,6 +370,12 @@
     "enum_name": "enemy_all",
     "source_enum_name": "TARGET_TYPE_ENEMY_ALL",
     "enum_value": 4
+  },
+  {
+    "group_name": "target_type",
+    "enum_name": "ally_all",
+    "source_enum_name": "TARGET_TYPE_ALLY_ALL",
+    "enum_value": 5
   },
   {
     "group_name": "active_condition",

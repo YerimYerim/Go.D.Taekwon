@@ -1,23 +1,30 @@
-﻿public record AttackStat
+﻿using System;
+
+public record AttackStat
 {
-    public int damageUpInt;
-    
-    public AttackStat(int takeDamage)
+    private int _damageTrue;
+    public int TrueDamageUp
     {
-        this.damageUpInt = 0;
-    }
+        get => Math.Max(0, _damageTrue);
+        private set => _damageTrue = value;
+    }    
+    
+    public int DamageUpPer { get; private set; }
+    public int DamageUpFixed { get; private set; }
     
     public void SetAttackStat(int takeDamage)
     {
-        this.damageUpInt += takeDamage;
-    }
-    public void AddAttackStat(int damage)
-    {
-        damageUpInt += damage;
+        DamageUpPer += takeDamage;
     }
 
-    public void MinusAttackStat(int damage)
+    public void SetFixedAttackStat(int damage)
     {
-        damageUpInt -= damage;
+        DamageUpFixed += damage;
     }
+    
+    public void SetTrueDamage(int damage)
+    {
+        TrueDamageUp += damage;
+    }
+
 }

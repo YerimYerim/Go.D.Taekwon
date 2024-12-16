@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class SkillTakeDamageUpType :SkillEffectBase, ISkillTakeDamageUp, ISkillTurnSkill
+public class SkillFixedDamageDownType :SkillEffectBase, ISkilDamageUp, ISkillTurnSkill
 {
     public override void InitSkillType(SpellEffectTableData data)
     {
@@ -24,9 +22,9 @@ public class SkillTakeDamageUpType :SkillEffectBase, ISkillTakeDamageUp, ISkillT
         }
     }
     
-    public void DoTakeDamageUp(GameActor target)
+    public void DoDamageUp(GameActor target)
     {
-        target.data.SetTakeDamageStat(GetValue());
+        target.data.SetFixedDamageStat(-GetValue());
     }
 
     public void DoTurnSkill(GameActor enemy)
@@ -36,7 +34,7 @@ public class SkillTakeDamageUpType :SkillEffectBase, ISkillTakeDamageUp, ISkillT
 
     public void DoTurnEndSkill(GameActor target)
     {   
-        target.data.SetTakeDamageStat( -GetValue());
+        target.data.SetFixedDamageStat( GetValue());
     }
 
     public int GetRemainTime()

@@ -45,7 +45,7 @@ public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTur
     public void DoDamage(GameActor enemy)
     {
         var attackStat = myActor.data.GetAttackStat();
-        enemy.data.TakeDamage(GetValue()  * Mathf.CeilToInt(1 + attackStat* 0.01f));
-        myActor?.data.GiveDamage(GetValue()  * Mathf.CeilToInt(1 + attackStat * 0.01f));
+        enemy.data.TakeDamage(GetValue()  * Mathf.CeilToInt(1 + attackStat.DamageUpPer* 0.01f + attackStat.DamageUpFixed));
+        myActor?.data.GiveDamage(GetValue()  * Mathf.CeilToInt(1 + attackStat.DamageUpPer * 0.01f + attackStat.DamageUpFixed));
     }
 }

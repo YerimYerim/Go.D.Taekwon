@@ -40,6 +40,12 @@ public static class SkillEffectFactory
                 return CreateSkillEffect<SkillHealProportionTakeDamage>(data);
             case EFFECT_TYPE.EFFECT_TYPE_DAMAGE_PROPORTION_OVERHEAL:
                 return CreateSkillEffect<SkillDamageProportionOverheal>(data);
+            case EFFECT_TYPE.EFFECT_TYPE_GIVE_DAMAGE_UP_FIXED:
+                return CreateSkillEffect<SkillFixedDamageUpType>(data);
+            case EFFECT_TYPE.EFFECT_TYPE_GIVE_DAMAGE_DOWN_FIXED:
+                return CreateSkillEffect<SkillFixedDamageDownType>(data);
+            case EFFECT_TYPE.EFFECT_TYPE_GIVE_TRUE_DAMAGE_UP:
+                return CreateSkillEffect<SkillTrueDamageUpType>(data);
             default:
                 return null;
         }

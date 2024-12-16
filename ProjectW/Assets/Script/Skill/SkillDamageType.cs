@@ -24,13 +24,14 @@ public class SkillDamageType : SkillEffectBase, ISkillTargetDamage
         var attackStat = myActor.data.GetAttackStat();
         for(int i = 0; i< targetActor.Count; ++i)
         {
-            targetActor[i].data.TakeDamage(GetValue()  * Mathf.CeilToInt(1 + attackStat * 0.01f));
+            targetActor[i].data.TakeDamage(GetValue()  * Mathf.CeilToInt(1 + attackStat.DamageUpPer * 0.01f + attackStat.DamageUpFixed), attackStat.TrueDamageUp);
             targetActor[i].OnUpdateHp(targetActor[i].data);
         }
-        myActor?.data.GiveDamage(GetValue()  * Mathf.CeilToInt(1 + attackStat * 0.01f));
+        myActor?.data.GiveDamage(GetValue()  * Mathf.CeilToInt(1 +  attackStat.DamageUpPer * 0.01f + attackStat.DamageUpFixed));
     }
 
-    void ISkillTargetDamage.DoDamage(GameActor target)
+    public void DoDamage(GameActor enemy)
     {
+        
     }
 }

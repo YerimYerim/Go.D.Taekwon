@@ -9,7 +9,7 @@ public class GameTableManager : Script.Manager.Singleton<GameTableManager>
     private readonly string[] _pageJsonFileNames = {"config", "spell", "string", "spell_combine", 
         "spell_effect", "actor_rsc", "actor", "playable_character", "monster","skill_pattern_group", "skill_group",
         "spell_source", "content_map", "content_chapter", "content_stage",
-        "support_module", "first_reward", "abnormal", "predict_resource", "relic", "reward", "money"
+        "support_module", "first_reward", "abnormal", "predict_resource", "relic", "reward", "money", "dialog", "dialog_button", "content_sub_shop"
     };
     
     internal List<ConfigTableData> _configTableData = new();
@@ -34,6 +34,10 @@ public class GameTableManager : Script.Manager.Singleton<GameTableManager>
     internal List<RelicTableData> _relicTable= new();
     internal List<RewardTableData> _rewardTable= new();
     internal List<MoneyTableData> _moneyTable= new();
+    internal List<DialogTableData> _dialogTable= new();
+    internal List<DialogButtonTableData> _dialogButtonTable= new();
+    internal List<ContentSubShopTableData> _contentSubShopTable= new();
+
 
     public void LoadData()
     {
@@ -59,6 +63,9 @@ public class GameTableManager : Script.Manager.Singleton<GameTableManager>
         _relicTable  = ReadJsonFiles<RelicTableData>(_pageJsonFileNames[19]);
         _rewardTable  = ReadJsonFiles<RewardTableData>(_pageJsonFileNames[20]);
         _moneyTable  = ReadJsonFiles<MoneyTableData>(_pageJsonFileNames[21]);
+        _dialogTable = ReadJsonFiles<DialogTableData>(_pageJsonFileNames[22]);
+        _dialogButtonTable =  ReadJsonFiles<DialogButtonTableData>(_pageJsonFileNames[23]);
+        _contentSubShopTable = ReadJsonFiles<ContentSubShopTableData>(_pageJsonFileNames[24]);
     }
 
     private static List<T> ReadJsonFiles<T>(string fileName)

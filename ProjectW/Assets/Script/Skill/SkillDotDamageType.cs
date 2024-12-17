@@ -7,7 +7,7 @@ public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTur
     GameActor myActor;
     public override void DoSkill(List<GameActor> targetActor, GameActor myActor)
     {
-        myActor = this.myActor;
+       this. myActor = myActor;
         for (int i = 0; i < targetActor.Count; ++i)
         {
             targetActor[i].data.AddTurnSkill(this);
@@ -35,7 +35,7 @@ public class SkillDotDamageType : SkillEffectBase, ISkillTargetDamage, ISkillTur
     public int GetRemainTime()
     {
         return remainTurn;
-    }
+    }   
 
     public void DoTurnEndSkill(GameActor target)
     {

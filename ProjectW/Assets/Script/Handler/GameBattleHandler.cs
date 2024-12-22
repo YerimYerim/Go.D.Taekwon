@@ -198,6 +198,7 @@ public class GameBattleHandler
             {
                 var enemyData = ActorHandler.GetEnemyData(i);
                 var enemyActor = ActorHandler.GetEnemy(i);
+                var enemyActorAll = ActorHandler.GetEnemyAll();
                 var skills = enemyData.GetSkillID();
                 if (enemyData.IsCanUseSkill())
                 {
@@ -211,6 +212,20 @@ public class GameBattleHandler
                             {
                                 EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
                                 {
+                                    skillEffectBase.DoSkill(enemyActorAll, enemyActor);
+                                    enemyData.ResetAP();
+                                    player.OnUpdateHp(handler.playerData);
+                                    uiApGauge.UpdateMonsterUI(true);
+                                });
+                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.5f);
+                                GameUtil.Log(enemyActor.gameObject.name + "사용" + skillEffect.effect_type + "수치" +
+                                             skillEffect.value_1);
+                            }
+                            break;
+                            case TARGET_TYPE.TARGET_TYPE_ALLY_ALL:
+                            {
+                                EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>
+                                {
                                     skillEffectBase.DoSkill(new List<GameActor> {enemyActor}, enemyActor);
                                     enemyData.ResetAP();
                                     player.OnUpdateHp(handler.playerData);
@@ -219,9 +234,7 @@ public class GameBattleHandler
                                 CommandManager.Instance.AddCommand(enemyTurnCommand, 0.5f);
                                 GameUtil.Log(enemyActor.gameObject.name + "사용" + skillEffect.effect_type + "수치" +
                                              skillEffect.value_1);
-
-                            }
-                                break;
+                            } break;
                             case TARGET_TYPE.TARGET_TYPE_ENEMY:
                             {
                                 EnemyTurnCommand enemyTurnCommand = new EnemyTurnCommand(() =>

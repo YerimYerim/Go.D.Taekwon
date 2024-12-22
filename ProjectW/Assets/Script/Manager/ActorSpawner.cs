@@ -113,6 +113,11 @@ public class ActorSpawner
     {
         return enemy[i];
     }
+        
+    public List<GameActor> GetEnemyAll()
+    {
+        return enemy;
+    }
     
     public int GetEnemyCount()
     {

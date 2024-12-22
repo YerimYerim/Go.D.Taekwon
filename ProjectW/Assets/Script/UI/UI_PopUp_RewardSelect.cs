@@ -39,10 +39,7 @@ public class UI_PopUp_RewardSelect : UIBase
             {
                 return;
             }
-
-            var rewardTableDatas = battleMode.MapHandler.GetRewardTableDatas();
-            rewardTableDatas.Add(data);
-            rewardResult.ShowRewardResult(rewardTableDatas);
+            rewardResult.ShowRewardResult(new List<RewardTableData>(){data});
         }
         Hide();
     }

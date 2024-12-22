@@ -122,12 +122,15 @@ public class GameActor : MonoBehaviour
     {
         if (uiActorBottom != null)
             uiActorBottom.Hide();
+        if (uiActorDMGFloater != null)
+            uiActorBottom.Hide();
+        if (_uiActorName != null)
+            _uiActorName.Hide();
     }
     
     public void SetResourceTable(ActorRscTableData table)
     {
         resourceData = table;
-
     }
 
     public void SetActorName(ActorTableData actorTableData)

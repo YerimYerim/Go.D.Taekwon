@@ -20,7 +20,6 @@ public class UI_PopUp_RewardResult : UIBase
     {
         closeButton.onClick.AddListener(Hide);
         SetHideEvent(HideAction);
-        
     }
 
     private static void HideAction()
@@ -30,11 +29,13 @@ public class UI_PopUp_RewardResult : UIBase
         {
             return;
         }
+        gameBattleMode?.ActorSpawner?.RemoveAllMonsterActors();
         gameBattleMode?.MapHandler?.ShowMapSelect();
     }
 
     public void ShowRewardResult(List<RewardTableData> data)
     {
+        Show();
         SetReward(data);
         for (int i = 0; i < data.Count; ++i)
         {

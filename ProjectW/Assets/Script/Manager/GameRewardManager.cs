@@ -67,4 +67,5 @@ public class GameRewardManager : Singleton<GameRewardManager>
             ui.Show();
         }
     }
+    
 }

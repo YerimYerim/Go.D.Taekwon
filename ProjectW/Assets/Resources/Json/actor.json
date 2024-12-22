@@ -42,8 +42,50 @@
     "rsc_id": 2000001
   },
   {
+    "actor_id": 21001,
+    "actor_type": 1,
+    "actor_function_value": null,
+    "actor_name": "n_mon_temp",
+    "rsc_id": 2000001
+  },
+  {
+    "actor_id": 21002,
+    "actor_type": 1,
+    "actor_function_value": null,
+    "actor_name": "n_mon_temp",
+    "rsc_id": 2000001
+  },
+  {
+    "actor_id": 21003,
+    "actor_type": 1,
+    "actor_function_value": null,
+    "actor_name": "n_mon_temp",
+    "rsc_id": 2000001
+  },
+  {
+    "actor_id": 21101,
+    "actor_type": 1,
+    "actor_function_value": null,
+    "actor_name": "n_mon_temp",
+    "rsc_id": 2000001
+  },
+  {
+    "actor_id": 21101,
+    "actor_type": 1,
+    "actor_function_value": null,
+    "actor_name": "n_mon_temp",
+    "rsc_id": 2000001
+  },
+  {
+    "actor_id": 21201,
+    "actor_type": 1,
+    "actor_function_value": null,
+    "actor_name": "n_mon_temp",
+    "rsc_id": 2000001
+  },
+  {
     "actor_id": 999,
-    "actor_type": null,
+    "actor_type": 2,
     "actor_function_value": null,
     "actor_name": "n_npc_temp",
     "rsc_id": 2000001

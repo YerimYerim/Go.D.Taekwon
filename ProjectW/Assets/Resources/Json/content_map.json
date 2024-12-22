@@ -2,7 +2,7 @@
   {
     "map_id": 1000101,
     "map_type": 0,
-    "actor_id": [20001],
+    "actor_id": [21002],
     "dialog_id": null,
     "reward_id": [1001],
     "select_reward_id": [1001],
@@ -14,7 +14,7 @@
   {
     "map_id": 1000201,
     "map_type": 0,
-    "actor_id": [20002,20003],
+    "actor_id": [21003],
     "dialog_id": null,
     "reward_id": [],
     "select_reward_id": [],
@@ -26,7 +26,7 @@
   {
     "map_id": 1010301,
     "map_type": 1,
-    "actor_id": [20101],
+    "actor_id": [21101],
     "dialog_id": null,
     "reward_id": [],
     "select_reward_id": [],
@@ -38,7 +38,7 @@
   {
     "map_id": 1000401,
     "map_type": 0,
-    "actor_id": [20001,20002,20003],
+    "actor_id": [21001,21002],
     "dialog_id": null,
     "reward_id": [],
     "select_reward_id": [],
@@ -50,7 +50,7 @@
   {
     "map_id": 1000501,
     "map_type": 0,
-    "actor_id": [20001,20001,20001],
+    "actor_id": [21001,21003],
     "dialog_id": null,
     "reward_id": [],
     "select_reward_id": [],
@@ -62,7 +62,7 @@
   {
     "map_id": 1020601,
     "map_type": 2,
-    "actor_id": [20003,20201],
+    "actor_id": [21201],
     "dialog_id": null,
     "reward_id": [],
     "select_reward_id": [],
@@ -73,7 +73,7 @@
   },
   {
     "map_id": 101,
-    "map_type": null,
+    "map_type": 5,
     "actor_id": [999],
     "dialog_id": 10001,
     "reward_id": [],

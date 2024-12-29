@@ -98,6 +98,7 @@ public class ActorEnemyData : ActorDataBase
                     int maxIndex = skillGroup[curPhase].Count;
                     var index = Random.Range(0,maxIndex);
                     SkillGroupTableData skillGroupTableData = skillGroup[curPhase][index];
+                    _latestSkill = skillGroup[curPhase][index];
                     return skillGroupTableData;
                 }
                     break;
@@ -105,6 +106,7 @@ public class ActorEnemyData : ActorDataBase
                 {
                     var skillGroupTableDataIndex = skillGroup[curPhase].FindIndex(_ => _ == _latestSkill);
                     var nextIndex = GameUtil.NextRingIndex(skillGroupTableDataIndex, skillGroup[curPhase].Count);
+                    _latestSkill = skillGroup[curPhase][nextIndex];
                     return skillGroup[curPhase][nextIndex];
                 }
                     break;

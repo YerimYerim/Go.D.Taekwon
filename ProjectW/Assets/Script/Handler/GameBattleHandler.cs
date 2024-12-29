@@ -219,7 +219,7 @@ public class GameBattleHandler
                                     player.OnUpdateHp(handler.playerData);
                                     uiApGauge.UpdateMonsterUI(true);
                                 });
-                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.5f);
+                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.1f);
                                 GameUtil.Log(enemyActor.gameObject.name + "사용" + skillEffect.effect_type + "수치" +
                                              skillEffect.value_1);
                             }
@@ -233,7 +233,7 @@ public class GameBattleHandler
                                     player.OnUpdateHp(handler.playerData);
                                     uiApGauge.UpdateMonsterUI(true);
                                 });
-                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.5f);
+                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.1f);
                                 GameUtil.Log(enemyActor.gameObject.name + "사용" + skillEffect.effect_type + "수치" +
                                              skillEffect.value_1);
                             } break;
@@ -246,7 +246,7 @@ public class GameBattleHandler
                                     player.OnUpdateHp(handler.playerData);
                                     uiApGauge.UpdateMonsterUI(true);
                                 });
-                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.5f);
+                                CommandManager.Instance.AddCommand(enemyTurnCommand, 0.1f);
                                 GameUtil.Log(enemyActor.gameObject.name + "사용" + skillEffect.effect_type + "수치" +
                                              skillEffect.value_1);
 
@@ -282,7 +282,20 @@ public class GameBattleHandler
         
         player.OnUpdateHp(handler.playerData);
         player.UpdateTurnSkill();
-
+        
+        if(spellDatas.Count == 0)
+        {
+            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
+            {
+                MinusResourceAP(1);
+                battleMode.ActorSpawner.MinusAP(1);
+                uiApGauge.UpdateMonsterUI(true);
+                player.OnUpdateHp(handler.playerData);
+                player.UpdateTurnSkill();
+                GameUtil.Log("spellDatas.Count == 0");
+            }),0.2f);
+            //CommandManager.Instance.StartGameCommand();
+        }
     }
     public bool IsDraw()
     {

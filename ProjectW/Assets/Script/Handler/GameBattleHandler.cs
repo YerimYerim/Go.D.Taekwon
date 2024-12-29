@@ -38,8 +38,8 @@ public class GameBattleHandler
             uiApGauge.Init();
         }
 
-        relics.Add(new Relic(GameTableManager.Instance._relicTable[0]));
-        relics.Add(new Relic(GameTableManager.Instance._relicTable[1]));
+        // relics.Add(new Relic(GameTableManager.Instance._relicTable[0]));
+        // relics.Add(new Relic(GameTableManager.Instance._relicTable[1]));
 
         for (int i = 0; i < relics.Count; ++i)
         {

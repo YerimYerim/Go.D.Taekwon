@@ -1,7 +1,7 @@
 [
   {
     "source_id": 1001,
-    "product_ap": 3,
+    "product_ap": 4,
     "product_value_init": 2,
     "product_value": 1,
     "spell_id": 10101,
@@ -27,7 +27,7 @@
     "source_id": 1004,
     "product_ap": 4,
     "product_value_init": 2,
-    "product_value": 2,
+    "product_value": 1,
     "spell_id": 10104,
     "source_img": "img_spell_source_temp"
   }

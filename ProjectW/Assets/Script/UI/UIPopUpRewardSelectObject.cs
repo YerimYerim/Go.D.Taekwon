@@ -32,6 +32,8 @@ public class UIPopUpRewardSelectObject : MonoBehaviour
                 this.title.text = GameUtil.GetString(source.spell_name);
                 this.desc.text = GameUtil.GetString(source.spell_desc);
                 spellSource.SetImage(source.spell_img, source.spell_img);
+                spellSource.gameObject.SetActive(true);
+                
             } break;
             case REWARD_TYPE.REWARD_TYPE_SUPPORT_MODULE:
             {
@@ -39,6 +41,7 @@ public class UIPopUpRewardSelectObject : MonoBehaviour
                 this.title.text = GameUtil.GetString(module.support_module_name);
                 this.desc.text = GameUtil.GetString(module.support_module_desc);
                 uiSupportModule.SetImage(module.support_module_img);
+                uiSupportModule.gameObject.SetActive(true);
             } break;
             case REWARD_TYPE.REWARD_TYPE_MONEY:
                 break;

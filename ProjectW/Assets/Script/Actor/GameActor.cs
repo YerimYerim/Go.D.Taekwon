@@ -14,6 +14,7 @@ public class GameActor : MonoBehaviour
     [SerializeField] private Material outlineMaterial;
     [SerializeField] private Material normalMaterrial;
     [SerializeField] private SpriteRenderer renderer;
+    
     public ActorDataBase data = new();
     public ActorRscTableData resourceData = new();
     private void Awake()
@@ -135,6 +136,7 @@ public class GameActor : MonoBehaviour
 
     public void SetActorName(ActorTableData actorTableData)
     {
-        _uiActorName.ShowName(GameUtil.GetString(actorTableData.actor_name));
+        //_uiActorName.ShowName(GameUtil.GetString(actorTableData.actor_name));
+        _uiActorName.ShowName(actorTableData.actor_id.ToString() + "\n" + actorTableData.actor_type.ToString());
     }
 }

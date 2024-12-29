@@ -45,4 +45,10 @@ public class PlayerActorHandler
     {
         return playerData.GetHp();
     }
+
+    public void ResetStage()
+    {
+        player.data.InitAmorStat(0,0,0,0);
+        player.OnUpdateHp(playerData);
+    }
 }

@@ -40,7 +40,7 @@ public class SkillDamageProportionOverheal : SkillEffectBase, ISkillTurnSkill, I
 
     public void DoTurnEndSkill(GameActor target)
     {
-        _myActor.data.OnHeal -= OnHeal;
+        _myActor.data.OnHeal -= OnHeal; 
         _myActor = null;
     }
 

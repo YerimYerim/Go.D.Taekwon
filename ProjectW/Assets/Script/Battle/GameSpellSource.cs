@@ -29,7 +29,7 @@ public class GameSpellSource
         _productionInitAmount = sourceTable?.product_value_init ?? 0;
     }
 
-    private void ResetAp()
+    public void ResetAp()
     {
         _remainAP = _maxAp;
     }

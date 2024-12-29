@@ -8,8 +8,8 @@ public class ActorDataBase
     public int MaxHp { get; private set; }
 
     protected AmorStat amor = new();
-    protected DamageTakeStat damageTakeStat;
-    protected AttackStat attackStat;
+    protected DamageTakeStat damageTakeStat = new(0);
+    protected AttackStat attackStat = new();
     protected HealStat healStat = new();
     protected bool ignoreDamage = false;
     

@@ -72,8 +72,10 @@ public class GameBattleHandler
     public void StartNewGame()
     {
         spellDatas.Clear();
+    
         for(int i = 0; i< _sources.Count; ++i)
         {
+            _sources[i].ResetAp();
             AddSpell(_sources[i].GetProductionSpellId(), _sources[i].GetInitProductionAmount());
         }
         OnUpdateCard?.Invoke();

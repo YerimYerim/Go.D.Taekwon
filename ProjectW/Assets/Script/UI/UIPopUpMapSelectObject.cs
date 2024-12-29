@@ -25,6 +25,7 @@ public class UIPopUpMapSelectObject : MonoBehaviour
     
     public void SetButtonEvent(System.Action action)
     {
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => action());
     }
     

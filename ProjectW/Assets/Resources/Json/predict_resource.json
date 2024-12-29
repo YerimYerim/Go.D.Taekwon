@@ -1,132 +1,134 @@
 [
   {
-    "predict_resource_id": 101,
     "effect_type": 0,
     "predict_resource_icon": "icon_predict_resource_attack"
   },
   {
-    "predict_resource_id": 102,
-    "effect_type": 2,
-    "predict_resource_icon": "icon_predict_resource_attack"
-  },
-  {
-    "predict_resource_id": 201,
     "effect_type": 1,
     "predict_resource_icon": "icon_predict_resource_heal"
   },
   {
-    "predict_resource_id": 202,
+    "effect_type": 2,
+    "predict_resource_icon": "icon_predict_resource_attack"
+  },
+  {
     "effect_type": 3,
     "predict_resource_icon": "icon_predict_resource_heal"
   },
   {
-    "predict_resource_id": 301,
+    "effect_type": 4,
+    "predict_resource_icon": "icon_predict_resource_etc"
+  },
+  {
     "effect_type": 5,
     "predict_resource_icon": "icon_predict_resource_armor"
   },
   {
-    "predict_resource_id": 302,
     "effect_type": 6,
-    "predict_resource_icon": "icon_predict_resource_armor"
+    "predict_resource_icon": "icon_predict_resource_attack"
   },
   {
-    "predict_resource_id": 401,
-    "effect_type": 13,
-    "predict_resource_icon": "icon_predict_resource_cc"
-  },
-  {
-    "predict_resource_id": 402,
-    "effect_type": 27,
-    "predict_resource_icon": "icon_predict_resource_cc"
-  },
-  {
-    "predict_resource_id": 403,
-    "effect_type": 11,
-    "predict_resource_icon": "icon_predict_resource_cc"
-  },
-  {
-    "predict_resource_id": 501,
-    "effect_type": 14,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 502,
-    "effect_type": 15,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 503,
-    "effect_type": 16,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 504,
-    "effect_type": 17,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 505,
-    "effect_type": 19,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 506,
-    "effect_type": 22,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 507,
-    "effect_type": 24,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 508,
-    "effect_type": 9,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 509,
-    "effect_type": 28,
-    "predict_resource_icon": "icon_predict_resource_buff"
-  },
-  {
-    "predict_resource_id": 601,
-    "effect_type": 18,
-    "predict_resource_icon": "icon_predict_resource_debuff"
-  },
-  {
-    "predict_resource_id": 602,
-    "effect_type": 20,
-    "predict_resource_icon": "icon_predict_resource_debuff"
-  },
-  {
-    "predict_resource_id": 603,
-    "effect_type": 23,
-    "predict_resource_icon": "icon_predict_resource_debuff"
-  },
-  {
-    "predict_resource_id": 604,
-    "effect_type": 25,
-    "predict_resource_icon": "icon_predict_resource_debuff"
-  },
-  {
-    "predict_resource_id": 605,
-    "effect_type": 26,
-    "predict_resource_icon": "icon_predict_resource_debuff"
-  },
-  {
-    "predict_resource_id": 606,
-    "effect_type": 10,
-    "predict_resource_icon": "icon_predict_resource_debuff"
-  },
-  {
-    "predict_resource_id": 701,
     "effect_type": 7,
     "predict_resource_icon": "icon_predict_resource_etc"
   },
   {
-    "predict_resource_id": 701,
     "effect_type": 8,
     "predict_resource_icon": "icon_predict_resource_etc"
+  },
+  {
+    "effect_type": 9,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 10,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 11,
+    "predict_resource_icon": "icon_predict_resource_etc"
+  },
+  {
+    "effect_type": 12,
+    "predict_resource_icon": "icon_predict_resource_etc"
+  },
+  {
+    "effect_type": 13,
+    "predict_resource_icon": "icon_predict_resource_cc"
+  },
+  {
+    "effect_type": 14,
+    "predict_resource_icon": "icon_predict_resource_debuff"
+  },
+  {
+    "effect_type": 15,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 16,
+    "predict_resource_icon": "icon_predict_resource_debuff"
+  },
+  {
+    "effect_type": 17,
+    "predict_resource_icon": "icon_predict_resource_etc"
+  },
+  {
+    "effect_type": 18,
+    "predict_resource_icon": "icon_predict_resource_cc"
+  },
+  {
+    "effect_type": 19,
+    "predict_resource_icon": "icon_predict_resource_cc"
+  },
+  {
+    "effect_type": 20,
+    "predict_resource_icon": "icon_predict_resource_armor"
+  },
+  {
+    "effect_type": 21,
+    "predict_resource_icon": "icon_predict_resource_debuff"
+  },
+  {
+    "effect_type": 22,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 23,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 24,
+    "predict_resource_icon": "icon_predict_resource_debuff"
+  },
+  {
+    "effect_type": 25,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 26,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 27,
+    "predict_resource_icon": "icon_predict_resource_heal"
+  },
+  {
+    "effect_type": 28,
+    "predict_resource_icon": "icon_predict_resource_heal"
+  },
+  {
+    "effect_type": 29,
+    "predict_resource_icon": "icon_predict_resource_heal"
+  },
+  {
+    "effect_type": 30,
+    "predict_resource_icon": "icon_predict_resource_buff"
+  },
+  {
+    "effect_type": 31,
+    "predict_resource_icon": "icon_predict_resource_debuff"
+  },
+  {
+    "effect_type": 32,
+    "predict_resource_icon": "icon_predict_resource_buff"
   }
 ]

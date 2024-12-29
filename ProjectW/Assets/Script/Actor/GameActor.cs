@@ -56,6 +56,7 @@ public class GameActor : MonoBehaviour
         uiActorBottom.SetPredictPosition(this.uiPredictSocket);
         uiActorDMGFloater.SetPosition(this.uiDMGFloaterSocket);
         _uiActorName.SetPosition(this.uiNameSocket);
+        uiActorBottom.ShowDefFloater(0);
     }
 
     public void OnUpdateHp(ActorDataBase lastData)
@@ -122,9 +123,12 @@ public class GameActor : MonoBehaviour
     private void OnDestroy()
     {
         if (uiActorBottom != null)
+        {
+            uiActorBottom.SetHPUI(0, 0);
             uiActorBottom.Hide();
+        }
         if (uiActorDMGFloater != null)
-            uiActorBottom.Hide();
+            uiActorDMGFloater.Hide();
         if (_uiActorName != null)
             _uiActorName.Hide();
     }

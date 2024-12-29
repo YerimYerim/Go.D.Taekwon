@@ -115,8 +115,7 @@ public class UISpell : UIDragable
 
             if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var ui))
             {
-                ui.CreateInfo(resultSpell.spell_name, resultSpell.spell_desc,
-                    this.transform.GetComponent<RectTransform>());
+                ui.CreateInfo(resultSpell.spell_name, resultSpell.spell_desc, this.transform.GetComponent<RectTransform>());
                 ui.Show();
             }
         }   

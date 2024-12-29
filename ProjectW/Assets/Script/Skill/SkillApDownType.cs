@@ -36,7 +36,7 @@ public class SkillApDownType : SkillEffectBase, ISkillTargetApDown
                 
                     foreach (var source in battleMode.BattleHandler._sources)
                     {
-                        source.ReduceAP((table?.value_1 ?? 0));
+                        source.ReduceAp((table?.value_1 ?? 0));
                     }
                 } break;
             }

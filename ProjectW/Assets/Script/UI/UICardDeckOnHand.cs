@@ -56,6 +56,23 @@ public class UICardDeckOnHand : UIBase
             }
         }
     }
+    public void SetUI(int cardKey)
+    {
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        
+        for (int i = 0; i < uiCards.Count; ++i)
+        {
+            if (i < gameBattleMode.BattleHandler.spellDatas.Count)
+            {
+                uiCards[i].gameObject.SetActive(true);
+                uiCards[i].SetUI(gameBattleMode.BattleHandler.spellDatas[i]);
+            }
+            else
+            {
+                uiCards[i].gameObject.SetActive(false);
+            }
+        }
+    }
 
     public void MergeSpell(int spellID01, int spellID2 ,int resultSpellID)
     {

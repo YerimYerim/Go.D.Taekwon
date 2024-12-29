@@ -46,6 +46,10 @@ public static class SkillEffectFactory
                 return CreateSkillEffect<SkillFixedDamageDownType>(data);
             case EFFECT_TYPE.EFFECT_TYPE_GIVE_TRUE_DAMAGE_UP:
                 return CreateSkillEffect<SkillTrueDamageUpType>(data);
+            case EFFECT_TYPE.EFFECT_TYPE_BUFF_DISPEL:
+                return CreateSkillEffect<SkillBuffDispelType>(data);
+            case EFFECT_TYPE.EFFECT_TYPE_DEBUFF_DISPEL:
+                return CreateSkillEffect<SkillDebuffDispelType>(data);
             default:
                 return null;
         }

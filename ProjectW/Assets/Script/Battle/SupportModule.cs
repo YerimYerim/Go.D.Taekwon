@@ -110,30 +110,32 @@ public class SupportModule
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         if (battleMode == null)
             return;
-        var source = battleMode.BattleHandler._sources.Find(_ => _.GetSourceId() == resourceID);
-        // apply effect
-        switch (effectType)
+        var sources = battleMode.BattleHandler._sources.FindAll(_ => _.GetSourceId() == resourceID);
+        foreach (var source in sources)
         {
-            case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_AP:
-                source.SetTableMaxAp();
-                source.SetMaxAp(source.GetMaxAp() - value);
-                break;
-            case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_INCREASE_PRODUCT_AP:
-                source.SetTableMaxAp();
-                source.SetMaxAp(source.GetMaxAp() + value);
-                break;
-            case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_VALUE:
-                source.SetTableProductionAmount();
-                source.SetProductionAmount(source.GetProductionAmount() - value);
-                break;
-            case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_INCREASE_PRODUCT_VALUE:
-                source.SetTableProductionAmount();
-                source.SetProductionAmount(source.GetProductionAmount() - value);
-                break;
-            case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_CHANGE_PRODUCT_SPELL:
-                source.SetTableProductionSpellId();
-                source.SetProductionSpellId(value);
-                break;
+            switch (effectType)
+            {
+                case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_AP:
+                    source.SetTableMaxAp();
+                    source.SetMaxAp(source.GetMaxAp() - value);
+                    break;
+                case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_INCREASE_PRODUCT_AP:
+                    source.SetTableMaxAp();
+                    source.SetMaxAp(source.GetMaxAp() + value);
+                    break;
+                case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_REDUCE_PRODUCT_VALUE:
+                    source.SetTableProductionAmount();
+                    source.SetProductionAmount(source.GetProductionAmount() - value);
+                    break;
+                case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_INCREASE_PRODUCT_VALUE:
+                    source.SetTableProductionAmount();
+                    source.SetProductionAmount(source.GetProductionAmount() - value);
+                    break;
+                case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_CHANGE_PRODUCT_SPELL:
+                    source.SetTableProductionSpellId();
+                    source.SetProductionSpellId(value);
+                    break;
+            }
         }
     }
 }

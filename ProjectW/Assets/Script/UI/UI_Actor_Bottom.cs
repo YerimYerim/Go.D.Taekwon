@@ -12,7 +12,6 @@ public class UI_Actor_Bottom : UIBase
     [SerializeField] private TextMeshProUGUI defText;
     [SerializeField] private RectTransform defRectTransform;
     
-    
     [SerializeField] private Image defImage;
     [SerializeField] private TextMeshProUGUI defFloater;
     [SerializeField] private UIACGrid _uiacGrid;

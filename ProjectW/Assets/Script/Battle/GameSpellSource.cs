@@ -34,16 +34,19 @@ public class GameSpellSource
         _remainAP = _maxAp;
     }
 
-    private void ReduceAp()
+    public void ReduceAp(int amount)
     {
-        if (_remainAP > 0)
+        for(int i = 0; i < amount; ++i)
         {
-            --_remainAP;
-            if(_remainAP <= 0)
+            if (_remainAP > 0)
             {
-                //OnUpdateGauge?.Invoke();
-                ResetAp();
-                OnMakeSpellEvent?.Invoke(GetProductionSpellId(), _productionAmount);
+                --_remainAP;
+                if (_remainAP <= 0)
+                {
+                    //OnUpdateGauge?.Invoke();
+                    ResetAp();
+                    OnMakeSpellEvent?.Invoke(GetProductionSpellId(), _productionAmount);
+                }
             }
         }
     }
@@ -115,15 +118,6 @@ public class GameSpellSource
     public int GetInitProductionAmount()
     {
         return _productionInitAmount;
-    }
-    
-    /// <summary>
-    /// _remainAP 감소
-    /// </summary>
-    public void ReduceAP(int amount)
-    {
-        for(int i = 0; i< amount; ++i)
-            ReduceAp();
     }
     /// <summary>
     /// _remainAP 증가

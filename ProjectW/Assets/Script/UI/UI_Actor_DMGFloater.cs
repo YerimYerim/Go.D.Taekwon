@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,11 @@ public class UI_Actor_DMGFloater : UIBase
     [SerializeField] private RectTransform moveRectTransform;
     private Vector3 startPostion;
     private Vector3 targetPosition;
+
+    private void Awake()
+    {
+        ResetValue();
+    }
 
     public void ShowDamage(int damage)
     {
@@ -37,13 +43,13 @@ public class UI_Actor_DMGFloater : UIBase
 
     private void MoveStart()
     {
-        LeanTween.alphaCanvas(canvasGroup, 1, 0.1f);
-        LeanTween.move(moveRectTransform.transform.gameObject, targetPosition, 0.5f).setOnComplete(MoveEnd);
-    }
-
-    private void MoveEnd()
-    {
-        LeanTween.alphaCanvas(canvasGroup, 0, 0.2f).setOnComplete(ResetValue);
+        LeanTween.alphaCanvas(canvasGroup, 1, 0.1f).setOnComplete( ()=>
+        {
+            LeanTween.move(moveRectTransform.transform.gameObject, targetPosition, 0.5f).setOnComplete(() =>
+            {
+                LeanTween.alphaCanvas(canvasGroup, 0, 0.2f).setOnComplete(ResetValue);
+            });
+        });
     }
 
     private void SetStringFloater(int damage)

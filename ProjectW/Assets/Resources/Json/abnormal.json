@@ -25,7 +25,7 @@
   },
   {
     "abnormal_id": 4,
-    "effect_type": 14,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_reflect_damage",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_reflect_damage",
@@ -33,7 +33,7 @@
   },
   {
     "abnormal_id": 5,
-    "effect_type": 15,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_reflect_damage_per",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_reflect_damage_per",
@@ -41,7 +41,7 @@
   },
   {
     "abnormal_id": 6,
-    "effect_type": 16,
+    "effect_type": 14,
     "abnormal_icon": "icon_abnormal_damage_invincible",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_damage_invincible",
@@ -49,7 +49,7 @@
   },
   {
     "abnormal_id": 7,
-    "effect_type": 17,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_avoid_up",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_avoid_up",
@@ -57,7 +57,7 @@
   },
   {
     "abnormal_id": 8,
-    "effect_type": 18,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_avoid_down",
     "abnormal_bg": "icon_abnormal_bg_debuff",
     "abnormal_name": "abnormal_name_avoid_down",
@@ -65,7 +65,7 @@
   },
   {
     "abnormal_id": 9,
-    "effect_type": 19,
+    "effect_type": 15,
     "abnormal_icon": "icon_abnormal_all_up_per",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_all_up_per",
@@ -73,7 +73,7 @@
   },
   {
     "abnormal_id": 10,
-    "effect_type": 20,
+    "effect_type": 16,
     "abnormal_icon": "icon_abnormal_all_down_per",
     "abnormal_bg": "icon_abnormal_bg_debuff",
     "abnormal_name": "abnormal_name_all_down_per",
@@ -81,7 +81,7 @@
   },
   {
     "abnormal_id": 11,
-    "effect_type": 21,
+    "effect_type": 17,
     "abnormal_icon": "icon_abnormal_dot_draw",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_dot_draw",
@@ -89,7 +89,7 @@
   },
   {
     "abnormal_id": 12,
-    "effect_type": 22,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_debuff_accuracy_up",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_debuff_accuracy_up",
@@ -97,7 +97,7 @@
   },
   {
     "abnormal_id": 13,
-    "effect_type": 23,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_debuff_accuracy_down",
     "abnormal_bg": "icon_abnormal_bg_debuff",
     "abnormal_name": "abnormal_name_debuff_accuracy_down",
@@ -105,7 +105,7 @@
   },
   {
     "abnormal_id": 14,
-    "effect_type": 24,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_debuff_resistance_up",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_debuff_resistance_up",
@@ -113,7 +113,7 @@
   },
   {
     "abnormal_id": 15,
-    "effect_type": 25,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_debuff_resistance_down",
     "abnormal_bg": "icon_abnormal_bg_debuff",
     "abnormal_name": "abnormal_name_debuff_resistance_down",
@@ -121,7 +121,7 @@
   },
   {
     "abnormal_id": 16,
-    "effect_type": 26,
+    "effect_type": null,
     "abnormal_icon": "icon_abnormal_damage_spread",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_damage_spread",
@@ -129,7 +129,7 @@
   },
   {
     "abnormal_id": 17,
-    "effect_type": 27,
+    "effect_type": 18,
     "abnormal_icon": "icon_abnormal_provoke",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_provoke",
@@ -137,7 +137,7 @@
   },
   {
     "abnormal_id": 18,
-    "effect_type": 28,
+    "effect_type": 19,
     "abnormal_icon": "icon_abnormal_counter",
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_counter",

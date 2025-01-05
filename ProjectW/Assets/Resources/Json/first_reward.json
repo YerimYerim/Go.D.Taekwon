@@ -11,6 +11,11 @@
   },
   {
     "first_reward_id": 1000001,
+    "source_id": 1003,
+    "amount": 1
+  },
+  {
+    "first_reward_id": 1000001,
     "source_id": 1004,
     "amount": 1
   }

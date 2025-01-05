@@ -312,6 +312,30 @@
     "value_kor": "반격"
   },
   {
+    "string_key": "abnormal_name_dot_armor",
+    "value_kor": "방어도_지속"
+  },
+  {
+    "string_key": "abnormal_name_give_damage_up_buff",
+    "value_kor": "주는 피해량 증가"
+  },
+  {
+    "string_key": "abnormal_name_give_damage_down_buff",
+    "value_kor": "주는 피해량 감소"
+  },
+  {
+    "string_key": "abnormal_name_take_damage_up_buff",
+    "value_kor": "받는 피해량 증가"
+  },
+  {
+    "string_key": "abnormal_name_take_damage_down_buff",
+    "value_kor": "받는 피해량 감소"
+  },
+  {
+    "string_key": "abnormal_name_give_damage_up_fixed",
+    "value_kor": "주는 피해량 고정 증가"
+  },
+  {
     "string_key": "abnormal_desc_dot_skill_damage",
     "value_kor": "지속적으로 피해를 입습니다."
   },
@@ -382,6 +406,30 @@
   {
     "string_key": "abnormal_desc_counter",
     "value_kor": "공격을 받으면 반격을 합니다."
+  },
+  {
+    "string_key": "abnormal_desc_dot_armor",
+    "value_kor": "지속적으로 방어도를 획득합니다."
+  },
+  {
+    "string_key": "abnormal_desc_give_damage_up_buff",
+    "value_kor": "적에게 주는 피해량이 일정 비율 증가합니다."
+  },
+  {
+    "string_key": "abnormal_desc_give_damage_down_buff",
+    "value_kor": "적에게 주는 피해량이 일정 비율 감소합니다."
+  },
+  {
+    "string_key": "abnormal_desc_take_damage_up_buff",
+    "value_kor": "적에게 받는 피해량이 일정 비율 감소합니다."
+  },
+  {
+    "string_key": "abnormal_desc_take_damage_down_buff",
+    "value_kor": "적에게 받는 피해량이 일정 비율 증가합니다."
+  },
+  {
+    "string_key": "abnormal_desc_give_damage_up_fixed",
+    "value_kor": "적에게 주는 피해량이 고정적으로 증가합니다."
   },
   {
     "string_key": "n_pc_temp",

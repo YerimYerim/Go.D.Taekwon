@@ -142,5 +142,53 @@
     "abnormal_bg": "icon_abnormal_bg_buff",
     "abnormal_name": "abnormal_name_counter",
     "abnormal_desc": "abnormal_desc_counter"
+  },
+  {
+    "abnormal_id": 19,
+    "effect_type": null,
+    "abnormal_icon": "icon_abnormal_dot_armor",
+    "abnormal_bg": "icon_abnormal_bg_buff",
+    "abnormal_name": "abnormal_name_dot_armor",
+    "abnormal_desc": "abnormal_desc_dot_armor"
+  },
+  {
+    "abnormal_id": 20,
+    "effect_type": 23,
+    "abnormal_icon": "icon_abnormal_give_damage_up_buff",
+    "abnormal_bg": "icon_abnormal_bg_buff",
+    "abnormal_name": "abnormal_name_give_damage_up_buff",
+    "abnormal_desc": "abnormal_desc_give_damage_up_buff"
+  },
+  {
+    "abnormal_id": 21,
+    "effect_type": 24,
+    "abnormal_icon": "icon_abnormal_give_damage_down_buff",
+    "abnormal_bg": "icon_abnormal_bg_debuff",
+    "abnormal_name": "abnormal_name_give_damage_down_buff",
+    "abnormal_desc": "abnormal_desc_give_damage_down_buff"
+  },
+  {
+    "abnormal_id": 22,
+    "effect_type": 21,
+    "abnormal_icon": "icon_abnormal_take_damage_up_buff",
+    "abnormal_bg": "icon_abnormal_bg_debuff",
+    "abnormal_name": "abnormal_name_take_damage_up_buff",
+    "abnormal_desc": "abnormal_desc_take_damage_up_buff"
+  },
+  {
+    "abnormal_id": 23,
+    "effect_type": 22,
+    "abnormal_icon": "icon_abnormal_take_damage_down_buff",
+    "abnormal_bg": "icon_abnormal_bg_buff",
+    "abnormal_name": "abnormal_name_take_damage_down_buff",
+    "abnormal_desc": "abnormal_desc_take_damage_down_buff"
+  },
+  {
+    "abnormal_id": 24,
+    "effect_type": 30,
+    "abnormal_icon": "icon_abnormal_give_damage_up_fixed",
+    "abnormal_bg": "icon_abnormal_bg_buff",
+    "abnormal_name": "abnormal_name_give_damage_up_fixed",
+    "abnormal_desc": "abnormal_desc_give_damage_up_fixed"
   }
 ]

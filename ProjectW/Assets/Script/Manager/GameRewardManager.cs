@@ -63,8 +63,8 @@ public class GameRewardManager : Singleton<GameRewardManager>
     {
         if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_RewardSelect>(false, UILayer.LEVEL_4, out var ui ))
         {
-            ui.SetData(data);
             ui.Show();
+            ui.SetData(data);
         }
     }
     

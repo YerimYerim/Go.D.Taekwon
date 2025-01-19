@@ -10,6 +10,19 @@ public class UI_PopUp_RewardSelect : UIBase
 
     public void SetData(List<RewardTableData> data)
     {
+        if(data == null || data.Count <= 0)
+        {
+            var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+            if (gameBattleMode == null)
+            {
+                return;
+            }
+            gameBattleMode?.ActorHandler?.RemoveAllMonsterActors();
+            gameBattleMode?.MapHandler?.ShowMapSelect();
+            Hide();
+            return;
+        }
+        
         for(int i = 0; i< _rewardSelectObjects.Length; ++i)
         {
             if (i < data.Count)

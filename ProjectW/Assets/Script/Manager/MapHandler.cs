@@ -37,9 +37,7 @@ public class MapHandler
                 // 현 스테이지 index 
                 var curStageIndex = curMap.curStageList.FindIndex(_ => _ == curMap.stageId);
                 // 다음 스테이지 고르기
-                var stageTable =
-                    GameTableManager.Instance._contentStageTableDatas.Find(_ =>
-                        _.stage_id == curMap.curStageList[curStageIndex + 1]);
+                var stageTable = GameTableManager.Instance._contentStageTableDatas.Find(_ => _.stage_id == curMap.curStageList[curStageIndex + 1]);
 
                 var firstGroupSelect = stageTable?.advent_cnt_1 ?? 0;
                 var firstGroupMap = stageTable?.map_group_1;
@@ -69,14 +67,12 @@ public class MapHandler
                         availableMaps.RemoveAt(randomIndex);
                     }
                 }
-
+                
                 curMap.stageId = stageTable?.stage_id ?? 0;
 
                 if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_MapSelect>(true, UILayer.LEVEL_4, out var ui))
                 {
-                    var mapData =
-                        GameTableManager.Instance._contentMapTableDatas.FindAll(_ =>
-                            selectableMap.Contains(_.map_id ?? 0));
+                    var mapData = GameTableManager.Instance._contentMapTableDatas.FindAll(_ => selectableMap.Contains(_.map_id ?? 0));
                     ui.SetData(mapData);
                     ui.Show();
                 }
@@ -96,9 +92,12 @@ public class MapHandler
         rewardTableDatas.Clear();
 
         var curMapData = GameTableManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
+
+        curMap.mapId = mapId;
+        
         if(curMapData.map_type != MAP_TYPE.MAP_TYPE_SPECIAL)
         {
-            var curMapActor = curMapData.actor_id.ToList();
+            curMap.enemyActor =  curMapData.actor_id.ToList();;
             int curMapRewardTotalWeight = 0;
             for (int i = 0; i < curMapData.reward_id.Length; i++)
             {
@@ -114,7 +113,6 @@ public class MapHandler
                 rewardTableDatas.Add(curMapReward);
             }
 
-            curMap.enemyActor = curMapActor;
         }
         else
         {

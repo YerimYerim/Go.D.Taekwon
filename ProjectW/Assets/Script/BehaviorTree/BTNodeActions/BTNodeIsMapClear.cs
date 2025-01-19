@@ -19,24 +19,16 @@ public class BTNodeIsMapClear : BTNodeAction
             {
                 int[] selectReward = mapTable.select_reward_id;
                 
+                List<RewardTableData> rewardTableDatas = new List<RewardTableData>();
                 if(selectReward.Length > 0)
                 {
-                    List<RewardTableData> rewardTableDatas = new List<RewardTableData>();
-
                     foreach (var rewardId in selectReward)
                     {
-                        var rewardTable = GameTableManager.Instance._rewardTable.Find(_ => _.reward_id == rewardId);
-                        if (rewardTable != null)
-                        {
-                            rewardTableDatas.Add(rewardTable);
-                        }
+                        var rewardTable = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == rewardId);
+                        rewardTableDatas.AddRange(rewardTable);
                     }
-                    GameRewardManager.Instance.ShowRewardSelect(rewardTableDatas);
                 }
-                else
-                {
-                    
-                }
+                GameRewardManager.Instance.ShowRewardSelect(rewardTableDatas);
             }
             return State.Success;
         }

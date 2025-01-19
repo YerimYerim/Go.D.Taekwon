@@ -29,6 +29,7 @@ public class SkillDamageDownType  :SkillEffectBase, ISkilDamageUp, ISkillTurnSki
 
     public void DoTurnSkill(GameActor enemy)
     {
+        DoTurnSkill(enemy);
         --remainTurn;
     }
 

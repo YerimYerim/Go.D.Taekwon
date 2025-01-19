@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public abstract class UIAPGaugeIconBase : MonoBehaviour
 {
     [SerializeField] protected Image _image;
+    protected bool IsShow = true;
     private readonly List<LTDescr> _tweens = new();
     private readonly List<LTDescr> _tweensToRemove = new();
     
-
     public abstract int GetRemainSpellAP();
     public abstract int GetResetAp();
 
@@ -20,13 +20,13 @@ public abstract class UIAPGaugeIconBase : MonoBehaviour
     }
     public void SetPosition(Vector3 position)
     {
-        transform.gameObject.SetActive(GetRemainSpellAP() <= 5);
+        transform.gameObject.SetActive(GetRemainSpellAP() <= 5 && IsShow);
         transform.SetPositionAndRotation(position, Quaternion.identity);
     }
 
     public void AddPositionSmooth(Vector3 position)
     {
-        transform.gameObject.SetActive(GetRemainSpellAP() <= 5);
+        transform.gameObject.SetActive(GetRemainSpellAP() <= 5 && IsShow);
         _tweens.Add(LeanTween.move(gameObject, position, 0.1f).pause());
     }
 

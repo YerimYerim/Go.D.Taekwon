@@ -8,7 +8,7 @@ public class BTNodeEnemyAttack : BTNodeAction
     {
         Debug.Log("BTNodeEnemyAttack");
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        if (battleMode!= null && battleMode.ActorSpawner.IsEnemyTurn())
+        if (battleMode!= null && battleMode.ActorHandler.IsEnemyTurn())
         {
             GameTurnManager.Instance.AddTurnStack(GameTurnManager.TurnState.EnemyTurn);
 

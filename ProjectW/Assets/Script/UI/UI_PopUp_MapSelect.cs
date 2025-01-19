@@ -33,12 +33,13 @@ public class UI_PopUp_MapSelect : UIBase
         }
 
         gameBattleMode?.MapHandler?.OnClickMapSelect(data);
-        gameBattleMode?.ActorSpawner?.SpawnEnemyActors(gameBattleMode?.MapHandler?.GetCurMap());
+        gameBattleMode?.ActorHandler?.SpawnEnemyActors(gameBattleMode?.MapHandler?.GetCurMap());
         gameBattleMode?.PlayerActorHandler.ResetStage();
         gameBattleMode?.BattleHandler?.StartNewGame();
         
         gameBattleMode?.BattleHandler?.uiApGauge.Init();
         gameBattleMode?.BattleHandler?.UICardDeck.SetUI();;
+        
         Hide();
     }
     

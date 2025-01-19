@@ -12,15 +12,18 @@ public class UISpell : UIDragable
     public UICardDeckOnHand _parents;
     public GameActor selectedActor;
     public GameDeckManager.SpellData _spellTableData { get; private set; }
-
-    public void SetUI(GameDeckManager.SpellData spellTableData)
+    private int _index = 0;
+    public void SetUI(GameDeckManager.SpellData spellTableData, int index)
     {
         _spellTableData = spellTableData;
         img.sprite = GameResourceManager.Instance.GetImage(spellTableData.tableData.spell_img);
         button.SetHoverEvent(ShowToolTip, HideToolTip);
         InitDragSuccessCondition(IsActionFail, IsActionSuccess, AdjustIsMerge, OnEventDrag);
     }
-
+    public void SetIndex(int index)
+    {
+        _index = index;
+    }
     private bool AdjustIsMerge(PointerEventData eventData)
     {
         var isSpellUI = FindUISpell(eventData);
@@ -48,7 +51,7 @@ public class UISpell : UIDragable
 
     private void IsActionSuccess(PointerEventData eventData)
     {
-        var otherSpellUI = FindUISpell(eventData);
+        UISpell otherSpellUI = FindUISpell(eventData);
         if (otherSpellUI != null)
         {
             var spellCombineData = GameTableManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));
@@ -59,15 +62,12 @@ public class UISpell : UIDragable
             SpellTableData resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
             if (resultSpell == null)
                 return;
-
-            _parents.MergeSpell(otherSpellUI._spellTableData?.tableData?.spell_id ?? 0, _spellTableData?.tableData?.spell_id ?? 0, resultSpell.spell_id ?? 0);
-            
             var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
             if (gameBattleMode == null)
             {
                 return;
             }
-
+            _parents.MergeSpell(_index, otherSpellUI._index,  resultSpell.spell_id ?? 0);
         }
         else
         {

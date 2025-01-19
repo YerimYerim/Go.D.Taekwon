@@ -20,7 +20,7 @@ public static class SkillEffectFactory
                 return CreateSkillEffect<SkillApUp>(data);
             case EFFECT_TYPE.EFFECT_TYPE_AP_STOP:
                 return CreateSkillEffect<SkillApDownType>(data);
-            case EFFECT_TYPE.EFFECT_TYPE_DOT_AMOR:
+            case EFFECT_TYPE.EFFECT_TYPE_DOT_ARMOR:
                 return CreateSkillEffect<SkillDotAmorType>(data);
             case EFFECT_TYPE.EFFECT_TYPE_TAKE_DAMAGE_UP_BUFF:
                 return CreateSkillEffect<SkillTakeDamageUpType>(data);

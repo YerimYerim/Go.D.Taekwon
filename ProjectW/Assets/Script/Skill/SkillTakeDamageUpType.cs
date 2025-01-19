@@ -31,6 +31,7 @@ public class SkillTakeDamageUpType :SkillEffectBase, ISkillTakeDamageUp, ISkillT
 
     public void DoTurnSkill(GameActor enemy)
     {
+        DoTakeDamageUp(enemy);
         --remainTurn;
     }
 

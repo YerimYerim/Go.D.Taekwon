@@ -51,17 +51,17 @@ public class SkillDamageProportionOverheal : SkillEffectBase, ISkillTurnSkill, I
         {
             case TARGET_TYPE.TARGET_TYPE_ENEMY:
             {
-                int enemyCount = gameMode.ActorSpawner.GetEnemyCount();
-                var enemyActor = gameMode.ActorSpawner.GetEnemy(Random.Range(0, enemyCount));
+                int enemyCount = gameMode.ActorHandler.GetEnemyCount();
+                var enemyActor = gameMode.ActorHandler.GetEnemy(Random.Range(0, enemyCount));
                 enemyActor.data.TakeDamage(Mathf.CeilToInt(GetValue() * 0.01f * overHeal));
                 
             } break;
             case TARGET_TYPE.TARGET_TYPE_ENEMY_ALL:
             {
-                int enemyCount = gameMode.ActorSpawner.GetEnemyCount();
+                int enemyCount = gameMode.ActorHandler.GetEnemyCount();
                 for (int i = 0; i < enemyCount; i++)
                 {
-                    var enemyActor = gameMode.ActorSpawner.GetEnemy(i);
+                    var enemyActor = gameMode.ActorHandler.GetEnemy(i);
                     enemyActor.data.TakeDamage(Mathf.CeilToInt(GetValue() * 0.01f * overHeal));
                 }
             } break;

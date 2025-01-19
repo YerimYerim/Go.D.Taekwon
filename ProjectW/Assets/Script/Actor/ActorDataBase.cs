@@ -28,6 +28,7 @@ public class ActorDataBase
     {
         Hp = hp;
         MaxHp = hp;
+        
         InitAmorStat(0, 0, 0f, 0f);
         InitAttackStat(0);
         InitTakeDamageStat(0);
@@ -48,8 +49,15 @@ public class ActorDataBase
         } 
 
         var leftDamage = Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage) * (1f + damageTakeStat.takeDamage * 0.01f)));
-        amor.amor = Math.Max(0, Mathf.CeilToInt(amor.amor - (amor.GetFinalDamage(damage)  * (1f + damageTakeStat.takeDamage * 0.01f))));
-        Hp = Mathf.CeilToInt(Mathf.Max(0f, Hp + (leftDamage)));
+        
+        if(leftDamage < 0)
+        {
+            Hp = Mathf.CeilToInt(Mathf.Max(0f, Hp + (leftDamage)));
+        }
+        else
+        {
+            amor.amor = Math.Max(0, leftDamage);
+        }
         Hp = Mathf.Max(0, Hp - trueDamage);
         
         OnEventDamaged?.Invoke(leftDamage);

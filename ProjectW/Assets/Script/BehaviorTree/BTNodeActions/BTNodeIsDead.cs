@@ -12,6 +12,11 @@ public class BTNodeIsDead : BTNodeAction
 
         if (handler?.GetPlayerHp() <= 0)
         {
+
+            CommandManager.Instance.AddCommand(new EnemyTurnCommand(() =>
+            {
+                children[0].Evaluate();
+            }), 0.1f);
             return State.Success;
         }
         else

@@ -55,7 +55,14 @@ public class GameBattleHandler
         {
             relics[i].UnregisterEvent();
         }
-
+        
+        relics.Clear();
+        _sources.Clear();
+        spellDatas.Clear();
+        
+        UICardDeck?.Hide();
+        uiApGauge?.Hide();
+        
     }
     public void SetFirstSource(int actorId)
     {        
@@ -90,14 +97,17 @@ public class GameBattleHandler
         AddSpell(sourceTableData?.spell_id ?? 0, sourceTableData?.product_value_init ?? 0);
     }
     
-    public void AddSpell(int cardKey, int amount)
+    public void AddSpell(int cardKey, int amount, int selectIndex = -1)
     {
         var spellTableData = GameTableManager.Instance._spellData.Find(_ => _.spell_id == cardKey);
         var spellData = new GameDeckManager.SpellData(spellTableData);
         GameUtil.Log(GameUtil.GetString(spellData.tableData.spell_name) + amount + "생산");
         for (int i = 0; i < amount; ++i)
         {
-            spellDatas.Add(spellData);
+            if(selectIndex == -1)
+                spellDatas.Add(spellData);
+            else
+                spellDatas.Insert(selectIndex,spellData);
         }
     }
 
@@ -110,7 +120,7 @@ public class GameBattleHandler
         if (player == null)
             return;
         
-        if (battleMode.ActorSpawner.IsEnemyTurn() == false)
+        if (battleMode.ActorHandler.IsEnemyTurn() == false)
         {
             var spellEffect = spellData.tableData.spell_effect;
             bool isTargetCorrect = true;
@@ -153,7 +163,7 @@ public class GameBattleHandler
                             {
                                 if (targetActor != player)
                                 {
-                                    skillEffectBase.DoSkill(battleMode.ActorSpawner.GetEnemyData(), player);
+                                    skillEffectBase.DoSkill(battleMode.ActorHandler.GetEnemyData(), player);
                                     GameUtil.Log("모든 적에게 사용" + (effect?.effect_type ?? null) + "수치" +
                                                  (effect?.value_1 ?? 0));
                                 }
@@ -174,7 +184,7 @@ public class GameBattleHandler
                 {
                     RemoveCard(spellData);
                     MinusResourceAP(1);
-                    battleMode.ActorSpawner.MinusAP(1);
+                    battleMode.ActorHandler.MinusAP(1);
                     uiApGauge.UpdateMonsterUI(true);
                 }
             }),0.11f);
@@ -204,7 +214,7 @@ public class GameBattleHandler
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         var handler = battleMode.PlayerActorHandler;
-        var ActorHandler = battleMode.ActorSpawner;
+        var ActorHandler = battleMode.ActorHandler;
         
         var player = handler?.player;
         if (player == null)
@@ -213,7 +223,7 @@ public class GameBattleHandler
         if(ActorHandler == null)
             return;
 
-        if (battleMode.ActorSpawner.IsEnemyTurn() == true)
+        if (battleMode.ActorHandler.IsEnemyTurn() == true)
         {
             for (int i = 0; i <  ActorHandler.GetEnemyCount(); ++i)
             {
@@ -262,7 +272,7 @@ public class GameBattleHandler
                                 {
                                     skillEffectBase.DoSkill(new List<GameActor> {player}, enemyActor);
                                     enemyData.ResetAP();
-                                    player.OnUpdateHp(handler.playerData);
+                                    player.OnUpdateHp(player.data);
                                     uiApGauge.UpdateMonsterUI(true);
                                 });
                                 CommandManager.Instance.AddCommand(enemyTurnCommand, 0.1f);
@@ -296,8 +306,8 @@ public class GameBattleHandler
         {
             return;
         }
-        battleMode.ActorSpawner.UpdateEnemyHp();
-        battleMode.ActorSpawner.UpdateTurnSkill();
+        battleMode.ActorHandler.UpdateEnemyHp();
+        battleMode.ActorHandler.UpdateTurnSkill();
         
         player.OnUpdateHp(handler.playerData);
         player.UpdateTurnSkill();
@@ -307,7 +317,7 @@ public class GameBattleHandler
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
                 MinusResourceAP(1);
-                battleMode.ActorSpawner.MinusAP(1);
+                battleMode.ActorHandler.MinusAP(1);
                 uiApGauge.UpdateMonsterUI(true);
                 player.OnUpdateHp(handler.playerData);
                 player.UpdateTurnSkill();

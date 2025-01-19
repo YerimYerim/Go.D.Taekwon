@@ -1,6 +1,6 @@
 public class GameBattleMode : GameModeBase
 {
-    public ActorSpawner ActorSpawner { get; private set; } = new();
+    public ActorHandler ActorHandler { get; private set; } = new();
     public PlayerActorHandler PlayerActorHandler { get; private set; } = new();
     public GameBattleHandler BattleHandler  { get; private set; } = new();
     public MapHandler MapHandler { get; private set; } = new();
@@ -31,26 +31,27 @@ public class GameBattleMode : GameModeBase
         // 플레이어 로드
 
         PlayerActorHandler.Init(GameUtil.PLAYER_ACTOR_ID);
-        ActorSpawner.SpawnEnemyActors(MapHandler.GetMapId());
+        ActorHandler.SpawnEnemyActors(MapHandler.GetMapId());
         
 
         //spell load 
         
         
-        
-        
         // 배틀 핸들러
 
         BattleHandler.Init();
-
         
-        ActorSpawner.UpdateEnemyHp();
+        ActorHandler.UpdateEnemyHp();
         PlayerActorHandler.player.OnUpdateHp(PlayerActorHandler.playerData);
     }
     
     public override void Exit()
     {
         BattleHandler.OnDispose();
+        MapHandler.OnDispose();
+        PlayerActorHandler.OnDispose();
+        ActorHandler.OnDispose();
+        
         base.Exit();
     }
 }

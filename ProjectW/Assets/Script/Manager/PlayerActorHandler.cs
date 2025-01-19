@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerActorHandler
@@ -23,7 +21,7 @@ public class PlayerActorHandler
     {
         ActorTableData actorTableData = GameTableManager.Instance._actorDatas.Find(_ => _.actor_id == selectActorId);
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        var actorSpawner = gameBattleMode?.ActorSpawner;
+        var actorSpawner = gameBattleMode?.ActorHandler;
         
         if(actorSpawner == null)
             return;
@@ -40,7 +38,6 @@ public class PlayerActorHandler
         player.data = playerData;
         player.OnUpdateHp(playerData);
     }
-
     public int GetPlayerHp()
     {
         return playerData.GetHp();
@@ -49,6 +46,12 @@ public class PlayerActorHandler
     public void ResetStage()
     {
         player.data.InitAmorStat(0,0,0,0);
+        player.RemoveAllTurnSkill();
         player.OnUpdateHp(playerData);
+    }
+
+    public void OnDispose()
+    {
+        ResetStage();
     }
 }

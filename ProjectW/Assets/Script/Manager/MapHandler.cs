@@ -18,7 +18,7 @@ public class MapHandler
             chapterId = 1,
             curStageList = new List<int> {10001, 10002, 10103, 10004, 10005, 10206},
             stageId = 10001,
-            enemyActor = new List<int>(){20001}
+            enemyActor = new List<int>(){21001,21002}
         };
         SetCurMap(1000101);
     }
@@ -94,25 +94,37 @@ public class MapHandler
     public void SetCurMap(int mapId)
     {
         rewardTableDatas.Clear();
-        var curMapData = GameTableManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
-        var curMapActor = curMapData.actor_id.ToList();
-        int curMapRewardTotalWeight = 0;
-        for (int i = 0; i < curMapData.reward_id.Length; i++)
-        {
-            var reward = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == curMapData.reward_id[i]);
-            curMapRewardTotalWeight += reward.Sum(_ => _.prob_weight) ?? 0;
-            var randomInt = Random.Range(0, curMapRewardTotalWeight);
-            var curMapReward = reward.Find(_ =>
-            {
-                randomInt -= _.prob_weight ?? 0;
-                return randomInt <= 0;
-            });
-            
-            rewardTableDatas.Add(curMapReward);
-        }
 
+        var curMapData = GameTableManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
+        if(curMapData.map_type != MAP_TYPE.MAP_TYPE_SPECIAL)
+        {
+            var curMapActor = curMapData.actor_id.ToList();
+            int curMapRewardTotalWeight = 0;
+            for (int i = 0; i < curMapData.reward_id.Length; i++)
+            {
+                var reward = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == curMapData.reward_id[i]);
+                curMapRewardTotalWeight += reward.Sum(_ => _.prob_weight) ?? 0;
+                var randomInt = Random.Range(0, curMapRewardTotalWeight);
+                var curMapReward = reward.Find(_ =>
+                {
+                    randomInt -= _.prob_weight ?? 0;
+                    return randomInt <= 0;
+                });
+
+                rewardTableDatas.Add(curMapReward);
+            }
+
+            curMap.enemyActor = curMapActor;
+        }
+        else
+        {
+            if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_Dialog>(true, UILayer.LEVEL_4, out var ui))
+            {
+                ui.SetUI(curMapData.dialog_id ?? 0);
+                ui.Show();
+            }
+        }
         
-        curMap.enemyActor = curMapActor;
     }
     
     public MapData GetCurMap()
@@ -123,5 +135,11 @@ public class MapHandler
     public List<RewardTableData> GetRewardTableDatas()
     {
         return rewardTableDatas;
+    }
+
+    public void OnDispose()
+    {
+        OnGameEnd = null;
+        rewardTableDatas.Clear();
     }
 }

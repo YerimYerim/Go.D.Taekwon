@@ -235,8 +235,8 @@
   },
   {
     "group_name": "effect_type",
-    "enum_name": "dot_amor",
-    "source_enum_name": "EFFECT_TYPE_DOT_AMOR",
+    "enum_name": "dot_armor",
+    "source_enum_name": "EFFECT_TYPE_DOT_ARMOR",
     "enum_value": 20
   },
   {

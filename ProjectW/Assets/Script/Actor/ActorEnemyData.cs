@@ -19,7 +19,12 @@ public class ActorEnemyData : ActorDataBase
     private bool IsDoingSkill = false;
 
     private SkillGroupTableData _latestSkill;
-    
+
+    public ActorEnemyData(MonsterTableData data)
+    {
+       Init(data?.stat_hp ?? 0);
+       InitAP(data?.skill_pattern_group ?? 0);
+    }
 
     public void InitAP(int skillPatternGroupId)
     {

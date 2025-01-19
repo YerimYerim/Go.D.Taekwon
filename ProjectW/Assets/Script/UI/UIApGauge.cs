@@ -39,7 +39,7 @@ public class UIApGauge : UIBase
 
     private void SpawnMonsterIcon(GameBattleMode gameBattleMode)
     {
-        foreach (var monsterData in gameBattleMode.ActorSpawner.GetEnemyData())
+        foreach (var monsterData in gameBattleMode.ActorHandler.GetEnemyData())
         {
             var obj = Instantiate(_apEnemyPrefab, _apGaugePos[^1].position, Quaternion.identity, _apEnemyParentsPos);
             var uiMonster = obj.GetComponent<UIAPGaugeIconMonster>();
@@ -198,7 +198,18 @@ public class UIApGauge : UIBase
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         for (var i = 0; i < _monsters.Count; i++)
         {
-            _monsters[i].SetData(gameBattleMode.ActorSpawner.GetEnemy(i));
+            var enemy = gameBattleMode.ActorHandler.GetEnemy(i);
+            if (enemy == null || enemy.data.GetHp() <= 0 )
+            {
+                _monsters[i].gameObject.SetActive(false);
+                _monsters[i].SetData(null);
+            }
+            else
+            {
+                _monsters[i].gameObject.SetActive(true);
+                _monsters[i].SetData(enemy);
+            }
+
         }
         SetDictionary(monsterDic, _monsters);
     }

@@ -9,4 +9,5 @@ public class MapData
     public List<int> enemyActor;
     public int stageId;
     public int mapId;
+    public MAP_TYPE mapType;
 }

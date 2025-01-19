@@ -50,19 +50,19 @@ public class GameTurnManager : Singleton<GameTurnManager>
         // 모든 적을 죽였는가
         var mapClear = new BTNodeIsMapClear();
 
+        actIsDead.AddChild(actGameOver);
+
         _root.AddChild(mapClear);
         _root.AddChild(actIsDead);
         _root.AddChild(actIsEnemyTurn);
         _root.AddChild(actIsDraw);
         _root.AddChild(actPlayerTurn);
         
-        actIsDead.AddChild(actGameOver);
     }
     public void TurnStart()
     {
         _root.Evaluate();
-       //StartCoroutine(DoTurnStack());
-       // GameBattleManager.Instance.DoTurn();
+        
     }
     
     public void AddTurnStack(TurnState turnState)

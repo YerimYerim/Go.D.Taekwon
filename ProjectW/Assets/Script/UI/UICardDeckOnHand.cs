@@ -48,44 +48,31 @@ public class UICardDeckOnHand : UIBase
             if (i < gameBattleMode.BattleHandler.spellDatas.Count)
             {
                 uiCards[i].gameObject.SetActive(true);
-                uiCards[i].SetUI(gameBattleMode.BattleHandler.spellDatas[i]);
+                uiCards[i].SetIndex(i);
+                uiCards[i].SetUI(gameBattleMode.BattleHandler.spellDatas[i], i);
             }
             else
             {
                 uiCards[i].gameObject.SetActive(false);
-            }
-        }
-    }
-    public void SetUI(int cardKey)
-    {
-        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-        
-        for (int i = 0; i < uiCards.Count; ++i)
-        {
-            if (i < gameBattleMode.BattleHandler.spellDatas.Count)
-            {
-                uiCards[i].gameObject.SetActive(true);
-                uiCards[i].SetUI(gameBattleMode.BattleHandler.spellDatas[i]);
-            }
-            else
-            {
-                uiCards[i].gameObject.SetActive(false);
+                uiCards[i].SetIndex(i);
             }
         }
     }
 
-    public void MergeSpell(int spellID01, int spellID2 ,int resultSpellID)
+    public void MergeSpell(int fromIndex, int toIndex ,int resultSpellID)
     {
         var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
         if (gameBattleMode == null)
         {
             return;
         }
-        gameBattleMode.BattleHandler.spellDatas.Remove(gameBattleMode.BattleHandler.spellDatas.Find(_ => _.tableData.spell_id == spellID01));
-        gameBattleMode.BattleHandler.spellDatas.Remove(gameBattleMode.BattleHandler.spellDatas.Find(_ => _.tableData.spell_id == spellID2));
-        gameBattleMode.BattleHandler.AddSpell(resultSpellID, 1);
+        gameBattleMode.BattleHandler.AddSpell(resultSpellID, 1, toIndex);
+        
+        gameBattleMode.BattleHandler.spellDatas.RemoveAt(toIndex + 1);
+        gameBattleMode.BattleHandler.spellDatas.RemoveAt(fromIndex);
+        
         gameBattleMode.BattleHandler.MinusResourceAP(1);
-        gameBattleMode.ActorSpawner.MinusAP(1);
+        gameBattleMode.ActorHandler.MinusAP(1);
         gameBattleMode.BattleHandler.UpdateUIApGauge();
         GameTurnManager.Instance.TurnStart();
         SetUI();

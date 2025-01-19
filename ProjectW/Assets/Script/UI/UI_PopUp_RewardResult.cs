@@ -29,7 +29,7 @@ public class UI_PopUp_RewardResult : UIBase
         {
             return;
         }
-        gameBattleMode?.ActorSpawner?.RemoveAllMonsterActors();
+        gameBattleMode?.ActorHandler?.RemoveAllMonsterActors();
         gameBattleMode?.MapHandler?.ShowMapSelect();
     }
 

@@ -18,7 +18,6 @@ public class GameInstanceManager : Singleton<GameInstanceManager>
     public void BattleStart()
     {
         ChangeGameMode(GameModeType.Battle);
-        
     }
     public void ChangeGameMode(GameModeType modeType)
     {

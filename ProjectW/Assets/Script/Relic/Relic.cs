@@ -310,7 +310,7 @@ public class Relic
         }
         else if (targetType == TARGET_TYPE.TARGET_TYPE_ENEMY)
         {
-            gameMode.ActorSpawner.GetEnemy(0).data.DoHeal(value);
+            gameMode.ActorHandler.GetEnemy(0).data.DoHeal(value);
             
         }
     }
@@ -325,7 +325,7 @@ public class Relic
         }
         else if (targetType == TARGET_TYPE.TARGET_TYPE_ENEMY)
         {
-            gameMode.ActorSpawner.GetEnemy(0).data.AddAmorStat(value);
+            gameMode.ActorHandler.GetEnemy(0).data.AddAmorStat(value);
         }
     }
 

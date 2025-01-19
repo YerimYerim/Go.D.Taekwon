@@ -16,7 +16,7 @@ public enum GameModeType
     Story
 }
 
-public class GameModeBase
+public class GameModeBase : IGameModeBase
 {
     public GameModeType ModeType { get; private set;}
     
@@ -26,13 +26,22 @@ public class GameModeBase
     {
         ModeType = modeType;
     }
+
     public virtual void Init()
     {
-    
+        
     }
-
+    /// <summary>
+    /// 각종 핸들러 DisPose
+    /// </summary>
     public virtual void Exit()
     {
-    
+       
     }
+}
+
+public interface IGameModeBase
+{
+    public abstract void Init();
+    public abstract void Exit();
 }

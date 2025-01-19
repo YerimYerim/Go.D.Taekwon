@@ -14,7 +14,16 @@ public class UIAPGaugeIconMonster : UIAPGaugeIconBase
 
     public void SetData(GameActor data)
     {
-        enemyData = data.data as ActorEnemyData;
-        SetImage(data.resourceData.actor_portrait_small);
+        if (data == null)
+        {
+            gameObject.SetActive(false);
+            IsShow = false;
+        }
+        else
+        {
+            enemyData = data.data as ActorEnemyData;
+            IsShow = true;
+            SetImage(data.resourceData.actor_portrait_small);
+        }
     }
 }

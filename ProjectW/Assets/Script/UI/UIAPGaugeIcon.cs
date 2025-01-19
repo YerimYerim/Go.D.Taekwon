@@ -14,7 +14,17 @@ public class UIAPGaugeIcon : UIAPGaugeIconBase
 
     public void SetSpellSource(GameSpellSource gameSpellSource)
     {
+        if(_gameSpellSource != null)
+        {
+            IsShow = true;
+        }
+        else
+        {
+            IsShow = false;
+        }
+        
         _gameSpellSource = gameSpellSource;
         SetImage(gameSpellSource.GetSourceImage());
+
     }
 }

@@ -70,6 +70,7 @@ public class GameActor : MonoBehaviour
         else
         {
             data = lastData;
+            uiActorBottom.Show();
             if (uiActorBottom._curHp != 0)
             {
                 uiActorDMGFloater.ShowDamage(lastData.Hp - uiActorBottom._curHp);
@@ -119,6 +120,11 @@ public class GameActor : MonoBehaviour
                 --i;
             }
         }
+    }
+    
+    public void RemoveAllTurnSkill()
+    {
+        data.turnSkill.Clear();
     }
     private void OnDestroy()
     {

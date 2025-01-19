@@ -1,19 +1,19 @@
 [
   {
-    "select_reward_group": 1001,
-    "reward_id": 1002,
+    "select_reward_group": 12001,
+    "reward_id": 2001,
     "exception_type": null,
     "exception_value": []
   },
   {
-    "select_reward_group": 1001,
-    "reward_id": 1003,
+    "select_reward_group": 12002,
+    "reward_id": 2002,
     "exception_type": null,
     "exception_value": []
   },
   {
-    "select_reward_group": 1001,
-    "reward_id": 1004,
+    "select_reward_group": 12002,
+    "reward_id": 2003,
     "exception_type": 0,
     "exception_value": [1001]
   }

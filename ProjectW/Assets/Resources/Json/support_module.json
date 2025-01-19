@@ -5,7 +5,7 @@
     "level": 1,
     "support_module_effect": 0,
     "effect_value": 1,
-    "support_module_img": "img_support_module_temp01",
+    "support_module_img": "img_spell_1",
     "support_module_bg": "img_support_module_bg_temp",
     "support_module_name": "sup_mod_name_1001",
     "support_module_desc": "sup_mod_desc_1001_01"
@@ -16,7 +16,7 @@
     "level": 1,
     "support_module_effect": 3,
     "effect_value": 1,
-    "support_module_img": "img_support_module_temp01",
+    "support_module_img": "img_spell_1",
     "support_module_bg": "img_support_module_bg_temp",
     "support_module_name": "sup_mod_name_1002",
     "support_module_desc": "sup_mod_desc_1002_01"
@@ -27,7 +27,7 @@
     "level": 1,
     "support_module_effect": 4,
     "effect_value": 10103,
-    "support_module_img": "img_support_module_temp01",
+    "support_module_img": "img_spell_1",
     "support_module_bg": "img_support_module_bg_temp",
     "support_module_name": "sup_mod_name_1003",
     "support_module_desc": "sup_mod_desc_1003_01"
@@ -36,33 +36,55 @@
     "support_module_id": 1004,
     "source_id": 1001,
     "level": 1,
-    "support_module_effect": 1,
+    "support_module_effect": 4,
     "effect_value": 1,
-    "support_module_img": "img_support_module_temp01",
+    "support_module_img": "img_spell_1",
     "support_module_bg": "img_support_module_bg_temp",
     "support_module_name": "sup_mod_name_1004",
     "support_module_desc": "sup_mod_desc_1004_01"
   },
   {
-    "support_module_id": 1004,
-    "source_id": 1001,
+    "support_module_id": 1005,
+    "source_id": 1004,
+    "level": 1,
+    "support_module_effect": 0,
+    "effect_value": 1,
+    "support_module_img": "img_spell_4",
+    "support_module_bg": "img_support_module_bg_temp",
+    "support_module_name": "sup_mod_name_1005",
+    "support_module_desc": "sup_mod_desc_1005_01"
+  },
+  {
+    "support_module_id": 1006,
+    "source_id": 1004,
     "level": 1,
     "support_module_effect": 3,
     "effect_value": 1,
-    "support_module_img": "img_support_module_temp01",
+    "support_module_img": "img_spell_4",
     "support_module_bg": "img_support_module_bg_temp",
-    "support_module_name": "sup_mod_name_1004",
-    "support_module_desc": "sup_mod_desc_1004_01"
+    "support_module_name": "sup_mod_name_1006",
+    "support_module_desc": "sup_mod_desc_1006_01"
   },
   {
-    "support_module_id": 1004,
-    "source_id": 1001,
-    "level": 2,
+    "support_module_id": 1007,
+    "source_id": 1003,
+    "level": 1,
+    "support_module_effect": 0,
+    "effect_value": 1,
+    "support_module_img": "img_spell_3",
+    "support_module_bg": "img_support_module_bg_temp",
+    "support_module_name": "sup_mod_name_1007",
+    "support_module_desc": "sup_mod_desc_1007_01"
+  },
+  {
+    "support_module_id": 1008,
+    "source_id": 1003,
+    "level": 1,
     "support_module_effect": 3,
     "effect_value": 1,
-    "support_module_img": "img_support_module_temp01",
+    "support_module_img": "img_spell_3",
     "support_module_bg": "img_support_module_bg_temp",
-    "support_module_name": "sup_mod_name_1004",
-    "support_module_desc": "sup_mod_desc_1004_02"
+    "support_module_name": "sup_mod_name_1008",
+    "support_module_desc": "sup_mod_desc_1008_01"
   }
 ]

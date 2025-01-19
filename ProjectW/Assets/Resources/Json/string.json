@@ -421,11 +421,11 @@
   },
   {
     "string_key": "abnormal_desc_take_damage_up_buff",
-    "value_kor": "적에게 받는 피해량이 일정 비율 감소합니다."
+    "value_kor": "적에게 받는 피해량이 일정 비율 증가합니다."
   },
   {
     "string_key": "abnormal_desc_take_damage_down_buff",
-    "value_kor": "적에게 받는 피해량이 일정 비율 증가합니다."
+    "value_kor": "적에게 받는 피해량이 일정 비율 감소합니다."
   },
   {
     "string_key": "abnormal_desc_give_damage_up_fixed",
@@ -550,5 +550,69 @@
   {
     "string_key": "dialog_shop_button_1000104",
     "value_kor": "나가기(임시)"
+  },
+  {
+    "string_key": "sup_mod_name_1001",
+    "value_kor": "불꽃 고클린"
+  },
+  {
+    "string_key": "sup_mod_name_1002",
+    "value_kor": "번지는 불꽃"
+  },
+  {
+    "string_key": "sup_mod_name_1003",
+    "value_kor": "주문 창조 : 업화"
+  },
+  {
+    "string_key": "sup_mod_name_1004",
+    "value_kor": "주문 창조 : 아마테라스"
+  },
+  {
+    "string_key": "sup_mod_name_1005",
+    "value_kor": "진공청소기"
+  },
+  {
+    "string_key": "sup_mod_name_1006",
+    "value_kor": "흙 재생기"
+  },
+  {
+    "string_key": "sup_mod_name_1007",
+    "value_kor": "공기청정기"
+  },
+  {
+    "string_key": "sup_mod_name_1008",
+    "value_kor": "O2 생성기"
+  },
+  {
+    "string_key": "sup_mod_desc_1001_01",
+    "value_kor": "컨버터 (불)의 AP 생산주기가 1 줄어듭니다."
+  },
+  {
+    "string_key": "sup_mod_desc_1002_01",
+    "value_kor": "컨버터 (불)의 원소 생산량이 1 증가합니다."
+  },
+  {
+    "string_key": "sup_mod_desc_1003_01",
+    "value_kor": "컨버터 (불) 주문 중 스펠 '폭발'이 '업화'로 변경됩니다."
+  },
+  {
+    "string_key": "sup_mod_desc_1004_01",
+    "value_kor": "컨버터 (불) 주문 중 스펠 '대폭발'이 '아마테라스'로 변경됩니다."
+  },
+  {
+    "string_key": "sup_mod_desc_1005_01",
+    "value_kor": "컨버터 (흙)의 AP 생산주기가 1 줄어듭니다."
+  },
+  {
+    "string_key": "sup_mod_desc_1006_01",
+    "value_kor": "컨버터 (흙)의 원소 생산량이 1 증가합니다."
+  },
+  {
+    "string_key": "sup_mod_desc_1007_01",
+    "value_kor": "컨버터 (바람)의 AP 생산주기가 1 줄어듭니다."
+  },
+  {
+    "string_key": "sup_mod_desc_1008_01",
+    "value_kor": "컨버터 (바람)의 원소 생산량이 1 증가합니다."
   }
 ]

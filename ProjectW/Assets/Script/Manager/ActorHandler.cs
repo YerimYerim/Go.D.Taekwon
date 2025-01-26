@@ -102,7 +102,7 @@ public class ActorHandler
     
     public GameActor GetEnemy(int i)
     {
-        return enemy[i];
+        return enemy.Count > i ? enemy[i] : null;
     }
         
     public List<GameActor> GetEnemyAll()

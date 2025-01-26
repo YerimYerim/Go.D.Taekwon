@@ -10,8 +10,11 @@ public class MapHandler
     public event Action OnGameEnd;
     
     private List<RewardTableData> rewardTableDatas = new List<RewardTableData>();
+    
+    private List<int> _clearMapList = new List<int>();
     public void Init()
     {
+        _clearMapList.Clear();
         curMap = new ()
         {
             mapId = 1000101,
@@ -90,9 +93,9 @@ public class MapHandler
     public void SetCurMap(int mapId)
     {
         rewardTableDatas.Clear();
+        _clearMapList.Add(mapId);
 
         var curMapData = GameTableManager.Instance._contentMapTableDatas.Find(_ => _.map_id == mapId);
-
         curMap.mapId = mapId;
         
         if(curMapData.map_type != MAP_TYPE.MAP_TYPE_SPECIAL)
@@ -138,6 +141,12 @@ public class MapHandler
     public void OnDispose()
     {
         OnGameEnd = null;
+        _clearMapList.Clear();
         rewardTableDatas.Clear();
+    }
+    
+    public bool IsClearMap(int mapId)
+    {
+        return _clearMapList.Contains(mapId);
     }
 }

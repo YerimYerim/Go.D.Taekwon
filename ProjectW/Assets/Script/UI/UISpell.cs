@@ -79,7 +79,7 @@ public class UISpell : UIDragable
                 {
                     return;
                 }
-                gameBattleMode.BattleHandler.DoSkill(_spellTableData, actor );
+                gameBattleMode.BattleHandler.DoSkill(_spellTableData, actor);
             }
         }
         

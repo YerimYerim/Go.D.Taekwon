@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Relic
 {
@@ -12,19 +13,11 @@ public class Relic
         public bool IsActivated;
         public bool IsCheck;
     }
-
-    private record Effect
-    {
-        public RELIC_EFFECT effect;
-        public int EffectValue;
-        public TARGET_TYPE TargetType;
-        public int TargetCount;
-    }
     
     private readonly RelicTableData _relicTableData;
     
     private readonly List<Condition> _conditions = new();
-    private readonly List<Effect> _effects = new();
+    private readonly List<SpellEffectTableData> _effects = new();
     private Action<int> _onEventDamagedAction;
     private LOGICAL_OPERATOR ConditionLogic => _relicTableData.condition_logic ?? LOGICAL_OPERATOR.LOGICAL_OPERATOR_AND;
     
@@ -55,20 +48,8 @@ public class Relic
         }
     }
     
-    private int effectCount
-    {
-        get {
-            int count = 0;
-            if(_relicTableData.relic_effect_1 != null)
-                ++count;
-            if (_relicTableData.relic_effect_2 != null)
-                ++count;
-            if (_relicTableData.relic_effect_3 != null)
-                ++count;
-            return count;
-        }
-    }
-    
+    private int effectCount => _relicTableData.relic_effect.Length;
+
     public Relic(RelicTableData relicTableData)
     {
         this._relicTableData = relicTableData;
@@ -100,35 +81,9 @@ public class Relic
                 }
             }
         }
-        
-        for (int i = 0; i < effectCount; ++i)
-        {
-            Effect effect = new Effect();
-            switch (i)
-            {
-                case 0:
-                    effect.effect = relicTableData.relic_effect_1 ?? RELIC_EFFECT.RELIC_EFFECT_ARMOR;
-                    effect.EffectValue = relicTableData.effect_value_1 ?? 0;
-                    effect.TargetType = relicTableData.target_1 ?? TARGET_TYPE.TARGET_TYPE_SELF;
-                    effect.TargetCount = relicTableData.target_count_1 ?? 0;
-                    break;
-                case 1:
-                    effect.effect = relicTableData.relic_effect_2 ?? RELIC_EFFECT.RELIC_EFFECT_ARMOR;
-                    effect.EffectValue = relicTableData.effect_value_2 ?? 0;
-                    effect.TargetType = relicTableData.target_2 ?? TARGET_TYPE.TARGET_TYPE_SELF;
-                    effect.TargetCount = relicTableData.target_count_2 ?? 0;
-                    break;
-                case 2:
-                    effect.effect = relicTableData.relic_effect_3 ?? RELIC_EFFECT.RELIC_EFFECT_ARMOR;
-                    effect.EffectValue = relicTableData.effect_value_3 ?? 0;
-                    effect.TargetType = relicTableData.target_3 ?? TARGET_TYPE.TARGET_TYPE_SELF;
-                    effect.TargetCount = relicTableData.target_count_3 ?? 0;
-                    break;
-            }
-            _effects.Add(effect);
-        }
-        
-        
+        for(int j = 0; j < relicTableData.relic_effect.Length; ++j)
+            _effects.Add(GameTableManager.Instance._spelleffectDatas.Find(_=>_.effect_id == relicTableData.relic_effect[j]));
+
     }
 
     private Action GetActiveAction(ACTIVE_CONDITION? activeCondition)
@@ -284,50 +239,27 @@ public class Relic
         }
     }
     
-    private void DoEffect(Effect effect)
+    private void DoEffect(SpellEffectTableData effect)
     {
-        Debug.Log("DoEffect"+ effect.effect + " 타겟 "+effect.TargetType );
-        switch (effect.effect)
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        var handler = battleMode.PlayerActorHandler;
+        var player = battleMode?.PlayerActorHandler.player;
+
+        var enemy =  battleMode.ActorHandler.GetEnemyData();
+        if (player == null)
+            return;
+        bool isTargetCorrect = true;
+        CommandManager.Instance.AddCommand(
+            new PlayerTurnCommand(() => { battleMode.BattleHandler.DoEffect(enemy[Random.Range(0, enemy.Count)], effect, player, battleMode, ref isTargetCorrect); }),
+            0.1f);
+        
+        CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
         {
-            case RELIC_EFFECT.RELIC_EFFECT_HEAL:
-                DoEffectHeal(effect.TargetType, effect.TargetCount, effect.EffectValue);
-                break;
-            case RELIC_EFFECT.RELIC_EFFECT_ARMOR:
-                DoEffectAmor(effect.TargetType, effect.TargetCount, effect.EffectValue);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(effect), effect, null);
-        }   
+            player.OnUpdateHp(handler.playerData);
+        }), 0.1f);
+        CommandManager.Instance.StartGameCommand();
     }
     
-    public void DoEffectHeal(TARGET_TYPE targetType, int targetCount, int value )
-    {
-        var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-
-        if (targetType == TARGET_TYPE.TARGET_TYPE_SELF)
-        {
-            gameMode.PlayerActorHandler.player.data.DoHeal(value);
-        }
-        else if (targetType == TARGET_TYPE.TARGET_TYPE_ENEMY)
-        {
-            gameMode.ActorHandler.GetEnemy(0).data.DoHeal(value);
-            
-        }
-    }
-    
-    public void DoEffectAmor(TARGET_TYPE targetType, int targetCount,int value )
-    {
-        var gameMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-
-        if (targetType == TARGET_TYPE.TARGET_TYPE_SELF)
-        {
-            gameMode.PlayerActorHandler.player.data.AddAmorStat(value);
-        }
-        else if (targetType == TARGET_TYPE.TARGET_TYPE_ENEMY)
-        {
-            gameMode.ActorHandler.GetEnemy(0).data.AddAmorStat(value);
-        }
-    }
 
     public string GetImage()
     {

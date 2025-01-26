@@ -55,10 +55,6 @@ public class GameRewardManager : Singleton<GameRewardManager>
         }
     }
 
-    private int GetRandomCount(RewardTableData data)
-    {
-        return UnityEngine.Random.Range(data.cnt_min ??0, data.cnt_max??0 + 1);
-    }
     public void ShowRewardSelect(List<RewardTableData> data)
     {
         if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_RewardSelect>(false, UILayer.LEVEL_4, out var ui ))
@@ -67,5 +63,28 @@ public class GameRewardManager : Singleton<GameRewardManager>
             ui.SetData(data);
         }
     }
-    
+
+    public List<RewardTableData> SetSelectRewards()
+    {
+        var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        MapData map= battleMode.MapHandler.GetCurMap();
+
+        var mapTable = GameTableManager.Instance._contentMapTableDatas.Find(_ => _.map_id == map.mapId);
+        List<RewardTableData> rewardTableDatas = new List<RewardTableData>();
+        if (mapTable != null)
+        {
+            int[] selectReward = mapTable.select_reward_id;
+
+            if (selectReward.Length > 0)
+            {
+                foreach (var rewardId in selectReward)
+                {
+                    var rewardTable = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == rewardId);
+                    rewardTableDatas.AddRange(rewardTable);
+                }
+            }
+        }
+
+        return rewardTableDatas;
+    }
 }

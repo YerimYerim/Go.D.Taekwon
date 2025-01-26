@@ -11,16 +11,5 @@ public class RelicTableData
     public ACTIVE_CONDITION? active_condition_2 { get; set; }			//발동 조건 2
     public int? active_value_2 { get; set; }			//발동 조건 2 받는 값
     public LOGICAL_OPERATOR? condition_logic { get; set; }			//발동 조건 1, 2의 처리 조건 (AND, OR)
-    public TARGET_TYPE? target_1 { get; set; }			//적용대상
-    public int? target_count_1 { get; set; }			//적용대상 개수
-    public RELIC_EFFECT? relic_effect_1 { get; set; }			//효과 1
-    public int? effect_value_1 { get; set; }			//효과 1 관련 값
-    public TARGET_TYPE? target_2 { get; set; }			//적용대상
-    public int? target_count_2 { get; set; }			//적용대상 개수
-    public RELIC_EFFECT? relic_effect_2 { get; set; }			//효과 2
-    public int? effect_value_2 { get; set; }			//효과 2 관련 값
-    public TARGET_TYPE? target_3 { get; set; }			//적용대상
-    public int? target_count_3 { get; set; }			//적용대상 개수
-    public RELIC_EFFECT? relic_effect_3 { get; set; }			//효과 3
-    public int? effect_value_3 { get; set; }			//효과 3 관련 값
+    public int[] relic_effect { get; set; }			//효과 (spell_effect의 effect_id 참조)
 }

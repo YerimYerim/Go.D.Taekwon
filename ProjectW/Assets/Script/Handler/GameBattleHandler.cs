@@ -37,10 +37,7 @@ public class GameBattleHandler
             uiApGauge.Show();
             uiApGauge.Init();
         }
-
-        // relics.Add(new Relic(GameTableManager.Instance._relicTable[0]));
-        // relics.Add(new Relic(GameTableManager.Instance._relicTable[1]));
-
+        
         for (int i = 0; i < relics.Count; ++i)
         {
             relics[i].RegisterEvent();
@@ -124,58 +121,17 @@ public class GameBattleHandler
         {
             var spellEffect = spellData.tableData.spell_effect;
             bool isTargetCorrect = true;
-            for (int i = 0; i < spellEffect.Length; ++i)
+            int spellEffectCount = spellEffect.Length;
+            
+            
+            for (int i = 0; i < spellEffectCount; ++i)
             {
                 var index = i;
-                
+                var effect = GameTableManager.Instance._spelleffectDatas.Find(_ => spellEffect[index] == _.effect_id);
                 CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
                 {
-                    if (isTargetCorrect)
-                    {
-                        var effect = GameTableManager.Instance._spelleffectDatas.Find(_ => spellEffect[index] == _.effect_id);
-                        var skillEffectBase = SkillEffectFactory.GetSkillEffectBase(effect);
-                        switch (effect.target)
-                        {
-                            case TARGET_TYPE.TARGET_TYPE_SELF:
-                            {
-                                skillEffectBase.DoSkill(new List<GameActor> {player}, player);
-                                GameUtil.Log(player.gameObject.name + "사용" + effect.effect_type + "수치" + effect.value_1);
-                            }
-                                break;
-                            case TARGET_TYPE.TARGET_TYPE_ENEMY:
-                            {
-                                if (effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
-                                {
-                                    if (targetActor != player)
-                                    {
-                                        skillEffectBase.DoSkill(new List<GameActor> {targetActor}, player);
-                                        GameUtil.Log(targetActor.gameObject.name + "에게 사용" + (effect?.effect_type ?? null) + "수치" + (effect?.value_1 ?? 0));
-                                    }
-                                    else
-                                    {
-                                        isTargetCorrect = false;
-                                        GameUtil.Log("대상이 잘못지정되었습니다. ");
-                                    }
-                                }
-                            }
-                                break;
-                            case TARGET_TYPE.TARGET_TYPE_ENEMY_ALL:
-                            {
-                                if (targetActor != player)
-                                {
-                                    skillEffectBase.DoSkill(battleMode.ActorHandler.GetEnemyData(), player);
-                                    GameUtil.Log("모든 적에게 사용" + (effect?.effect_type ?? null) + "수치" +
-                                                 (effect?.value_1 ?? 0));
-                                }
-                                else
-                                {
-                                    isTargetCorrect = false;
-                                    GameUtil.Log("대상이 잘못지정되었습니다. ");
-                                }
-                            }
-                                break;
-                        }
-                    }
+                    DoEffect(targetActor, effect, player, battleMode, ref isTargetCorrect);
+
                 }), 0.1f);
             }
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
@@ -198,8 +154,52 @@ public class GameBattleHandler
         {
             GameUtil.Log("적의 턴입니다. 공격할 수 없습니다.");
         }
+    }
 
-        GameUtil.Log(player.gameObject.name + "의 체력: " + handler.playerData.Hp + "방어도:" + handler.playerData.GetAmor());
+    public void  DoEffect(GameActor targetActor, SpellEffectTableData effect, GameActor player, GameBattleMode battleMode, ref bool isTargetCorrect)
+    {
+        var skillEffectBase = SkillEffectFactory.GetSkillEffectBase(effect);
+        switch (effect.target)
+        {
+            case TARGET_TYPE.TARGET_TYPE_SELF:
+            {
+                skillEffectBase.DoSkill(new List<GameActor> {player}, player);
+                GameUtil.Log(player.gameObject.name + "사용" + effect.effect_type + "수치" + effect.value_1);
+            }
+                break;
+            case TARGET_TYPE.TARGET_TYPE_ENEMY:
+            {
+                if (effect.target == TARGET_TYPE.TARGET_TYPE_ENEMY)
+                {
+                    if (targetActor != player)
+                    {
+                        skillEffectBase.DoSkill(new List<GameActor> {targetActor}, player);
+                        GameUtil.Log(targetActor.gameObject.name + "에게 사용" + (effect?.effect_type ?? null) + "수치" + (effect?.value_1 ?? 0));
+                    }
+                    else
+                    {
+                        isTargetCorrect = false;
+                        GameUtil.Log("대상이 잘못지정되었습니다. ");
+                    }
+                }
+            }
+                break;
+            case TARGET_TYPE.TARGET_TYPE_ENEMY_ALL:
+            {
+                if (targetActor != player)
+                {
+                    skillEffectBase.DoSkill(battleMode.ActorHandler.GetEnemyData(), player);
+                    GameUtil.Log("모든 적에게 사용" + (effect?.effect_type ?? null) + "수치" +
+                                 (effect?.value_1 ?? 0));
+                }
+                else
+                {
+                    isTargetCorrect = false;
+                    GameUtil.Log("대상이 잘못지정되었습니다. ");
+                }
+            }
+                break;
+        }
     }
 
     public void UpdateUIApGauge()

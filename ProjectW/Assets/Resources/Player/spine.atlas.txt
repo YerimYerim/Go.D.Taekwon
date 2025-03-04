@@ -1,0 +1,160 @@
+
+spine.png
+size: 1255,1027
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ArmLeft1
+  rotate: true
+  xy: 1012, 621
+  size: 120, 204
+  orig: 167, 253
+  offset: 0, 0
+  index: -1
+ArmLeft2
+  rotate: false
+  xy: 235, 20
+  size: 266, 122
+  orig: 266, 122
+  offset: 0, 0
+  index: -1
+ArmRight1
+  rotate: false
+  xy: 1012, 773
+  size: 121, 252
+  orig: 121, 309
+  offset: 0, 0
+  index: -1
+ArmRight2
+  rotate: true
+  xy: 938, 454
+  size: 143, 282
+  orig: 177, 282
+  offset: 34, 0
+  index: -1
+Body
+  rotate: false
+  xy: 693, 599
+  size: 317, 426
+  orig: 341, 516
+  offset: 24, 62
+  index: -1
+EyeBrow
+  rotate: false
+  xy: 687, 314
+  size: 157, 32
+  orig: 157, 32
+  offset: 0, 0
+  index: -1
+Eyes
+  rotate: false
+  xy: 938, 379
+  size: 175, 73
+  orig: 175, 73
+  offset: 0, 0
+  index: -1
+Eyes_close
+  rotate: false
+  xy: 891, 23
+  size: 172, 30
+  orig: 172, 30
+  offset: 0, 0
+  index: -1
+Face
+  rotate: false
+  xy: 687, 348
+  size: 249, 249
+  orig: 329, 280
+  offset: 34, 0
+  index: -1
+Hair1
+  rotate: true
+  xy: 2, 693
+  size: 332, 689
+  orig: 332, 689
+  offset: 0, 0
+  index: -1
+Hair2
+  rotate: false
+  xy: 1167, 286
+  size: 71, 166
+  orig: 71, 166
+  offset: 0, 0
+  index: -1
+Hair3
+  rotate: true
+  xy: 1065, 4
+  size: 49, 112
+  orig: 49, 112
+  offset: 0, 0
+  index: -1
+Hair4
+  rotate: true
+  xy: 928, 55
+  size: 291, 237
+  orig: 291, 237
+  offset: 0, 0
+  index: -1
+Hair5
+  rotate: true
+  xy: 2, 2
+  size: 136, 209
+  orig: 136, 209
+  offset: 0, 0
+  index: -1
+LegLeft1
+  rotate: false
+  xy: 505, 308
+  size: 180, 383
+  orig: 180, 402
+  offset: 0, 0
+  index: -1
+LegLeft2
+  rotate: false
+  xy: 2, 140
+  size: 231, 551
+  orig: 231, 551
+  offset: 0, 0
+  index: -1
+LegRight1
+  rotate: true
+  xy: 505, 75
+  size: 231, 421
+  orig: 231, 435
+  offset: 0, 0
+  index: -1
+LegRight2
+  rotate: false
+  xy: 235, 144
+  size: 268, 547
+  orig: 268, 547
+  offset: 0, 0
+  index: -1
+Mouth
+  rotate: true
+  xy: 213, 108
+  size: 30, 12
+  orig: 30, 12
+  offset: 0, 0
+  index: -1
+Pants1
+  rotate: false
+  xy: 503, 6
+  size: 259, 67
+  orig: 259, 67
+  offset: 0, 0
+  index: -1
+Pants2
+  rotate: true
+  xy: 1135, 743
+  size: 282, 118
+  orig: 282, 123
+  offset: 0, 5
+  index: -1
+pupil
+  rotate: false
+  xy: 764, 23
+  size: 125, 50
+  orig: 126, 50
+  offset: 0, 0
+  index: -1

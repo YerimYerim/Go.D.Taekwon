@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Localization-String-Tables-Korean (ko)
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Korean (ko)
-  m_Data:
-    m_SerializedData: []
   m_GUID: b15b6f990d42659468607e26a65cb00d
   m_SerializeEntries:
   - m_GUID: 9bcb508acdafea545b154361e28542f5

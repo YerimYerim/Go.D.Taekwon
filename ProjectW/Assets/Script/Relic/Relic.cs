@@ -81,9 +81,8 @@ public class Relic
                 }
             }
         }
-        for(int j = 0; j < relicTableData.relic_effect.Length; ++j)
-            _effects.Add(GameTableManager.Instance._spelleffectDatas.Find(_=>_.effect_id == relicTableData.relic_effect[j]));
-
+        foreach (var effectId in relicTableData.relic_effect)
+            _effects.Add(GameTableManager.Instance._spelleffectDatas.Find(_=>_.effect_id == effectId));
     }
 
     private Action GetActiveAction(ACTIVE_CONDITION? activeCondition)

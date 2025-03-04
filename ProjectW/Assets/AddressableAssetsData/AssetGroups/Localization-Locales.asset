@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Localization-Locales
   m_EditorClassIdentifier: 
   m_GroupName: Localization-Locales
-  m_Data:
-    m_SerializedData: []
   m_GUID: a126a40b72549434db9c6f2fd8922a15
   m_SerializeEntries:
-  - m_GUID: c2fe9c3ac9c2df14ba9a0eaafc6a8bc2
-    m_Address: English (en)
+  - m_GUID: 4e0e5d7579216ed45aa4ef6076772c9d
+    m_Address: English (United States) (en-US)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
@@ -29,14 +27,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4e0e5d7579216ed45aa4ef6076772c9d
-    m_Address: English (United States) (en-US)
+  - m_GUID: 96990571720c7d14791a450861c107df
+    m_Address: Korean (South Korea) (ko-KR)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 96990571720c7d14791a450861c107df
-    m_Address: Korean (South Korea) (ko-KR)
+  - m_GUID: c2fe9c3ac9c2df14ba9a0eaafc6a8bc2
+    m_Address: English (en)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

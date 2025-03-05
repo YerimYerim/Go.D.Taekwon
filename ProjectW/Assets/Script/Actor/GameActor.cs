@@ -13,7 +13,8 @@ public class GameActor : MonoBehaviour
     [SerializeField] private Transform uiNameSocket;
     [SerializeField] private Material outlineMaterial;
     [SerializeField] private Material normalMaterrial;
-    [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private SPUM_SpriteList spriteList;
+    [SerializeField] private SPUM_Prefabs animatingPrefab;
     
     public ActorDataBase data = new();
     public ActorRscTableData resourceData = new();
@@ -22,6 +23,8 @@ public class GameActor : MonoBehaviour
         CreateUIActorBottom();
         CreateUIActorDMGFloater();
         CreateUIActorName();
+        
+        spriteList.LoadRenderer();
     }
     
     private void CreateUIActorBottom()
@@ -89,11 +92,17 @@ public class GameActor : MonoBehaviour
     }
     public void OnSelected()
     {
-        renderer.material = outlineMaterial;
+        for(int i = 0; i< spriteList._outlineRender.Count; ++i)
+        {
+            spriteList._outlineRender[i].material = outlineMaterial;
+        }
     }
     public void OnDeselected()
     {
-        renderer.material = normalMaterrial;
+        for(int i = 0; i< spriteList._outlineRender.Count; ++i)
+        {
+            spriteList._outlineRender[i].material = normalMaterrial;
+        }
     }
     
     public void UpdateTurnSkill()
@@ -148,5 +157,10 @@ public class GameActor : MonoBehaviour
     {
         //_uiActorName.ShowName(GameUtil.GetString(actorTableData.actor_name));
         _uiActorName.ShowName(actorTableData.actor_id.ToString() + "\n" + actorTableData.actor_type.ToString());
+    }
+
+    public void DoAnim(SPUM_Prefabs.AnimationType type)
+    {
+        animatingPrefab.PlayAnimation(type);
     }
 }

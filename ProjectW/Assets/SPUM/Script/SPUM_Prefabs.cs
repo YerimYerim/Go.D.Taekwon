@@ -4,66 +4,85 @@ using UnityEngine;
 
 public class SPUM_Prefabs : MonoBehaviour
 {
+    private static readonly int RunState = Animator.StringToHash("RunState");
+    private static readonly int Chk = Animator.StringToHash("EditChk");
+    private static readonly int Die = Animator.StringToHash("Die");
+    private static readonly int Attack = Animator.StringToHash("Attack");
+    private static readonly int AttackState = Animator.StringToHash("AttackState");
+    private static readonly int NormalState = Animator.StringToHash("NormalState");
     public SPUM_SpriteList _spriteOBj;
     public bool EditChk;
     public string _code;
     public Animator _anim;
 
-    public void PlayAnimation (int num)
+    public enum AnimationType
     {
-        switch(num)
+        Idle = 0,
+        Run = 1,
+        Death = 2,
+        Stun = 3,
+        AttackSword = 4,
+        AttackBow = 5,
+        AttackMagic = 6,
+        SkillSword = 7,
+        SkillBow = 8,
+        SkillMagic = 9
+    }
+    public void PlayAnimation(AnimationType animationType)
+    {
+        switch(animationType)
         {
-            case 0: //Idle
-            _anim.SetFloat("RunState",0f);
+            case AnimationType.Idle: //Idle
+            _anim.SetFloat(RunState,0f);
             break;
 
-            case 1: //Run
-            _anim.SetFloat("RunState",0.5f);
+            case AnimationType.Run: //Run
+            _anim.SetFloat(RunState,0.5f);
             break;
 
-            case 2: //Death
-            _anim.SetTrigger("Die");
-            _anim.SetBool("EditChk",EditChk);
+            case AnimationType.Death: //Death
+            _anim.SetTrigger(Die);
+            _anim.SetBool(Chk,EditChk);
             break;
 
-            case 3: //Stun
-            _anim.SetFloat("RunState",1.0f);
+            case AnimationType.Stun: //Stun
+            _anim.SetFloat(RunState,1.0f);
             break;
 
-            case 4: //Attack Sword
-            _anim.SetTrigger("Attack");
-            _anim.SetFloat("AttackState",0.0f);
-            _anim.SetFloat("NormalState",0.0f);
+            case AnimationType.AttackSword: //Attack Sword
+            _anim.SetTrigger(Attack);
+            _anim.SetFloat(AttackState,0.0f);
+            _anim.SetFloat(NormalState,0.0f);
             break;
 
-            case 5: //Attack Bow
-            _anim.SetTrigger("Attack");
-            _anim.SetFloat("AttackState",0.0f);
-            _anim.SetFloat("NormalState",0.5f);
+            case AnimationType.AttackBow: //Attack Bow
+            _anim.SetTrigger(Attack);
+            _anim.SetFloat(AttackState,0.0f);
+            _anim.SetFloat(NormalState,0.5f);
             break;
 
-            case 6: //Attack Magic
-            _anim.SetTrigger("Attack");
-            _anim.SetFloat("AttackState",0.0f);
-            _anim.SetFloat("NormalState",1.0f);
+            case AnimationType.AttackMagic: //Attack Magic
+            _anim.SetTrigger(Attack);
+            _anim.SetFloat(AttackState,0.0f);
+            _anim.SetFloat(NormalState,1.0f);
             break;
 
-            case 7: //Skill Sword
-            _anim.SetTrigger("Attack");
-            _anim.SetFloat("AttackState",1.0f);
-            _anim.SetFloat("NormalState",0.0f);
+            case AnimationType.SkillSword: //Skill Sword
+            _anim.SetTrigger(Attack);
+            _anim.SetFloat(AttackState,1.0f);
+            _anim.SetFloat(NormalState,0.0f);
             break;
 
-            case 8: //Skill Bow
-            _anim.SetTrigger("Attack");
-            _anim.SetFloat("AttackState",1.0f);
-            _anim.SetFloat("NormalState",0.5f);
+            case AnimationType.SkillBow: //Skill Bow
+            _anim.SetTrigger(Attack);
+            _anim.SetFloat(AttackState,1.0f);
+            _anim.SetFloat(NormalState,0.5f);
             break;
 
-            case 9: //Skill Magic
-            _anim.SetTrigger("Attack");
-            _anim.SetFloat("AttackState",1.0f);
-            _anim.SetFloat("NormalState",1.0f);
+            case AnimationType.SkillMagic: //Skill Magic
+            _anim.SetTrigger(Attack);
+            _anim.SetFloat(AttackState,1.0f);
+            _anim.SetFloat(NormalState,1.0f);
             break;
         }
     }

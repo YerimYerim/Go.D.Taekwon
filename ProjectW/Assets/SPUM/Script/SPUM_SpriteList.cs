@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Serialization;
 
 public class SPUM_SpriteList : MonoBehaviour
 {
+    public List<SpriteRenderer> _outlineRender = new List<SpriteRenderer>();
     public List<SpriteRenderer> _eyeList = new List<SpriteRenderer>();
     public List<SpriteRenderer> _hairList = new List<SpriteRenderer>();
     public List<SpriteRenderer> _bodyList = new List<SpriteRenderer>();
@@ -68,7 +70,17 @@ public class SPUM_SpriteList : MonoBehaviour
             }
         }
     }
-
+    public void LoadRenderer()
+    {
+        _outlineRender.Clear();
+        _outlineRender.AddRange(_hairList);
+        _outlineRender.AddRange(_bodyList); 
+        _outlineRender.AddRange(_clothList);
+        _outlineRender.AddRange(_armorList);
+        _outlineRender.AddRange(_pantList);
+        _outlineRender.AddRange(_weaponList);
+    }
+    
     public void LoadSprite(SPUM_SpriteList data)
     {
         //스프라이트 데이터 연동
@@ -99,6 +111,7 @@ public class SPUM_SpriteList : MonoBehaviour
             if(tData[i]!=null) tList[i].sprite = tData[i].sprite;
             else tList[i] = null;
         }
+        _outlineRender.AddRange(tList);
     }
 
     public void ResyncData()
@@ -115,8 +128,6 @@ public class SPUM_SpriteList : MonoBehaviour
     {
         for(var i = 0 ; i < _pathList.Count ; i++)
         {
-            
-
             if(_pathList[i].Length > 1 ) 
             {
                 string tPath = _pathList[i];

@@ -732,6 +732,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "097be9a88ae94264b46792c96bc0e66d"
@@ -902,6 +903,9 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_DisableTint": false,
+    "m_AdditionalMotionVectorMode": 0,
+    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
@@ -1128,7 +1132,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1218,7 +1222,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1230,8 +1234,8 @@
     "m_ObjectId": "1ca8ce0a0d374aeb863981a59c89cd06",
     "m_Title": "AddAll",
     "m_Position": {
-        "x": -1335.9998779296875,
-        "y": 634.9998779296875
+        "x": -1336.0,
+        "y": 635.0
     }
 }
 
@@ -1779,8 +1783,8 @@
     "m_ObjectId": "45191c4ab84048b58f83dd24d285c81c",
     "m_Title": "Outline",
     "m_Position": {
-        "x": -2068.0,
-        "y": 469.99993896484377
+        "x": -2874.0,
+        "y": 470.0
     }
 }
 
@@ -2409,7 +2413,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -2657,8 +2661,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2853.0,
-            "y": 1160.0,
+            "x": -2849.000244140625,
+            "y": 1156.0001220703125,
             "width": 143.0,
             "height": 34.0
         }
@@ -3047,8 +3051,8 @@
     "m_ObjectId": "9bb8b5e3b04e42fa8034294fdf44e917",
     "m_Title": "Select the original",
     "m_Position": {
-        "x": 10.0,
-        "y": 10.0
+        "x": -1980.0,
+        "y": -231.0
     }
 }
 
@@ -3064,7 +3068,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -3809,7 +3813,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -4227,8 +4231,8 @@
     "m_ObjectId": "e502d44dde4240d78938c5886c1bb1cb",
     "m_Title": "satisized color",
     "m_Position": {
-        "x": -1373.9998779296875,
-        "y": -772.0
+        "x": -1358.0,
+        "y": -743.0
     }
 }
 
@@ -4411,7 +4415,7 @@
     "m_Title": "Subtract anims origin",
     "m_Position": {
         "x": -1254.0,
-        "y": 70.00001525878906
+        "y": 87.0
     }
 }
 

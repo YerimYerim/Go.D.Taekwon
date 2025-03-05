@@ -42,7 +42,7 @@ public class PlayerObj : MonoBehaviour
         Vector3 _disVec = (Vector2)_goalPos - (Vector2)transform.position ;
         if( _disVec.sqrMagnitude < 0.1f )
         {
-            _prefabs.PlayAnimation(0);
+            _prefabs.PlayAnimation((SPUM_Prefabs.AnimationType)0);
             _playerState = PlayerState.idle;
             return;
         }
@@ -58,6 +58,6 @@ public class PlayerObj : MonoBehaviour
     {
         _goalPos = pos;
         _playerState = PlayerState.move;
-        _prefabs.PlayAnimation(1);
+        _prefabs.PlayAnimation((SPUM_Prefabs.AnimationType)1);
     }
 }

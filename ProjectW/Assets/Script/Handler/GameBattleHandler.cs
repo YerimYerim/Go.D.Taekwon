@@ -131,8 +131,8 @@ public class GameBattleHandler
                 CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
                 {
                     DoEffect(targetActor, effect, player, battleMode, ref isTargetCorrect);
-
-                }), 0.1f);
+                    player.DoAnim(SPUM_Prefabs.AnimationType.AttackMagic);
+                }), 0.5f);
             }
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
@@ -147,6 +147,7 @@ public class GameBattleHandler
             CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
             {
                 player.OnUpdateHp(handler.playerData);
+                player.DoAnim(SPUM_Prefabs.AnimationType.Idle);
             }), 0.1f);
             CommandManager.Instance.StartGameCommand();
         }

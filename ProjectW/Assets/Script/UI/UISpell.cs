@@ -81,6 +81,11 @@ public class UISpell : UIDragable
                 }
                 gameBattleMode.BattleHandler.DoSkill(_spellTableData, actor);
             }
+            if (selectedActor != null)
+            {
+                selectedActor.OnDeselected();
+                selectedActor = null;
+            }
         }
         
         MoveReset();

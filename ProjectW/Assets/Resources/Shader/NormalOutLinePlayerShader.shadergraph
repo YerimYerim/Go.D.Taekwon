@@ -540,6 +540,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "097be9a88ae94264b46792c96bc0e66d"
@@ -671,6 +672,9 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_DisableTint": false,
+    "m_AdditionalMotionVectorMode": 0,
+    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
@@ -842,7 +846,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.0,
+    "m_Value": 1.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -900,7 +904,7 @@
     "m_ObjectId": "1ca8ce0a0d374aeb863981a59c89cd06",
     "m_Title": "AddAll",
     "m_Position": {
-        "x": -1254.0,
+        "x": -1071.9996337890625,
         "y": 635.0
     }
 }
@@ -1312,7 +1316,7 @@
     "m_ObjectId": "45191c4ab84048b58f83dd24d285c81c",
     "m_Title": "Outline",
     "m_Position": {
-        "x": -2878.000244140625,
+        "x": -2878.0,
         "y": 739.0000610351563
     }
 }
@@ -1630,7 +1634,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "X",
     "m_StageCapability": 3,
-    "m_Value": 2.0,
+    "m_Value": 0.5,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -1728,7 +1732,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Y",
     "m_StageCapability": 3,
-    "m_Value": 2.0,
+    "m_Value": 0.5,
     "m_DefaultValue": 0.0,
     "m_Labels": [
         "Y"
@@ -1792,7 +1796,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1834,7 +1838,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -2267,8 +2271,8 @@
     "m_ObjectId": "9bb8b5e3b04e42fa8034294fdf44e917",
     "m_Title": "Select the original",
     "m_Position": {
-        "x": 10.0,
-        "y": 10.0
+        "x": -1980.0,
+        "y": -231.0001678466797
     }
 }
 
@@ -2284,7 +2288,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -3007,8 +3011,8 @@
     "m_ObjectId": "e502d44dde4240d78938c5886c1bb1cb",
     "m_Title": "satisized color",
     "m_Position": {
-        "x": -1373.9998779296875,
-        "y": -772.0
+        "x": -1358.0,
+        "y": -743.0
     }
 }
 
@@ -3169,8 +3173,8 @@
     "m_ObjectId": "ea5744c3dc744900a64ccc35587518dd",
     "m_Title": "Subtract anims origin",
     "m_Position": {
-        "x": -1254.0,
-        "y": 70.00001525878906
+        "x": -1253.99951171875,
+        "y": 86.99989318847656
     }
 }
 

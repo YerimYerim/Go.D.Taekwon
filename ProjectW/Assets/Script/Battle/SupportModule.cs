@@ -135,6 +135,13 @@ public class SupportModule
                     source.SetTableProductionSpellId();
                     source.SetProductionSpellId(value);
                     break;
+                case SUPPORT_MODULE_EFFECT.SUPPORT_MODULE_EFFECT_GET_REWARD:
+                    if (GameUIManager.Instance.TryGetOrCreate<UI_PopUp_RewardResult>(true, UILayer.LEVEL_3, out var rewardResult))
+                    {
+                        var rewardTableDatas = GameTableManager.Instance._rewardTable.FindAll(_ => _.reward_id == value);
+                        rewardResult.ShowRewardResult(rewardTableDatas);
+                    }
+                    break;
             }
         }
     }

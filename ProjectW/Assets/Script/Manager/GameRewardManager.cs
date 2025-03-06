@@ -59,8 +59,7 @@ public class GameRewardManager : Singleton<GameRewardManager>
                     return;
                 }
                 gameBattleMode.BattleHandler.AddSpellCombine(data.content_id ?? 0);
-            }
-                break;
+            } break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(data.reward_type), data.content_id ?? 0, null);
         }

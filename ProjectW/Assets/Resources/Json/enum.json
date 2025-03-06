@@ -342,6 +342,12 @@
     "enum_value": 4
   },
   {
+    "group_name": "support_module_effect",
+    "enum_name": "get_reward",
+    "source_enum_name": "SUPPORT_MODULE_EFFECT_GET_REWARD",
+    "enum_value": 5
+  },
+  {
     "group_name": "target_type",
     "enum_name": "self",
     "source_enum_name": "TARGET_TYPE_SELF",

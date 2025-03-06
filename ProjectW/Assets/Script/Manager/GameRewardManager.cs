@@ -38,18 +38,28 @@ public class GameRewardManager : Singleton<GameRewardManager>
             case REWARD_TYPE.REWARD_TYPE_ITEM:
                 break;
             case REWARD_TYPE.REWARD_TYPE_SPELL_SOURCE:
+            {
                 var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
                 if (gameBattleMode == null)
                 {
                     return;
                 }
-
                 gameBattleMode.BattleHandler.AddSource(data.content_id ?? 0);
-                break;
+            } break;
             case REWARD_TYPE.REWARD_TYPE_SUPPORT_MODULE:
                 GameSupportModuleManager.Instance.AddModule(data.content_id ?? 0);
                 break;
             case REWARD_TYPE.REWARD_TYPE_MONEY:
+                break;
+            case REWARD_TYPE.REWARD_TYPE_SPELL_COMBINE:
+            {
+                var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+                if (gameBattleMode == null)
+                {
+                    return;
+                }
+                gameBattleMode.BattleHandler.AddSpellCombine(data.content_id ?? 0);
+            }
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(data.reward_type), data.content_id ?? 0, null);

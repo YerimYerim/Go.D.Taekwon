@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Script.Manager;
 using Script.UI;
 using UnityEngine;
@@ -29,14 +30,7 @@ public class UISpell : UIDragable
         var isSpellUI = FindUISpell(eventData);
         if (isSpellUI != null)
         {
-            var spellCombineData = GameTableManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == isSpellUI._spellTableData.tableData.spell_id));
-            spellCombineData ??= GameTableManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == isSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
-            if (spellCombineData == null)
-                return false;
-            SpellTableData resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
-            if (resultSpell == null)
-                return false;
-            return true;
+            return IsCombineAble(isSpellUI, out var resultSpell);
         }
 
         var actor = FindGameActor(eventData);
@@ -49,21 +43,36 @@ public class UISpell : UIDragable
         return false;
     }
 
+    private bool IsCombineAble(UISpell isSpellUI, out SpellTableData resultSpell)
+    {
+        var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
+        resultSpell = null;
+        if (gameBattleMode == null)
+        {
+            return false;
+        }
+
+        var combineData = gameBattleMode.BattleHandler.SpellCombineList;
+        foreach (var combine in combineData)
+        {
+            bool isContainTarget = combine.matarial.Contains(isSpellUI._spellTableData.tableData.spell_id ?? 0);
+            bool isContainCurrent =  combine.matarial.Contains(_spellTableData.tableData.spell_id ?? 0);
+            if (isContainTarget && isContainCurrent)
+            {
+                resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == combine.result_spell);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void IsActionSuccess(PointerEventData eventData)
     {
         UISpell otherSpellUI = FindUISpell(eventData);
         if (otherSpellUI != null)
         {
-            var spellCombineData = GameTableManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellUI._spellTableData.tableData.spell_id));
-            spellCombineData ??= GameTableManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellUI._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
-
-            if (spellCombineData == null)
-                return;
-            SpellTableData resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
-            if (resultSpell == null)
-                return;
-            var gameBattleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();
-            if (gameBattleMode == null)
+            IsCombineAble(otherSpellUI, out SpellTableData resultSpell);
+            if(resultSpell == null)
             {
                 return;
             }
@@ -107,16 +116,11 @@ public class UISpell : UIDragable
         var otherSpellID = FindUISpell(eventData);
         if (otherSpellID != null)
         {
-            var spellCombineData = GameTableManager.Instance._spellCombineDatas.Find(_ => (_.material_1 == _spellTableData.tableData.spell_id && _.material_2 == otherSpellID._spellTableData.tableData.spell_id));
-            spellCombineData ??= GameTableManager.Instance._spellCombineDatas.Find(_ =>_.material_1 == otherSpellID._spellTableData.tableData.spell_id && _.material_2  == _spellTableData.tableData.spell_id );
-
-            if (spellCombineData == null)
+            IsCombineAble(otherSpellID, out SpellTableData resultSpell);
+            if(resultSpell == null)
+            {
                 return;
-
-            var resultSpell =
-                GameTableManager.Instance._spellData.Find(_ => _.spell_id == spellCombineData.result_spell);
-            if (resultSpell == null)
-                return;
+            }
 
             if (GameUIManager.Instance.TryGetOrCreate<UITooltip>(true, UILayer.LEVEL_4, out var ui))
             {

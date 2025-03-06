@@ -1,132 +1,132 @@
 [
   {
-    "material_1": 10101,
-    "material_2": 10101,
+    "spell_combine_id": 1,
+    "matarial": [10101,10101],
     "result_spell": 20101
   },
   {
-    "material_1": 10101,
-    "material_2": 10102,
+    "spell_combine_id": 2,
+    "matarial": [10101,10102],
     "result_spell": 20102
   },
   {
-    "material_1": 10101,
-    "material_2": 10103,
+    "spell_combine_id": 3,
+    "matarial": [10101,10103],
     "result_spell": 20103
   },
   {
-    "material_1": 10101,
-    "material_2": 10104,
+    "spell_combine_id": 4,
+    "matarial": [10101,10104],
     "result_spell": 20104
   },
   {
-    "material_1": 10102,
-    "material_2": 10102,
+    "spell_combine_id": 5,
+    "matarial": [10102,10102],
     "result_spell": 20105
   },
   {
-    "material_1": 10102,
-    "material_2": 10103,
+    "spell_combine_id": 6,
+    "matarial": [10102,10103],
     "result_spell": 20106
   },
   {
-    "material_1": 10102,
-    "material_2": 10104,
+    "spell_combine_id": 7,
+    "matarial": [10102,10104],
     "result_spell": 20107
   },
   {
-    "material_1": 10103,
-    "material_2": 10103,
+    "spell_combine_id": 8,
+    "matarial": [10103,10103],
     "result_spell": 20108
   },
   {
-    "material_1": 10103,
-    "material_2": 10104,
+    "spell_combine_id": 9,
+    "matarial": [10103,10104],
     "result_spell": 20109
   },
   {
-    "material_1": 10104,
-    "material_2": 10104,
+    "spell_combine_id": 10,
+    "matarial": [10104,10104],
     "result_spell": 20110
   },
   {
-    "material_1": 20101,
-    "material_2": 10101,
+    "spell_combine_id": 11,
+    "matarial": [20101,10101],
     "result_spell": 30101
   },
   {
-    "material_1": 20102,
-    "material_2": 10101,
+    "spell_combine_id": 12,
+    "matarial": [20102,10101],
     "result_spell": 30201
   },
   {
-    "material_1": 20102,
-    "material_2": 10102,
+    "spell_combine_id": 13,
+    "matarial": [20102,10102],
     "result_spell": 30202
   },
   {
-    "material_1": 20103,
-    "material_2": 10101,
+    "spell_combine_id": 14,
+    "matarial": [20103,10101],
     "result_spell": 30301
   },
   {
-    "material_1": 20103,
-    "material_2": 10103,
+    "spell_combine_id": 15,
+    "matarial": [20103,10103],
     "result_spell": 30302
   },
   {
-    "material_1": 20104,
-    "material_2": 10101,
+    "spell_combine_id": 16,
+    "matarial": [20104,10101],
     "result_spell": 30401
   },
   {
-    "material_1": 20104,
-    "material_2": 10104,
+    "spell_combine_id": 17,
+    "matarial": [20104,10104],
     "result_spell": 30402
   },
   {
-    "material_1": 20105,
-    "material_2": 10102,
+    "spell_combine_id": 18,
+    "matarial": [20105,10102],
     "result_spell": 30501
   },
   {
-    "material_1": 20106,
-    "material_2": 10102,
+    "spell_combine_id": 19,
+    "matarial": [20106,10102],
     "result_spell": 30601
   },
   {
-    "material_1": 20106,
-    "material_2": 10103,
+    "spell_combine_id": 20,
+    "matarial": [20106,10103],
     "result_spell": 30602
   },
   {
-    "material_1": 20107,
-    "material_2": 10102,
+    "spell_combine_id": 21,
+    "matarial": [20107,10102],
     "result_spell": 30701
   },
   {
-    "material_1": 20107,
-    "material_2": 10104,
+    "spell_combine_id": 22,
+    "matarial": [20107,10104],
     "result_spell": 30702
   },
   {
-    "material_1": 20108,
-    "material_2": 10103,
+    "spell_combine_id": 23,
+    "matarial": [20108,10103],
     "result_spell": 30801
   },
   {
-    "material_1": 20109,
-    "material_2": 10103,
+    "spell_combine_id": 24,
+    "matarial": [20109,10103],
     "result_spell": 30901
   },
   {
-    "material_1": 20109,
-    "material_2": 10104,
+    "spell_combine_id": 25,
+    "matarial": [20109,10104],
     "result_spell": 30902
   },
   {
-    "material_1": 20110,
-    "material_2": 10104,
+    "spell_combine_id": 26,
+    "matarial": [20110,10104],
     "result_spell": 31001
   }
 ]

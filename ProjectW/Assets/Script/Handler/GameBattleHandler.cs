@@ -15,7 +15,9 @@ public class GameBattleHandler
     public event Action OnUpdateCard;
     public event Action OnGameStart;
 
+    // 보유한 플레이어의 레시피리스트
 
+    public List<SpellCombineTableData> SpellCombineList = new();
     // sourceId, spellSource
     public void Init()
     {
@@ -69,7 +71,14 @@ public class GameBattleHandler
         var firstreward = GameTableManager.Instance._firstRewardTable.FindAll(_ => _.first_reward_id == playableTableData.first_reward_id);
         for (int i = 0; i < firstreward.Count; ++i)
         {
-            AddSource(firstreward[i].source_id ?? 0);
+            if (firstreward[i].reward_type == REWARD_TYPE.REWARD_TYPE_SPELL_SOURCE)
+            {
+                AddSource(firstreward[i].content_id ?? 0);
+            }
+            else if(firstreward[i].reward_type == REWARD_TYPE.REWARD_TYPE_SPELL_COMBINE)
+            {
+                AddSpellCombine(firstreward[i].content_id ?? 0);
+            }
         }
     }   
     
@@ -107,7 +116,11 @@ public class GameBattleHandler
                 spellDatas.Insert(selectIndex,spellData);
         }
     }
-
+    public void AddSpellCombine(int contentId)
+    {
+        SpellCombineTableData sourceTableData = GameTableManager.Instance._spellCombineDatas.Find(_ => contentId == _.spell_combine_id);
+        SpellCombineList.Add(sourceTableData);
+    }
     public void DoSkill(GameDeckManager.SpellData spellData, GameActor targetActor)
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();

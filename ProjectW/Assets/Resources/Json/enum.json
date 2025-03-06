@@ -474,6 +474,12 @@
     "enum_value": 3
   },
   {
+    "group_name": "reward_type",
+    "enum_name": "spell_combine",
+    "source_enum_name": "REWARD_TYPE_SPELL_COMBINE",
+    "enum_value": 4
+  },
+  {
     "group_name": "exception_type",
     "enum_name": "own_spell_source",
     "source_enum_name": "EXCEPTION_TYPE_OWN_SPELL_SOURCE",

@@ -1,22 +1,56 @@
 [
   {
     "first_reward_id": 1000001,
-    "source_id": 1001,
+    "reward_type": 1,
+    "content_id": 1001,
     "amount": 1
   },
   {
     "first_reward_id": 1000001,
-    "source_id": 1001,
+    "reward_type": 1,
+    "content_id": 1001,
     "amount": 1
   },
   {
     "first_reward_id": 1000001,
-    "source_id": 1003,
+    "reward_type": 1,
+    "content_id": 1003,
     "amount": 1
   },
   {
     "first_reward_id": 1000001,
-    "source_id": 1004,
+    "reward_type": 1,
+    "content_id": 1004,
+    "amount": 1
+  },
+  {
+    "first_reward_id": 1000001,
+    "reward_type": 4,
+    "content_id": 1,
+    "amount": 1
+  },
+  {
+    "first_reward_id": 1000001,
+    "reward_type": 4,
+    "content_id": 2,
+    "amount": 1
+  },
+  {
+    "first_reward_id": 1000001,
+    "reward_type": 4,
+    "content_id": 3,
+    "amount": 1
+  },
+  {
+    "first_reward_id": 1000001,
+    "reward_type": 4,
+    "content_id": 4,
+    "amount": 1
+  },
+  {
+    "first_reward_id": 1000001,
+    "reward_type": 4,
+    "content_id": 5,
     "amount": 1
   }
 ]

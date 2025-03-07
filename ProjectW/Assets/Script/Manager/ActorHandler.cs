@@ -152,10 +152,15 @@ public class ActorHandler
 
     public void UpdateTurnSkill()
     {
-        for (int i = 0; i < enemy.Count; ++i)
+        if(enemy.Count <= 0)
         {
-            enemy[i].UpdateTurnSkill();
-            enemy[i].OnUpdateHp(enemy[i].data);
+            return;
+        }
+
+        foreach (var e in enemy)
+        {
+            e.UpdateTurnSkill();
+            e.OnUpdateHp(e.data);
         }
     }
     

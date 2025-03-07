@@ -31,7 +31,6 @@ public static class GameUtil
     public static int NextRingIndex(int cur,  int max, int min= 0)
     {
         var nextIndex = cur + 1;
-
         return nextIndex >= max ? min : nextIndex;
     }
     

@@ -55,13 +55,39 @@ public class UISpell : UIDragable
         var combineData = gameBattleMode.BattleHandler.SpellCombineList;
         foreach (var combine in combineData)
         {
-            bool isContainTarget = combine.matarial.Contains(isSpellUI._spellTableData.tableData.spell_id ?? 0);
-            bool isContainCurrent =  combine.matarial.Contains(_spellTableData.tableData.spell_id ?? 0);
-            if (isContainTarget && isContainCurrent)
+            HashSet<int> matarials = new();
+
+            for (int i = 0; i < combine.matarial.Length; ++i)
             {
-                resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == combine.result_spell);
-                return true;
+                matarials.Add(combine.matarial[i]);
             }
+
+            if(isSpellUI._spellTableData.tableData.spell_id == _spellTableData.tableData.spell_id)
+            {
+                if (matarials.Count == 1)
+                {
+                    bool isContainTarget = matarials.Contains(isSpellUI._spellTableData.tableData.spell_id ?? 0);
+                    bool isContainCurrent =  matarials.Contains(_spellTableData.tableData.spell_id ?? 0);
+            
+                    if (isContainTarget && isContainCurrent)
+                    {
+                        resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == combine.result_spell);
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                bool isContainTarget = matarials.Contains(isSpellUI._spellTableData.tableData.spell_id ?? 0);
+                bool isContainCurrent =  matarials.Contains(_spellTableData.tableData.spell_id ?? 0);
+            
+                if (isContainTarget && isContainCurrent)
+                {
+                    resultSpell = GameTableManager.Instance._spellData.Find(_ => _.spell_id == combine.result_spell);
+                    return true;
+                }
+            }
+
         }
         return false;
     }

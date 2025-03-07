@@ -15,7 +15,6 @@ public class ActorEnemyData : ActorDataBase
     private MonsterSkillBase _skillBase;
 
     private int curPhase = 1;
-
     private bool IsDoingSkill = false;
 
     private SkillGroupTableData _latestSkill;
@@ -24,16 +23,17 @@ public class ActorEnemyData : ActorDataBase
     {
        Init(data?.stat_hp ?? 0);
        InitAP(data?.skill_pattern_group ?? 0);
+       
+       // Init 삼형제 순서 중요.
+       InitPatternGroup(data?.skill_pattern_group ?? 0);
+       InitSkillGroup();
+       StartSkillCoolTime();
     }
 
     public void InitAP(int skillPatternGroupId)
     {
         curPhase = 1;
         _latestSkill = null;
-        // Init 삼형제 순서 중요.
-        InitPatternGroup(skillPatternGroupId);
-        InitSkillGroup();
-        StartSkillCoolTime();
     }
 
     public void StartSkillCoolTime()
@@ -48,10 +48,10 @@ public class ActorEnemyData : ActorDataBase
     private void InitSkillGroup()
     {
         var patternGroupValue = patternGroup.Values.ToList();
-        for (int i = 0; i < patternGroupValue.Count; ++i)
+        foreach (var patter in patternGroupValue)
         {
-            var skillGroupTable = GameTableManager.Instance._skillGroupTableDatas.FindAll(_ => _.skill_group_id == patternGroupValue[i].skill_group);
-            skillGroup.Add(patternGroupValue[i].phase ?? 0, skillGroupTable);
+            var skillGroupTable = GameTableManager.Instance._skillGroupTableDatas.FindAll(_ => _.skill_group_id == patter.skill_group);
+            skillGroup.Add(patter.phase ?? 0, skillGroupTable);
         }
     }
     private void InitPatternGroup(int skillPatternGroupId)
@@ -59,15 +59,12 @@ public class ActorEnemyData : ActorDataBase
         var patternGroupTable = GameTableManager.Instance._patternGroupTableDatas.FindAll(_ => _.skill_pattern_group_id == skillPatternGroupId);
         patternGroupTable.Sort((a, b) => (a?.phase ?? 0).CompareTo(b?.phase ?? 0));
 
-        for (int i = 0; i < patternGroupTable.Count; ++i)
+        foreach (var pattern in patternGroupTable)
         {
-            if (patternGroup.ContainsKey(patternGroupTable[i]?.phase ?? 0))
+            int phase = pattern?.phase ?? 0;
+            if (patternGroup.TryAdd(phase, pattern) == false)
             {
-                patternGroup[patternGroupTable[i]?.phase ?? 0] = patternGroupTable[i];
-            }
-            else
-            {
-                patternGroup.Add(patternGroupTable[i]?.phase ?? 0, patternGroupTable[i]);
+                patternGroup[phase] = pattern;
             }
         }
     }
@@ -78,15 +75,6 @@ public class ActorEnemyData : ActorDataBase
         return _skillBase.CurrentAP <= 0;
     }
 
-    public void CalculatePhase()
-    {
-        bool isAddPhase = IsPhaseAddCondition(patternGroup[curPhase].phase_condition, patternGroup[curPhase].phase_condition_value);
-        if (isAddPhase)
-        {
-            ++curPhase;
-        }
-    }
-
     public int[] GetSkillID()
     {
         return _skillBase?.effect_id;
@@ -94,56 +82,30 @@ public class ActorEnemyData : ActorDataBase
 
     private SkillGroupTableData StartSkill()
     {
-        //if(IsCanUseSkill())
+        switch (patternGroup[curPhase].pattern_type)
         {
-            switch (patternGroup[curPhase].pattern_type)
+            case PATTERN_TYPE.PATTERN_TYPE_RANDOM:
             {
-                case PATTERN_TYPE.PATTERN_TYPE_RANDOM:
-                {
-                    int maxIndex = skillGroup[curPhase].Count;
-                    var index = Random.Range(0,maxIndex);
-                    SkillGroupTableData skillGroupTableData = skillGroup[curPhase][index];
-                    _latestSkill = skillGroup[curPhase][index];
-                    return skillGroupTableData;
-                }
-                    break;
-                case PATTERN_TYPE.PATTERN_TYPE_SEQUENTIAL:
-                {
-                    var skillGroupTableDataIndex = skillGroup[curPhase].FindIndex(_ => _ == _latestSkill);
-                    var nextIndex = GameUtil.NextRingIndex(skillGroupTableDataIndex, skillGroup[curPhase].Count);
-                    _latestSkill = skillGroup[curPhase][nextIndex];
-                    return skillGroup[curPhase][nextIndex];
-                }
-                    break;
-                case null:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        return null;
-    }  
-
-    private bool IsPhaseAddCondition(PHASE_CONDITION? phaseCondition, float? value)
-    {
-        switch (phaseCondition)
-        {
-            case PHASE_CONDITION.PHASE_CONDITION_NONE:
-                return false;
-                break;
-            case PHASE_CONDITION.PHASE_CONDITION_HP_CONDITION:
-                if (Hp < MaxHp * value)
-                {
-                    return true;
-                }
+                int maxIndex = skillGroup[curPhase].Count;
+                var index = Random.Range(0,maxIndex);
+                SkillGroupTableData skillGroupTableData = skillGroup[curPhase][index];
+                _latestSkill = skillGroup[curPhase][index];
+                return skillGroupTableData;
+            } break;
+            case PATTERN_TYPE.PATTERN_TYPE_SEQUENTIAL:
+            {
+                var skillGroupTableDataIndex = skillGroup[curPhase].FindIndex(_ => _ == _latestSkill);
+                var nextIndex = GameUtil.NextRingIndex(skillGroupTableDataIndex, skillGroup[curPhase].Count);
+                _latestSkill = skillGroup[curPhase][nextIndex];
+                return skillGroup[curPhase][nextIndex];
+            } break;
+            case null:
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(phaseCondition), phaseCondition, null);
+                throw new ArgumentOutOfRangeException();
         }
-
-        return false;
-    }
+        return null;
+    }  
     public void MinusAP(int minusAp)
     {
         _skillBase.ReduceAP(minusAp);

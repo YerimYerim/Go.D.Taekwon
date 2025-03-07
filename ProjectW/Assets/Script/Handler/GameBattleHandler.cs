@@ -320,8 +320,12 @@ public class GameBattleHandler
         {
             return;
         }
-        battleMode.ActorHandler.UpdateEnemyHp();
-        battleMode.ActorHandler.UpdateTurnSkill();
+
+        if (battleMode.ActorHandler.GetEnemyCount() > 0)
+        {
+            battleMode.ActorHandler.UpdateEnemyHp();
+            battleMode.ActorHandler.UpdateTurnSkill();
+        }
         
         player.OnUpdateHp(handler.playerData);
         player.UpdateTurnSkill();

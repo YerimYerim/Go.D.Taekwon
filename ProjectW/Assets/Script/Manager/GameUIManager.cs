@@ -53,7 +53,7 @@ namespace Script.Manager
             
             if(uiobjectInList == null)
             {
-                var prefab = GameResourceManager.Instance.GetLoadUIPrefab(typeof(T).Name);
+                var prefab = ResourceImporter.GetLoadUIPrefab(typeof(T).Name);
                 var rectTransform = prefab.transform as RectTransform;
                 if (rectTransform != null)  
                 {
@@ -79,7 +79,7 @@ namespace Script.Manager
             var prefab = _ui.Find(_ => _.name == string.Concat(typeof(T).Name, "(Clone)") && _.IsShow == false);
             if (prefab == null)
             {
-                prefab = GameResourceManager.Instance.GetLoadUIPrefab(typeof(T).Name).GetComponent<T>();
+                prefab = ResourceImporter.GetLoadUIPrefab(typeof(T).Name).GetComponent<T>();
             }
             var rectTransform = prefab.transform as RectTransform;
             if (rectTransform != null)  

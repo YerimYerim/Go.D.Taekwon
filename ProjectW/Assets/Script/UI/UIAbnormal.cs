@@ -14,7 +14,7 @@ public class UIAbnormal : MonoBehaviour
     
     public void SetImage(string imageName)
     {
-        image.sprite = GameResourceManager.Instance.GetImage(imageName);
+        image.sprite = ResourceImporter.GetImage(imageName);
     }
 
     public void SetText(string str)
@@ -24,7 +24,7 @@ public class UIAbnormal : MonoBehaviour
     
     public void SetBgColor(string str)
     {
-        BG.sprite = GameResourceManager.Instance.GetImage(str);
+        BG.sprite = ResourceImporter.GetImage(str);
     }
     
     public void SetData(AbnormalTableData data)

@@ -17,7 +17,7 @@ public class UISpell : UIDragable
     public void SetUI(GameDeckManager.SpellData spellTableData, int index)
     {
         _spellTableData = spellTableData;
-        img.sprite = GameResourceManager.Instance.GetImage(spellTableData.tableData.spell_img);
+        img.sprite = ResourceImporter.GetImage(spellTableData.tableData.spell_img);
         button.SetHoverEvent(ShowToolTip, HideToolTip);
         InitDragSuccessCondition(IsActionFail, IsActionSuccess, AdjustIsMerge, OnEventDrag);
     }

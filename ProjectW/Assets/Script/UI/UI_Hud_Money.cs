@@ -37,6 +37,6 @@ public class UI_Hud_Money: MonoBehaviour
    {
       var tableData = GameTableManager.Instance._moneyTable.Find(_=>_.money_id == moneyType);
       moneyID = moneyType;
-      imgMoney.sprite = GameResourceManager.Instance.GetImage(tableData.money_img);
+      imgMoney.sprite = ResourceImporter.GetImage(tableData.money_img);
    }
 }

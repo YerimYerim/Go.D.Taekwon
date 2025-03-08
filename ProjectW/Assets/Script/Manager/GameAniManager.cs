@@ -11,7 +11,7 @@ public class GameAniManager : Singleton<GameAniManager>
     protected override void Awake()
     {
         base.Awake();
-        var  loadScriptableObject = GameResourceManager.Instance.GetLoadScriptableObject<AnimationPresets>("Animation_DB");
+        var  loadScriptableObject = ResourceImporter.GetLoadScriptableObject<AnimationPresets>("Animation_DB");
         
         for (int i = 0; i < loadScriptableObject.presets.Count; ++i)
         {

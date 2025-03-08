@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Actor
+public class Actor : MonoBehaviour
 {
-    private GameActor _actorObject;
-    private ActorDataBase _data;
+    public void SetActorName(string actorName)
+    {
+        gameObject.name = actorName;
+    }
     
-    public Actor(GameActor actorObject, ActorDataBase data)
-    {
-        _actorObject = actorObject;
-        _data = data;
-    }
-    public void Instance()
-    {
-        
-    }
 }

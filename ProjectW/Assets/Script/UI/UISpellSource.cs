@@ -14,8 +14,8 @@ public class UISpellSource : MonoBehaviour
     [SerializeField] public RectTransform rect;
     public void SetImage(string imgName, string bgName)
     {
-        _image.sprite = GameResourceManager.Instance.GetImage(imgName);
-        _bg.sprite = GameResourceManager.Instance.GetImage(bgName);
+        _image.sprite = ResourceImporter.GetImage(imgName);
+        _bg.sprite = ResourceImporter.GetImage(bgName);
         
     }
     

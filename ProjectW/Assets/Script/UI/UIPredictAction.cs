@@ -18,7 +18,7 @@ public class UIPredictAction : UIBase
 
     private void SetIcon(string imageName)
     {
-        var icon = GameResourceManager.Instance.GetImage(imageName);
+        var icon = ResourceImporter.GetImage(imageName);
         iconImage.sprite = icon;
     }
 }

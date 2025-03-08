@@ -33,10 +33,10 @@ public class UIPopUpMapSelectObject : MonoBehaviour
     {
         BG.sprite = type switch
         {
-            MAP_TYPE.MAP_TYPE_BATTLE_NORMAL => GameResourceManager.Instance.GetImage("map_select_bg_battle_normal"),
-            MAP_TYPE.MAP_TYPE_BATTLE_ELITE => GameResourceManager.Instance.GetImage("map_select_bg_battle_elite"),
-            MAP_TYPE.MAP_TYPE_BATTLE_BOSS => GameResourceManager.Instance.GetImage("map_select_bg_battle_boss"),
-            _ => GameResourceManager.Instance.GetImage("map_select_bg_battle_normal")
+            MAP_TYPE.MAP_TYPE_BATTLE_NORMAL => ResourceImporter.GetImage("map_select_bg_battle_normal"),
+            MAP_TYPE.MAP_TYPE_BATTLE_ELITE => ResourceImporter.GetImage("map_select_bg_battle_elite"),
+            MAP_TYPE.MAP_TYPE_BATTLE_BOSS => ResourceImporter.GetImage("map_select_bg_battle_boss"),
+            _ => ResourceImporter.GetImage("map_select_bg_battle_normal")
         };
     }
     

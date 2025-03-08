@@ -13,7 +13,7 @@ public class UIApplication : MonoBehaviour
     [SerializeField] public RectTransform rect;
     public void SetImage(string imgName) //, string bgName)
     {
-        _image.sprite = GameResourceManager.Instance.GetImage(imgName);
+        _image.sprite = ResourceImporter.GetImage(imgName);
     }
     
     public void SetOnClickButton(Action action)

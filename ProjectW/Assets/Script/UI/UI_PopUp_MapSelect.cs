@@ -13,7 +13,7 @@ public class UI_PopUp_MapSelect : UIBase
         {
             if (i < data.Count)
             {
-                _mapSelectObjects[i].SetData(GameResourceManager.Instance.GetImage(data[i].map_img), data[i].map_name, data[i].map_desc, data[i].map_type ?? MAP_TYPE.MAP_TYPE_BATTLE_NORMAL);
+                _mapSelectObjects[i].SetData(ResourceImporter.GetImage(data[i].map_img), data[i].map_name, data[i].map_desc, data[i].map_type ?? MAP_TYPE.MAP_TYPE_BATTLE_NORMAL);
                 var captureIndex = i;
                 _mapSelectObjects[i].SetButtonEvent(()=>OnClickMapSelect(data[captureIndex]));
                 _mapSelectObjects[i].gameObject.SetActive(true);

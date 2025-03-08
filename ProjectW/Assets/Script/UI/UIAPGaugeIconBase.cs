@@ -16,7 +16,7 @@ public abstract class UIAPGaugeIconBase : MonoBehaviour
 
     protected void SetImage(string image)
     {
-        _image.sprite = GameResourceManager.Instance.GetImage(image);
+        _image.sprite = ResourceImporter.GetImage(image);
     }
     public void SetPosition(Vector3 position)
     {

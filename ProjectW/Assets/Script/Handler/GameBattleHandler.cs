@@ -162,6 +162,10 @@ public class GameBattleHandler
                 player.OnUpdateHp(handler.playerData);
                 player.DoAnim(SPUM_Prefabs.AnimationType.Idle);
             }), 0.1f);
+            CommandManager.Instance.AddCommand(new PlayerTurnCommand(() =>
+            {
+                GameTurnManager.Instance.TurnStart();
+            }), 0.1f);
             CommandManager.Instance.StartGameCommand();
         }
         else

@@ -61,10 +61,6 @@ public class ActorDataBase
         Hp = Mathf.Max(0, Hp - trueDamage);
         
         OnEventDamaged?.Invoke(leftDamage);
-        if(Hp <= 0)
-        {
-            GameTurnManager.Instance.TurnStart();
-        }
     }
     
     public void GiveDamage(int damage)

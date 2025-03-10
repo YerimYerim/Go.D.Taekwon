@@ -20,7 +20,16 @@ public class UIBase : MonoBehaviour
     {
         
     }
-
+    
+    public virtual void Hide(float delay)
+    {
+        if(delay > 0)
+        {
+            Invoke(nameof(Hide), delay);
+            return;
+        }
+    }
+    
     public virtual void Hide()
     {
         onEventHide?.Invoke();

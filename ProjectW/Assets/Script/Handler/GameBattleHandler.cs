@@ -46,6 +46,13 @@ public class GameBattleHandler
         }
 
         OnGameStart?.Invoke();
+        
+        if (GameUIManager.Instance.TryGetOrCreate<UI_Popup_BattleStartEnd>(false, UILayer.LEVEL_4,
+                out var uiPopupBattleStartEnd))
+        {
+            uiPopupBattleStartEnd.Hide(1f);
+            uiPopupBattleStartEnd.Show();
+        };
     }
 
     public void OnDispose()
@@ -92,6 +99,13 @@ public class GameBattleHandler
             AddSpell(_sources[i].GetProductionSpellId(), _sources[i].GetInitProductionAmount());
         }
         OnUpdateCard?.Invoke();
+        
+        if (GameUIManager.Instance.TryGetOrCreate<UI_Popup_BattleStartEnd>(false, UILayer.LEVEL_4,
+                out var uiPopupBattleStartEnd))
+        {
+            uiPopupBattleStartEnd.Hide(1f);
+            uiPopupBattleStartEnd.Show();
+        };
     } 
     public void AddSource(int sourceId)
     {

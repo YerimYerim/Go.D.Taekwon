@@ -109,8 +109,6 @@ public class GameBattleHandler
     } 
     public void AddSource(int sourceId)
     {
-        // if(_sources.Any(_ => _.GetSourceId() == sourceId))
-        //     return;
         var sourceTableData = GameTableManager.Instance._spellSourceTableDatas.Find(_ => sourceId == _.source_id);
         _sources.Add(new GameSpellSource());
         _sources[^1].Init(sourceTableData, MakeSpell, ()=>uiApGauge.UpdateSourceUI(true));

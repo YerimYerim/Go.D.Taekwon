@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Script.Manager;
 using Script.UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_PopUp_BattleMenu : UIBase

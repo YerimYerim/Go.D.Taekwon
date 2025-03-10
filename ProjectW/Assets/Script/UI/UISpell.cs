@@ -2,25 +2,47 @@ using System.Collections.Generic;
 using System.Linq;
 using Script.Manager;
 using Script.UI;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UISpell : UIDragable
 {
+    private static readonly int Active = Animator.StringToHash("Active");
     [SerializeField] private Image img;
     [SerializeField] private DTButton button;
+
+    private Animator Animator;
     public UICardDeckOnHand _parents;
     public GameActor selectedActor;
     public GameDeckManager.SpellData _spellTableData { get; private set; }
     private int _index = 0;
+    
+    private void Awake()
+    {
+        base.Awake();
+        Animator = GetComponent<Animator>();
+    }
+    
     public void SetUI(GameDeckManager.SpellData spellTableData, int index)
     {
         _spellTableData = spellTableData;
+        if (isActiveAndEnabled == false)
+        {
+            gameObject.SetActive(true);
+            if(Animator == null)
+            {
+                Animator = GetComponent<Animator>();
+            }
+            Animator.Play(Active);
+        }
+        
         img.sprite = ResourceImporter.GetImage(spellTableData.tableData.spell_img);
         button.SetHoverEvent(ShowToolTip, HideToolTip);
         InitDragSuccessCondition(IsActionFail, IsActionSuccess, AdjustIsMerge, OnEventDrag);
     }
+    
     public void SetIndex(int index)
     {
         _index = index;

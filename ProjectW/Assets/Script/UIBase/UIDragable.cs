@@ -17,7 +17,7 @@ public class UIDragable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public delegate bool AdjustIsSuccess(PointerEventData eventData);
 
 
-    private void Awake()
+    protected void Awake()
     {
         rectTransform = transform.GetComponent<RectTransform>();
         _canvas = FindObjectOfType<Canvas>();
@@ -33,6 +33,8 @@ public class UIDragable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     
     public virtual void OnDrag(PointerEventData eventData)
     {
+        if(rectTransform == null)
+            return;
         rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
         _onDragging?.Invoke(eventData);
     }

@@ -47,7 +47,7 @@ public class UICardDeckOnHand : UIBase
         {
             if (i < gameBattleMode.BattleHandler.spellDatas.Count)
             {
-                uiCards[i].gameObject.SetActive(true);
+                //uiCards[i].gameObject.SetActive(true);
                 uiCards[i].SetIndex(i);
                 uiCards[i].SetUI(gameBattleMode.BattleHandler.spellDatas[i], i);
             }

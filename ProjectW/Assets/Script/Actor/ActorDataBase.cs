@@ -10,7 +10,6 @@ public class ActorDataBase
     protected AmorStat amor = new();
     protected DamageTakeStat damageTakeStat = new(0);
     protected AttackStat attackStat = new();
-    protected HealStat healStat = new();
     protected bool ignoreDamage = false;
     
     public List<SkillEffectBase> turnSkill = new() ;

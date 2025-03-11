@@ -18,8 +18,8 @@ public class UISpell : UIDragable
     public GameActor selectedActor;
     public GameDeckManager.SpellData _spellTableData { get; private set; }
     private int _index = 0;
-    
-    private void Awake()
+
+    protected override void Awake()
     {
         base.Awake();
         Animator = GetComponent<Animator>();

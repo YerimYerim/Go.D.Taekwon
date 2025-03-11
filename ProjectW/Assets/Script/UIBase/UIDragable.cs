@@ -17,7 +17,7 @@ public class UIDragable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public delegate bool AdjustIsSuccess(PointerEventData eventData);
 
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         rectTransform = transform.GetComponent<RectTransform>();
         _canvas = FindObjectOfType<Canvas>();

@@ -99,8 +99,7 @@ public class GameBattleHandler
         }
         OnUpdateCard?.Invoke();
         
-        if (GameUIManager.Instance.TryGetOrCreate<UI_Popup_BattleStartEnd>(false, UILayer.LEVEL_4,
-                out var uiPopupBattleStartEnd))
+        if (GameUIManager.Instance.TryGetOrCreate<UI_Popup_BattleStartEnd>(false, UILayer.LEVEL_4, out var uiPopupBattleStartEnd))
         {
             uiPopupBattleStartEnd.Show();
         };
@@ -126,11 +125,13 @@ public class GameBattleHandler
                 spellDatas.Insert(selectIndex,spellData);
         }
     }
+    
     public void AddSpellCombine(int contentId)
     {
         SpellCombineTableData sourceTableData = GameTableManager.Instance._spellCombineDatas.Find(_ => contentId == _.spell_combine_id);
         SpellCombineList.Add(sourceTableData);
     }
+    
     public void DoSkill(GameDeckManager.SpellData spellData, GameActor targetActor)
     {
         var battleMode = GameInstanceManager.Instance.GetGameMode<GameBattleMode>();

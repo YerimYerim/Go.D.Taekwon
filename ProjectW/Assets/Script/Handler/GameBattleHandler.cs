@@ -50,7 +50,6 @@ public class GameBattleHandler
         if (GameUIManager.Instance.TryGetOrCreate<UI_Popup_BattleStartEnd>(false, UILayer.LEVEL_4,
                 out var uiPopupBattleStartEnd))
         {
-            uiPopupBattleStartEnd.Hide(1f);
             uiPopupBattleStartEnd.Show();
         };
     }
@@ -103,7 +102,6 @@ public class GameBattleHandler
         if (GameUIManager.Instance.TryGetOrCreate<UI_Popup_BattleStartEnd>(false, UILayer.LEVEL_4,
                 out var uiPopupBattleStartEnd))
         {
-            uiPopupBattleStartEnd.Hide(1f);
             uiPopupBattleStartEnd.Show();
         };
     } 

@@ -47,6 +47,7 @@ public class UISpell : UIDragable
     {
         _index = index;
     }
+    
     private bool AdjustIsMerge(PointerEventData eventData)
     {
         var isSpellUI = FindUISpell(eventData);

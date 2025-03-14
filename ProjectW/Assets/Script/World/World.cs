@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
-    
-    
+    Level _level;
     // OnSpawnActor
     public event Action<Actor> OnPreActorSpawned;
     public event Action<Actor> OnActorSpawned;
@@ -39,5 +38,13 @@ public class World : MonoBehaviour
         actor.transform.position = parentsObject.position;
         
         OnActorSpawned?.Invoke(actor);
+        
+        _level.AddActor(actor);
+
+    }
+
+    public void ClearWorld()
+    {
+        _level.RemoveAllActorsAndRemovedActors();
     }
 }

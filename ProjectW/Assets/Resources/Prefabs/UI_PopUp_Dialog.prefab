@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
@@ -248,15 +248,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -396,10 +398,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6795556358468780019}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1800, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 565.5, y: -25.005}
+  m_SizeDelta: {x: 1131, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6834764215663010585
 CanvasRenderer:
@@ -429,11 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8
-    \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8
-    \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8
-    \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8
-    \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9\uD14D\uC2A4\uD2B8 \uB0B4\uC6A9"
+  m_text: "\uAD6C\uACBD \uD558\uC274?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9fda1910bb5978149bdf6e4859b6b99c, type: 2}
   m_sharedMaterial: {fileID: -5617599253634034529, guid: 9fda1910bb5978149bdf6e4859b6b99c, type: 2}
@@ -476,15 +474,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -657,9 +657,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6795556358468780019}
     m_Modifications:
+    - target: {fileID: 1222484976415768276, guid: 82511b0df7985294fb17e70747578709, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1901267200478531443, guid: 82511b0df7985294fb17e70747578709, type: 3}
       propertyPath: m_Name
       value: UIDialogButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767968753158826273, guid: 82511b0df7985294fb17e70747578709, type: 3}
+      propertyPath: m_text
+      value: "\uAD6C\uACBD\uD55C\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767968753158826273, guid: 82511b0df7985294fb17e70747578709, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 8375907424752860609, guid: 82511b0df7985294fb17e70747578709, type: 3}
       propertyPath: m_Pivot.x
@@ -687,7 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8375907424752860609, guid: 82511b0df7985294fb17e70747578709, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1800
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8375907424752860609, guid: 82511b0df7985294fb17e70747578709, type: 3}
       propertyPath: m_SizeDelta.y

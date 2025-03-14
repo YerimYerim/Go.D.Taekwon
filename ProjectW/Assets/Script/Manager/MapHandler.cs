@@ -9,13 +9,13 @@ public class MapHandler
     private static MapData curMap = new();
     public event Action OnGameEnd;
     
-    private List<RewardTableData> rewardTableDatas = new List<RewardTableData>();
+    private readonly List<RewardTableData> rewardTableDatas = new();
+    private readonly List<int> _clearMapList = new();
     
-    private List<int> _clearMapList = new List<int>();
     public void Init()
     {
         _clearMapList.Clear();
-        curMap = new ()
+        curMap = new MapData()
         {
             mapId = 1000101,
             chapterId = 1,

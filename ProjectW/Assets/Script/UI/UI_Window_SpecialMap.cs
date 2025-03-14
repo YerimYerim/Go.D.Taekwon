@@ -11,7 +11,6 @@ public class UI_Window_SpecialMap : UIBase
     
     public void SetUI(BUTTON_FUNCTION function, int shopId)
     {
-
         switch (function)
         {
             case BUTTON_FUNCTION.BUTTON_FUNCTION_REWARD:
